@@ -1,3 +1,13 @@
+/*
+
+To the extent possible under law, the person who associated CC0 with
+this work has waived all copyright and related or neighboring rights
+to this work.
+
+ */
+
+// template 
+
 <?php
 
 global $dbh;
@@ -47,14 +57,32 @@ case "login":
     
     break;
 case "new":
+
+    // add a new work (optional license)
+    
     break;
 case "browse":
+
+    // browse works
+
+    
     break;
 case "who":
+
+    // user profile
+
+    
     break;
 case "license":
+
+
+    // license a work
+    
     break;
 case "batch":
+
+    // batch license two or more works
+    
     break;
 
 }
@@ -87,3 +115,5 @@ case "batch":
     }
     
 ?>
+
+// more template
