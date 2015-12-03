@@ -5,12 +5,57 @@ this work has waived all copyright and related or neighboring rights
 to this work.
 -->
 <?php
+////////////////////////////////////////////////////////////
+// Utility code
+////////////////////////////////////////////////////////////
+
+// These are in license number order
+$LICENSE_NAMES =
+     ['All Rights Reserved', 'Attribution-NonCommercial-ShareAlike',
+      'Creative Commons Attribution-NonCommercial',
+      'Creative Commons Attribution-NonCommercial-NoDerivatives',
+      'Creative Commons Attribution',
+      'Creative Commons Attribution-ShareAlike',
+      'Creative Commons Attribution-NoDerivatives',
+      'Creative Commons Zero'];
+
+function lic_name ($license_number) {
+    global $LICENSE_NAMES;
+    return $LICENSE_NAMES[$license_number];
+ }
+
+function lic_abbrv ($license_number) {
+    // These are in license number order
+    return ['All Rights Reserved', 'by-nc-sa', 'by-nc', 'by-nc-nd', 'by',
+            'by-sa', 'by-nd', 'zero'][$license_number];
+}
+
+function render_options($from, $to, $selected, $any) {
+    if ($any) {
+        echo '<option '
+            . (($selected == '*') ? 'selected ' : '')
+            . 'value="*">Any</option>';
+    }
+    // '*' == '0'
+    if ($selected == '*') {
+        $selected = -1;
+    }
+    for ($i = $from; $i <= $to; $i++) {
+        echo '<option '
+            . (($i == $selected) ? 'selected ' : '')
+            . 'value="' . $i . '">'
+            . lic_name($i)
+            . '</option>';
+    }
+}
+
+////////////////////////////////////////////////////////////
+// Pre-UI rendering environment setup and request processing
+////////////////////////////////////////////////////////////
 
 session_start();
 
 global $dbh;
-
-$action = $_GET["action"];
 
 $dbh = new PDO('sqlite:/tmp/foo.db');
 
@@ -19,6 +64,8 @@ $foo = $dbh->exec("SELECT COUNT(*) FROM sqlite_master WHERE type='table' AND nam
 if ($foo != 1) {
   setupdb();
 }
+
+$action = $_GET["action"];
 
 // Handle page logic here that needs to be resolved before drawing the UI.
 // There's another $action switch below in the body to render the correct view.
@@ -104,7 +151,6 @@ case 'display':
         if ($ok) {
             $work_row = $select_work->fetch();
             if ($work_row) {
-                //TODO: Copypasta
                 $select_user = $dbh->prepare("SELECT * FROM users where user_id = " . $work_row['user_id']);
                 $ok = $select_user->execute();
                 if ($ok) {
@@ -114,6 +160,35 @@ case 'display':
                     }
                 }
             }
+        }
+    }
+    break;
+
+case 'who':
+    $who_state = 'err';
+    if (isset($_REQUEST['user_id'])) {
+        $who_id = $_REQUEST['user_id'];
+        $select_user = $dbh->prepare("SELECT * FROM users where user_id = "
+                                     . $dbh->quote($who_id));
+        $ok = $select_user->execute();
+        if ($ok) {
+            $user_row = $select_user->fetch();
+            if ($user_row) {
+                $who_name = $user_row['username'];
+                $who_state= 'ok';
+            }
+        }
+    } elseif (isset($_SESSION['user_id'])) {
+        $who_id = $_SESSION['user_id'];
+        $who_name = $_SESSION['username'];
+        $who_state= 'ok';
+    }
+    if ($who_state == 'ok') {
+        $who_works = $dbh->prepare("SELECT * FROM works where user_id = "
+                                     . $who_id);
+        $ok = $who_works->execute();
+        if (! $ok) {
+            $who_state = 'err';
         }
     }
     break;
@@ -159,12 +234,17 @@ $logged_in = isset($_SESSION['user_id']);
           <ul class="nav navbar-nav">
             <li<?php if ($action == '') { echo ' class="active"'; } ?>>
               <a href=".">Home</a></li>
+            <li<?php if ($action == 'browse') { echo ' class="active"'; } ?>>
+              <a href="/?action=browse">Browse</a></li>
 <?php
 if ($logged_in) {
     echo '<li><a href="?action=logoutprocess">Log out</a></li>';
     echo '<li' . (($action == 'profile') ? ' class="active"' : '')
            . '><a href="?action=profile">' . $_SESSION['username']
            . '</a></li>';
+} else {
+    echo '<li'. (($action == 'login') ? ' class="active"' : '')
+        . '><a href="/?action=login">Log In</a></li>';
 }
 ?>
           </ul>
@@ -175,12 +255,15 @@ if ($logged_in) {
     <div class="container">
       <div class="main-content">
 <?php
+////////////////////////////////////////////////////////////
+// View rendering using the data from higher up
+////////////////////////////////////////////////////////////
 
 switch ($action) {
 
 default:
 ?>
-    <h1>Hello World!</h1>
+    <h1>Welcome To Model Platform!</h1>
     <p>You can
 <?php
     if (! $logged_in) {
@@ -244,16 +327,7 @@ case "new":
       <div class="form-group">
         <label for="license">License</label>
         <select name="license" id="license" class="form-control">
-        <option value="0">All Rights Reserved</option>
-        <option value="4">Creative Commons Attribution</option>
-        <option value="5">Creative Commons Attribution-ShareAlike</option>
-        <option value="1">Creative Commons
-          Attribution-NonCommercial-ShareAlike</option>
-        <option value="2">Creative Commons Attribution-NonCommercial</option>
-        <option value="6">Creative Commons Attribution-NoDerivatives</option>
-        <option value="3">Creative Commons
-          Attribution-NonCommercial-NoDerivatives</option>
-        <option value="7">Creative Commons Zero</option>
+           <?php render_options(0, 7, 4, false); ?>
         </select>
       </div>
       <input type="submit" class="btn btn-default" value="Upload">
@@ -262,7 +336,7 @@ case "new":
     break;
 
 case "browse":
-    $cl = $_POST['license'];
+$cl = isset($_POST['license']) ? $_POST['license'] : '*';
 ?>
     <form action="?action=browse" method="post">
       <div class="form-group">
@@ -273,26 +347,7 @@ case "browse":
       <div class="form-group">
         <label for="license">License</label>
         <select name="license" id="license" class="form-control">
-        <option <?php echo ($cl == '*') ? 'selected ' : '';
-          ?>value="*">Any</option>
-        <option <?php echo ($cl == '0') ? 'selected ' : '';
-          ?>value="0">All Rights Reserved</option>
-        <option <?php echo ($cl == '4') ? 'selected ' : '';
-          ?>value="4">Creative Commons Attribution</option>
-        <option <?php echo ($cl == '5') ? 'selected ' : '';
-          ?>value="5">Creative Commons Attribution-ShareAlike</option>
-        <option <?php echo ($cl == '1') ? 'selected ' : '';
-          ?>value="1">Creative Commons
-          Attribution-NonCommercial-ShareAlike</option>
-        <option <?php echo ($cl == '2') ? 'selected ' : '';
-          ?>value="2">Creative Commons Attribution-NonCommercial</option>
-        <option <?php echo ($cl == '6') ? 'selected ' : '';
-          ?>value="6">Creative Commons Attribution-NoDerivatives</option>
-        <option <?php echo ($cl == '3') ? 'selected ' : '';
-          ?>value="3">Creative Commons
-          Attribution-NonCommercial-NoDerivatives</option>
-        <option <?php echo ($cl == '7') ? 'selected ' : '';
-          ?>value="7">Public Domain (CC0)</option>
+          <?php render_options(0, 7, $cl, true); ?>
         </select>
       </div>
       <input type="submit" class="btn btn-default" value="Search">
@@ -316,24 +371,83 @@ case "browse":
 
 case "display":
     if ($display_status == 'ok') {
-$license_name = ['All Rights Reserved', 'Attribution-NonCommercial-ShareAlike', 'Creative Commons Attribution-NonCommercial', 'Creative Commons Attribution-NonCommercial-NoDerivatives', 'Creative Commons Attribution', 'Creative Commons Attribution-ShareAlike', 'Creative Commons Attribution-NoDerivatives', 'Creative Commons Zero'][$work_row['license']];
-$license_abbrv = ['All Rights Reserved', 'by-nc-sa', 'by-nc', 'by-nc-nd', 'by', 'by-sa', 'by-nd', 'zero'][$work_row['license']];
+        $license_name = lic_name($work_row['license']);
+        $license_abbrv = lic_abbrv($work_row['license']);
 ?>
-    <h2 class="display-title"><?php echo $work_row['title'] ?> by
-      <?php echo $user_row['username'] ?></h2>
+    <a href="?action=display&work_id=<?php echo $work_row['work_id']; ?>">
+      <h2 class="display-title"><?php echo $work_row['title']; ?></a> by
+    <a href="?who&user_id=<?php echo $user_row['user_id']; ?>">
+      <?php echo $user_row['username'] ?></a></h2>
     <img src="<?php echo $work_row['filename'] ?>">
+    <?php if ($work_row['license'] == 0) {
+?>
+    <a href="?action=display&work_id=<?php echo $work_row['work_id']; ?>"><?php echo $work_row['title']; ?></a> by <a href="?who&user_id=<?php echo $user_row['user_id']; ?>"><?php echo $user_row['username']; ?></a>.
+<?php } elseif ($work_row['license'] == 7) { ?>
+    <p xmlns:dct="http://purl.org/dc/terms/">
+      <a rel="license"
+        href="http://creativecommons.org/publicdomain/zero/1.0/">
+        <img src="http://i.creativecommons.org/p/zero/1.0/88x31.png"
+          style="border-style: none;" alt="CC0">
+      </a>
+      <br>
+      To the extent possible under law,
+      <a rel="dct:publisher"
+        href="?who&user_id=<?php echo $user_row['user_id']; ?>">
+        <span property="dct:title"><?php echo $user_row['username'] ?></span>
+      </a>
+      has waived all copyright and related or neighboring rights to
+      <a href= property="dct:title"><?php echo $work_row['title']; ?></a>.
+    </p>
+<?php } else  { ?>
     <a rel="license" href="http://creativecommons.org/licenses/<?php echo $license_abbrv; ?>/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/<?php echo $license_abbrv; ?>/4.0/88x31.png" /></a><br /><a href="?action=display&work_id=<?php echo $work_row['work_id']; ?>" xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/StillImage" property="dct:title" rel="dct:type"><?php echo $work_row['title']; ?></a> by <a xmlns:cc="http://creativecommons.org/ns#" href="?who&user_id=<?php echo $user_row['user_id']; ?>" property="cc:attributionName" rel="cc:attributionURL"><?php echo $user_row['username']; ?></a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/<?php echo $license_abbrv; ?>/4.0/">Creative Commons <?php echo $license_name; ?> 4.0 International License</a>.
-         <br>TODO:Copy & paste license details
-         <br>TODO:download.
-<?php } else { ?>
+    <div class="show-button-section">
+      <a class="btn btn-primary"
+        href="#">Copy Attribution</a>
+      <a class="btn btn-primary"
+        href="<?php echo $work_row['filename'] ?>">Download Image &#x25BC;</a>
+    </div>
+<?php
+        }
+    } else {
+?>
     <h1>No Work Specified</h1>
-<?php    }
+<?php
+    }
     break;
 
 case "who":
-
-    // user profile
-
+    if ($who_state == 'ok') {
+?>
+    <h1><a href="?action=who&user_id=<?php echo $who_id; ?>">
+          <?php echo $who_name; ?></a></h1>
+    <h3>Works by <?php echo $who_name; ?></h3>
+      <table class="table table-striped"><thead>
+        <tr><th>Title</th><th>License</th></tr>
+        </thead><tbody>
+<?php
+        foreach ($who_works as $work) {
+            $lic = "All rights reserved";
+            if ($work['license'] == 7) {
+                $lic = '<a href="http://creativecommons.org/publicdomain/zero/1.0/">Creative Commons Zero</a>';
+            } else {
+                $lic = '<a href="http://creativecommons.org/licenses/'
+                    . lic_abbrv($work['license'])
+                    . '/4.0/">Creative Commons '
+                    . lic_name($work['license'])
+                    . ' 4.0 International License</a>';
+            }
+            echo '<tr><td><a href="?action=display&work_id='
+                 . $work['work_id'] . '">' . $work['title'] . '</a></td><td>'
+                 . $lic . '</td></tr>';
+        }
+?>
+    </tbody></table>
+<?php
+    } else {
+?>
+    <h2>No user specified or logged in.</h2>
+<?php
+    }
     break;
 
 case "license":
