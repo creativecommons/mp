@@ -1,10 +1,27 @@
 body {
   padding-top: 50px;
 }
+
+img {
+    max-width: 98%;
+}
+
 .main-content {
   padding: 40px 15px;
 }
 
 .display-title {
     text-align: center;
+}
+
+.display-image {
+    padding-bottom: 24px;
+}
+
+.display-buttons {
+    padding-top: 20px;
+}
+
+.table>tbody>tr>td {
+    vertical-align: middle;
 }

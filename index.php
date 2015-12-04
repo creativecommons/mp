@@ -10,14 +10,15 @@ to this work.
 ////////////////////////////////////////////////////////////
 
 // These are in license number order
-$LICENSE_NAMES =
-     ['All Rights Reserved', 'Attribution-NonCommercial-ShareAlike',
-      'Creative Commons Attribution-NonCommercial',
-      'Creative Commons Attribution-NonCommercial-NoDerivatives',
-      'Creative Commons Attribution',
-      'Creative Commons Attribution-ShareAlike',
-      'Creative Commons Attribution-NoDerivatives',
-      'Creative Commons Zero'];
+$LICENSE_NAMES = [
+    'All Rights Reserved', 'Attribution-NonCommercial-ShareAlike',
+    'Creative Commons Attribution-NonCommercial',
+    'Creative Commons Attribution-NonCommercial-NoDerivatives',
+    'Creative Commons Attribution',
+    'Creative Commons Attribution-ShareAlike',
+    'Creative Commons Attribution-NoDerivatives',
+    'Creative Commons Zero'
+    ];
 
 function lic_name ($license_number) {
     global $LICENSE_NAMES;
@@ -30,13 +31,64 @@ function lic_abbrv ($license_number) {
             'by-sa', 'by-nd', 'zero'][$license_number];
 }
 
-function render_options($from, $to, $selected, $any) {
+// int for sql insertion
+
+function lic_nc ($license) {
+    return (int)(($license == 1) || ($license == 2) || ($license == 3));
+}
+
+// int for sql insertion
+
+function lic_nd ($license) {
+    return (int)(($license == 3) || ($license == 6));
+}
+
+function render_license_block ($dbh, $work) {
+    $user = user_for_id($dbh, $work['user_id']);
+    $license_name = lic_name($work['license']);
+    $license_abbrv = lic_abbrv($work['license']);
+    if ($work['license'] == 0) {
+        echo '<a href="?action=display&work_id=' . $work['work_id']
+            . '">' . $work['title'] . '</a> by <a href="?who&user_id='
+            . $user['user_id'] .'">' . $user['username'] . '</a>.';
+    } elseif ($work['license'] == 7) {
+        echo '<p xmlns:dct="http://purl.org/dc/terms/">
+      <a rel="license"
+        href="http://creativecommons.org/publicdomain/zero/1.0/">
+        <img src="http://i.creativecommons.org/p/zero/1.0/88x31.png"
+          style="border-style: none;" alt="CC0">
+      </a>
+      <br>
+      To the extent possible under law,
+      <a rel="dct:publisher"
+        href="?who&user_id=' . $user['user_id'] . '">
+        <span property="dct:title">' . $user['username'] . '</span>
+      </a>
+      has waived all copyright and related or neighboring rights to
+      <a href= property="dct:title">' . $work['title'] . '</a>.
+    </p>';
+    } else  {
+        echo '<a rel="license" href="http://creativecommons.org/licenses/'
+            . $license_abbrv . '/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/' . $license_abbrv
+            . '/4.0/88x31.png" /></a><br /><a href="?action=display&work_id='
+            . $work['work_id'] . '" xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/StillImage" property="dct:title" rel="dct:type">'
+            . $work['title'] .'</a> by <a xmlns:cc="http://creativecommons.org/ns#" href="?who&user_id='
+            . $user['user_id'] . '" property="cc:attributionName" rel="cc:attributionURL">'
+            . $user['username'] . '</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/'
+            . $license_abbrv . '/4.0/">' . $license_name
+            . ' 4.0 International License</a>.';
+    }
+}
+
+// Print the options for a license select, optionally with an "All" entry
+
+function render_license_options($from, $to, $selected, $any) {
     if ($any) {
         echo '<option '
             . (($selected == '*') ? 'selected ' : '')
             . 'value="*">Any</option>';
     }
-    // '*' == '0'
+    // '*' == '0', so change it to a value that doesn't
     if ($selected == '*') {
         $selected = -1;
     }
@@ -49,6 +101,82 @@ function render_options($from, $to, $selected, $any) {
     }
 }
 
+// World's worst and slowest full-text search
+
+function browse_sql ($keywords_string, $license) {
+    $keywords = explode(' ', $keywords_string);
+    $queries = [];
+    foreach ($keywords as $keyword) {
+        if (strlen($keyword) >= 3) {
+            $queries[] = "'%" . $keyword . "%'";
+        }
+    }
+    $license_constraint = '';
+    // * == any, so don't constrain the search in that case
+    if ($license != '*') {
+        $license_constraint = 'AND license = ' . intval($license);
+    }
+    return 'SELECT * FROM works WHERE title LIKE '
+        . implode(' OR title LIKE ', $queries)
+        . $license_constraint;
+}
+
+function user_for_id ($dbh, $user_id) {
+    $user_row = false;
+    $select_user = $dbh->prepare("SELECT * FROM users where user_id = "
+                                 . $user_id);
+    $ok = $select_user->execute();
+    if ($ok) {
+        $user_row = $select_user->fetch();
+    }
+    return $user_row;
+}
+
+function work_for_id ($dbh, $work_id) {
+    $work_row = false;
+    $select_work = $dbh->prepare("SELECT * FROM works where work_id = "
+                               . $work_id);
+    $ok = $select_work->execute();
+    if ($ok) {
+        $work_row = $select_work->fetch();
+    }
+    return $work_row;
+}
+
+function works_for_user ($dbh, $user_id) {
+    $user_works = $dbh->prepare("SELECT * FROM works where user_id = "
+                                . $user_id);
+    $ok = $user_works->execute();
+    if (! $ok) {
+        $user_works = false;
+    }
+    return $user_works;
+}
+
+function user_name_for_work ($dbh, $work) {
+    $user_name = false;
+    $user_row = user_for_id($dbh, $work['user_id']);
+    if ($user_row) {
+        $user_name = $user_row['username'];
+    }
+    return $user_name;
+}
+
+function update_work_license($dbh, $work, $license) {
+    $update_lic = 'UPDATE works SET license=' . $license
+                . ', nc=' . lic_nc($license) . ', nd=' . lic_nd($license)
+                . ' WHERE work_id=' . $work['work_id'];
+    $ok = $dbh->exec($update_lic);
+    return $ok;
+}
+
+function thumbnail ($work) {
+    return '<a alt="' . $work['title']
+         . '" href="?action=display&work_id=' . $work['work_id']
+         .'"><img width="64" src="'
+         . $work['filename'] . '"></a></div>';
+}
+
 ////////////////////////////////////////////////////////////
 // Pre-UI rendering environment setup and request processing
 ////////////////////////////////////////////////////////////
@@ -57,7 +185,7 @@ session_start();
 
 global $dbh;
 
-$dbh = new PDO('sqlite:/tmp/foo.db');
+$dbh = new PDO('sqlite:foo.db');
 
 $foo = $dbh->exec("SELECT COUNT(*) FROM sqlite_master WHERE type='table' AND name='users'");
 
@@ -94,6 +222,8 @@ case 'loginprocess':
                 $_SESSION['username'] = $user_row['username'];
                 $_SESSION['user_id'] = $user_row['user_id'];
                 $login_status = 'ok';
+            } else {
+                $action = 'loginfailed';
             }
         }
     }
@@ -117,13 +247,12 @@ case 'newprocess':
             $filename = "uploads/" . $_FILES["file"]["name"];
             $title = trim($_POST['title']);
             $license = intval($_POST['license']);
-            $nc = (int)(($license == 1) || ($license == 2) || ($license == 3));
-            $nd = (int)(($license == 3) || ($license == 6));
             //FIXME: Validate things
             if (move_uploaded_file($_FILES["file"]["tmp_name"], $filename)) {
                 $file_insert_sql = "INSERT INTO works (user_id, title,
                                                        filename, license,
-                                                       nc, nd)
+                                                       lic_nc($license),
+                                                       lic_nd($license))
                     VALUES("
                     . $_SESSION['user_id'] . ","
                     . $dbh->quote($title) . ","
@@ -140,32 +269,81 @@ case 'newprocess':
     }
     break;
 
+case 'browse':
+    $browse_status = 'get';
+    if (isset($_POST['keywords']) && isset($_POST['keywords'])) {
+        $browse_status = 'err';
+        $keywords_query = browse_sql($_POST['keywords'], $_POST['license']);
+        $keywords_matches = $dbh->prepare($keywords_query);
+        if ($keywords_matches) {
+            $ok = $keywords_matches->execute();
+            if ($ok) {
+                $browse_status = 'ok';
+            }
+        }
+    }
+    break;
+
 case 'display':
     $display_status = 'err';
     if (isset($_REQUEST['work_id'])){
         //FIXME: validate
         $work_id = intval($_REQUEST['work_id']);
-        $select_work = $dbh->prepare("SELECT * FROM works where work_id = "
-                                     . $work_id);
-        $ok = $select_work->execute();
-        if ($ok) {
-            $work_row = $select_work->fetch();
-            if ($work_row) {
-                $select_user = $dbh->prepare("SELECT * FROM users where user_id = " . $work_row['user_id']);
-                $ok = $select_user->execute();
-                if ($ok) {
-                    $user_row = $select_user->fetch();
-                    if ($user_row) {
-                        $display_status = 'ok';
-                    }
+        $work_row = work_for_id($dbh, $work_id);
+        if ($work_row) {
+            $select_user = $dbh->prepare("SELECT * FROM users where user_id = " . $work_row['user_id']);
+            $ok = $select_user->execute();
+            if ($ok) {
+                $user_row = $select_user->fetch();
+                if ($user_row) {
+                    $display_status = 'ok';
                 }
             }
         }
     }
     break;
 
+case "license":
+    $license_state = 'err';
+    if (isset($_SESSION['user_id']) && isset($_REQUEST['work_id'])) {
+        $user_id = $_SESSION['user_id'];
+        $work_id = intval($_REQUEST['work_id']);
+        $license_work = work_for_id($dbh, $work_id);
+        if ($license_work && $license_work['user_id'] == $user_id) {
+            if (isset($_POST['license'])) {
+                $license = intval($_POST['license']);
+                update_work_license($dbh, $license_work, $license);
+                // Get the updated details to display
+                $license_work = work_for_id($dbh, $work_id);
+                $license_state = 'ok';
+            }
+        } else {
+            $license_work = false;
+        }
+     }
+    break;
+
+case "batch":
+    $batch_state = 'err';
+    if (isset($_SESSION['user_id'])) {
+        if (isset($_POST['license']) && isset($_POST['apply'])
+            && is_array($_POST['apply'])) {
+            foreach($_POST['apply'] as $apply) {
+                $work = work_for_id($dbh, intval($apply));
+                // We can only update our own images
+                if ($work && $work['user_id'] == $_SESSION['user_id']) {
+                    update_work_license($dbh, $work, intval($_POST['license']));
+                }
+            }
+        }
+        $batch_works = works_for_user($dbh, $_SESSION['user_id']);
+        $batch_state = 'ok';
+    }
+    break;
+
 case 'who':
     $who_state = 'err';
+    // The user is requesting to look at someone's profile
     if (isset($_REQUEST['user_id'])) {
         $who_id = $_REQUEST['user_id'];
         $select_user = $dbh->prepare("SELECT * FROM users where user_id = "
@@ -178,16 +356,15 @@ case 'who':
                 $who_state= 'ok';
             }
         }
+    // The user is requesting to look at their own profile
     } elseif (isset($_SESSION['user_id'])) {
         $who_id = $_SESSION['user_id'];
         $who_name = $_SESSION['username'];
         $who_state= 'ok';
     }
     if ($who_state == 'ok') {
-        $who_works = $dbh->prepare("SELECT * FROM works where user_id = "
-                                     . $who_id);
-        $ok = $who_works->execute();
-        if (! $ok) {
+        $who_works = works_for_user ($dbh, $who_id);
+        if (! $who_works) {
             $who_state = 'err';
         }
     }
@@ -196,6 +373,7 @@ case 'who':
 
 // Flag to tell the UI whether the user is logged in or not
 $logged_in = isset($_SESSION['user_id']);
+
 ?>
 <html lang="en">
   <head>
@@ -239,8 +417,8 @@ $logged_in = isset($_SESSION['user_id']);
 <?php
 if ($logged_in) {
     echo '<li><a href="?action=logoutprocess">Log out</a></li>';
-    echo '<li' . (($action == 'profile') ? ' class="active"' : '')
-           . '><a href="?action=profile">' . $_SESSION['username']
+    echo '<li' . (($action == 'who') ? ' class="active"' : '')
+           . '><a href="?action=who">' . $_SESSION['username']
            . '</a></li>';
 } else {
     echo '<li'. (($action == 'login') ? ' class="active"' : '')
@@ -263,14 +441,18 @@ switch ($action) {
 
 default:
 ?>
-    <h1>Welcome To Model Platform!</h1>
+    <h1>Welcome to Model Platform<?php
+if ($logged_in) {
+   echo ', ' . $_SESSION['username'];
+}
+?>!</h1>
     <p>You can
 <?php
     if (! $logged_in) {
 ?>
-<a href="?action=login">Login/Register</a> or
+    <a href="?action=login">Login/Register</a> or
 <?php } ?>
-<a href="?action=browse">browse existing works</a></p>
+    <a href="?action=browse">browse existing works</a></p>
 <?php
     break;
 
@@ -287,20 +469,14 @@ case "login":
 <?php
     break;
 
-case "loginprocess":
-    if ($login_status == 'err') {
+// A successful login just falls through to the default
+// and goes to the welcome page
+
+case "loginfailed":
 ?>
     <h1>Something went wrong</h1>
     <p>We're sorry about that! <a href="?action=login">Please try again</a>.</p>
 <?php
-    } else {
-?>
-    <h1>Success!</h1>
-    <p>You are now logged in.</p>
-    <p>Please choose an option from the main navigation to see what you can
-       do.</p>
-<?php
-    }
     break;
 
 // Just fall through to the default and render the welcome page
@@ -327,7 +503,7 @@ case "new":
       <div class="form-group">
         <label for="license">License</label>
         <select name="license" id="license" class="form-control">
-           <?php render_options(0, 7, 4, false); ?>
+           <?php render_license_options(0, 7, 4, false); ?>
         </select>
       </div>
       <input type="submit" class="btn btn-default" value="Upload">
@@ -342,28 +518,45 @@ $cl = isset($_POST['license']) ? $_POST['license'] : '*';
       <div class="form-group">
         <label for="keywords">Keywords</label>
         <input name="keywords" id="keywords" class="form-control" type="text"
-          maxlength="200" size="32">
+          maxlength="200" size="32"
+          <?php
+          if (isset($_POST['keywords'])) {
+              echo 'value="' . $_POST['keywords'] . '"';
+          }
+          ?>>
       </div>
       <div class="form-group">
         <label for="license">License</label>
         <select name="license" id="license" class="form-control">
-          <?php render_options(0, 7, $cl, true); ?>
+          <?php render_license_options(0, 7, $cl, true); ?>
         </select>
       </div>
       <input type="submit" class="btn btn-default" value="Search">
     </form>
 <?php
-    if(isset($browse_results)) {
+    if($browse_status == 'ok') {
         echo '<h2>Results</h2>';
         echo '<table class="table table-striped"><thead>';
-        echo '<tr><th>Title</th><th>License</th><th>Link</th></tr>';
+        echo '<tr><th>Image</th><th>Title</th><th>User</th><th>License</th></tr>';
         echo '</thead><tbody>';
-        foreach ($browse_results as $item) {
-            echo '<tr><td>' . $item['title'] . '</td>'
-                . '<td>' . $item['license_name'] . '</td>'
-                .'<td><a href="' . $item['resource_locator']
-                . '">' . $item['resource_locator']
-                . '</a></td></tr>';
+        foreach ($keywords_matches as $work) {
+            $lic = "All rights reserved";
+            if ($work['license'] == 7) {
+                $lic = '<a href="http://creativecommons.org/publicdomain/zero/1.0/">Creative Commons Zero</a>';
+            } else {
+                $lic = '<a href="http://creativecommons.org/licenses/'
+                    . lic_abbrv($work['license'])
+                    . '/4.0/">'
+                    . lic_name($work['license'])
+                    . ' 4.0 International</a>';
+            }
+            echo '<tr><td>' . thumbnail($work)
+                . '</td><td><a href="?action=display&work_id='
+                . $work['work_id'] . '">' . $work['title'] . '</a></td><td>'
+                . '<a href="?action=who&user_id='
+                . $work['user_id'] . '">'
+                . user_name_for_work($dbh, $work) . '</a></td><td>'
+                . $lic . '</td></tr>';
         }
         echo '</tbody></table><p>';
     }
@@ -371,43 +564,19 @@ $cl = isset($_POST['license']) ? $_POST['license'] : '*';
 
 case "display":
     if ($display_status == 'ok') {
-        $license_name = lic_name($work_row['license']);
-        $license_abbrv = lic_abbrv($work_row['license']);
 ?>
-    <a href="?action=display&work_id=<?php echo $work_row['work_id']; ?>">
-      <h2 class="display-title"><?php echo $work_row['title']; ?></a> by
-    <a href="?who&user_id=<?php echo $user_row['user_id']; ?>">
+    <h2 class="display-title"><?php echo $work_row['title']; ?> by
+    <a href="?action=who&user_id=<?php echo $user_row['user_id']; ?>">
       <?php echo $user_row['username'] ?></a></h2>
-    <img src="<?php echo $work_row['filename'] ?>">
-    <?php if ($work_row['license'] == 0) {
-?>
-    <a href="?action=display&work_id=<?php echo $work_row['work_id']; ?>"><?php echo $work_row['title']; ?></a> by <a href="?who&user_id=<?php echo $user_row['user_id']; ?>"><?php echo $user_row['username']; ?></a>.
-<?php } elseif ($work_row['license'] == 7) { ?>
-    <p xmlns:dct="http://purl.org/dc/terms/">
-      <a rel="license"
-        href="http://creativecommons.org/publicdomain/zero/1.0/">
-        <img src="http://i.creativecommons.org/p/zero/1.0/88x31.png"
-          style="border-style: none;" alt="CC0">
-      </a>
-      <br>
-      To the extent possible under law,
-      <a rel="dct:publisher"
-        href="?who&user_id=<?php echo $user_row['user_id']; ?>">
-        <span property="dct:title"><?php echo $user_row['username'] ?></span>
-      </a>
-      has waived all copyright and related or neighboring rights to
-      <a href= property="dct:title"><?php echo $work_row['title']; ?></a>.
-    </p>
-<?php } else  { ?>
-    <a rel="license" href="http://creativecommons.org/licenses/<?php echo $license_abbrv; ?>/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/<?php echo $license_abbrv; ?>/4.0/88x31.png" /></a><br /><a href="?action=display&work_id=<?php echo $work_row['work_id']; ?>" xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/StillImage" property="dct:title" rel="dct:type"><?php echo $work_row['title']; ?></a> by <a xmlns:cc="http://creativecommons.org/ns#" href="?who&user_id=<?php echo $user_row['user_id']; ?>" property="cc:attributionName" rel="cc:attributionURL"><?php echo $user_row['username']; ?></a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/<?php echo $license_abbrv; ?>/4.0/">Creative Commons <?php echo $license_name; ?> 4.0 International License</a>.
-    <div class="show-button-section">
+    <div class="display-image"><img alt="<?php echo $work_row['title']; ?>"
+       src="<?php echo $work_row['filename'] ?>"></div>
+    <?php render_license_block($dbh, $work_row); ?>
+    <div class="display-buttons">
       <a class="btn btn-primary"
         href="#">Copy Attribution</a>
-      <a class="btn btn-primary"
+      <a class="btn btn-primary" download
         href="<?php echo $work_row['filename'] ?>">Download Image &#x25BC;</a>
-    </div>
 <?php
-        }
     } else {
 ?>
     <h1>No Work Specified</h1>
@@ -422,7 +591,7 @@ case "who":
           <?php echo $who_name; ?></a></h1>
     <h3>Works by <?php echo $who_name; ?></h3>
       <table class="table table-striped"><thead>
-        <tr><th>Title</th><th>License</th></tr>
+        <tr><th>Image</th><th>Title</th><th>License</th></tr>
         </thead><tbody>
 <?php
         foreach ($who_works as $work) {
@@ -432,16 +601,19 @@ case "who":
             } else {
                 $lic = '<a href="http://creativecommons.org/licenses/'
                     . lic_abbrv($work['license'])
-                    . '/4.0/">Creative Commons '
+                    . '/4.0/">'
                     . lic_name($work['license'])
-                    . ' 4.0 International License</a>';
+                    . ' 4.0 International</a>';
             }
-            echo '<tr><td><a href="?action=display&work_id='
-                 . $work['work_id'] . '">' . $work['title'] . '</a></td><td>'
-                 . $lic . '</td></tr>';
+            echo '<tr><td>' . thumbnail($work)
+                .'</td><td><a href="?action=display&work_id='
+                . $work['work_id'] . '">' . $work['title'] . '</a></td><td>'
+                . $lic . '</td></tr>';
         }
 ?>
     </tbody></table>
+    <div class="who-buttons"><a class="btn btn-primary"
+        href="?action=batch">Change licenses</a></div>
 <?php
     } else {
 ?>
@@ -451,15 +623,84 @@ case "who":
     break;
 
 case "license":
-
-    // license a work
-
+    if (! isset($license_work)) {
+?>
+        <h2>No work specified.</h2>
+<?php
+    } elseif ($logged_in) {
+?>
+    <h1>(Re)License This Work</h1>
+    <p>To apply a new license this work, choose the new license below.</p>
+    <h2 class="display-title">
+       <a href="?action=display&work_id=<?php
+         echo $license_work['work_id']; ?>">
+         <?php echo $license_work['title']; ?></a></h2>
+    <div class="display-image"><img alt="<?php echo $license_work['title']; ?>"
+       src="<?php echo $license_work['filename'] ?>"></div>
+    <?php render_license_block($dbh, $license_work); ?>
+    <form action="?action=license" method="post">
+      <input type="hidden" name="work_id"
+         value="<?php echo $license_work['work_id']; ?>">
+      <div class="form-group">
+        <label for="license">License</label>
+        <select name="license" id="license" class="form-control">
+           <?php render_license_options(0, 7, $license_work['license'],
+                                        false); ?>
+        </select>
+      </div>
+      <input type="submit" class="btn btn-default" value="Change">
+    </form>
+<?php
+    } else {
+?>
+    <h2>Not logged in.</h2>
+<?php
+    }
     break;
 
 case "batch":
-
-    // batch license two or more works
-
+    if ($logged_in) {
+?>
+    <h1>Batch (Re)License Works</h1>
+    <p>To apply a new license to works, select the check box next to the image
+      and then choose the license below.</p>
+    <form action="?action=batch" method="post">
+      <table class="table table-striped"><thead>
+        <tr><th>Apply</th><th>Image</th><th>Title</th><th>Current License</th></tr>
+<?php
+    foreach ($batch_works as $work) {
+        $lic = "All rights reserved";
+        if ($work['license'] == 7) {
+            $lic = '<a href="http://creativecommons.org/publicdomain/zero/1.0/">Creative Commons Zero</a>';
+        } else {
+            $lic = '<a href="http://creativecommons.org/licenses/'
+                 . lic_abbrv($work['license'])
+                 . '/4.0/">'
+                 . lic_name($work['license'])
+                 . ' 4.0 International</a>';
+        }
+        echo '<tr><td><input type="checkbox" name="apply[]" value="'
+             . $work['work_id'] . '"></td><td>' . thumbnail($work)
+             . '</td><td><a href="?action=display&work_id='
+             . $work['work_id'] . '">' . $work['title'] . '</a></td><td>'
+             . $lic . '</td></tr>';
+    }
+?>
+    </tbody></table>
+    <div class="form-group">
+        <label for="license">License</label>
+        <select name="license" id="license" class="form-control">
+           <?php render_license_options(0, 7, 4, false); ?>
+        </select>
+      </div>
+      <input type="submit" class="btn btn-default" value="Change">
+    </form>
+<?php
+    } else {
+?>
+    <h2>Not logged in.</h2>
+<?php
+    }
     break;
 
 }
