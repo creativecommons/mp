@@ -261,8 +261,10 @@ case 'newprocess':
                     . lic_nd($license)
                     . ")";
                 $dbh->exec($file_insert_sql);
-                //TODO:GET INSERTED ID AND DISPLAY
                 $upload_status = 'uploaded';
+                $work_id = $dbh->lastInsertId();
+                header('Location:?action=display&work_id=' . $work_id);
+                exit;
             }
         }
     }
@@ -290,13 +292,9 @@ case 'display':
         $work_id = intval($_REQUEST['work_id']);
         $work_row = work_for_id($dbh, $work_id);
         if ($work_row) {
-            $select_user = $dbh->prepare("SELECT * FROM users where user_id = " . $work_row['user_id']);
-            $ok = $select_user->execute();
-            if ($ok) {
-                $user_row = $select_user->fetch();
-                if ($user_row) {
-                    $display_status = 'ok';
-                }
+            $user_row = user_for_id($dbh, $work_row['user_id']);
+            if ($user_row) {
+                $display_status = 'ok';
             }
         }
     }
