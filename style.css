@@ -6,6 +6,10 @@ img {
     max-width: 98%;
 }
 
+tr {
+    height: 50px;
+}
+
 .main-content {
   padding: 40px 15px;
 }
@@ -14,11 +18,11 @@ img {
     text-align: center;
 }
 
-.display-image {
+.display-work {
     padding-bottom: 24px;
 }
 
-.display-image>img {
+.display-work>* {
     display: block;
     margin-left: auto;
     margin-right: auto;

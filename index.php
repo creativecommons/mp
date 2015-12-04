@@ -9,6 +9,10 @@ to this work.
 // Utility code
 ////////////////////////////////////////////////////////////
 
+////////////////////////////////////////////////////////////
+// Licenses
+////////////////////////////////////////////////////////////
+
 // These are in license number order
 $LICENSE_NAMES = [
     'All Rights Reserved', 'Attribution-NonCommercial-ShareAlike',
@@ -70,12 +74,20 @@ function license_block ($dbh, $work) {
                . '</a>.</p>';
     } else  {
         $block = '<a rel="license" href="http://creativecommons.org/licenses/'
-               . $license_abbrv . '/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/' . $license_abbrv
+               . $license_abbrv
+               . '/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/'
+               . $license_abbrv
                . '/4.0/88x31.png" /></a><br /><a href="?action=display&work_id='
-               . $work['work_id'] . '" xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/StillImage" property="dct:title" rel="dct:type">'
-               . $work['title'] .'</a> by <a xmlns:cc="http://creativecommons.org/ns#" href="?who&user_id='
-               . $user['user_id'] . '" property="cc:attributionName" rel="cc:attributionURL">'
-               . $user['username'] . '</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/'
+               . $work['work_id']
+               . '"><span xmlns:dct="http://purl.org/dc/terms/" href="'
+               . work_mediatype($work)
+               . '" property="dct:title" rel="dct:type">'
+               . $work['title']
+               . '</span></a> by <a xmlns:cc="http://creativecommons.org/ns#" href="?who&user_id='
+               . $user['user_id']
+               . '" property="cc:attributionName" rel="cc:attributionURL">'
+               . $user['username'] .
+                 '</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/'
                . $license_abbrv . '/4.0/">' . $license_name
                . ' 4.0 International License</a>.';
     }
@@ -103,6 +115,10 @@ function render_license_options($from, $to, $selected, $any) {
     }
 }
 
+////////////////////////////////////////////////////////////
+// Database querying
+////////////////////////////////////////////////////////////
+
 // World's worst and slowest full-text search
 
 function browse_sql ($keywords_string, $license) {
@@ -120,7 +136,7 @@ function browse_sql ($keywords_string, $license) {
     }
     return 'SELECT * FROM works WHERE title LIKE '
         . implode(' OR title LIKE ', $queries)
-        . $license_constraint;
+        . $license_constraint . ' ORDER BY work_id DESC';
 }
 
 function user_for_id ($dbh, $user_id) {
@@ -147,7 +163,7 @@ function work_for_id ($dbh, $work_id) {
 
 function works_for_user ($dbh, $user_id) {
     $user_works = $dbh->prepare("SELECT * FROM works where user_id = "
-                                . $user_id);
+                                . $user_id . ' ORDER BY work_id DESC');
     $ok = $user_works->execute();
     if (! $ok) {
         $user_works = false;
@@ -172,11 +188,108 @@ function update_work_license($dbh, $work, $license) {
     return $ok;
 }
 
-function thumbnail ($work) {
-    return '<a alt="' . $work['title']
-         . '" href="?action=display&work_id=' . $work['work_id']
-         .'"><img width="64" src="'
-         . $work['filename'] . '"></a></div>';
+////////////////////////////////////////////////////////////
+// Displaying works in html
+////////////////////////////////////////////////////////////
+
+// Remember to check the list in the upload file accept field
+
+function file_valid ($filename) {
+    $extension = pathinfo($filename, PATHINFO_EXTENSION);
+    return in_array($extension, ['gif', 'jpg', 'jpeg',
+                                'markdown', 'md', 'mp3', 'mp4',
+                                'ogg', 'ogv', 'png', 'txt']);
+}
+
+function work_kind ($work) {
+    $extension = pathinfo($work['filename'], PATHINFO_EXTENSION);
+    $kind = 'img';
+    if (in_array($extension, ['ogg', 'ogv', 'mp4'])) {
+        $kind = 'vid';
+    } elseif (in_array($extension, ['oga', 'mp3'])) {
+        $kind = 'aud';
+    } elseif (in_array($extension, ['txt', 'md', 'markdown'])) {
+        $kind = 'txt';
+    }
+    return $kind;
+}
+
+function work_mediatype ($work) {
+    $kind = work_kind($work);
+    switch ($kind) {
+        case 'img':
+            $type = 'http://purl.org/dc/dcmitype/StillImage';
+            break;
+        case 'vid':
+            $type = 'http://purl.org/dc/dcmitype/MovingImage';
+            break;
+        case 'aud':
+            $type = 'http://purl.org/dc/dcmitype/Sound';
+            break;
+       case 'txt':
+            $type = 'http://purl.org/dc/dcmitype/Text';
+            break;
+    }
+    return $type;
+}
+
+function work_thumbnail ($work) {
+    $thumb = '<a alt="' . $work['title']
+           . '" href="?action=display&work_id=' . $work['work_id'] . '">';
+    $kind = work_kind($work);
+    switch ($kind) {
+        case 'img':
+            $thumb .= '<img height="32" src="' . $work['filename'] . '">';
+            break;
+        case 'vid':
+            $thumb .= '<span class="glyphicon glyphicon-film"></span>';
+            break;
+        case 'aud':
+            $thumb .= '<span class="glyphicon glyphicon-music"></span>';
+            break;
+        case 'txt':
+            $thumb .= '<span class="glyphicon glyphicon-text-background"></span>';
+            break;
+    }
+    $thumb .= '</a></div>';
+    return $thumb;
+}
+
+function work_display ($work) {
+    $display = '<div class="display-work">';
+    $kind = work_kind($work);
+    $filename = $work['filename'];
+    switch ($kind) {
+        case 'img':
+            $display .= '<img alt="' . $work['title'] . '" src="'
+                      . $filename . '">';
+            break;
+        case 'vid':
+            $display .= '<video controls>
+                           Sorry, your browser does not support the
+                           <code>video</code> element, but you can
+                           <a href="' . $filename
+                      . '">download this file</a> and listen to it with your
+                             favourite media player!
+                            <source src="' . $filename . '">
+                         </video>';
+            break;
+        case 'aud':
+            $display .= '<audio controls>
+                           Your browser does not support the
+                           <code>audio</code> element, but you can
+                           <a href="' . $filename
+                      . '">download this file</a> and listen to it with your
+                             favourite media player!
+                           <source src="' . $filename .'">
+                         </audio>';
+            break;
+        case 'txt':
+            $display .= nl2br(htmlentities(file_get_contents($filename)));
+            break;
+    }
+    $display .= '</div>';
+    return $display;
 }
 
 ////////////////////////////////////////////////////////////
@@ -252,28 +365,34 @@ case 'newprocess':
     if (isset($_SESSION['user_id'])) {
         if (isset($_FILES['file'])
            && isset($_POST['title'])
-           && isset($_POST['license'])) {
-            $filename = "uploads/" . $_FILES["file"]["name"];
-            $title = strip_tags(trim($_POST['title']));
-            $license = intval($_POST['license']);
-            //FIXME: Validate things
-            if (move_uploaded_file($_FILES["file"]["tmp_name"], $filename)) {
-                $file_insert_sql = "INSERT INTO works (user_id, title,
-                                                       filename, license,
-                                                       nc, nd)
-                    VALUES("
+               && isset($_POST['license'])) {
+            $supplied_filename = $_FILES["file"]["name"];
+            if (! file_valid($supplied_filename)) {
+                $upload_status = 'unsupported';
+            } else {
+                $filename = "uploads/" . $_FILES["file"]["name"];
+                $title = strip_tags(trim($_POST['title']));
+                $license = intval($_POST['license']);
+                //FIXME: Validate things
+                if (move_uploaded_file($_FILES["file"]["tmp_name"],
+                                       $filename)) {
+                    $file_insert_sql = "INSERT INTO works (user_id, title,
+                                            filename, license,
+                                            nc, nd)
+                                            VALUES("
                     . $_SESSION['user_id'] . ","
-                    . $dbh->quote($title) . ","
-                    . $dbh->quote($filename) . ","
-                    . $license . ","
-                    . lic_nc($license) . ","
-                    . lic_nd($license)
-                    . ")";
-                $dbh->exec($file_insert_sql);
-                $upload_status = 'uploaded';
-                $work_id = $dbh->lastInsertId();
-                header('Location:?action=display&work_id=' . $work_id);
-                exit;
+                                     . $dbh->quote($title) . ","
+                                     . $dbh->quote($filename) . ","
+                                     . $license . ","
+                                     . lic_nc($license) . ","
+                                     . lic_nd($license)
+                                     . ")";
+                    $dbh->exec($file_insert_sql);
+                    $upload_status = 'uploaded';
+                    $work_id = $dbh->lastInsertId();
+                    header('Location:?action=display&work_id=' . $work_id);
+                    exit;
+                }
             }
         }
     }
@@ -470,7 +589,7 @@ switch ($action) {
 default:
 ?>
     <h1>Welcome to Model Platform!</h1>
-    <p>You can <a href="?action=login">Login/Register</a> or
+    <p>You can <a href="?action=login">login/register</a> or
       <a href="?action=browse">browse existing works</a></p>
 <?php
     break;
@@ -512,7 +631,8 @@ case "new":
       enctype="multipart/form-data">
       <div class="form-group">
         <label for="file">File</label>
-        <input name="file" id="file" class="form-control" type="file">
+        <input name="file" id="file" class="form-control" type="file"
+          accept=".gif,.jpg,.jpeg,.markdown,.md,.mp3,.mp4,.ogg,.ogv,.png,.txt">
       </div>
       <div class="form-group">
         <label for="title">Title</label>
@@ -528,6 +648,13 @@ case "new":
       <input type="submit" class="btn btn-default" value="Upload">
     </form>
 <?php
+    break;
+
+case "newprocess":
+if ($upload_status == 'unsupported') {
+        echo "<h1>Unsupported format</h1><p>";
+        echo "Try ogg audio or video, mp3 or mp4, markdown or plain text.</p>";
+    }
     break;
 
 case "browse":
@@ -573,7 +700,7 @@ case "browse":
         if (count($keywords_matches) > 0) {
             echo '<h2>Results</h2>';
             echo '<table class="table table-striped"><thead>';
-            echo '<tr><th>Image</th><th>Title</th><th>User</th><th>License</th></tr>';
+            echo '<tr><th></th><th>Title</th><th>User</th><th>License</th></tr>';
             echo '</thead><tbody>';
             foreach ($keywords_matches as $work) {
                 $lic = "All rights reserved";
@@ -586,7 +713,7 @@ case "browse":
                          . lic_name($work['license'])
                          . ' 4.0 International</a>';
                 }
-                echo '<tr><td>' . thumbnail($work)
+                echo '<tr><td>' . work_thumbnail($work)
                    . '</td><td><a href="?action=display&work_id='
                    . $work['work_id'] . '">' . $work['title'] . '</a></td><td>'
                    . '<a href="?action=who&user_id='
@@ -608,8 +735,7 @@ case "display":
     <h2 class="display-title"><?php echo $work_row['title']; ?> by
     <a href="?action=who&user_id=<?php echo $user_row['user_id']; ?>">
       <?php echo $user_row['username'] ?></a></h2>
-    <div class="display-image"><img alt="<?php echo $work_row['title']; ?>"
-       src="<?php echo $work_row['filename'] ?>"></div>
+    <?php echo work_display($work_row); ?>
     <div id="license-block">
       <?php echo license_block($dbh, $work_row); ?>
     </div>
@@ -617,7 +743,7 @@ case "display":
       <a class="btn btn-info" id="copy-attribution-button"
           href="#">Copy Attribution</a>
       <a class="btn btn-success" download
-          href="<?php echo $work_row['filename'] ?>">Download Image
+          href="<?php echo $work_row['filename'] ?>">Download File
         <span class="glyphicon glyphicon-download-alt"
             aria-hidden="true"></span></a>
 <?php
@@ -653,7 +779,7 @@ case "who":
           <?php echo $who_name; ?></a></h1>
     <h3>Works by <?php echo $who_name; ?></h3>
       <table class="table table-striped"><thead>
-        <tr><th>Image</th><th>Title</th><th>License</th></tr>
+        <tr><th></th><th>Title</th><th>License</th></tr>
         </thead><tbody>
 <?php
         foreach ($who_works as $work) {
@@ -667,7 +793,7 @@ case "who":
                     . lic_name($work['license'])
                     . ' 4.0 International</a>';
             }
-            echo '<tr><td>' . thumbnail($work)
+            echo '<tr><td>' . work_thumbnail($work)
                 .'</td><td><a href="?action=display&work_id='
                 . $work['work_id'] . '">' . $work['title'] . '</a></td><td>'
                 . $lic . '</td></tr>';
@@ -697,8 +823,7 @@ case "license":
        <a href="?action=display&work_id=<?php
          echo $license_work['work_id']; ?>">
          <?php echo $license_work['title']; ?></a></h2>
-    <div class="display-image"><img alt="<?php echo $license_work['title']; ?>"
-       src="<?php echo $license_work['filename'] ?>"></div>
+    <?php echo work_display($license_work); ?>
     <?php echo license_block($dbh, $license_work); ?>
     <form action="?action=license" method="post">
       <input type="hidden" name="work_id"
@@ -728,13 +853,13 @@ case "batch":
       and then choose the license below.</p>
     <form action="?action=batch" method="post">
       <table class="table table-striped"><thead>
-        <tr><th>Apply</th><th>Image</th><th>Title</th><th>Current License</th></tr>
+        <tr><th>Apply</th><th></th><th>Title</th><th>Current License</th></tr>
 <?php
     foreach ($batch_works as $work) {
         $lic = "All rights reserved";
         if ($work['license'] == 7) {
             $lic = '<a href="http://creativecommons.org/publicdomain/zero/1.0/">Creative Commons Zero</a>';
-        } else {
+        } elseif ($work['license'] > 0) {
             $lic = '<a href="http://creativecommons.org/licenses/'
                  . lic_abbrv($work['license'])
                  . '/4.0/">'
@@ -742,7 +867,7 @@ case "batch":
                  . ' 4.0 International</a>';
         }
         echo '<tr><td><input type="checkbox" name="apply[]" value="'
-             . $work['work_id'] . '"></td><td>' . thumbnail($work)
+             . $work['work_id'] . '"></td><td>' . work_thumbnail($work)
              . '</td><td><a href="?action=display&work_id='
              . $work['work_id'] . '">' . $work['title'] . '</a></td><td>'
              . $lic . '</td></tr>';
