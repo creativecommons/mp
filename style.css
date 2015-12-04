@@ -18,6 +18,12 @@ img {
     padding-bottom: 24px;
 }
 
+.display-image>img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .display-buttons {
     padding-top: 20px;
 }
