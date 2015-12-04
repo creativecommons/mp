@@ -251,15 +251,14 @@ case 'newprocess':
             if (move_uploaded_file($_FILES["file"]["tmp_name"], $filename)) {
                 $file_insert_sql = "INSERT INTO works (user_id, title,
                                                        filename, license,
-                                                       lic_nc($license),
-                                                       lic_nd($license))
+                                                       nc, nd)
                     VALUES("
                     . $_SESSION['user_id'] . ","
                     . $dbh->quote($title) . ","
                     . $dbh->quote($filename) . ","
                     . $license . ","
-                    . $nc . ","
-                    . $nd
+                    . lic_nc($license) . ","
+                    . lic_nd($license)
                     . ")";
                 $dbh->exec($file_insert_sql);
                 //TODO:GET INSERTED ID AND DISPLAY
@@ -413,16 +412,17 @@ $logged_in = isset($_SESSION['user_id']);
             <li<?php if ($action == '') { echo ' class="active"'; } ?>>
               <a href=".">Home</a></li>
             <li<?php if ($action == 'browse') { echo ' class="active"'; } ?>>
-              <a href="/?action=browse">Browse</a></li>
+              <a href="?action=browse">Browse</a></li>
 <?php
 if ($logged_in) {
+    echo '<li><a href="?action=new">Upload</a></li>';
     echo '<li><a href="?action=logoutprocess">Log out</a></li>';
     echo '<li' . (($action == 'who') ? ' class="active"' : '')
            . '><a href="?action=who">' . $_SESSION['username']
            . '</a></li>';
 } else {
     echo '<li'. (($action == 'login') ? ' class="active"' : '')
-        . '><a href="/?action=login">Log In</a></li>';
+        . '><a href="?action=login">Log In</a></li>';
 }
 ?>
           </ul>
@@ -576,6 +576,14 @@ case "display":
         href="#">Copy Attribution</a>
       <a class="btn btn-primary" download
         href="<?php echo $work_row['filename'] ?>">Download Image &#x25BC;</a>
+<?php
+    if ($work_row['user_id'] == $_SESSION['user_id']) {
+?>
+        <a class="btn btn-default"
+        href="?action=license&work_id=<?php echo $work_row['work_id'] ?>">
+         Change license</a>
+            <?php } ?>
+    </div>
 <?php
     } else {
 ?>
