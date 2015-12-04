@@ -185,7 +185,7 @@ function thumbnail ($work) {
 
 session_start();
 
-$action = $_GET["action"];
+$action = strip_tags($_GET["action"]);
 
 if (($action == '') && isset($_SESSION['user_id'])) {
     header('Location:?action=browse');
@@ -211,7 +211,7 @@ case 'loginprocess':
     $login_status = 'err';
     // Make sure we've been passed a non-empty username
     if ((isset($_POST['username'])) && trim($_POST['username']) != ''){
-        $username = trim($_POST['username']);
+        $username = strip_tags(trim($_POST['username']));
         $usernameq = $dbh->quote($username);
         // Try to insert the user. We don't care if this fails when they exist.
         $insert_user = "INSERT INTO users (username) VALUES("
@@ -254,7 +254,7 @@ case 'newprocess':
            && isset($_POST['title'])
            && isset($_POST['license'])) {
             $filename = "uploads/" . $_FILES["file"]["name"];
-            $title = trim($_POST['title']);
+            $title = strip_tags(trim($_POST['title']));
             $license = intval($_POST['license']);
             //FIXME: Validate things
             if (move_uploaded_file($_FILES["file"]["tmp_name"], $filename)) {
@@ -283,7 +283,9 @@ case 'browse':
     $browse_status = 'get';
     if (isset($_POST['keywords']) && isset($_POST['keywords'])) {
         $browse_status = 'err';
-        $keywords_query = browse_sql($_POST['keywords'], $_POST['license']);
+        $keywords = strip_tags($_POST['keywords']);
+        $license = intval($_POST['license']);
+        $keywords_query = browse_sql($keywords, $license);
         $keywords_matches_statement = $dbh->prepare($keywords_query);
         if ($keywords_matches_statement) {
             $ok = $keywords_matches_statement->execute();
@@ -314,7 +316,7 @@ case 'display':
 case "license":
     //$license_state = 'err';
     if (isset($_SESSION['user_id']) && isset($_REQUEST['work_id'])) {
-        $user_id = $_SESSION['user_id'];
+        $user_id = intval($_SESSION['user_id']);
         $work_id = intval($_REQUEST['work_id']);
         $license_work = work_for_id($dbh, $work_id);
         if ($license_work && $license_work['user_id'] == $user_id) {
@@ -335,14 +337,16 @@ case "license":
 
 case "batch":
     $batch_state = 'err';
-    if (isset($_SESSION['user_id'])) {
+        if (isset($_SESSION['user_id'])) {
         if (isset($_POST['license']) && isset($_POST['apply'])
             && is_array($_POST['apply'])) {
+            $license = intval($_POST['license']);
             foreach($_POST['apply'] as $apply) {
-                $work = work_for_id($dbh, intval($apply));
+                $work_id = intval($apply);
+                $work = work_for_id($dbh, $work_id);
                 // We can only update our own images
                 if ($work && $work['user_id'] == $_SESSION['user_id']) {
-                    update_work_license($dbh, $work, intval($_POST['license']));
+                    update_work_license($dbh, $work, $license);
                 }
             }
         }
@@ -355,9 +359,9 @@ case 'who':
     $who_state = 'err';
     // The user is requesting to look at someone's profile
     if (isset($_REQUEST['user_id'])) {
-        $who_id = $_REQUEST['user_id'];
+        $who_id = intval($_REQUEST['user_id']);
         $select_user = $dbh->prepare("SELECT * FROM users where user_id = "
-                                     . $dbh->quote($who_id));
+                                     . $who_id);
         $ok = $select_user->execute();
         if ($ok) {
             $user_row = $select_user->fetch();
@@ -527,7 +531,7 @@ case "new":
     break;
 
 case "browse":
-$cl = isset($_POST['license']) ? $_POST['license'] : '*';
+    $cl = isset($_POST['license']) ? $_POST['license'] : '*';
 ?>
     <form action="?action=browse" method="post">
       <div class="form-group">
@@ -536,7 +540,7 @@ $cl = isset($_POST['license']) ? $_POST['license'] : '*';
            maxlength="200" size="32"
           <?php
           if (isset($_POST['keywords'])) {
-              echo 'value="' . $_POST['keywords'] . '"';
+              echo 'value="' . strip_tags($_POST['keywords']) . '"';
           }
           ?>>
       </div>
