@@ -551,7 +551,8 @@ case "browse":
         </select>
       </div>
       <input type="submit" id="search" class="btn btn-primary"
-        value="Search" disabled>
+          value="Search"
+          <?php if (! isset($_POST['keywords'])) { echo ' disabled'; } ?>>
     </form>
     <script>
      var keywords_field = document.getElementById('keywords');
