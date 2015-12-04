@@ -15,7 +15,8 @@ to this work.
 
 // These are in license number order
 $LICENSE_NAMES = [
-    'All Rights Reserved', 'Attribution-NonCommercial-ShareAlike',
+    'All Rights Reserved',
+    'Creative Commons Attribution-NonCommercial-ShareAlike',
     'Creative Commons Attribution-NonCommercial',
     'Creative Commons Attribution-NonCommercial-NoDerivatives',
     'Creative Commons Attribution',
@@ -96,23 +97,43 @@ function license_block ($dbh, $work) {
 
 // Print the options for a license select, optionally with an "All" entry
 
-function render_license_options($from, $to, $selected, $any) {
+function license_option ($index, $selected) {
+    return '<option '
+            . (($index == $selected) ? 'selected ' : '')
+            . 'value="' . $index . '">'
+            . lic_name($index)
+            . '</option>';;
+}
+
+function license_options ($selected, $any) {
+    $options = '';
     if ($any) {
-        echo '<option '
-            . (($selected == '*') ? 'selected ' : '')
-            . 'value="*">Any</option>';
+        $options .= '<optgroup label="Any License">'
+                   .'<option ' . (($selected == '*') ? 'selected ' : '')
+                  . 'value="*">Any</option>'
+                  . '</optgroup>';
     }
     // '*' == '0', so change it to a value that doesn't
     if ($selected == '*') {
         $selected = -1;
     }
-    for ($i = $from; $i <= $to; $i++) {
-        echo '<option '
-            . (($i == $selected) ? 'selected ' : '')
-            . 'value="' . $i . '">'
-            . lic_name($i)
-            . '</option>';
-    }
+    $options .= '<optgroup label="Public Domain">';
+    $options .= license_option(7, $selected);
+    $options .= '</optgroup>';
+    $options .= '<optgroup label="Free Culture Licenses">';
+    $options .= license_option(4, $selected);
+    $options .= license_option(5, $selected);
+    $options .= '</optgroup>';
+    $options .= '<optgroup label="Non-Free Licenses">';
+    $options .= license_option(2, $selected);
+    $options .= license_option(1, $selected);
+    $options .= license_option(6, $selected);
+    $options .= license_option(3, $selected);
+    $options .= '</optgroup>';
+    $options .= '<optgroup label="Default Copyright">';
+    $options .= license_option(0, $selected);
+    $options .= '</optgroup>';
+    return $options;
 }
 
 ////////////////////////////////////////////////////////////
@@ -642,7 +663,7 @@ case "new":
       <div class="form-group">
         <label for="license">License</label>
         <select name="license" id="license" class="form-control">
-           <?php render_license_options(0, 7, 4, false); ?>
+           <?php echo license_options(4, false); ?>
         </select>
       </div>
       <input type="submit" class="btn btn-default" value="Upload">
@@ -674,7 +695,7 @@ case "browse":
       <div class="form-group">
         <label for="license">License</label>
         <select name="license" id="license" class="form-control">
-          <?php render_license_options(0, 7, $cl, true); ?>
+          <?php echo license_options($cl, true); ?>
         </select>
       </div>
       <input type="submit" id="search" class="btn btn-primary"
@@ -831,8 +852,8 @@ case "license":
       <div class="form-group">
         <label for="license">License</label>
         <select name="license" id="license" class="form-control">
-           <?php render_license_options(0, 7, $license_work['license'],
-                                        false); ?>
+           <?php echo license_options($license_work['license'],
+                                      false); ?>
         </select>
       </div>
       <input type="submit" class="btn btn-default" value="Change">
@@ -877,7 +898,7 @@ case "batch":
     <div class="form-group">
         <label for="license">License</label>
         <select name="license" id="license" class="form-control">
-           <?php render_license_options(0, 7, 4, false); ?>
+           <?php echo license_options(4, false); ?>
         </select>
       </div>
       <input type="submit" class="btn btn-default" value="Change">
