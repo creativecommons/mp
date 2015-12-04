@@ -185,7 +185,7 @@ session_start();
 
 global $dbh;
 
-$dbh = new PDO('sqlite:foo.db');
+$dbh = new PDO('sqlite:' . dirname(__FILE__) . '/foo.db');
 
 $foo = $dbh->exec("SELECT COUNT(*) FROM sqlite_master WHERE type='table' AND name='users'");
 
