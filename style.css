@@ -33,5 +33,31 @@ tr {
 }
 
 .table>tbody>tr>td {
+    height: 58px;
     vertical-align: middle;
+}
+
+.browse-see-more {
+    text-align: right;
+}
+
+.preview-td {
+    width: 72px;
+    text-align: center;
+}
+
+.user-td {
+    width: 20%;
+}
+
+.license-td {
+    width: 25%;
+}
+
+.copyright-logo {
+    position: relative;
+    top: 7px;
+    font-size: 48px;
+    font-weight: bold;
+    color: #555;
 }

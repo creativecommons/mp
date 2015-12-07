@@ -25,6 +25,10 @@ $LICENSE_NAMES = [
     'Creative Commons Zero'
     ];
 
+$LICENSE_RANGE = range(1, 7);
+
+$LICENSE_RANGE_FREEDOM = [7, 4, 5, 2, 1, 6, 3];
+
 function lic_name ($license_number) {
     global $LICENSE_NAMES;
     return $LICENSE_NAMES[$license_number];
@@ -46,6 +50,33 @@ function lic_nc ($license) {
 
 function lic_nd ($license) {
     return (int)(($license == 3) || ($license == 6));
+}
+
+function lic_logo($license) {
+    if ($license == 0) {
+        $logo = '<span class="copyright-logo">&copy</span>';
+    } elseif ($license == 7) {
+        $logo = '<img src="http://i.creativecommons.org/p/zero/1.0/88x31.png" alt="CC0">';
+    } else {
+        $logo = '<img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/'
+             . lic_abbrv($license)
+             . '/4.0/88x31.png">';
+    }
+    return $logo;
+}
+
+function license_for_table ($work) {
+    $lic = "All rights reserved";
+    if ($work['license'] == 7) {
+        $lic = '<a href="http://creativecommons.org/publicdomain/zero/1.0/">Creative Commons Zero</a>';
+    } elseif ($work['license'] > 0) {
+        $lic = '<a href="http://creativecommons.org/licenses/'
+             . lic_abbrv($work['license'])
+             . '/4.0/">'
+             . lic_name($work['license'])
+             . ' 4.0 International</a>';
+    }
+    return $lic;
 }
 
 function license_block ($dbh, $work) {
@@ -136,13 +167,47 @@ function license_options ($selected, $any) {
     return $options;
 }
 
+//FIXME: This is inefficient: ifs in loop and fetch user name each time
+//FIXME: Generalise to handle the relicensing table
+//FIXME: Just pass a list of columns and look up how to print their th/td
+
+function print_works_table ($dbh, $works, $show_user, $show_license) {
+    echo '<table class="table table-striped"><thead>';
+    echo '<tr><th></th><th>Title</th>';
+    if ($show_user) {
+        echo '<th>User</th>';
+    }
+    if ($show_license) {
+        echo '<th>License</th>';
+    }
+    echo '</tr>';
+    echo '</thead><tbody>';
+    foreach ($works as $work) {
+        echo '<tr><td class="preview-td">' . work_thumbnail($work)
+           . '</td><td><a href="?action=display&work_id='
+           . $work['work_id'] . '">' . $work['title'] . '</a></td>';
+        if ($show_user) {
+            echo '<td class="user-td">'
+               . '<a href="?action=who&user_id='
+               . $work['user_id'] . '">'
+               . user_name_for_work($dbh, $work) . '</a></td>';
+        }
+        if($show_license) {
+            $lic = license_for_table ($work);
+            echo '<td class="license-td">' . $lic . '</td>';
+        }
+        echo '</tr>';
+    }
+    echo '</tbody></table><p>';
+}
+
 ////////////////////////////////////////////////////////////
 // Database querying
 ////////////////////////////////////////////////////////////
 
 // World's worst and slowest full-text search
 
-function browse_sql ($keywords_string, $license) {
+function search_sql ($keywords_string, $license) {
     $keywords = explode(' ', $keywords_string);
     $queries = [];
     foreach ($keywords as $keyword) {
@@ -158,6 +223,20 @@ function browse_sql ($keywords_string, $license) {
     return 'SELECT * FROM works WHERE title LIKE '
         . implode(' OR title LIKE ', $queries)
         . $license_constraint . ' ORDER BY work_id DESC';
+}
+
+function list_works_with_license ($dbh, $license, $count) {
+    $sql = 'SELECT * FROM works WHERE license=' . $license
+         . ' ORDER BY work_id DESC LIMIT ' . $count;
+    $statement = $dbh->prepare($sql);
+    $statement->execute();
+    return $statement;
+}
+
+function count_works_with_license ($dbh, $license) {
+    $sql = 'SELECT COUNT(*) FROM works WHERE license=' . $license;
+    $result = $dbh->query($sql);
+    return $result->fetch(PDO::FETCH_NUM)[0];
 }
 
 function user_for_id ($dbh, $user_id) {
@@ -207,6 +286,10 @@ function update_work_license($dbh, $work, $license) {
                 . ' WHERE work_id=' . $work['work_id'];
     $ok = $dbh->exec($update_lic);
     return $ok;
+}
+
+function browse_license ($license, $count) {
+    return [$license => browse_sql ($license, $count)];
 }
 
 ////////////////////////////////////////////////////////////
@@ -341,188 +424,215 @@ if ($foo != 1) {
 
 switch ($action) {
 
-case 'loginprocess':
-    $login_status = 'err';
-    // Make sure we've been passed a non-empty username
-    if ((isset($_POST['username'])) && trim($_POST['username']) != ''){
-        $username = strip_tags(trim($_POST['username']));
-        $usernameq = $dbh->quote($username);
-        // Try to insert the user. We don't care if this fails when they exist.
-        $insert_user = "INSERT INTO users (username) VALUES("
-            . $usernameq . ")";
-        $user_inserted = $dbh->exec($insert_user);
-        // Get the user's details now they're definitely inserted
-        $select_user = $dbh->prepare("SELECT * FROM users where username = "
-                                     . $usernameq);
-        $ok = $select_user->execute();
-        if ($ok) {
-            $user_row = $select_user->fetch();
-            // Does the user already exist or do we have to insert them?
-            if ($user_row) {
-                // The user is already in the db so just use the name
-                $_SESSION['username'] = $user_row['username'];
-                $_SESSION['user_id'] = $user_row['user_id'];
-                //$login_status = 'ok';
-                header('Location:?action=browse');
-                exit;
-            } else {
-                $action = 'loginfailed';
+    case 'loginprocess':
+        $login_status = 'err';
+        // Make sure we've been passed a non-empty username
+        if ((isset($_POST['username'])) && trim($_POST['username']) != ''){
+            $username = strip_tags(trim($_POST['username']));
+            $usernameq = $dbh->quote($username);
+            // Insert the user. We don't care if this fails when they exist.
+            $insert_user = "INSERT INTO users (username) VALUES("
+                         . $usernameq . ")";
+            $user_inserted = $dbh->exec($insert_user);
+            // Get the user's details now they're definitely inserted
+            $select_user = $dbh->prepare("SELECT * FROM users where username = "
+                                       . $usernameq);
+            $ok = $select_user->execute();
+            if ($ok) {
+                $user_row = $select_user->fetch();
+                // Does the user already exist or do we have to insert them?
+                if ($user_row) {
+                    // The user is already in the db so just use the name
+                    $_SESSION['username'] = $user_row['username'];
+                    $_SESSION['user_id'] = $user_row['user_id'];
+                    //$login_status = 'ok';
+                    header('Location:?action=browse');
+                    exit;
+                } else {
+                    $action = 'loginfailed';
+                }
             }
         }
-    }
-    break;
+        break;
 
-case 'logoutprocess':
-    // Tear down the session
-    $_SESSION = array();
-    session_destroy();
-    // Set the action to the default index page
-    $action = '';
-    break;
+    case 'logoutprocess':
+        // Tear down the session
+        $_SESSION = array();
+        session_destroy();
+        // Set the action to the default index page
+        $action = '';
+        break;
 
-case 'newprocess':
-    $upload_status = 'err';
-    // Only do this if user is logged in (our handy var for this isn't set yet)
-    if (isset($_SESSION['user_id'])) {
-        if (isset($_FILES['file'])
-           && isset($_POST['title'])
-               && isset($_POST['license'])) {
-            $supplied_filename = $_FILES["file"]["name"];
-            if (! file_valid($supplied_filename)) {
-                $upload_status = 'unsupported';
-            } else {
-                $filename = "uploads/" . $_FILES["file"]["name"];
-                $title = strip_tags(trim($_POST['title']));
-                $license = intval($_POST['license']);
-                //FIXME: Validate things
-                if (move_uploaded_file($_FILES["file"]["tmp_name"],
-                                       $filename)) {
-                    $file_insert_sql = "INSERT INTO works (user_id, title,
-                                            filename, license,
-                                            nc, nd)
-                                            VALUES("
-                    . $_SESSION['user_id'] . ","
-                                     . $dbh->quote($title) . ","
-                                     . $dbh->quote($filename) . ","
-                                     . $license . ","
-                                     . lic_nc($license) . ","
-                                     . lic_nd($license)
-                                     . ")";
-                    $dbh->exec($file_insert_sql);
-                    $upload_status = 'uploaded';
-                    $work_id = $dbh->lastInsertId();
+    case 'newprocess':
+        $upload_status = 'err';
+        // Only do this if user is logged in (our flag for this isn't set yet)
+        if (isset($_SESSION['user_id'])) {
+            if (isset($_FILES['file'])
+                && isset($_POST['title'])
+                    && isset($_POST['license'])) {
+                $supplied_filename = $_FILES["file"]["name"];
+                if (! file_valid($supplied_filename)) {
+                    $upload_status = 'unsupported';
+                } else {
+                    $filename = "uploads/" . $_FILES["file"]["name"];
+                    $title = strip_tags(trim($_POST['title']));
+                    $license = intval($_POST['license']);
+                    //FIXME: Validate things
+                    if (move_uploaded_file($_FILES["file"]["tmp_name"],
+                                           $filename)) {
+                        $file_insert_sql = "INSERT INTO works (user_id, title,
+                                                filename, license,
+                                                nc, nd)
+                                                VALUES("
+                        . $_SESSION['user_id'] . ","
+                                         . $dbh->quote($title) . ","
+                                         . $dbh->quote($filename) . ","
+                                         . $license . ","
+                                         . lic_nc($license) . ","
+                                         . lic_nd($license)
+                                         . ")";
+                        $dbh->exec($file_insert_sql);
+                        $upload_status = 'uploaded';
+                        $work_id = $dbh->lastInsertId();
+                        header('Location:?action=display&work_id=' . $work_id);
+                        exit;
+                    }
+                }
+            }
+        }
+        break;
+
+    case 'search':
+        $search_status = 'get';
+        if (isset($_POST['keywords']) && isset($_POST['keywords'])) {
+            $search_status = 'err';
+            $keywords = strip_tags($_POST['keywords']);
+            $license = intval($_POST['license']);
+            $keywords_query = search_sql($keywords, $license);
+            $keywords_matches_statement = $dbh->prepare($keywords_query);
+            if ($keywords_matches_statement) {
+                $ok = $keywords_matches_statement->execute();
+                if ($ok) {
+                    // Get all the results in an array so we can count them
+                    $keywords_matches = $keywords_matches_statement->fetchAll();
+                    $search_status = 'ok';
+                }
+            }
+        }
+        break;
+
+    case 'display':
+        $display_status = 'err';
+        if (isset($_REQUEST['work_id'])){
+            //FIXME: validate
+            $work_id = intval($_REQUEST['work_id']);
+            $work_row = work_for_id($dbh, $work_id);
+            if ($work_row) {
+                $user_row = user_for_id($dbh, $work_row['user_id']);
+                if ($user_row) {
+                    $display_status = 'ok';
+                }
+            }
+        }
+        break;
+
+    case "license":
+        //$license_state = 'err';
+        if (isset($_SESSION['user_id']) && isset($_REQUEST['work_id'])) {
+            $user_id = intval($_SESSION['user_id']);
+            $work_id = intval($_REQUEST['work_id']);
+            $license_work = work_for_id($dbh, $work_id);
+            if ($license_work && $license_work['user_id'] == $user_id) {
+                if (isset($_POST['license'])) {
+                    $license = intval($_POST['license']);
+                    update_work_license($dbh, $license_work, $license);
+                    // Get the updated details to display
+                    $license_work = work_for_id($dbh, $work_id);
+                    //$license_state = 'ok';
                     header('Location:?action=display&work_id=' . $work_id);
                     exit;
                 }
+            } else {
+                $license_work = false;
             }
         }
-    }
-    break;
+        break;
 
-case 'browse':
-    $browse_status = 'get';
-    if (isset($_POST['keywords']) && isset($_POST['keywords'])) {
-        $browse_status = 'err';
-        $keywords = strip_tags($_POST['keywords']);
-        $license = intval($_POST['license']);
-        $keywords_query = browse_sql($keywords, $license);
-        $keywords_matches_statement = $dbh->prepare($keywords_query);
-        if ($keywords_matches_statement) {
-            $ok = $keywords_matches_statement->execute();
-            if ($ok) {
-                // Get all the results in an array so we can count them
-                $keywords_matches = $keywords_matches_statement->fetchAll();
-                $browse_status = 'ok';
-            }
-        }
-    }
-    break;
-
-case 'display':
-    $display_status = 'err';
-    if (isset($_REQUEST['work_id'])){
-        //FIXME: validate
-        $work_id = intval($_REQUEST['work_id']);
-        $work_row = work_for_id($dbh, $work_id);
-        if ($work_row) {
-            $user_row = user_for_id($dbh, $work_row['user_id']);
-            if ($user_row) {
-                $display_status = 'ok';
-            }
-        }
-    }
-    break;
-
-case "license":
-    //$license_state = 'err';
-    if (isset($_SESSION['user_id']) && isset($_REQUEST['work_id'])) {
-        $user_id = intval($_SESSION['user_id']);
-        $work_id = intval($_REQUEST['work_id']);
-        $license_work = work_for_id($dbh, $work_id);
-        if ($license_work && $license_work['user_id'] == $user_id) {
-            if (isset($_POST['license'])) {
-                $license = intval($_POST['license']);
-                update_work_license($dbh, $license_work, $license);
-                // Get the updated details to display
-                $license_work = work_for_id($dbh, $work_id);
-                //$license_state = 'ok';
-                header('Location:?action=display&work_id=' . $work_id);
-                exit;
-            }
-        } else {
-            $license_work = false;
-        }
-     }
-    break;
-
-case "batch":
-    $batch_state = 'err';
+    case "batch":
+        $batch_state = 'err';
         if (isset($_SESSION['user_id'])) {
-        if (isset($_POST['license']) && isset($_POST['apply'])
-            && is_array($_POST['apply'])) {
-            $license = intval($_POST['license']);
-            foreach($_POST['apply'] as $apply) {
-                $work_id = intval($apply);
-                $work = work_for_id($dbh, $work_id);
-                // We can only update our own images
-                if ($work && $work['user_id'] == $_SESSION['user_id']) {
-                    update_work_license($dbh, $work, $license);
+            if (isset($_POST['license']) && isset($_POST['apply'])
+                && is_array($_POST['apply'])) {
+                $license = intval($_POST['license']);
+                foreach($_POST['apply'] as $apply) {
+                    $work_id = intval($apply);
+                    $work = work_for_id($dbh, $work_id);
+                    // We can only update our own images
+                    if ($work && $work['user_id'] == $_SESSION['user_id']) {
+                        update_work_license($dbh, $work, $license);
+                    }
+                }
+            }
+            $batch_works = works_for_user($dbh, $_SESSION['user_id']);
+            $batch_state = 'ok';
+        }
+        break;
+
+    case 'who':
+        $who_state = 'err';
+        // The user is requesting to look at someone's profile
+        if (isset($_REQUEST['user_id'])) {
+            $who_id = intval($_REQUEST['user_id']);
+            $select_user = $dbh->prepare("SELECT * FROM users where user_id = "
+                                       . $who_id);
+            $ok = $select_user->execute();
+            if ($ok) {
+                $user_row = $select_user->fetch();
+                if ($user_row) {
+                    $who_name = $user_row['username'];
+                    $who_state= 'ok';
+                }
+            }
+            // The user is requesting to look at their own profile
+        } elseif (isset($_SESSION['user_id'])) {
+            $who_id = $_SESSION['user_id'];
+            $who_name = $_SESSION['username'];
+            $who_state= 'ok';
+        }
+        if ($who_state == 'ok') {
+            $who_works = works_for_user ($dbh, $who_id);
+            if (! $who_works) {
+                $who_state = 'err';
+            }
+        }
+        break;
+
+    case 'browse':
+        $browse_license_ids = $LICENSE_RANGE_FREEDOM;
+        $browse_license_ids[] = 0;
+        $browse_count = 5;
+        $browse_initially_selected = '*';
+        $browse_all = true;
+        if (isset($_REQUEST['license'])) {
+            $license_string = trim($_REQUEST['license']);
+            if ($license_string != '*') {
+                $license = intval($_REQUEST['license']);
+                if (in_array($license, $LICENSE_RANGE)) {
+                    $browse_license_ids = [$license];
+                    $browse_count = 20;
+                    $browse_all = false;
+                    $browse_initially_selected = $license;
                 }
             }
         }
-        $batch_works = works_for_user($dbh, $_SESSION['user_id']);
-        $batch_state = 'ok';
-    }
-    break;
+        $browse_results = [];
+        foreach ($browse_license_ids as $lic) {
+            $browse_results[$lic] = list_works_with_license($dbh,
+                                                            $lic,
+                                                            $browse_count);
+        }
+        break;
 
-case 'who':
-    $who_state = 'err';
-    // The user is requesting to look at someone's profile
-    if (isset($_REQUEST['user_id'])) {
-        $who_id = intval($_REQUEST['user_id']);
-        $select_user = $dbh->prepare("SELECT * FROM users where user_id = "
-                                     . $who_id);
-        $ok = $select_user->execute();
-        if ($ok) {
-            $user_row = $select_user->fetch();
-            if ($user_row) {
-                $who_name = $user_row['username'];
-                $who_state= 'ok';
-            }
-        }
-    // The user is requesting to look at their own profile
-    } elseif (isset($_SESSION['user_id'])) {
-        $who_id = $_SESSION['user_id'];
-        $who_name = $_SESSION['username'];
-        $who_state= 'ok';
-    }
-    if ($who_state == 'ok') {
-        $who_works = works_for_user ($dbh, $who_id);
-        if (! $who_works) {
-            $who_state = 'err';
-        }
-    }
-    break;
 }
 
 // Flag to tell the UI whether the user is logged in or not
@@ -568,6 +678,8 @@ $logged_in = isset($_SESSION['user_id']);
           <ul class="nav navbar-nav">
             <li<?php if ($action == 'browse') { echo ' class="active"'; } ?>>
               <a href="?action=browse">Browse</a></li>
+            <li<?php if ($action == 'search') { echo ' class="active"'; } ?>>
+              <a href="?action=search">Search</a></li>
 <?php
 if ($logged_in) {
     echo '<li' . (($action == 'new') ? ' class="active"' : '')
@@ -678,10 +790,10 @@ if ($upload_status == 'unsupported') {
     }
     break;
 
-case "browse":
+case "search":
     $cl = isset($_POST['license']) ? $_POST['license'] : '*';
 ?>
-    <form action="?action=browse" method="post">
+    <form action="?action=search" method="post">
       <div class="form-group">
         <label for="keywords">Keywords</label>
         <input name="keywords" id="keywords" class="form-control" type="text"
@@ -717,32 +829,10 @@ case "browse":
      }
     </script>
 <?php
-    if($browse_status == 'ok') {
+    if($search_status == 'ok') {
         if (count($keywords_matches) > 0) {
             echo '<h2>Results</h2>';
-            echo '<table class="table table-striped"><thead>';
-            echo '<tr><th></th><th>Title</th><th>User</th><th>License</th></tr>';
-            echo '</thead><tbody>';
-            foreach ($keywords_matches as $work) {
-                $lic = "All rights reserved";
-                if ($work['license'] == 7) {
-                    $lic = '<a href="http://creativecommons.org/publicdomain/zero/1.0/">Creative Commons Zero</a>';
-                } else {
-                    $lic = '<a href="http://creativecommons.org/licenses/'
-                         . lic_abbrv($work['license'])
-                         . '/4.0/">'
-                         . lic_name($work['license'])
-                         . ' 4.0 International</a>';
-                }
-                echo '<tr><td>' . work_thumbnail($work)
-                   . '</td><td><a href="?action=display&work_id='
-                   . $work['work_id'] . '">' . $work['title'] . '</a></td><td>'
-                   . '<a href="?action=who&user_id='
-                   . $work['user_id'] . '">'
-                   . user_name_for_work($dbh, $work) . '</a></td><td>'
-                   . $lic . '</td></tr>';
-            }
-            echo '</tbody></table><p>';
+            print_works_table($dbh, $keywords_matches, true, true);
         } else {
             echo '<h2>Results</h2>';
             echo '<div class="alert alert-info" role="alert"><strong>None found.</strong> Please try again with different (maybe fewer or simpler) keywords.</div>';
@@ -799,28 +889,9 @@ case "who":
     <h1><a href="?action=who&user_id=<?php echo $who_id; ?>">
           <?php echo $who_name; ?></a></h1>
     <h3>Works by <?php echo $who_name; ?></h3>
-      <table class="table table-striped"><thead>
-        <tr><th></th><th>Title</th><th>License</th></tr>
-        </thead><tbody>
 <?php
-        foreach ($who_works as $work) {
-            $lic = "All rights reserved";
-            if ($work['license'] == 7) {
-                $lic = '<a href="http://creativecommons.org/publicdomain/zero/1.0/">Creative Commons Zero</a>';
-            } elseif ($work['license'] > 0) {
-                $lic = '<a href="http://creativecommons.org/licenses/'
-                    . lic_abbrv($work['license'])
-                    . '/4.0/">'
-                    . lic_name($work['license'])
-                    . ' 4.0 International</a>';
-            }
-            echo '<tr><td>' . work_thumbnail($work)
-                .'</td><td><a href="?action=display&work_id='
-                . $work['work_id'] . '">' . $work['title'] . '</a></td><td>'
-                . $lic . '</td></tr>';
-        }
+        print_works_table($dbh, $who_works, false, true);
 ?>
-    </tbody></table>
     <div class="who-buttons"><a class="btn btn-primary"
         href="?action=batch">Change licenses</a></div>
 <?php
@@ -877,16 +948,7 @@ case "batch":
         <tr><th>Apply</th><th></th><th>Title</th><th>Current License</th></tr>
 <?php
     foreach ($batch_works as $work) {
-        $lic = "All rights reserved";
-        if ($work['license'] == 7) {
-            $lic = '<a href="http://creativecommons.org/publicdomain/zero/1.0/">Creative Commons Zero</a>';
-        } elseif ($work['license'] > 0) {
-            $lic = '<a href="http://creativecommons.org/licenses/'
-                 . lic_abbrv($work['license'])
-                 . '/4.0/">'
-                 . lic_name($work['license'])
-                 . ' 4.0 International</a>';
-        }
+        $lic = license_for_table ($work);
         echo '<tr><td><input type="checkbox" name="apply[]" value="'
              . $work['work_id'] . '"></td><td>' . work_thumbnail($work)
              . '</td><td><a href="?action=display&work_id='
@@ -911,6 +973,37 @@ case "batch":
     }
     break;
 
+case 'browse':
+?>
+    <h1>Browse Recent Uploads</h1>
+    <hr>
+<?php
+    foreach ($browse_license_ids as $license) {
+        $works_count = count_works_with_license($dbh, $license);
+        if ($works_count > 0) {
+            echo '<h3>' .lic_logo($license)
+               . ' ' . lic_name($license) . '</h3>';
+            print_works_table($dbh, $browse_results[$license], true, false);
+            if ($browse_all) {
+                echo '<div class="browse-see-more">&#8594;'
+                   . count_works_with_license($dbh, $license)
+                   . ' works (<a href="?action=browse&license='
+                   . $license . '">See more)</a></div><hr>';
+            }
+        }
+    }
+?>
+    <form action="?action=browse" method="post">
+      <div class="form-group">
+        <label for="license">License</label>
+        <select name="license" id="license" class="form-control">
+           <?php echo license_options($browse_initially_selected, true); ?>
+        </select>
+      </div>
+      <input type="submit" class="btn btn-default" value="Change">
+    </form>
+<?php
+    break;
 }
 
 function setupdb() {
@@ -944,6 +1037,8 @@ function setupdb() {
 
 ?>
 
+        <hr>
+        <div><a href="tos.html">Terms and Conditions</a></div>
       </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
