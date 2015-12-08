@@ -403,7 +403,17 @@ function work_display ($work) {
                          </audio>';
             break;
         case 'txt':
-            $display .= nl2br(htmlentities(file_get_contents($filename)));
+            $markdown .= htmlentities(file_get_contents($filename));
+            $display = '<div id="markdown-src">'
+                     . $markdown . '</div>
+              <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.3.0/showdown.min.js"></script>
+              <script>
+                var converter  = new showdown.Converter();
+                var md_element = document.getElementById("markdown-src");
+                var text       = md_element.textContent;
+                var html       = converter.makeHtml(text);
+                md_element.innerHTML = html;
+              </script>';
             break;
     }
     $display .= '</div>';
@@ -672,7 +682,7 @@ $logged_in = isset($_SESSION['user_id']);
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 
-    <link href="style.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -1059,7 +1069,13 @@ function setupdb() {
 ?>
 
         <hr>
-        <div><a href="tos.html">Terms and Conditions</a></div>
+        <ul class="list-unstyled list-inline">
+          <li><a href="html/tos.html">Terms of Service</a></li>
+          <li><a href="html/faq.html">FAQ</a></li>
+          <li><a href="html/cc.html">About CC</a></li>
+          <li><a href="html/attribution.html">Attribution Guide</a></li>
+          <li><a href="html/community.html">Community Guidelines</a></li>
+        </ul>
       </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
