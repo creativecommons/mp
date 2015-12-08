@@ -5,6 +5,7 @@ this work has waived all copyright and related or neighboring rights
 to this work.
 -->
 <?php
+
 ////////////////////////////////////////////////////////////
 // Utility code
 ////////////////////////////////////////////////////////////
@@ -27,7 +28,10 @@ $LICENSE_NAMES = [
 
 $LICENSE_RANGE = range(1, 7);
 
+// In order of "restriction"
 $LICENSE_RANGE_FREEDOM = [7, 4, 5, 2, 1, 6, 3];
+
+$LIC_GENIMG_CODES = ['placeholder', 'bna', 'bn', 'bnd', 'b', 'ba', 'bd', '0'];
 
 function lic_name ($license_number) {
     global $LICENSE_NAMES;
@@ -52,7 +56,7 @@ function lic_nd ($license) {
     return (int)(($license == 3) || ($license == 6));
 }
 
-function lic_logo($license) {
+function lic_button($license) {
     if ($license == 0) {
         $logo = '<span class="copyright-logo">&copy</span>';
     } elseif ($license == 7) {
@@ -63,6 +67,16 @@ function lic_logo($license) {
              . '/4.0/88x31.png">';
     }
     return $logo;
+}
+
+function lic_icons ($license) {
+    global $LIC_GENIMG_CODES;
+    if ($license == 0) {
+        $icons = '<span class="copyright-logo">&copy</span>';
+    } else {
+        return '<img src="genimg/genimg.php?l=' . $LIC_GENIMG_CODES[$license] . '">';
+    }
+    return $icons;
 }
 
 function license_for_table ($work) {
@@ -466,20 +480,27 @@ switch ($action) {
     case 'newprocess':
         $upload_status = 'err';
         // Only do this if user is logged in (our flag for this isn't set yet)
+        echo 0;
         if (isset($_SESSION['user_id'])) {
+            echo 77;
             if (isset($_FILES['file'])
                 && isset($_POST['title'])
                     && isset($_POST['license'])) {
                 $supplied_filename = $_FILES["file"]["name"];
+                echo 1;
                 if (! file_valid($supplied_filename)) {
                     $upload_status = 'unsupported';
+                    echo 666;
                 } else {
+                    echo 2;
                     $filename = "uploads/" . $_FILES["file"]["name"];
-                    $title = strip_tags(trim($_POST['title']));
-                    $license = intval($_POST['license']);
-                    //FIXME: Validate things
+                    echo $filename;
+                    echo $_FILES["file"]["tmp_name"];
                     if (move_uploaded_file($_FILES["file"]["tmp_name"],
-                                           $filename)) {
+                                           dirname(__FILE__)
+                                         . '/' . $filename)) {
+                        $title = strip_tags(trim($_POST['title']));
+                        $license = intval($_POST['license']);
                         $file_insert_sql = "INSERT INTO works (user_id, title,
                                                 filename, license,
                                                 nc, nd)
@@ -981,7 +1002,7 @@ case 'browse':
     foreach ($browse_license_ids as $license) {
         $works_count = count_works_with_license($dbh, $license);
         if ($works_count > 0) {
-            echo '<h3>' .lic_logo($license)
+            echo '<h3>' .lic_icons($license)
                . ' ' . lic_name($license) . '</h3>';
             print_works_table($dbh, $browse_results[$license], true, false);
             if ($browse_all) {
