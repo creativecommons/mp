@@ -55,9 +55,14 @@ tr {
 }
 
 .copyright-logo {
-    position: relative;
-    top: 5px;
     font-size: 38px;
     font-weight: bold;
+    text-align: center;
     color: black;
+    width: 88px;
+    /* Align the centre of the logo with the centre of the text next to it */
+    position: relative;
+    top: -8px;
+    float: left;
+    margin-right: 8px; /* So we line up the text with that next to the images */
 }
