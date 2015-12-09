@@ -81,7 +81,7 @@ function lic_icons ($license) {
 
 function license_for_table ($work_license) {
     $lic = "All rights reserved";
-    if ($work['license'] == 7) {
+    if ($work_license == 7) {
         $lic = '<a href="http://creativecommons.org/publicdomain/zero/1.0/">Creative Commons Zero</a>';
     } elseif ($work_license > 0) {
         $lic = '<a href="http://creativecommons.org/licenses/'
@@ -94,6 +94,7 @@ function license_for_table ($work_license) {
 }
 
 function license_block ($dbh, $work) {
+    global $LIC_GENIMG_CODES;
     $user = user_for_id($dbh, $work['user_id']);
     $license_name = lic_name($work['license']);
     $license_abbrv = lic_abbrv($work['license']);
@@ -105,7 +106,7 @@ function license_block ($dbh, $work) {
         $block = '<p xmlns:dct="http://purl.org/dc/terms/">
       <a rel="license"
         href="http://creativecommons.org/publicdomain/zero/1.0/">
-        <img src="http://i.creativecommons.org/p/zero/1.0/88x31.png"
+        <img src="genimg/genimg.php?l=0"
           style="border-style: none;" alt="CC0">
       </a>
       <br>
@@ -121,9 +122,9 @@ function license_block ($dbh, $work) {
     } else  {
         $block = '<a rel="license" href="http://creativecommons.org/licenses/'
                . $license_abbrv
-               . '/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/'
-               . $license_abbrv
-               . '/4.0/88x31.png" /></a><br /><a href="?action=display&work_id='
+               . '/4.0/"><img alt="Creative Commons License" style="border-width:0" src="genimg/genimg.php?l='
+               . $LIC_GENIMG_CODES[$work['license']]
+               . '" /></a><br /><a href="?action=display&work_id='
                . $work['work_id']
                . '"><span xmlns:dct="http://purl.org/dc/terms/" href="'
                . work_mediatype($work)
@@ -313,7 +314,6 @@ function user_name_for_work ($dbh, $work) {
 function license_changed_for_work ($dbh, $work_id, $license) {
     $sql = 'INSERT INTO works_license_changes (work_id, license) VALUES ('
          . $work_id . ', ' . $license . ')';
-    error_log($sql);
     $ok = $dbh->exec($sql);
     return $ok;
 }
@@ -326,7 +326,6 @@ function license_changes_for_work ($dbh, $work_id) {
                                    < (SELECT MAX(change_id)
                                        FROM works_license_changes)
                                ORDER BY change_id DESC";
-    error_log($sql);
     $changes = $dbh->prepare($sql);
     $ok = $changes->execute();
     if ($ok) {
