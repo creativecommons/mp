@@ -79,15 +79,15 @@ function lic_icons ($license) {
     return $icons;
 }
 
-function license_for_table ($work) {
+function license_for_table ($work_license) {
     $lic = "All rights reserved";
     if ($work['license'] == 7) {
         $lic = '<a href="http://creativecommons.org/publicdomain/zero/1.0/">Creative Commons Zero</a>';
-    } elseif ($work['license'] > 0) {
+    } elseif ($work_license > 0) {
         $lic = '<a href="http://creativecommons.org/licenses/'
-             . lic_abbrv($work['license'])
+             . lic_abbrv($work_license)
              . '/4.0/">'
-             . lic_name($work['license'])
+             . lic_name($work_license)
              . ' 4.0 International</a>';
     }
     return $lic;
@@ -207,12 +207,28 @@ function print_works_table ($dbh, $works, $show_user, $show_license) {
                . user_name_for_work($dbh, $work) . '</a></td>';
         }
         if($show_license) {
-            $lic = license_for_table ($work);
+            $lic = license_for_table ($work['license']);
             echo '<td class="license-td">' . $lic . '</td>';
         }
         echo '</tr>';
     }
     echo '</tbody></table><p>';
+}
+
+function print_work_license_changes ($changes) {
+    if ($changes) {
+        echo '<h2>License Changes</h2>';
+        echo '<table class="table table-striped"><thead>';
+        echo '<tr><th>License</th><th>Date Applied</th></tr>';
+        echo '</thead><tbody>';
+        foreach ($changes as $change) {
+            $datetime = strtotime($change['when']);
+            echo '<tr><td>' . license_for_table ($change['license'])
+               . '</td><td>' . date('l jS \of F Y h:i:s A', $datetime)
+               . '</td></tr>';
+        }
+        echo '</tbody></table>';
+    }
 }
 
 ////////////////////////////////////////////////////////////
@@ -294,11 +310,42 @@ function user_name_for_work ($dbh, $work) {
     return $user_name;
 }
 
+function license_changed_for_work ($dbh, $work_id, $license) {
+    $sql = 'INSERT INTO works_license_changes (work_id, license) VALUES ('
+         . $work_id . ', ' . $license . ')';
+    error_log($sql);
+    $ok = $dbh->exec($sql);
+    return $ok;
+}
+
+function license_changes_for_work ($dbh, $work_id) {
+    // Select all previous states, which may be none for a new work
+    $sql = "SELECT * FROM works_license_changes
+                              where work_id=" . $work_id
+                           . " AND change_id
+                                   < (SELECT MAX(change_id)
+                                       FROM works_license_changes)
+                               ORDER BY change_id DESC";
+    error_log($sql);
+    $changes = $dbh->prepare($sql);
+    $ok = $changes->execute();
+    if ($ok) {
+        // Get all the results in an array so we can count them
+        $changes = $changes->fetchAll();
+    } else {
+        $changes = false;
+    }
+    return $changes;
+}
+
 function update_work_license ($dbh, $work, $license) {
     $update_lic = 'UPDATE works SET license=' . $license
                 . ', nc=' . lic_nc($license) . ', nd=' . lic_nd($license)
                 . ' WHERE work_id=' . $work['work_id'];
     $ok = $dbh->exec($update_lic);
+    if ($ok) {
+        $ok = license_changed_for_work($dbh, $work['work_id'], $license);
+    }
     return $ok;
 }
 
@@ -511,22 +558,15 @@ switch ($action) {
     case 'newprocess':
         $upload_status = 'err';
         // Only do this if user is logged in (our flag for this isn't set yet)
-        echo 0;
         if (isset($_SESSION['user_id'])) {
-            echo 77;
             if (isset($_FILES['file'])
                 && isset($_POST['title'])
                     && isset($_POST['license'])) {
                 $supplied_filename = $_FILES["file"]["name"];
-                echo 1;
                 if (! file_valid($supplied_filename)) {
                     $upload_status = 'unsupported';
-                    echo 666;
                 } else {
-                    echo 2;
                     $filename = "uploads/" . $_FILES["file"]["name"];
-                    echo $filename;
-                    echo $_FILES["file"]["tmp_name"];
                     if (move_uploaded_file($_FILES["file"]["tmp_name"],
                                            dirname(__FILE__)
                                          . '/' . $filename)) {
@@ -546,6 +586,8 @@ switch ($action) {
                         $dbh->exec($file_insert_sql);
                         $upload_status = 'uploaded';
                         $work_id = $dbh->lastInsertId();
+                        // Start tracking license changes
+                        licensed_work($dbh, $work_id, $license);
                         header('Location:?action=display&work_id=' . $work_id);
                         exit;
                     }
@@ -582,6 +624,8 @@ switch ($action) {
             if ($work_row) {
                 $user_row = user_for_id($dbh, $work_row['user_id']);
                 if ($user_row) {
+                    $work_license_changes = license_changes_for_work($dbh,
+                                                                     $work_id);
                     $display_status = 'ok';
                 }
             }
@@ -589,7 +633,6 @@ switch ($action) {
         break;
 
     case "license":
-        //$license_state = 'err';
         if (isset($_SESSION['user_id']) && isset($_REQUEST['work_id'])) {
             $user_id = intval($_SESSION['user_id']);
             $work_id = intval($_REQUEST['work_id']);
@@ -598,12 +641,11 @@ switch ($action) {
                 if (isset($_POST['license'])) {
                     $license = intval($_POST['license']);
                     update_work_license($dbh, $license_work, $license);
-                    // Get the updated details to display
-                    $license_work = work_for_id($dbh, $work_id);
-                    //$license_state = 'ok';
                     header('Location:?action=display&work_id=' . $work_id);
                     exit;
                 }
+                $work_license_changes = license_changes_for_work($dbh,
+                                                                 $work_id);
             } else {
                 $license_work = false;
             }
@@ -948,6 +990,7 @@ case "display":
      });
     </script>
 <?php
+        print_work_license_changes($work_license_changes);
     } else {
 ?>
     <h1>No Work Specified</h1>
@@ -1019,6 +1062,7 @@ case "license":
       <input type="submit" class="btn btn-default" value="Change">
     </form>
 <?php
+        print_work_license_changes($work_license_changes);
     } else {
 ?>
     <h2>Not logged in.</h2>
@@ -1037,7 +1081,7 @@ case "batch":
         <tr><th>Apply</th><th></th><th>Title</th><th>Current License</th></tr>
 <?php
     foreach ($batch_works as $work) {
-        $lic = license_for_table ($work);
+        $lic = license_for_table ($work['license']);
         echo '<tr><td><input type="checkbox" name="apply[]" value="'
              . $work['work_id'] . '"></td><td>' . work_thumbnail($work)
              . '</td><td><a href="?action=display&work_id='
@@ -1123,6 +1167,14 @@ function setupdb() {
 
     $dbh->exec($sql);
 
+    $sql = "CREATE TABLE IF NOT EXISTS `works_license_changes` (
+        `change_id` INTEGER PRIMARY KEY AUTOINCREMENT,
+        `work_id` INTEGER NOT NULL,
+        `license` INT NOT NULL,
+        `when` DATETIME DEFAULT CURRENT_TIMESTAMP
+      );";
+
+    $dbh->exec($sql);
 }
 
 ?>
