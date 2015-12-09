@@ -294,12 +294,33 @@ function user_name_for_work ($dbh, $work) {
     return $user_name;
 }
 
-function update_work_license($dbh, $work, $license) {
+function update_work_license ($dbh, $work, $license) {
     $update_lic = 'UPDATE works SET license=' . $license
                 . ', nc=' . lic_nc($license) . ', nd=' . lic_nd($license)
                 . ' WHERE work_id=' . $work['work_id'];
     $ok = $dbh->exec($update_lic);
     return $ok;
+}
+
+function update_user_default_license ($dbh, $user, $license) {
+    $update_lic = 'UPDATE users SET default_license=' . $license
+                . ' WHERE user_id=' . $user['user_id'];
+    $ok = $dbh->exec($update_lic);
+    return $ok;
+}
+
+function user_default_license ($dbh, $user_id) {
+    $license = 0;
+    $select_user = $dbh->prepare("SELECT * FROM users where user_id = "
+                               . $user_id);
+    $ok = $select_user->execute();
+    if ($ok) {
+        $user_row = $select_user->fetch();
+        if ($user_row) {
+            $license = $user_row['default_license'];
+        }
+    }
+    return $license;
 }
 
 function browse_license ($license, $count) {
@@ -426,7 +447,7 @@ function work_display ($work) {
 
 session_start();
 
-$action = strip_tags($_GET["action"]);
+$action = strip_tags($_REQUEST["action"]);
 
 if (($action == '') && isset($_SESSION['user_id'])) {
     header('Location:?action=browse');
@@ -628,6 +649,7 @@ switch ($action) {
         } elseif (isset($_SESSION['user_id'])) {
             $who_id = $_SESSION['user_id'];
             $who_name = $_SESSION['username'];
+            $who_default_license = user_default_license ($dbh, $who_id);
             $who_state= 'ok';
         }
         if ($who_state == 'ok') {
@@ -635,6 +657,23 @@ switch ($action) {
             if (! $who_works) {
                 $who_state = 'err';
             }
+        }
+        break;
+
+    case 'whodefaultlicenseprocess':
+        if (isset($_SESSION['user_id'])) {
+            if(isset($_POST['default_license'])) {
+                $default_license = intval($_POST['default_license']);
+                //FIXME: check in range
+                update_user_default_license ($dbh, $_SESSION['user_id'],
+                                             $default_license);
+            }
+            // Should tell the user about success. Add flashes/toasts?
+            header('Location:?action=who');
+            exit;
+        } else {
+            $action = 'who';
+            $who_state = 'err';
         }
         break;
 
@@ -806,7 +845,9 @@ case "new":
       <div class="form-group">
         <label for="license">License</label>
         <select name="license" id="license" class="form-control">
-           <?php echo license_options(4, false); ?>
+          <?php echo license_options(user_default_license ($dbh,
+                                                           $_SESSION['user_id'],
+                                                           false)); ?>
         </select>
       </div>
       <input type="submit" class="btn btn-default" value="Upload">
@@ -924,14 +965,31 @@ case "who":
         print_works_table($dbh, $who_works, false, true);
 ?>
     <div class="who-buttons"><a class="btn btn-primary"
-        href="?action=batch">Change licenses</a></div>
+                                href="?action=batch">Change licenses</a></div>
 <?php
+        if ($who_id == $_SESSION['user_id']) {
+?>
+    <h3>Default License</h3>
+    <form action="?action=whodefaultlicenseprocess" method="post">
+      <div class="form-group">
+        <label for="default_license">License</label>
+        <select name="default_license" id="default_license"
+           class="form-control">
+           <?php echo license_options(user_default_license($dbh, $who_id),
+                                      false); ?>
+        </select>
+      </div>
+      <input type="submit" class="btn btn-default"
+         value="Change Default License">
+    </form>
+<?php
+        }
     } else {
 ?>
     <h2>No user specified or logged in.</h2>
 <?php
     }
-    break;
+break;
 
 case "license":
     if (! isset($license_work)) {
@@ -1047,7 +1105,8 @@ function setupdb() {
 
     $sql = "CREATE TABLE IF NOT EXISTS `users` (
 	    `user_id` INTEGER PRIMARY KEY AUTOINCREMENT,
-	    `username` varchar(200) NOT NULL
+	    `username` varchar(200) NOT NULL,
+        `default_license` INT NOT NULL DEFAULT 0
       );";
 
     $dbh->exec($sql);
