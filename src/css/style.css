@@ -66,3 +66,7 @@ tr {
     float: left;
     margin-right: 8px; /* So we line up the text with that next to the images */
 }
+
+.license-icon {
+    outline: 1px solid lightgray;
+}

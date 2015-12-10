@@ -39,5 +39,5 @@ tramp
 
 .sass-cache
 _site/
-uploads/*
-foo.db
+src/uploads/*
+src/foo.db

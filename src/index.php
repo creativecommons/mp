@@ -31,6 +31,7 @@ $LICENSE_RANGE = range(1, 7);
 // In order of "restriction"
 $LICENSE_RANGE_FREEDOM = [7, 4, 5, 2, 1, 6, 3];
 
+// Codes are for historical reasons (placement of icons in font)
 $LIC_GENIMG_CODES = ['placeholder', 'bna', 'bn', 'bnd', 'b', 'ba', 'bd', '0'];
 
 function lic_name ($license_number) {
@@ -60,9 +61,9 @@ function lic_button($license) {
 function lic_icons ($license) {
     global $LIC_GENIMG_CODES;
     if ($license == 0) {
-        $icons = '<span class="copyright-logo">&copy</span>';
+        $icons = '<span class="copyright-logo license-icon">&copy</span>';
     } else {
-        return '<img src="genimg/genimg.php?l=' . $LIC_GENIMG_CODES[$license] . '">';
+        return '<img src="genimg/genimg.php?l=' . $LIC_GENIMG_CODES[$license] . '"  class="license-icon">';
     }
     return $icons;
 }
@@ -230,13 +231,17 @@ function print_work_license_changes ($changes) {
 
 // World's worst and slowest full-text search
 
-function search_sql ($keywords_string, $license) {
-    $keywords = explode(' ', $keywords_string);
+function keywords_for_search ($keywords_string) {
+    return array_filter(explode(' ', $keywords_string),
+                             function ($keyword) {
+                                 return strlen($keyword) >= 3;
+                             });
+}
+
+function search_sql ($keywords, $license) {
     $queries = [];
     foreach ($keywords as $keyword) {
-        if (strlen($keyword) >= 3) {
-            $queries[] = "'%" . $keyword . "%'";
-        }
+        $queries[] = "'%" . $keyword . "%'";
     }
     $license_constraint = '';
     // * == any, so don't constrain the search in that case
@@ -288,7 +293,10 @@ function works_for_user ($dbh, $user_id) {
     $user_works = $dbh->prepare("SELECT * FROM works where user_id = "
                                 . $user_id . ' ORDER BY work_id DESC');
     $ok = $user_works->execute();
-    if (! $ok) {
+    if ($ok) {
+        // So we can count them
+        $user_works = $user_works->fetchAll();
+    } else {
         $user_works = false;
     }
     return $user_works;
@@ -603,18 +611,24 @@ switch ($action) {
 
     case 'search':
         $search_status = 'get';
-        if (isset($_POST['keywords']) && isset($_POST['keywords'])) {
+        if (isset($_POST['keywords']) && isset($_POST['license'])) {
             $search_status = 'err';
-            $keywords = strip_tags($_POST['keywords']);
+            $keywords_string = strip_tags($_POST['keywords']);
             $license = intval($_POST['license']);
-            $keywords_query = search_sql($keywords, $license);
-            $keywords_matches_statement = $dbh->prepare($keywords_query);
-            if ($keywords_matches_statement) {
-                $ok = $keywords_matches_statement->execute();
-                if ($ok) {
-                    // Get all the results in an array so we can count them
-                    $keywords_matches = $keywords_matches_statement->fetchAll();
-                    $search_status = 'ok';
+            $keywords = keywords_for_search ($keywords_string);
+            if (count($keywords) == 0) {
+                $search_status = 'ok';
+                $keywords_matches = [];
+            } else {
+                $keywords_query = search_sql($keywords, $license);
+                $search_statement = $dbh->prepare($keywords_query);
+                if ($search_statement) {
+                    $ok = $search_statement->execute();
+                    if ($ok) {
+                        // So we can count them
+                        $keywords_matches = $search_statement->fetchAll();
+                        $search_status = 'ok';
+                    }
                 }
             }
         }
@@ -701,7 +715,7 @@ switch ($action) {
         }
         if ($who_state == 'ok') {
             $who_works = works_for_user ($dbh, $who_id);
-            if (! $who_works) {
+            if ($who_works === false) {
                 $who_state = 'err';
             }
         }
@@ -964,14 +978,15 @@ case "search":
             echo '<h2>Results</h2>';
             print_works_table($dbh, $keywords_matches, true, true);
         } else {
-            echo '<h2>Results</h2>';
-            echo '<div class="alert alert-info" role="alert"><strong>None found.</strong> Please try again with different (maybe fewer or simpler) keywords.</div>';
+            echo '<br><div class="alert alert-info" role="alert"><strong>No matches found.</strong> Please try again with different keywords. Note that we don\'t search for words shorter than two letters.</div>';
         }
     }
     break;
 
 case "display":
     if ($display_status == 'ok') {
+        $viewing_own_work = (isset($_SESSION['user_id'])
+                             && ($work_row['user_id'] == $_SESSION['user_id']));
 ?>
     <h2 class="display-title"><?php echo $work_row['title']; ?> by
     <a href="?action=who&user_id=<?php echo $user_row['user_id']; ?>">
@@ -989,12 +1004,12 @@ case "display":
         <span class="glyphicon glyphicon-download-alt"
             aria-hidden="true"></span></a>
 <?php
-    if ($work_row['user_id'] == $_SESSION['user_id']) {
+        if ($viewing_own_work) {
 ?>
         <a class="btn btn-danger"
         href="?action=license&work_id=<?php echo $work_row['work_id'] ?>">
          Change license</a>
-            <?php } ?>
+  <?php } ?>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
     <script>
@@ -1007,7 +1022,9 @@ case "display":
      });
     </script>
 <?php
-        print_work_license_changes($work_license_changes);
+        if ($viewing_own_work) {
+            print_work_license_changes($work_license_changes);
+        }
     } else {
 ?>
     <h1>No Work Specified</h1>
@@ -1031,7 +1048,7 @@ case "who":
                                 href="?action=batch">Change licenses</a></div>
 <?php
         }
-        if ($who_id == $_SESSION['user_id']) {
+        if ($_SESSION['user_id'] && ($who_id == $_SESSION['user_id'])) {
 ?>
     <h3>Default License</h3>
     <form action="?action=whodefaultlicenseprocess" method="post">
