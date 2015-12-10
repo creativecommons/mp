@@ -44,18 +44,6 @@ function lic_abbrv ($license_number) {
             'by-sa', 'by-nd', 'zero'][$license_number];
 }
 
-// int for sql insertion
-
-function lic_nc ($license) {
-    return (int)(($license == 1) || ($license == 2) || ($license == 3));
-}
-
-// int for sql insertion
-
-function lic_nd ($license) {
-    return (int)(($license == 3) || ($license == 6));
-}
-
 function lic_button($license) {
     if ($license == 0) {
         $logo = '<span class="copyright-logo">&copy</span>';
@@ -181,6 +169,10 @@ function license_options ($selected, $any) {
     $options .= '</optgroup>';
     return $options;
 }
+
+////////////////////////////////////////////////////////////////////////////////
+// Presenting works and information
+////////////////////////////////////////////////////////////////////////////////
 
 //FIXME: This is inefficient: ifs in loop and fetch user name each time
 //FIXME: Generalise to handle the relicensing table
@@ -337,13 +329,12 @@ function license_changes_for_work ($dbh, $work_id) {
     return $changes;
 }
 
-function update_work_license ($dbh, $work, $license) {
+function update_work_license ($dbh, $work_id, $license) {
     $update_lic = 'UPDATE works SET license=' . $license
-                . ', nc=' . lic_nc($license) . ', nd=' . lic_nd($license)
-                . ' WHERE work_id=' . $work['work_id'];
+                . ' WHERE work_id=' . $work_id;
     $ok = $dbh->exec($update_lic);
     if ($ok) {
-        $ok = license_changed_for_work($dbh, $work['work_id'], $license);
+        $ok = license_changed_for_work($dbh, $work_id, $license);
     }
     return $ok;
 }
@@ -374,10 +365,17 @@ function browse_license ($license, $count) {
 }
 
 ////////////////////////////////////////////////////////////
-// Displaying works in html
+// Work upload/doanload/identification
 ////////////////////////////////////////////////////////////
 
+function download_work ($work) {
+    header('Content-Disposition: attachment; filename="'
+         . $work['filename'] . '"');
+    readfile(dirname(__FILE__) . '/uploads/' . $work['uuidfilename']);
+}
+
 // Remember to check the list in the upload file accept field
+// Also update table & comments about 8 char extension max if you add longer one
 
 function file_valid ($filename) {
     $extension = pathinfo($filename, PATHINFO_EXTENSION);
@@ -398,6 +396,10 @@ function work_kind ($work) {
     }
     return $kind;
 }
+
+////////////////////////////////////////////////////////////
+// Displaying works in html
+////////////////////////////////////////////////////////////
 
 function work_mediatype ($work) {
     $kind = work_kind($work);
@@ -424,7 +426,8 @@ function work_thumbnail ($work) {
     $kind = work_kind($work);
     switch ($kind) {
         case 'img':
-            $thumb .= '<img height="32" src="' . $work['filename'] . '">';
+            $thumb .= '<img height="32" src="uploads/'
+                   .  $work['uuidfilename'] . '">';
             break;
         case 'vid':
             $thumb .= '<span class="glyphicon glyphicon-film"></span>';
@@ -443,30 +446,31 @@ function work_thumbnail ($work) {
 function work_display ($work) {
     $display = '<div class="display-work">';
     $kind = work_kind($work);
-    $filename = $work['filename'];
+    $uploadname = 'uploads/' . $work['uuidfilename'];
+    $downloadname = '?action=download&work_id=' . $work['work_id'];
     switch ($kind) {
         case 'img':
             $display .= '<img alt="' . $work['title'] . '" src="'
-                      . $filename . '">';
+                      . $uploadname . '">';
             break;
         case 'vid':
             $display .= '<video controls>
                            Sorry, your browser does not support the
                            <code>video</code> element, but you can
-                           <a href="' . $filename
+                           <a href="' . $downloadname
                       . '">download this file</a> and listen to it with your
                              favourite media player!
-                            <source src="' . $filename . '">
+                            <source src="' . $uploadname . '">
                          </video>';
             break;
         case 'aud':
             $display .= '<audio controls>
                            Your browser does not support the
                            <code>audio</code> element, but you can
-                           <a href="' . $filename
+                           <a href="' . $downloadname
                       . '">download this file</a> and listen to it with your
                              favourite media player!
-                           <source src="' . $filename .'">
+                           <source src="' . $uploadname .'">
                          </audio>';
             break;
         case 'txt':
@@ -565,28 +569,30 @@ switch ($action) {
                 if (! file_valid($supplied_filename)) {
                     $upload_status = 'unsupported';
                 } else {
-                    $filename = "uploads/" . $_FILES["file"]["name"];
+                    // Assumes max. 8 char extension, see table creation
+                    $extension = pathinfo($supplied_filename,
+                                          PATHINFO_EXTENSION);
+                    $uuid = uniqid($more_entropy=true);
+                    $uuid_filename =  $uuid . "." . $extension;
                     if (move_uploaded_file($_FILES["file"]["tmp_name"],
                                            dirname(__FILE__)
-                                         . '/' . $filename)) {
+                                         . '/uploads/' . $uuid_filename)) {
                         $title = strip_tags(trim($_POST['title']));
                         $license = intval($_POST['license']);
                         $file_insert_sql = "INSERT INTO works (user_id, title,
-                                                filename, license,
-                                                nc, nd)
+                                                filename, uuidfilename, license)
                                                 VALUES("
                         . $_SESSION['user_id'] . ","
                                          . $dbh->quote($title) . ","
-                                         . $dbh->quote($filename) . ","
-                                         . $license . ","
-                                         . lic_nc($license) . ","
-                                         . lic_nd($license)
+                                         . $dbh->quote($supplied_filename) . ","
+                                         . "'" . $uuid_filename . "', "
+                                         . $license
                                          . ")";
                         $dbh->exec($file_insert_sql);
                         $upload_status = 'uploaded';
                         $work_id = $dbh->lastInsertId();
                         // Start tracking license changes
-                        licensed_work($dbh, $work_id, $license);
+                        update_work_license($dbh, $work_id, $license);
                         header('Location:?action=display&work_id=' . $work_id);
                         exit;
                     }
@@ -639,7 +645,7 @@ switch ($action) {
             if ($license_work && $license_work['user_id'] == $user_id) {
                 if (isset($_POST['license'])) {
                     $license = intval($_POST['license']);
-                    update_work_license($dbh, $license_work, $license);
+                    update_work_license($dbh, $work_id, $license);
                     header('Location:?action=display&work_id=' . $work_id);
                     exit;
                 }
@@ -662,7 +668,7 @@ switch ($action) {
                     $work = work_for_id($dbh, $work_id);
                     // We can only update our own images
                     if ($work && $work['user_id'] == $_SESSION['user_id']) {
-                        update_work_license($dbh, $work, $license);
+                        update_work_license($dbh, $work_id, $license);
                     }
                 }
             }
@@ -744,6 +750,17 @@ switch ($action) {
         }
         break;
 
+    case 'download':
+        if (isset($_GET['work_id']) ) {
+            $work_id = intval($_GET['work_id']);
+            $work = work_for_id ($dbh, $work_id);
+            if($work) {
+                download_work($work);
+            } else {
+                //FIXME: inform user
+            }
+        }
+        break;
 }
 
 // Flag to tell the UI whether the user is logged in or not
@@ -887,8 +904,8 @@ case "new":
         <label for="license">License</label>
         <select name="license" id="license" class="form-control">
           <?php echo license_options(user_default_license ($dbh,
-                                                           $_SESSION['user_id'],
-                                                           false)); ?>
+                                                           $_SESSION['user_id']),
+                                                           false); ?>
         </select>
       </div>
       <input type="submit" class="btn btn-default" value="Upload">
@@ -967,7 +984,8 @@ case "display":
       <a class="btn btn-info" id="copy-attribution-button"
           href="#">Copy Attribution</a>
       <a class="btn btn-success" download
-          href="<?php echo $work_row['filename'] ?>">Download File
+         href="?action=download&work_id=<?php echo $work_row['work_id'];
+           ?>">Download File
         <span class="glyphicon glyphicon-download-alt"
             aria-hidden="true"></span></a>
 <?php
@@ -1001,7 +1019,10 @@ case "who":
     if ($who_state == 'ok') {
 ?>
     <h1><a href="?action=who&user_id=<?php echo $who_id; ?>">
-          <?php echo $who_name; ?></a></h1>
+      <?php echo $who_name; ?></a></h1>
+<?php
+        if (count($who_works) > 0) {
+?>
     <h3>Works by <?php echo $who_name; ?></h3>
 <?php
         print_works_table($dbh, $who_works, false, true);
@@ -1009,6 +1030,7 @@ case "who":
     <div class="who-buttons"><a class="btn btn-primary"
                                 href="?action=batch">Change licenses</a></div>
 <?php
+        }
         if ($who_id == $_SESSION['user_id']) {
 ?>
     <h3>Default License</h3>
@@ -1154,15 +1176,16 @@ function setupdb() {
 
     $dbh->exec($sql);
 
+    // Assumes max. 8 char extension in uuidfilename (for markdown)
     $sql = "CREATE TABLE IF NOT EXISTS `works` (
 	    `work_id` INTEGER PRIMARY KEY AUTOINCREMENT,
 	    `user_id` INTEGER NOT NULL,
         `title` varchar(200) NOT NULL,
         `filename` varchar(200) NOT NULL,
-        `license` INT NOT NULL,
-        `nc` BOOL NOT NULL,
-        `nd` BOOL NOT NULL
-      );";
+        `uuidfilename` char(32) NOT NULL,
+        `license` INT NOT NULL
+      );
+      CREATE INDEX works_fileuuid_index ON works";
 
     $dbh->exec($sql);
 
