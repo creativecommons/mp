@@ -19,7 +19,7 @@ tr {
 }
 
 .display-work {
-    padding-bottom: 24px;
+    margin-bottom: 24px;
 }
 
 .display-work>* {
@@ -29,7 +29,7 @@ tr {
 }
 
 .display-buttons {
-    padding-top: 20px;
+    margin-top: 20px;
 }
 
 .table>tbody>tr>td {
@@ -69,4 +69,25 @@ tr {
 
 .license-icon {
     outline: 1px solid lightgray;
+}
+
+#attribution-popup {
+    margin-top: 12px;
+}
+
+#attribution-popup-text {
+    height: 10em;
+    width: 100%;
+}
+
+#license-descs {
+    margin-top: 12px;
+}
+
+.license-desc-selected {
+
+}
+
+.license-desc-selected-not {
+    color: lightsteelblue;
 }

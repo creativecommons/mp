@@ -15,6 +15,7 @@ to this work.
 ////////////////////////////////////////////////////////////
 
 // These are in license number order
+
 $LICENSE_NAMES = [
     'All Rights Reserved',
     'Creative Commons Attribution-NonCommercial-ShareAlike',
@@ -28,22 +29,31 @@ $LICENSE_NAMES = [
 
 $LICENSE_RANGE = range(1, 7);
 
-// In order of "restriction"
+// In order of "restriction".
+
 $LICENSE_RANGE_FREEDOM = [7, 4, 5, 2, 1, 6, 3];
 
 // Codes are for historical reasons (placement of icons in font)
-$LIC_GENIMG_CODES = ['placeholder', 'bna', 'bn', 'bnd', 'b', 'ba', 'bd', '0'];
+// "-" will never be used, it's to make this a simple index lookup
+
+$LIC_GENIMG_CODES = ['-', 'bna', 'bn', 'bnd', 'b', 'ba', 'bd', '0'];
+
+// Look up the license name
 
 function lic_name ($license_number) {
     global $LICENSE_NAMES;
     return $LICENSE_NAMES[$license_number];
  }
 
+// Look up the license abbreviation
+
 function lic_abbrv ($license_number) {
     // These are in license number order
     return ['All Rights Reserved', 'by-nc-sa', 'by-nc', 'by-nc-nd', 'by',
             'by-sa', 'by-nd', 'zero'][$license_number];
 }
+
+// The button image (or span) for the license
 
 function lic_button($license) {
     if ($license == 0) {
@@ -58,6 +68,8 @@ function lic_button($license) {
     return $logo;
 }
 
+// The icons image (or span) for the license. Plural as BY-SA has 2 icons etc.
+
 function lic_icons ($license) {
     global $LIC_GENIMG_CODES;
     if ($license == 0) {
@@ -67,6 +79,8 @@ function lic_icons ($license) {
     }
     return $icons;
 }
+
+// Return a link to the license for use in a (vertically compact) table row
 
 function license_for_table ($work_license) {
     $lic = "All rights reserved";
@@ -82,6 +96,11 @@ function license_for_table ($work_license) {
     return $lic;
 }
 
+// Generate the license metadata, after:
+//  http://creativecommons.org/choose/
+// and
+//  https://wiki.creativecommons.org/wiki/Best_practices_for_attribution
+
 function license_block ($dbh, $work) {
     global $LIC_GENIMG_CODES;
     $user = user_for_id($dbh, $work['user_id']);
@@ -96,7 +115,7 @@ function license_block ($dbh, $work) {
       <a rel="license"
         href="http://creativecommons.org/publicdomain/zero/1.0/">
         <img src="genimg/genimg.php?l=0"
-          style="border-style: none;" alt="CC0">
+          class="license-icon" alt="CC0">
       </a>
       <br>
       To the extent possible under law,
@@ -111,7 +130,7 @@ function license_block ($dbh, $work) {
     } else  {
         $block = '<a rel="license" href="http://creativecommons.org/licenses/'
                . $license_abbrv
-               . '/4.0/"><img alt="Creative Commons License" style="border-width:0" src="genimg/genimg.php?l='
+               . '/4.0/"><img alt="Creative Commons License" class="license-icon" src="genimg/genimg.php?l='
                . $LIC_GENIMG_CODES[$work['license']]
                . '" /></a><br /><a href="?action=display&work_id='
                . $work['work_id']
@@ -143,38 +162,114 @@ function license_option ($index, $selected) {
 function license_options ($selected, $any) {
     $options = '';
     if ($any) {
-        $options .= '<optgroup label="Any License">'
-                   .'<option ' . (($selected == '*') ? 'selected ' : '')
+        $options = //.= '<optgroup label="Any License">' .
+                   '<option ' . (($selected == '*') ? 'selected ' : '')
                   . 'value="*">Any</option>'
-                  . '</optgroup>';
+                  //. '</optgroup>'
+        ;
     }
     // '*' == '0', so change it to a value that doesn't
     if ($selected == '*') {
         $selected = -1;
     }
-    $options .= '<optgroup label="Public Domain">';
+    //$options .= '<optgroup label="Public Domain">';
     $options .= license_option(7, $selected);
-    $options .= '</optgroup>';
-    $options .= '<optgroup label="Free Culture Licenses">';
+    //$options .= '</optgroup>';
+    //$options .= '<optgroup label="Free Culture Licenses">';
     $options .= license_option(4, $selected);
     $options .= license_option(5, $selected);
-    $options .= '</optgroup>';
-    $options .= '<optgroup label="Non-Free Licenses">';
+    //$options .= '</optgroup>';
+    //$options .= '<optgroup label="Non-Free Licenses">';
     $options .= license_option(2, $selected);
     $options .= license_option(1, $selected);
     $options .= license_option(6, $selected);
     $options .= license_option(3, $selected);
-    $options .= '</optgroup>';
-    $options .= '<optgroup label="Default Copyright">';
+    //$options .= '</optgroup>';
+    //$options .= '<optgroup label="Default Copyright">';
     $options .= license_option(0, $selected);
-    $options .= '</optgroup>';
+    //$options .= '</optgroup>';
     return $options;
+}
+
+// The license description block that goes under the license chooser to inform
+// the user what each license (and none) allows.
+
+function license_desc ($title, $desc, $selected) {
+    if ($selected) {
+        $style = ' class="license-desc-selected"';
+    } else {
+        $style = ' class="license-desc-selected-not"';
+    }
+    return '<dt' . $style . '>' . $title . '</dt><dd'
+         . $style . '>' . $desc . '</dd>';
+}
+
+function license_descs ($selected) {
+    if ($selected == '*') {
+        $selected = -1;
+        $all = true;
+    }
+    $descs = '<dl id="license-descs" class="well">';
+    $descs .= license_desc('<a href="html/cc.html#cc0">Creative Commons Zero</a>',
+                       'Waive all rights and place a work in the public domain.',
+                       $all || $selected == 7);
+    $descs .= license_desc('<a href="html/cc.html#cc-by">Creative Commons Attribution</a>',
+                       'Lets others distribute, remix, tweak, and build upon your work as long as they credit you.',
+                       $all || $selected == 4);
+    $descs .= license_desc('<a href="html/cc.html#cc-by-sa">Creative Commons Attribution-ShareAlike</a>',
+                       'Allows for redistribution, commercial and non-commercial, as long as it is passed along unchanged and in whole, with credit to you.',
+                       $all || $selected == 5);
+    $descs .= license_desc('<a href="html/cc.html#cc-by-nc">Creative Commons Attribution-NonCommercial</a>',
+                       'Lets others remix, tweak, and build upon your work as long as they credit you and place their new creations under the same license.',
+                       $all || $selected == 2);
+    $descs .= license_desc('<a href="html/cc.html#cc-by-nc-sa">Creative Commons Attribution-NonCommercial-ShareAlike</a>',
+                       "Lets others remix, tweak, and build upon your work, as long as they credit you and license their new creations under the identical terms and don't do so commercially.",
+                       $all || $selected == 1);
+    $descs .= license_desc('<a href="html/cc.html#cc-by-nd">Creative Commons Attribution-NoDerivatives</a>',
+                       'Allows for redistribution as long as it is passed along unchanged and in whole, with credit to you',
+                       $all || $selected == 6);
+    $descs .= license_desc('<a href="html/cc.html#cc-by-nc-nd">Creative Commons Attribution-NonCommercial-NoDerivatives</a>',
+                       "Allows others to download your works and share them with others as long as they credit you, but they can’t change them in any way or use them commercially.",
+                       $all || $selected == 3);
+    $descs .= license_desc('<a href="html/cc.html#arr">All Rights Reserved</a>',
+                       'Default copyright.',
+                       $all || $selected == 0);
+    $descs .= '</dl>';
+    return $descs;
+}
+
+// The JavaScript function to select the description for the license the user
+// chooses.
+
+function license_descs_onchange ($descs, $select) {
+    global $LICENSE_RANGE_FREEDOM;
+    $on = '
+<script>
+document.getElementById("' . $select .'").onchange = function () {
+    var descs = $("#' . $descs . '").children();
+    if (this.options[this.selectedIndex].value == "*") {
+        descs.removeClass("license-desc-selected-not")
+        descs.addClass("license-desc-selected");
+    } else {
+        var indices = [7, 4, 3, 6, 1, 2, 5, 0];
+        var selected = indices[this.options[this.selectedIndex].value];
+        descs.removeClass("license-desc-selected")
+        descs.addClass("license-desc-selected-not");
+        $(descs[selected * 2]).removeClass("license-desc-selected-not");
+        $(descs[selected * 2]).addClass("license-desc-selected");
+        $(descs[selected * 2 + 1]).removeClass("license-desc-selected-not");
+        $(descs[selected * 2 + 1]).addClass("license-desc-selected");
+    }
+}
+</script>';
+    return $on;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Presenting works and information
 ////////////////////////////////////////////////////////////////////////////////
 
+// Print a table listing works, for example from a search or for a user.
 //FIXME: This is inefficient: ifs in loop and fetch user name each time
 //FIXME: Generalise to handle the relicensing table
 //FIXME: Just pass a list of columns and look up how to print their th/td
@@ -208,6 +303,8 @@ function print_works_table ($dbh, $works, $show_user, $show_license) {
     }
     echo '</tbody></table><p>';
 }
+
+// Print the list of changes to the works's license (if any)
 
 function print_work_license_changes ($changes) {
     if ($changes) {
@@ -252,6 +349,8 @@ function search_sql ($keywords, $license) {
         . implode(' OR title LIKE ', $queries)
         . $license_constraint . ' ORDER BY work_id DESC';
 }
+
+// Select the $count most recent works with $license
 
 function list_works_with_license ($dbh, $license, $count) {
     $sql = 'SELECT * FROM works WHERE license=' . $license
@@ -311,12 +410,17 @@ function user_name_for_work ($dbh, $work) {
     return $user_name;
 }
 
+// Record that the license of the work changed (including initial creation)
+
 function license_changed_for_work ($dbh, $work_id, $license) {
     $sql = 'INSERT INTO works_license_changes (work_id, license) VALUES ('
          . $work_id . ', ' . $license . ')';
     $ok = $dbh->exec($sql);
     return $ok;
 }
+
+// List the license changes for the work, excluding the current one
+// (we show that separately)
 
 function license_changes_for_work ($dbh, $work_id) {
     // Select all previous states, which may be none for a new work
@@ -337,6 +441,9 @@ function license_changes_for_work ($dbh, $work_id) {
     return $changes;
 }
 
+// The user changed the work's license, so set this on the work and insert
+// a record of the change into the changes table.
+
 function update_work_license ($dbh, $work_id, $license) {
     $update_lic = 'UPDATE works SET license=' . $license
                 . ' WHERE work_id=' . $work_id;
@@ -346,6 +453,8 @@ function update_work_license ($dbh, $work_id, $license) {
     }
     return $ok;
 }
+
+// Users have a default license for their work.
 
 function update_user_default_license ($dbh, $user, $license) {
     $update_lic = 'UPDATE users SET default_license=' . $license
@@ -368,13 +477,11 @@ function user_default_license ($dbh, $user_id) {
     return $license;
 }
 
-function browse_license ($license, $count) {
-    return [$license => browse_sql ($license, $count)];
-}
-
 ////////////////////////////////////////////////////////////
 // Work upload/doanload/identification
 ////////////////////////////////////////////////////////////
+
+// Send the work to the client with its original filename
 
 function download_work ($work) {
     header('Content-Disposition: attachment; filename="'
@@ -382,6 +489,7 @@ function download_work ($work) {
     readfile(dirname(__FILE__) . '/uploads/' . $work['uuidfilename']);
 }
 
+// Check whether we accept this kind of file or not.
 // Remember to check the list in the upload file accept field
 // Also update table & comments about 8 char extension max if you add longer one
 
@@ -391,6 +499,8 @@ function file_valid ($filename) {
                                 'markdown', 'md', 'mp3', 'mp4',
                                 'ogg', 'ogv', 'png', 'txt']);
 }
+
+// We display works differently depending on whether they're image/audio/etc.
 
 function work_kind ($work) {
     $extension = pathinfo($work['filename'], PATHINFO_EXTENSION);
@@ -408,6 +518,8 @@ function work_kind ($work) {
 ////////////////////////////////////////////////////////////
 // Displaying works in html
 ////////////////////////////////////////////////////////////
+
+// The Dublin Core media types for our work categories.
 
 function work_mediatype ($work) {
     $kind = work_kind($work);
@@ -427,6 +539,8 @@ function work_mediatype ($work) {
     }
     return $type;
 }
+
+// The thumbnail for the work in a table listing.
 
 function work_thumbnail ($work) {
     $thumb = '<a alt="' . $work['title']
@@ -450,6 +564,8 @@ function work_thumbnail ($work) {
     $thumb .= '</a></div>';
     return $thumb;
 }
+
+// The full-sized work (or work with play controls) for display on its own page
 
 function work_display ($work) {
     $display = '<div class="display-work">';
@@ -516,8 +632,9 @@ global $dbh;
 
 $dbh = new PDO('sqlite:' . dirname(__FILE__) . '/foo.db');
 
-$foo = $dbh->exec("SELECT COUNT(*) FROM sqlite_master WHERE type='table' AND name='users'");
+$foo = $dbh->exec("SELECT COUNT(*) FROM sqlite_master WHERE type='table' AND name='users' LIMIT 1");
 
+// Lazily create the database
 if ($foo != 1) {
   setupdb();
 }
@@ -527,6 +644,7 @@ if ($foo != 1) {
 
 switch ($action) {
 
+    // The user has submitted the login form, process their login request
     case 'loginprocess':
         $login_status = 'err';
         // Make sure we've been passed a non-empty username
@@ -558,6 +676,7 @@ switch ($action) {
         }
         break;
 
+    // The user has pressed the logout button, log them out
     case 'logoutprocess':
         // Tear down the session
         $_SESSION = array();
@@ -566,6 +685,7 @@ switch ($action) {
         $action = '';
         break;
 
+    // The user has submitted the new work form, process the uploaded work
     case 'newprocess':
         $upload_status = 'err';
         // Only do this if user is logged in (our flag for this isn't set yet)
@@ -609,6 +729,8 @@ switch ($action) {
         }
         break;
 
+    // The user has chosen the search page,
+    // or has submitted the search form, process their search ready for display.
     case 'search':
         $search_status = 'get';
         if (isset($_POST['keywords']) && isset($_POST['license'])) {
@@ -634,6 +756,7 @@ switch ($action) {
         }
         break;
 
+    // The user is viewing a work, get the work's details ready to display it.
     case 'display':
         $display_status = 'err';
         if (isset($_REQUEST['work_id'])){
@@ -651,6 +774,8 @@ switch ($action) {
         }
         break;
 
+    // The user is viewing a work to relicense it,
+    // or has submitted the change license form for the work, process this.
     case "license":
         if (isset($_SESSION['user_id']) && isset($_REQUEST['work_id'])) {
             $user_id = intval($_SESSION['user_id']);
@@ -671,6 +796,8 @@ switch ($action) {
         }
         break;
 
+    // The user is viewing a list of works to relicense,
+    // or has selected some and submitted the relicense form, process this.
     case "batch":
         $batch_state = 'err';
         if (isset($_SESSION['user_id'])) {
@@ -691,6 +818,7 @@ switch ($action) {
         }
         break;
 
+    // The user is viewing a user profile, either theirs or someone else's.
     case 'who':
         $who_state = 'err';
         // The user is requesting to look at someone's profile
@@ -721,6 +849,8 @@ switch ($action) {
         }
         break;
 
+    // The user has submitted the form to change their default license,
+    // update it.
     case 'whodefaultlicenseprocess':
         if (isset($_SESSION['user_id'])) {
             if(isset($_POST['default_license'])) {
@@ -738,6 +868,8 @@ switch ($action) {
         }
         break;
 
+    // The user is browsing the latest works under all or one of the licenses,
+    // get ready to display a list of them.
     case 'browse':
         $browse_license_ids = $LICENSE_RANGE_FREEDOM;
         $browse_license_ids[] = 0;
@@ -764,6 +896,9 @@ switch ($action) {
         }
         break;
 
+    // The user has requested to download a file. We vend it under its original
+    // filename.
+    // No log-in is required for this.
     case 'download':
         if (isset($_GET['work_id']) ) {
             $work_id = intval($_GET['work_id']);
@@ -925,6 +1060,8 @@ case "new":
       <input type="submit" class="btn btn-default" value="Upload">
     </form>
 <?php
+    echo license_descs(user_default_license ($dbh, $_SESSION['user_id']));
+    echo license_descs_onchange('license-descs', 'license');
     break;
 
 case "newprocess":
@@ -958,6 +1095,8 @@ case "search":
           value="Search"
           <?php if (! isset($_POST['keywords'])) { echo ' disabled'; } ?>>
     </form>
+    <?php echo license_descs($cl);
+          echo license_descs_onchange('license-descs', 'license'); ?>
     <script>
      var keywords_field = document.getElementById('keywords');
      var search_field = document.getElementById('search');
@@ -985,7 +1124,7 @@ case "search":
 
 case "display":
     if ($display_status == 'ok') {
-        $viewing_own_work = (isset($_SESSION['user_id'])
+        $viewing_own_work = ($logged_in
                              && ($work_row['user_id'] == $_SESSION['user_id']));
 ?>
     <h2 class="display-title"><?php echo $work_row['title']; ?> by
@@ -1008,17 +1147,31 @@ case "display":
 ?>
         <a class="btn btn-danger"
         href="?action=license&work_id=<?php echo $work_row['work_id'] ?>">
-         Change license</a>
-  <?php } ?>
+          Change license</a>
+<?php } ?>
+    </div>
+    <div id="attribution-popup" class="well" hidden>
+        <textarea id="attribution-popup-text">textarea</textarea><br>
+        <button onclick="$('#attribution-popup').hide();">Hide</button>
+        &nbsp;&nbsp;&nbsp;&nbsp;Please copy the above text.
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
     <script>
-     new Clipboard('#copy-attribution-button', {
+     var license_metadata = document.getElementById("license-block")
+                                    .innerHTML.trim()
+                                    .replace(/&lt;/g,'<').replace(/&gt;/g,'>')
+                                    .replace(/&amp;/g,'&') + "\n";
+     var clipboard = new Clipboard('#copy-attribution-button', {
          text: function(trigger) {
-             return document.getElementById("license-block").innerHTML.trim()
-                            .replace(/&lt;/g,'<').replace(/&gt;/g,'>')
-                            .replace(/&amp;/g,'&') + "\n";
+             return license_metadata;
          }
+     });
+     // For browsers that don't yet support the clipboard, allow the user to
+     // copy the text manually
+     clipboard.on('failure', function() {
+         $("#attribution-popup-text").val(license_metadata);
+         $("#attribution-popup").show();
+         $("#attribution-popup-text").select();
      });
     </script>
 <?php
@@ -1064,6 +1217,8 @@ case "who":
          value="Change Default License">
     </form>
 <?php
+            echo license_descs(user_default_license($dbh, $who_id));
+            echo license_descs_onchange('license-descs', 'default_license');
         }
     } else {
 ?>
@@ -1099,7 +1254,9 @@ case "license":
       </div>
       <input type="submit" class="btn btn-default" value="Change">
     </form>
-<?php
+    <?php
+        echo license_descs($license_work['license']);
+        echo license_descs_onchange('license-descs', 'license');
         print_work_license_changes($work_license_changes);
     } else {
 ?>
@@ -1131,12 +1288,16 @@ case "batch":
     <div class="form-group">
         <label for="license">License</label>
         <select name="license" id="license" class="form-control">
-           <?php echo license_options(4, false); ?>
+          <?php echo license_options(user_default_license($dbh,
+                                                          $_SESSION['user_id']),
+                                     false); ?>
         </select>
       </div>
       <input type="submit" class="btn btn-default" value="Change">
     </form>
-<?php
+    <?php
+        echo license_descs(user_default_license($dbh, $_SESSION['user_id']));
+        echo license_descs_onchange('license-descs', 'license');
     } else {
 ?>
     <h2>Not logged in.</h2>
@@ -1171,9 +1332,11 @@ case 'browse':
            <?php echo license_options($browse_initially_selected, true); ?>
         </select>
       </div>
-      <input type="submit" class="btn btn-default" value="Change">
+      <input type="submit" class="btn btn-default" value="Browse">
     </form>
-<?php
+    <?php
+    echo license_descs($browse_initially_selected);
+    echo license_descs_onchange ('license-descs', 'license');
     break;
 }
 
@@ -1227,7 +1390,6 @@ function setupdb() {
           <li><a href="html/community.html">Community Guidelines</a></li>
         </ul>
       </div>
-    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
   </body>
