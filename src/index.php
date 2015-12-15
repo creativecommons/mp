@@ -59,11 +59,11 @@ function lic_button($license) {
     if ($license == 0) {
         $logo = '<span class="copyright-logo">&copy</span>';
     } elseif ($license == 7) {
-        $logo = '<img src="http://i.creativecommons.org/p/zero/1.0/88x31.png" alt="CC0">';
+        $logo = '<img src="http://i.creativecommons.org/p/zero/1.0/88x31.png" style="border-style: none;" alt="CC0">';
     } else {
         $logo = '<img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/'
              . lic_abbrv($license)
-             . '/4.0/88x31.png">';
+             . '/4.0/88x31.png" style="border-width:0">';
     }
     return $logo;
 }
@@ -73,9 +73,9 @@ function lic_button($license) {
 function lic_icons ($license) {
     global $LIC_GENIMG_CODES;
     if ($license == 0) {
-        $icons = '<span class="copyright-logo license-icon">&copy</span>';
+        $icons = '<span class="copyright-logo">&copy</span>';
     } else {
-        return '<img src="genimg/genimg.php?l=' . $LIC_GENIMG_CODES[$license] . '"  class="license-icon">';
+        return '<img src="genimg/genimg.php?b=ffffff&l=' . $LIC_GENIMG_CODES[$license] . '"  style="border-width:0">';
     }
     return $icons;
 }
@@ -114,8 +114,8 @@ function license_block ($dbh, $work) {
         $block = '<p xmlns:dct="http://purl.org/dc/terms/">
       <a rel="license"
         href="http://creativecommons.org/publicdomain/zero/1.0/">
-        <img src="genimg/genimg.php?l=0"
-          class="license-icon" alt="CC0">
+        <img src="genimg/genimg.php?b=ffffff&l=0"
+          style="border-style: none;" alt="CC0">
       </a>
       <br>
       To the extent possible under law,
@@ -130,7 +130,7 @@ function license_block ($dbh, $work) {
     } else  {
         $block = '<a rel="license" href="http://creativecommons.org/licenses/'
                . $license_abbrv
-               . '/4.0/"><img alt="Creative Commons License" class="license-icon" src="genimg/genimg.php?l='
+               . '/4.0/"><img alt="Creative Commons License" style="border-width:0" src="genimg/genimg.php?b=ffffff&l='
                . $LIC_GENIMG_CODES[$work['license']]
                . '" /></a><br /><a href="?action=display&work_id='
                . $work['work_id']
@@ -1131,7 +1131,7 @@ case "display":
     <a href="?action=who&user_id=<?php echo $user_row['user_id']; ?>">
       <?php echo $user_row['username'] ?></a></h2>
     <?php echo work_display($work_row); ?>
-    <div id="license-block">
+    <div id="license-block" class="well">
       <?php echo license_block($dbh, $work_row); ?>
     </div>
     <div class="display-buttons">
@@ -1240,8 +1240,10 @@ case "license":
        <a href="?action=display&work_id=<?php
          echo $license_work['work_id']; ?>">
          <?php echo $license_work['title']; ?></a></h2>
-    <?php echo work_display($license_work); ?>
-    <?php echo license_block($dbh, $license_work); ?>
+     <?php echo work_display($license_work); ?>
+     <div id="license-block" class="well">
+       <?php echo license_block($dbh, $license_work); ?>
+     </div>
     <form action="?action=license" method="post">
       <input type="hidden" name="work_id"
          value="<?php echo $license_work['work_id']; ?>">

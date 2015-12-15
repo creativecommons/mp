@@ -91,3 +91,7 @@ tr {
 .license-desc-selected-not {
     color: lightsteelblue;
 }
+
+.license-desc-selected-not > a {
+    color: lightsteelblue;
+}
