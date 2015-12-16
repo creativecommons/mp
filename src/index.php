@@ -205,6 +205,7 @@ function license_desc ($title, $desc, $selected) {
 }
 
 function license_descs ($selected) {
+    $all = false;
     if ($selected == '*') {
         $selected = -1;
         $all = true;
@@ -621,7 +622,10 @@ function work_display ($work) {
 
 session_start();
 
-$action = strip_tags($_REQUEST["action"]);
+$action = '';
+if (isset($_REQUEST["action"])) {
+    $action = strip_tags($_REQUEST["action"]);
+}
 
 if (($action == '') && isset($_SESSION['user_id'])) {
     header('Location:?action=browse');
