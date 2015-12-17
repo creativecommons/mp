@@ -14,9 +14,32 @@ to this work.
 // Licenses
 ////////////////////////////////////////////////////////////
 
-// These are in license number order
 
-$LICENSE_NAMES = [
+// The license numbers are arbitrary within this codebase.
+
+// Everything that isn't all rights reserved
+
+$LICENSE_RANGE = range(1, 7);
+
+// In order of "restriction".
+
+$LICENSE_RANGE_FREEDOM = [7, 4, 5, 2, 1, 6, 3];
+
+// Get the genimg code for the license number
+// FIXME: USE CC BUTTON URL FORMAT
+
+function lic_genimg_code ($index) {
+    // Codes are for historical reasons (placement of icons in font)
+    // "-" will never be used, it's to make this a simple index lookup
+    $LIC_GENIMG_CODES = ['-', 'bna', 'bn', 'bnd', 'b', 'ba', 'bd', '0'];
+    return $LIC_GENIMG_CODES[$index];
+}
+
+// Look up the license name for the license number
+
+function lic_name ($license_number) {
+    // These are in license number order.
+    $LICENSE_NAMES = [
     'All Rights Reserved',
     'Creative Commons Attribution-NonCommercial-ShareAlike',
     'Creative Commons Attribution-NonCommercial',
@@ -26,26 +49,10 @@ $LICENSE_NAMES = [
     'Creative Commons Attribution-NoDerivatives',
     'Creative Commons Zero'
     ];
-
-$LICENSE_RANGE = range(1, 7);
-
-// In order of "restriction".
-
-$LICENSE_RANGE_FREEDOM = [7, 4, 5, 2, 1, 6, 3];
-
-// Codes are for historical reasons (placement of icons in font)
-// "-" will never be used, it's to make this a simple index lookup
-
-$LIC_GENIMG_CODES = ['-', 'bna', 'bn', 'bnd', 'b', 'ba', 'bd', '0'];
-
-// Look up the license name
-
-function lic_name ($license_number) {
-    global $LICENSE_NAMES;
     return $LICENSE_NAMES[$license_number];
  }
 
-// Look up the license abbreviation
+// Look up the license abbreviation for the license number
 
 function lic_abbrv ($license_number) {
     // These are in license number order
@@ -53,29 +60,32 @@ function lic_abbrv ($license_number) {
             'by-sa', 'by-nd', 'zero'][$license_number];
 }
 
-// The button image (or span) for the license
+// Get the button image url (or span) for the license
 
 function lic_button($license) {
     if ($license == 0) {
         $logo = '<span class="copyright-logo">&copy</span>';
     } elseif ($license == 7) {
-        $logo = '<img src="http://i.creativecommons.org/p/zero/1.0/88x31.png" style="border-style: none;" alt="CC0">';
+        $logo = '<img src="http://i.creativecommons.org/p/zero/1.0/88x31.png"
+                   style="border-style: none;" alt="CC0">';
     } else {
-        $logo = '<img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/'
-             . lic_abbrv($license)
-             . '/4.0/88x31.png" style="border-width:0">';
+        $abbrev = lic_abbrv($license);
+        $logo = '<img alt="Creative Commons License" style="border-width:0"
+                   src="https://i.creativecommons.org/l/$abbrev/4.0/88x31.png"
+                    style="border-width:0">';
     }
     return $logo;
 }
 
 // The icons image (or span) for the license. Plural as BY-SA has 2 icons etc.
 
-function lic_icons ($license) {
-    global $LIC_GENIMG_CODES;
+function lic_icons ($base_url, $license, $size) {
     if ($license == 0) {
         $icons = '<span class="copyright-logo">&copy</span>';
     } else {
-        return '<img src="genimg/genimg.php?b=ffffff&l=' . $LIC_GENIMG_CODES[$license] . '"  style="border-width:0">';
+        $code = lic_genimg_code($license);
+        return "<img src=\"$base_url/genimg/genimg.php?b=ffffff&l=$code\"
+                  style=\"border-width:0\">";
     }
     return $icons;
 }
@@ -84,14 +94,17 @@ function lic_icons ($license) {
 
 function license_for_table ($work_license) {
     $lic = "All rights reserved";
-    if ($work_license == 7) {
-        $lic = '<a href="http://creativecommons.org/publicdomain/zero/1.0/">Creative Commons Zero</a>';
-    } elseif ($work_license > 0) {
-        $lic = '<a href="http://creativecommons.org/licenses/'
-             . lic_abbrv($work_license)
-             . '/4.0/">'
-             . lic_name($work_license)
-             . ' 4.0 International</a>';
+    if ($work_license > 0) {
+        if ($work_license == 7) {
+            $license_url = 'http://creativecommons.org/publicdomain/zero/1.0/';
+            $license_name = 'Creative Commons Zero';
+        } else {
+            $abbrev = lic_abbrv($work_license);
+            $name = lic_name($work_license);
+            $license_url = "http://creativecommons.org/licenses/$abbrev/4.0/";
+            $license_naame = "$name 4.0 International";
+        }
+        $lic = "<a href=\"$license_url\">$license_name</a>";
     }
     return $lic;
 }
@@ -101,62 +114,63 @@ function license_for_table ($work_license) {
 // and
 //  https://wiki.creativecommons.org/wiki/Best_practices_for_attribution
 
-function license_block ($dbh, $work) {
-    global $LIC_GENIMG_CODES;
+function license_block ($dbh, $base_url, $work) {
     $user = user_for_id($dbh, $work['user_id']);
-    $license_name = lic_name($work['license']);
-    $license_abbrv = lic_abbrv($work['license']);
+    $user_id = $user['user_id'];
+    $user_name = $user['username'];
+    $user_url = $base_url . '?who&user_id=' . $user_id;
+    $work_title = $work['title'];
+    $work_id = $work['work_id'];
+    $work_url = $base_url . '?action=display&work_id=' . $work_id;
     if ($work['license'] == 0) {
-        $block = '<a href="?action=display&work_id=' . $work['work_id']
-               . '">' . $work['title'] . '</a> by <a href="?who&user_id='
-               . $user['user_id'] .'">' . $user['username'] . '</a>.';
+        $lic = "<a href=\"$work_url\">$work_title</a>
+                by <a href=\"$user_url\">$user_name</a>.";
     } elseif ($work['license'] == 7) {
-        $block = '<p xmlns:dct="http://purl.org/dc/terms/">
-      <a rel="license"
-        href="http://creativecommons.org/publicdomain/zero/1.0/">
-        <img src="genimg/genimg.php?b=ffffff&l=0"
-          style="border-style: none;" alt="CC0">
-      </a>
-      <br>
-      To the extent possible under law,
-      <a rel="dct:publisher"
-        href="?who&user_id=' . $user['user_id'] . '">
-        <span property="dct:title">' . $user['username'] . '</span>
-      </a>
-      has waived all copyright and related or neighboring rights to
-      <a href="?action=display&work_id=' . $work['work_id']
-               . '" property="dct:title">' . $work['title']
-               . '</a>.</p>';
+        $lic = "<p xmlns:dct=\"http://purl.org/dc/terms/\">
+                  <a rel=\"license\"
+                    href=\"http://creativecommons.org/publicdomain/zero/1.0/\">
+                    <img src=\"$base_url/genimg/genimg.php?b=ffffff&l=0\"
+                      style=\"border-style: none;\" alt=\"CC0\">
+                  </a>
+                  <br>
+                  To the extent possible under law,
+                  <a rel=\"dct:publisher\"
+                    href=\"$user_url\">
+                    <span property=\"dct:title\">$user_name</span>
+                  </a>
+                  has waived all copyright and related or neighboring rights to
+                  <a href=\"$work_url\"
+                    property=\"dct:title\">$work_title</a>.</p>";
     } else  {
-        $block = '<a rel="license" href="http://creativecommons.org/licenses/'
-               . $license_abbrv
-               . '/4.0/"><img alt="Creative Commons License" style="border-width:0" src="genimg/genimg.php?b=ffffff&l='
-               . $LIC_GENIMG_CODES[$work['license']]
-               . '" /></a><br /><a href="?action=display&work_id='
-               . $work['work_id']
-               . '"><span xmlns:dct="http://purl.org/dc/terms/" href="'
-               . work_mediatype($work)
-               . '" property="dct:title" rel="dct:type">'
-               . $work['title']
-               . '</span></a> by <a xmlns:cc="http://creativecommons.org/ns#" href="?who&user_id='
-               . $user['user_id']
-               . '" property="cc:attributionName" rel="cc:attributionURL">'
-               . $user['username'] .
-                 '</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/'
-               . $license_abbrv . '/4.0/">' . $license_name
-               . ' 4.0 International License</a>.';
+        $license_name = lic_name($work['license']) . ' 4.0 International License';
+        $license_abbrv = lic_abbrv($work['license']);
+        $mediatype_url = work_mediatype($work);
+        $gencode = lic_genimg_code($work['license']);
+        $icon_url = "$base_url/genimg/genimg.php?b=ffffff&l=$gencode";
+        $license_url = "http://creativecommons.org/licenses/$license_abbrv/4.0/";
+        $lic = "<a rel=\"license\" href=\"$license_url\">
+                  <img alt=\"Creative Commons License\"
+                    style=\"border-width:0\" src=\"$icon_url\" /></a>
+                <br />
+                <a href=\"$work_url\">
+                  <span xmlns:dct=\"http://purl.org/dc/terms/\"
+                    href=\"$mediatype_url\" property=\"dct:title\"
+                    rel=\"dct:type\">$work_title</span></a>
+                by <a xmlns:cc=\"http://creativecommons.org/ns#\"
+                     href=\"$user_url\" property=\"cc:attributionName\"
+                     rel=\"cc:attributionURL\">$user_name</a>
+                is licensed under a <a rel=\"license\" href=\"$license_url\">
+                $license_name</a>.";
     }
-    return $block;
+    return $lic;
 }
 
 // Print the options for a license select, optionally with an "All" entry
 
-function license_option ($index, $selected) {
-    return '<option '
-            . (($index == $selected) ? 'selected ' : '')
-            . 'value="' . $index . '">'
-            . lic_name($index)
-            . '</option>';;
+function license_option ($index, $selection_index) {
+    $selected = ($index == $selection_index) ? 'selected ' : '';
+    $name = lic_name($index);
+    return "<option value=\"$index\" $selected>$name</option>";
 }
 
 function license_options ($selected, $any) {
@@ -164,7 +178,7 @@ function license_options ($selected, $any) {
     if ($any) {
         $options = //.= '<optgroup label="Any License">' .
                    '<option ' . (($selected == '*') ? 'selected ' : '')
-                  . 'value="*">Any</option>'
+                  . 'value="*">Any Terms</option>'
                   //. '</optgroup>'
         ;
     }
@@ -172,22 +186,21 @@ function license_options ($selected, $any) {
     if ($selected == '*') {
         $selected = -1;
     }
-    //$options .= '<optgroup label="Public Domain">';
+    $options .= '<optgroup label="Public Domain">';
     $options .= license_option(7, $selected);
-    //$options .= '</optgroup>';
-    //$options .= '<optgroup label="Free Culture Licenses">';
+    $options .= '</optgroup>';
+    $options .= '<optgroup label="Creative Commons Licenses">';
     $options .= license_option(4, $selected);
     $options .= license_option(5, $selected);
-    //$options .= '</optgroup>';
-    //$options .= '<optgroup label="Non-Free Licenses">';
+    $options .= '</optgroup>';
     $options .= license_option(2, $selected);
     $options .= license_option(1, $selected);
     $options .= license_option(6, $selected);
     $options .= license_option(3, $selected);
-    //$options .= '</optgroup>';
-    //$options .= '<optgroup label="Default Copyright">';
+    $options .= '</optgroup>';
+    $options .= '<optgroup label="Default Copyright">';
     $options .= license_option(0, $selected);
-    //$options .= '</optgroup>';
+    $options .= '</optgroup>';
     return $options;
 }
 
@@ -196,12 +209,11 @@ function license_options ($selected, $any) {
 
 function license_desc ($title, $desc, $selected) {
     if ($selected) {
-        $style = ' class="license-desc-selected"';
+        $style = 'class="license-desc-selected"';
     } else {
-        $style = ' class="license-desc-selected-not"';
+        $style = 'class="license-desc-selected-not"';
     }
-    return '<dt' . $style . '>' . $title . '</dt><dd'
-         . $style . '>' . $desc . '</dd>';
+    return "<dt $style>$title</dt><dd $style>$desc</dd>";
 }
 
 function license_descs ($selected) {
@@ -243,7 +255,6 @@ function license_descs ($selected) {
 // chooses.
 
 function license_descs_onchange ($descs, $select) {
-    global $LICENSE_RANGE_FREEDOM;
     $on = '
 <script>
 document.getElementById("' . $select .'").onchange = function () {
@@ -309,15 +320,15 @@ function print_works_table ($dbh, $works, $show_user, $show_license) {
 
 function print_work_license_changes ($changes) {
     if ($changes) {
-        echo '<h2>License Changes</h2>';
-        echo '<table class="table table-striped"><thead>';
-        echo '<tr><th>License</th><th>Date Applied</th></tr>';
-        echo '</thead><tbody>';
+        echo '<h2>License Changes</h2>
+              <table class="table table-striped"><thead>
+                  <tr><th>License</th><th>Date Applied</th></tr>
+                </thead><tbody>';
         foreach ($changes as $change) {
+            $license = license_for_table ($change['license']);
             $datetime = strtotime($change['when']);
-            echo '<tr><td>' . license_for_table ($change['license'])
-               . '</td><td>' . date('l jS \of F Y h:i:s A', $datetime)
-               . '</td></tr>';
+            $timestamp = date('l jS \of F Y h:i:s A', $datetime);
+            echo "<tr><td>$license</td><td>$timestamp</td></tr>";
         }
         echo '</tbody></table>';
     }
@@ -622,6 +633,10 @@ function work_display ($work) {
 
 session_start();
 
+$BASE_URL = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']);
+
+error_log($BASE_URL);
+
 $action = '';
 if (isset($_REQUEST["action"])) {
     $action = strip_tags($_REQUEST["action"]);
@@ -788,7 +803,10 @@ switch ($action) {
             if ($license_work && $license_work['user_id'] == $user_id) {
                 if (isset($_POST['license'])) {
                     $license = intval($_POST['license']);
-                    update_work_license($dbh, $work_id, $license);
+                    // Don't record an update if the license hasn't changed
+                    if($license != $license_work['license']) {
+                        update_work_license($dbh, $work_id, $license);
+                    }
                     header('Location:?action=display&work_id=' . $work_id);
                     exit;
                 }
@@ -999,14 +1017,13 @@ if ($logged_in) {
 ////////////////////////////////////////////////////////////
 
 switch ($action) {
-
 default:
 ?>
     <h1>Welcome to Model Platform!</h1>
     <p>You can <a href="?action=login">login/register</a> or
       <a href="?action=browse">browse existing works</a></p>
 <?php
-    break;
+break;
 
 case "login":
 ?>
@@ -1066,6 +1083,9 @@ case "new":
 <?php
     echo license_descs(user_default_license ($dbh, $_SESSION['user_id']));
     echo license_descs_onchange('license-descs', 'license');
+?>
+    <p>Learn more <a href="html/cc.html">about the licenses</a>.</p>
+<?php
     break;
 
 case "newprocess":
@@ -1101,6 +1121,7 @@ case "search":
     </form>
     <?php echo license_descs($cl);
           echo license_descs_onchange('license-descs', 'license'); ?>
+    <p>What is Creative Commons? <a href="html/cc.html">Learn more</a>.</p>
     <script>
      var keywords_field = document.getElementById('keywords');
      var search_field = document.getElementById('search');
@@ -1135,8 +1156,8 @@ case "display":
     <a href="?action=who&user_id=<?php echo $user_row['user_id']; ?>">
       <?php echo $user_row['username'] ?></a></h2>
     <?php echo work_display($work_row); ?>
-    <div id="license-block" class="well">
-      <?php echo license_block($dbh, $work_row); ?>
+    <div id="license-block" >
+      <?php echo license_block($dbh, $BASE_URL, $work_row); ?>
     </div>
     <div class="display-buttons">
       <a class="btn btn-info" id="copy-attribution-button"
@@ -1246,7 +1267,7 @@ case "license":
          <?php echo $license_work['title']; ?></a></h2>
      <?php echo work_display($license_work); ?>
      <div id="license-block" class="well">
-       <?php echo license_block($dbh, $license_work); ?>
+       <?php echo license_block($dbh, $BASE_URL, $license_work); ?>
      </div>
     <form action="?action=license" method="post">
       <input type="hidden" name="work_id"
@@ -1319,7 +1340,7 @@ case 'browse':
     foreach ($browse_license_ids as $license) {
         $works_count = count_works_with_license($dbh, $license);
         if ($works_count > 0) {
-            echo '<h3>' .lic_icons($license)
+            echo '<h3>' .lic_icons($base_url, $license)
                . ' ' . lic_name($license) . '</h3>';
             print_works_table($dbh, $browse_results[$license], true, false);
             if ($browse_all) {
@@ -1343,6 +1364,9 @@ case 'browse':
     <?php
     echo license_descs($browse_initially_selected);
     echo license_descs_onchange ('license-descs', 'license');
+?>
+    <p>What is Creative Commons? <a href="html/cc.html">Learn more</a>.</p>
+<?php
     break;
 }
 
@@ -1356,7 +1380,7 @@ function setupdb() {
 
     $sql = "CREATE TABLE IF NOT EXISTS `users` (
 	    `user_id` INTEGER PRIMARY KEY AUTOINCREMENT,
-	    `username` varchar(200) NOT NULL,
+	    `username` varchar(200) NOT NULL UNIQUE,
         `default_license` INT NOT NULL DEFAULT 0
       );";
 
@@ -1386,7 +1410,6 @@ function setupdb() {
 }
 
 ?>
-
         <hr>
         <ul class="list-unstyled list-inline">
           <li><a href="html/tos.html">Terms of Service</a></li>
@@ -1397,6 +1420,8 @@ function setupdb() {
         </ul>
       </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+            integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+            crossorigin="anonymous"></script>
   </body>
 </html>
