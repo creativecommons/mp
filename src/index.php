@@ -192,7 +192,6 @@ function license_options ($selected, $any) {
     $options .= '<optgroup label="Creative Commons Licenses">';
     $options .= license_option(4, $selected);
     $options .= license_option(5, $selected);
-    $options .= '</optgroup>';
     $options .= license_option(2, $selected);
     $options .= license_option(1, $selected);
     $options .= license_option(6, $selected);
