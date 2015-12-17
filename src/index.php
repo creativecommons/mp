@@ -79,7 +79,7 @@ function lic_button($license) {
 
 // The icons image (or span) for the license. Plural as BY-SA has 2 icons etc.
 
-function lic_icons ($base_url, $license, $size) {
+function lic_icons ($base_url, $license) {
     if ($license == 0) {
         $icons = '<span class="copyright-logo">&copy</span>';
     } else {
@@ -634,8 +634,6 @@ function work_display ($work) {
 session_start();
 
 $BASE_URL = 'http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']);
-
-error_log($BASE_URL);
 
 $action = '';
 if (isset($_REQUEST["action"])) {
@@ -1340,7 +1338,7 @@ case 'browse':
     foreach ($browse_license_ids as $license) {
         $works_count = count_works_with_license($dbh, $license);
         if ($works_count > 0) {
-            echo '<h3>' .lic_icons($base_url, $license)
+            echo '<h3>' .lic_icons($BASE_URL, $license)
                . ' ' . lic_name($license) . '</h3>';
             print_works_table($dbh, $browse_results[$license], true, false);
             if ($browse_all) {
