@@ -95,3 +95,7 @@ tr {
 .license-desc-selected-not > a {
     color: lightsteelblue;
 }
+
+#attribution-alert {
+    margin-top: 12px;
+}

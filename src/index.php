@@ -1158,7 +1158,7 @@ case "display":
     </div>
     <div class="display-buttons">
       <a class="btn btn-info" id="copy-attribution-button"
-          href="#">Copy Attribution</a>
+         href="#">Copy Attribution</a>
       <a class="btn btn-success" download
          href="?action=download&work_id=<?php echo $work_row['work_id'];
            ?>">Download File
@@ -1171,6 +1171,12 @@ case "display":
         href="?action=license&work_id=<?php echo $work_row['work_id'] ?>">
           Change license</a>
 <?php } ?>
+    </div>
+    <div id="attribution-alert" class="alert alert-success alert-dismissible fade in" role="alert" hidden>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <strong>OK!</strong> The attribution has been copied to the clipboard.
     </div>
     <div id="attribution-popup" class="well" hidden>
         <textarea id="attribution-popup-text">textarea</textarea><br>
@@ -1185,6 +1191,10 @@ case "display":
                                     .replace(/&amp;/g,'&') + "\n";
      var clipboard = new Clipboard('#copy-attribution-button', {
          text: function(trigger) {
+             $('#attribution-alert').show(400);
+             setTimeout(function() {
+                 $('#attribution-alert').hide(400);
+                 }, 5000);
              return license_metadata;
          }
      });
