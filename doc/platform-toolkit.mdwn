@@ -4,16 +4,16 @@
 ## About this toolkit
 
 **What**: This toolkit covers the elements for a Creative Commons platform integration, including aligning legal terms to CC tools; installing the CC license chooser; displaying CC licensed content with the correct logos and links; and how to communicate CC to your users. See the Table of Contents to skip to the topic you need help on. 
-*What this is not*: Legal advice. There may be unique issues that apply to you that aren’t considered here. See Beyond this Toolkit[link].
+**What this is not**: Legal advice. There may be unique issues that apply to you that aren’t considered here. See [Beyond this Toolkit](#beyond-this-toolkit).
 
 **Who**: User-generated content platforms that want to address the increasing public demand for sharing under CC licenses and public domain tools. Think of it as an onboarding tool -- everything you need to know to get from zero to CC integration.
-*Who this is not designed for*: Organizations or individual licensors looking to apply a CC license to their own publications or other materials. Though helpful, most of this toolkit will not apply to you. Please refer to our best practices for marking and 
+**Who this is not designed for**: Organizations or individual licensors looking to apply a CC license to their own publications or other materials. Though helpful, most of this toolkit will not apply to you. Please refer to our [best practices for marking and attribution](https://wiki.creativecommons.org/wiki/Marking) instead.
 
-**Why**: Creative Commons works to create easy, clear, and enjoyable ways for users to contribute to the [commons](https://en.wikipedia.org/wiki/Commons) on web platforms they already know and use. Many platforms already allow easy sharing under CC tools, allowing their users to share and remix millions of freely licensed works. This toolkit will help you join the network of major platforms like Flickr, Vimeo, and Medium with engaged and creative communities that benefit from the awesome content under Creative Commons licenses.
+**Why**: Creative Commons works to create easy, clear, and enjoyable ways for users to contribute to the [commons](https://en.wikipedia.org/wiki/Commons) on web platforms they already know and use. [Many platforms](https://stateof.creativecommons.org] already allow easy sharing under CC tools, allowing their users to share and remix millions of freely licensed works. This toolkit will help you join the network of major platforms like Flickr, Vimeo, and Medium with engaged and creative communities that benefit from the awesome content under Creative Commons licenses.
 
 *License*: This web version of the toolkit is free for you to reuse and remix under the terms of the CC Attribution 4.0 International license. Please credit Creative Commons with a link back to [insert toolkit url]. If you modify this toolkit, don’t suggest that we endorse your revisions. [TBD: Other versions include: the wiki, downloadable PDF.]
 
-*Learn more*: This toolkit is part of a larger initiative to transform platforms into vibrant, creative spaces for the commons. If you would like to get involved with larger aspects of our work, visit this page [TB replaced with CC webpage].
+*Learn more*: This toolkit is part of a larger initiative to transform platforms into vibrant, creative spaces for the commons. If you would like to get involved with larger aspects of our work, [visit this page](https://github.com/creativecommons/platform-initiative).
 
 ## The different types of content on your platform
 
