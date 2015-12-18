@@ -3,7 +3,7 @@
 Please only run Model Platform locally. The code has been written to be robust
 against user error but not attack.
 
-Model platofrm has the following dependencies:
+Model platform has the following dependencies:
 
 php5 php5-gd php5-sqlite
 
