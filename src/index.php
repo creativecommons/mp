@@ -394,9 +394,9 @@ function update_work_license ($dbh, $work_id, $license) {
 
 // Users have a default license for their work.
 
-function update_user_default_license ($dbh, $user, $license) {
+function update_user_default_license ($dbh, $user_id, $license) {
     $update_lic = 'UPDATE users SET default_license=' . $license
-                . ' WHERE user_id=' . $user['user_id'];
+                . ' WHERE user_id=' . $user_id ;
     $ok = $dbh->exec($update_lic);
     return $ok;
 }
