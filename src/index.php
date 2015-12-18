@@ -1026,7 +1026,7 @@ case "search":
            maxlength="200" size="32"
           <?php
           if (isset($_POST['keywords'])) {
-              echo 'value="' . strip_tags($_POST['keywords']) . '"';
+              echo 'value="' . htmlspecialchars($_POST['keywords']) . '"';
           }
           ?>>
       </div>
