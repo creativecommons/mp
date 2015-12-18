@@ -146,14 +146,14 @@ When a user uploads or publishes her work to a platform, they are doing so with 
 
 Depending on the goals of your platform, you would either set the default selection for sharing at “all rights reserved copyright” or one of the CC licenses. The following order is recommended for platforms that want to encourage users to share more liberally with their communities.
 
-- CC0[link=creativecommons.org/publicdomain/zero/1.0/], if applicable[link=https://github.com/creativecommons/platform-initiative/wiki/6:-License-Suite-Adoption-Guidelines]
-- Public Domain Mark[link=creativecommons.org/publicdomain/mark/1.0/], if applicable[link=https://github.com/creativecommons/platform-initiative/wiki/6:-License-Suite-Adoption-Guidelines]
-- CC BY[link=https://creativecommons.org/licenses/by/4.0/]
-- CC BY-SA[link=https://creativecommons.org/licenses/by-sa/4.0/]
-- CC BY-ND[link=https://creativecommons.org/licenses/by-nd/4.0/]
-- CC BY-NC[link=https://creativecommons.org/licenses/by-nc/4.0/]
-- CC BY-NC-SA[link=https://creativecommons.org/licenses/by-nc-sa/4.0/]
-- CC BY-NC-ND[link=https://creativecommons.org/licenses/by-nc-nd/4.0/]
+- [CC0](https://creativecommons.org/publicdomain/zero/1.0/), if [applicable](https://github.com/creativecommons/platform-initiative/wiki/6:-License-Suite-Adoption-Guidelines)
+- [Public Domain Mark](https://creativecommons.org/publicdomain/mark/1.0/), if [applicable](https://github.com/creativecommons/platform-initiative/wiki/6:-License-Suite-Adoption-Guidelines)
+- [CC BY](https://creativecommons.org/licenses/by/4.0/)
+- [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)
+- [CC BY-ND](https://creativecommons.org/licenses/by-nd/4.0/)
+- [CC BY-NC](link=https://creativecommons.org/licenses/by-nc/4.0/)
+- [CC BY-NC-SA](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+- [CC BY-NC-ND](https://creativecommons.org/licenses/by-nc-nd/4.0/)
 - All rights reserved copyright or other custom terms
 
 Users should be able to toggle between license options and learn more about each license before making a final choice. This can be achieved by clearly linking each option to the corresponding license deed, eg. [https://creativecommons.org/licenses/by/4.0/](https://creativecommons.org/licenses/by/4.0/) for CC BY, and by displaying the corresponding license icons per option, eg. (cc in a circle) + (attribution man in a circle) for CC BY. We further recommend providing a short description of each license upon selection, eg. “This license lets others distribute, remix, tweak, and build upon your work, even commercially, as long as they credit you for the original creation” for CC BY, or at the very least a link to the full set of descriptions for more information, eg. “Learn more about the CC licenses at [https://creativecommons.org/licenses/](https://creativecommons.org/licenses/).” 
@@ -182,7 +182,7 @@ When a user accesses content on your platform, it is important for them to know 
 
 License display on a resource consists of 3 components:
 
-- The corresponding specific CC license icon(s)[link=https://creativecommons.org/about/downloads#Icons], eg. (cc in a circle) + (attribution man in a circle) for CC BY
+- The corresponding specific [CC license icon(s)](link=https://creativecommons.org/about/downloads#Icons), eg. (cc in a circle) + (attribution man in a circle) for CC BY
 - Link to the corresponding license deed, eg. https://creativecommons.org/licenses/by/4.0/ for CC BY
 - Machine-readable metadata on the backend, a small snippet of html code that indicates the license to search engines and other kinds of software. This is invisible to the lay user, but visible in the source code. The metadata behind each license display should correspond to the metadata chosen via the license chooser process. (See Section F for more details)
 
@@ -256,9 +256,9 @@ Use of our logos, icons, and trademark are governed by our policies[link=https:/
 
 ###Additional design resources: 
 
-You may find helpful Medium’s design process[link=https://medium.com/designing-medium/everyday-design-84838adc4e93] of its CC user experience.
+You may find helpful [Medium’s design process](https://medium.com/designing-medium/everyday-design-84838adc4e93) of its CC user experience.
 
-Learn more about the origin of the CC logos and icons in this feature entitled: A Masterwork in Simplicity: The Story of the CC Logo[link=https://medium.com/@creativecommons/a-masterwork-in-simplicity-the-story-of-the-cc-logo-7e2e231a26e7]
+Learn more about the origin of the CC logos and icons in this feature entitled: [A Masterwork in Simplicity: The Story of the CC Logo](https://medium.com/@creativecommons/a-masterwork-in-simplicity-the-story-of-the-cc-logo-7e2e231a26e7)
 
 ###Checklist. Check if the following are true.
 
@@ -270,6 +270,7 @@ License chooser
 - License metadata is integrated into the source code of the license selection process 
 - The license logos and icons accompany each license selection
 - A short snippet of explanatory text and/or link to the CC license accompanies each license selection
+
 License display on content
 - The CC license is clearly displayed on the content page, with the following:
 - License icon(s)
@@ -290,12 +291,12 @@ If you would like to be able to move the CC-licensed content on your platform to
 
 Once you have integrated CC into the first two components of your user interface correctly (license selection and content display), you can integrate the same license metadata into your search so that users can filter content on your platform by license, or by reuse categories that address their needs. In addition to adding license filters to your platform’s search, you can also provide a portal to CC-licensed content, a landing page for those users seeking commons content on your platform. We provide examples and details for both in this section.
 
-###CC filters in search: 
+### 1. CC filters in search: 
 You can filter by licenses in two ways - by license or by a few reuse categories that are most applicable to what your users are seeking.
 
-example 1
+> example 1
 
-example 2: http://search.creativecommons.org/ screenshot
+> example 2: http://search.creativecommons.org/ screenshot
 
 Example 1 demonstrates filtering by license, which is pretty straightforward. When you filter by license, make sure to use the same order of licenses you used in the license selection process[link=section]. All content licensed under a specific CC license should appear in the results when the corresponding license is checked. For example, when CC BY is checked, all content licensed under CC BY would show in the results. 
 
@@ -306,46 +307,46 @@ Example 2 demonstrates filtering by a few reuse categories that correspond to co
 
 If you choose to use categories different from the ones above, make sure that they accurately portray the usage rights given by the CC licenses and that the right subset of CC licensed content is returned with each filter. 
 
-###CC content portal and browse features: 
+### 2. CC content portal and browse features: 
 
-example, eg. https://wiki.creativecommons.org/wiki/Web_Integration/InterfaceExample
+> example, eg. https://wiki.creativecommons.org/wiki/Web_Integration/InterfaceExample
 
 Platforms like Flickr and Vimeo have landing pages that serve as portals to CC-licensed content to allow users to browse the commons in one place. These portals accomplish several goals, including providing direct and easy access to CC content; explaining the diversity of CC licenses and content options; surfacing the significance of sharing culture; and building a community around the commons. It is important that this page is accessible from your home page, or easily navigated to from somewhere equally obvious in the user interface. If your platform is interested in providing a landing page for the commons, see Section VIII for some additional language and resources you might include.
 
-###License metadata for search 
+### 3. License metadata for search 
 
 At the user interface level, the user can specify either “All” or “Any Terms” if they do not wish to constrain their search by license. If they do wish to search for licensed works they can specify specific licenses from a list, or they can choose license affordances using radio buttons for reuse categories that correspond to content under more than one license. For example: “Use Even Commercially” / “Only Use Non Commercially” and for “Do Not Allow Adaptations”/”Allow Adaptations”/”Allow Adaptations As Long As The User Shares Alike”.
 
 At the back-end level, either source can be used to determine a list of license identifiers to be used to constrain the search. At the software level this is simply an SQL “where” clause or equivalent. 
 
-##Attributing authors of CC content
+## Attributing authors of CC content
 
 With so much user-generated content on your platform, it is important that your users respect and give credit to each other. All six CC licenses require attribution, which includes naming both the author and the specific CC license the work is under. We also recommend giving attribution for public domain works as a best practice, even if it’s not legally required. Attribution can be automatically generated or prompted on your platform at the point where a user downloads a CC licensed work. Attribution should also be prompted in any remix tool, or if you allow users to upload third party content under CC licenses.
 
-###Attribution at the point of download
+### 1. Attribution at the point of download
 
-example (https://vimeo.com/musicstore)
+> example (https://vimeo.com/musicstore)
 
-example (MIT OCW)
+> example (MIT OCW)
 
 When a user downloads content from your platform, she is intending to reuse it in some way. Providing a suggested attribution both highlights the  importance of giving credit while giving the user text which she can easily copy and paste. If you have integrated the CC license metadata, suggested attribution text can be generated automatically from the source code on the page. 
 example - “copy attribution” button in model platform (screenshots): At the code level this means filling out a template based on the metadata examples above. It is simply a case of creating a license chooser according to best practices for attribution text.
 
-###Attribution in remix tools
+### 2. Attribution in remix tools
 
-example - ?
+> example - ?
 
 If you allow your users to build on each others works within the platform itself via a remix tool or similar, then we suggest automating attribution when a user pulls a work into her remix. Any automated attribution should include at a minimum the author and license of the original work (with link to the specific license). Best practice is to retain TASL, standing for Title, Author, Source, and License, in any attribution. For more information see, our Best practices for attribution[link=https://wiki.creativecommons.org/wiki/Best_practices_for_attribution].
 
-###Attribution for content that your users don’t own but contribute to your platform under CC licenses 
+### 3. Attribution for content that your users don’t own but contribute to your platform under CC licenses 
 
-Example: is this owned by you? checkbox screenshot
+> Example: is this owned by you? checkbox screenshot
 
 If you allow your users to share third party CC licensed content on your platform, be sure to require attribution for that content at the point of upload, similar to users licensing their own work at the point of upload. The distinction, however, should be made that the users are sharing content that is not their own through a field for them to indicate the original author of the work. Again, please refer to TASL and our Best practices for attribution[link=https://wiki.creativecommons.org/wiki/Best_practices_for_attribution] for more information.
 
 ###Additional attribution guidance for your users
 
-Example: attribution guide on someone else’s platform
+> Example: attribution guide on someone else’s platform
 
 Consider providing your users with attribution guidance, especially if your platform hosts domain-specific content that has different attribution norms, eg. academic research. CC’s general Best practices for attribution[link=https://wiki.creativecommons.org/wiki/Best_practices_for_attribution] may be linked to or adapted for your purposes.
 
