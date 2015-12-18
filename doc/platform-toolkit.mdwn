@@ -18,51 +18,65 @@
 ## The different types of content on your platform
 
 The primary focus of this toolkit is to help you enable CC licenses for user-generated content (UGC) on your platform. However, you probably have other types of content on your platform as well. We have categorized the main types of content most platforms deal with:
+
 1. content owned by your users; 
 2. content owned by you, the platform provider; and 
 3. third party content contributed to your platform. 
+
 All CC-licensed content functions the same for your users once it is published on your site -- they can use the content freely under the terms of the relevant Creative Commons license. But for you as the platform provider, there are a few things to consider that are specific to each category of content.
 
 #####Content owned by your users: 
 If you enable your users to apply CC licenses to their content on your platform, your primary goal should be ensuring they understand the basics of how the licenses work, especially because the licenses are irrevocable. You can decide which of the six license types and two public domain tools you want to enable users to apply and then make sure to mark the content to identify which license applies to which content. In nearly all cases, this content remains owned by the user, and the platform gets the rights to host it via the CC license that is applied or via a separate license in the terms of service. (More on that below.)
 
-#####Content owned by the platform: 
+##### Content owned by the platform: 
 As the copyright holder for this type of content, the world is your oyster! If you choose to apply a CC license to any of it, just be sure to mark which license applies (type and version) and mark any content that is not covered by the license, such as company logos or other trademarks. 
 
-#####Third party content contributed to the platform: 
+##### Third party content contributed to the platform: 
 If you allow your users to upload content created by others, it is important to be clear about what permissions they need to have from the author before doing so. Many platforms permit users to upload content they do not own so long as it is available under a Creative Commons license (or one of some particular subset of CC licenses). The decision to allow users to upload third party content, and if so, which particular Creative Commons licenses are permitted, comes down to how the content on the platform is and could be used by both the platform itself and other users. In some cases the platform will specify the particular types of CC-licensed content that are permitted (1) and in others the platform puts the onus on the uploader to make the determination (2). 
 
-Example: A platform hosting open educational resources (OER) wants its educators to share and build on relevant and high quality resources. This platform may find it desirable to enable its users to share and remix existing third party OER under CC licenses. This platform may choose to specify that only third party content under a specific CC license, eg. CC BY, may be shared (1), or it may allow third party content under various licenses as long as the user maintains she has the rights to reuse the content (2).
+> **Example**: A platform hosting open educational resources (OER) wants its educators to share and build on relevant and high quality resources. This platform may find it desirable to enable its users to share and remix existing third party OER under CC licenses. This platform may choose to specify that only third party content under a specific CC license, eg. CC BY, may be shared (1), or it may allow third party content under various licenses as long as the user maintains she has the rights to reuse the content (2).
 
 ## CC and your Terms of Service
 
 In this section, we cover a few basic elements for an ideal TOS, explain some additional legal considerations for adding CC licenses to your site, and identify the most common problems in terms of service and how to fix them. 
 
-###Checklist for an ideal TOS: 
+### Checklist for an ideal TOS: 
+
 Website terms of service are not strictly necessary, but most platforms have them. For those that do, we recommend including the following elements if the platform enables CC licensing for user-generated content. 
-#####In the most simple and accessible terms possible, the TOS should explain how CC licensing works for content creators on the platform. 
+
+##### 1. In the most simple and accessible terms possible, the TOS should explain how CC licensing works for content creators on the platform. 
 For example, is the default that all user-generated content is published under a particular CC license, or do users simply have the option to select a CC license for their work? See Section III.F.1 for a real-life example. 
-#####The TOS should make it clear that users of the platform can reuse CC-licensed content according to the terms and conditions of the applicable license. 
+
+##### 2. The TOS should make it clear that users of the platform can reuse CC-licensed content according to the terms and conditions of the applicable license. 
 Many users will not be familiar with CC licensing, so it is best to spell this out explicitly. You can also link to information that explains how CC licenses work in more detail. If the TOS include other provisions that restrict the way content is used on the site, then providing certainty that CC-licensed content may be used according to the license terms is particularly important. See Section III.D.1 below for more information. See Section III.F.2 for a real-life example. 
-#####The TOS should state in clear terms what types of existing CC-licensed content (created by third parties and not the user) can be uploaded by users and how that content should be marked. 
+
+##### 3. The TOS should state in clear terms what types of existing CC-licensed content (created by third parties and not the user) can be uploaded by users and how that content should be marked. 
 For example, some sites only allow users to upload content under CC licenses allowing commercial use. Others allow any CC-licensed content. In all cases, the TOS should also state how such content should be marked with license and attribution information. See Section II.D above for more information how to determine what types of third party content to allow and Section III.D.2 for information on how to avoid a common conflict related to third party content. See Section III.F.3 for a real-life example. 
 
-###Other considerations for TOS
-- License from contributors: Where users are uploading content that is already CC-licensed (whether their own content or others), the platform can get all of the copyright permission it needs to use the work from the applicable CC license. However, platforms often include a direct copyright license grant from the uploader to the platform in their terms of service. In cases where people are uploading CC-licensed content owned by others, the direct license to the platform is in conflict with the CC license. See the section below about Third Party CC-Licensed Content (Section III.D.2) for more information about this conflict and how to address it. 
-- Reps & warranties: Platforms often ask their users to formally promise that the content they upload to the platform is not infringing of others’ copyright or other rights. CC licenses do not include reps and warranties of this type, and CC-licensed content comes “as-is” or without guarantees. However, platforms may still ask their users to represent that they have the necessary rights to all content they upload, including CC-licensed content. 
-- Later versions of the licenses: In 2013, Creative Commons published the latest version of the license suite - version 4.0. We have no plans to version the licenses again for many years, but it is realistic to assume that eventually the licenses will be updated to reflect legal and policy changes. Only the rights holder can apply a new version of the licenses to a work, so platforms may want to consider getting express permission from their users to move to the most updated license of the particular CC license applied to a work when those future versions are released. This can be done in the terms of service or at the point of upload where the user applies the CC license to their work. 
+### Other considerations for TOS
 
-###Most common conflicts in terms of service
+1. **License from contributors**: Where users are uploading content that is already CC-licensed (whether their own content or others), the platform can get all of the copyright permission it needs to use the work from the applicable CC license. However, platforms often include a direct copyright license grant from the uploader to the platform in their terms of service. In cases where people are uploading CC-licensed content owned by others, the direct license to the platform is in conflict with the CC license. See the section below about Third Party CC-Licensed Content (Section III.D.2) for more information about this conflict and how to address it. 
+2. **Reps & warranties**: Platforms often ask their users to formally promise that the content they upload to the platform is not infringing of others’ copyright or other rights. CC licenses do not include reps and warranties of this type, and CC-licensed content comes “as-is” or without guarantees. However, platforms may still ask their users to represent that they have the necessary rights to all content they upload, including CC-licensed content. 
+3. **Later versions of the licenses**: In 2013, Creative Commons published the latest version of the license suite - version 4.0. We have no plans to version the licenses again for many years, but it is realistic to assume that eventually the licenses will be updated to reflect legal and policy changes. Only the rights holder can apply a new version of the licenses to a work, so platforms may want to consider getting express permission from their users to move to the most updated license of the particular CC license applied to a work when those future versions are released. This can be done in the terms of service or at the point of upload where the user applies the CC license to their work. 
 
-####Additional restrictions: Many TOS include restrictions on how content on the platform may be used. Imposing additional terms that contradict the CC license confuses users and undermines the point of license standardization. CC strongly discourages this practice. 
-#####Learn more.
+### Most common conflicts in terms of service
+
+#### 1. Additional restrictions
+Many TOS include restrictions on how content on the platform may be used. Imposing additional terms that contradict the CC license confuses users and undermines the point of license standardization. CC strongly discourages this practice. 
+
+##### Learn more.
 At the end of the day, we want to ensure that people who come across CC-licensed work can trust that they can use that work under the terms of the CC license. When extra restrictions are imposed on CC-licensed content -- whether by changing the license terms themselves or by imposing new contractual restrictions via terms of service -- Creative Commons requires that the CREATIVE COMMONS name and brand be removed to avoid confusing people about the source of the more restrictive terms imposed by the platform. Anything that imposes additional conditions or narrows the permissions granted by a standard CC license is prohibited. For example: prohibiting download of CC-licensed works, or adding extra attribution requirements. For more details, read the full CC License Modification Policy here[link= https://wiki.creativecommons.org/Modifying_the_CC_licenses]. 
 
 Your platform may have extra restrictions that are not intended for CC-licensed content. For example, a platform may include terms that limit use of the platform to noncommercial purposes. In these cases, we recommend adding language that clarifies that these and other restrictions do not apply to CC-licensed content.
 
-Example language: “For the avoidance of doubt, nothing in this Agreement is designed to prevent you from reusing content available under a Creative Commons license according to the terms and conditions of the applicable license.”
+> **Example language**: "For the avoidance of doubt, nothing in this Agreement is designed to prevent you from reusing content available under a Creative Commons license according to the terms and conditions of the applicable license."
 
-####User guidelines and other supplemental materials
+#### 2. Third party CC-licensed content
+As noted above[link to License from contributors], platforms often require their users to grant a separate, direct copyright license to the platform for all content they upload.This creates a conflict when a user uploads CC-licensed content owned by others (third parties) because the user cannot grant rights to content they don’t own; only the original CC licensor can grant these rights to the platform. Therefore, it is important that the direct license written into the TOS excludes CC-licensed content owned by someone other than the uploader. 
+
+> **Example language**: “If you provide any content to [the platform], you grant [the platform] a nonexclusive, royalty-free right to use that content, unless the content is not owned by you, in which case you represent and warrant that such content is in the public domain or available under a Creative Commons license or other terms permitting upload to the [the platform].”
+
+### User guidelines and other supplemental materials
 Platforms often have additional guidelines or rules that are incorporated by reference into the TOS. Obviously, it’s important that those rules accurately describe how the licenses work and that they not create any conflicts with the terms in your TOS. 
 
 ####Examples
