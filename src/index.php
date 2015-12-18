@@ -203,79 +203,6 @@ function license_options ($selected, $any) {
     return $options;
 }
 
-// The license description block that goes under the license chooser to inform
-// the user what each license (and none) allows.
-
-function license_desc ($title, $desc, $selected) {
-    if ($selected) {
-        $style = 'class="license-desc-selected"';
-    } else {
-        $style = 'class="license-desc-selected-not"';
-    }
-    return "<dt $style>$title</dt><dd $style>$desc</dd>";
-}
-
-function license_descs ($selected) {
-    $all = false;
-    if ($selected == '*') {
-        $selected = -1;
-        $all = true;
-    }
-    $descs = '<dl id="license-descs" class="well">';
-    $descs .= license_desc('<a href="html/cc.html#cc0">Creative Commons Zero</a>',
-                       'Waive all rights and place a work in the public domain.',
-                       $all || $selected == 7);
-    $descs .= license_desc('<a href="html/cc.html#cc-by">Creative Commons Attribution</a>',
-                       'Lets others distribute, remix, tweak, and build upon your work as long as they credit you.',
-                       $all || $selected == 4);
-    $descs .= license_desc('<a href="html/cc.html#cc-by-sa">Creative Commons Attribution-ShareAlike</a>',
-                       'Allows for redistribution, commercial and non-commercial, as long as it is passed along unchanged and in whole, with credit to you.',
-                       $all || $selected == 5);
-    $descs .= license_desc('<a href="html/cc.html#cc-by-nc">Creative Commons Attribution-NonCommercial</a>',
-                       'Lets others remix, tweak, and build upon your work as long as they credit you and place their new creations under the same license.',
-                       $all || $selected == 2);
-    $descs .= license_desc('<a href="html/cc.html#cc-by-nc-sa">Creative Commons Attribution-NonCommercial-ShareAlike</a>',
-                       "Lets others remix, tweak, and build upon your work, as long as they credit you and license their new creations under the identical terms and don't do so commercially.",
-                       $all || $selected == 1);
-    $descs .= license_desc('<a href="html/cc.html#cc-by-nd">Creative Commons Attribution-NoDerivatives</a>',
-                       'Allows for redistribution as long as it is passed along unchanged and in whole, with credit to you',
-                       $all || $selected == 6);
-    $descs .= license_desc('<a href="html/cc.html#cc-by-nc-nd">Creative Commons Attribution-NonCommercial-NoDerivatives</a>',
-                       "Allows others to download your works and share them with others as long as they credit you, but they can’t change them in any way or use them commercially.",
-                       $all || $selected == 3);
-    $descs .= license_desc('<a href="html/cc.html#arr">All Rights Reserved</a>',
-                       'Default copyright.',
-                       $all || $selected == 0);
-    $descs .= '</dl>';
-    return $descs;
-}
-
-// The JavaScript function to select the description for the license the user
-// chooses.
-
-function license_descs_onchange ($descs, $select) {
-    $on = '
-<script>
-document.getElementById("' . $select .'").onchange = function () {
-    var descs = $("#' . $descs . '").children();
-    if (this.options[this.selectedIndex].value == "*") {
-        descs.removeClass("license-desc-selected-not")
-        descs.addClass("license-desc-selected");
-    } else {
-        var indices = [7, 4, 3, 6, 1, 2, 5, 0];
-        var selected = indices[this.options[this.selectedIndex].value];
-        descs.removeClass("license-desc-selected")
-        descs.addClass("license-desc-selected-not");
-        $(descs[selected * 2]).removeClass("license-desc-selected-not");
-        $(descs[selected * 2]).addClass("license-desc-selected");
-        $(descs[selected * 2 + 1]).removeClass("license-desc-selected-not");
-        $(descs[selected * 2 + 1]).addClass("license-desc-selected");
-    }
-}
-</script>';
-    return $on;
-}
-
 ////////////////////////////////////////////////////////////////////////////////
 // Presenting works and information
 ////////////////////////////////////////////////////////////////////////////////
@@ -1068,7 +995,9 @@ case "new":
           maxlength="200" size="32">
       </div>
       <div class="form-group">
-        <label for="license">License</label>
+        <label for="license">License
+          <small><em>( <a href="html/cc.html">About the licenses</a> )</em>
+          </small</label>
         <select name="license" id="license" class="form-control">
           <?php echo license_options(user_default_license ($dbh,
                                                            $_SESSION['user_id']),
@@ -1077,11 +1006,6 @@ case "new":
       </div>
       <input type="submit" class="btn btn-default" value="Upload">
     </form>
-<?php
-    echo license_descs(user_default_license ($dbh, $_SESSION['user_id']));
-    echo license_descs_onchange('license-descs', 'license');
-?>
-    <p>Learn more <a href="html/cc.html">about the licenses</a>.</p>
 <?php
     break;
 
@@ -1107,7 +1031,9 @@ case "search":
           ?>>
       </div>
       <div class="form-group">
-        <label for="license">License</label>
+        <label for="license">License
+          <small><em>( <a href="html/cc.html">About the licenses</a> )</em>
+          </small</label>
         <select name="license" id="license" class="form-control">
           <?php echo license_options($cl, true); ?>
         </select>
@@ -1116,9 +1042,6 @@ case "search":
           value="Search"
           <?php if (! isset($_POST['keywords'])) { echo ' disabled'; } ?>>
     </form>
-    <?php echo license_descs($cl);
-          echo license_descs_onchange('license-descs', 'license'); ?>
-    <p>What is Creative Commons? <a href="html/cc.html">Learn more</a>.</p>
     <script>
      var keywords_field = document.getElementById('keywords');
      var search_field = document.getElementById('search');
@@ -1238,7 +1161,9 @@ case "who":
     <h3>Default License</h3>
     <form action="?action=whodefaultlicenseprocess" method="post">
       <div class="form-group">
-        <label for="default_license">License</label>
+        <label for="default_license">License
+          <small><em>( <a href="html/cc.html">About the licenses</a> )</em>
+          </small></label>
         <select name="default_license" id="default_license"
            class="form-control">
            <?php echo license_options(user_default_license($dbh, $who_id),
@@ -1249,8 +1174,6 @@ case "who":
          value="Change Default License">
     </form>
 <?php
-            echo license_descs(user_default_license($dbh, $who_id));
-            echo license_descs_onchange('license-descs', 'default_license');
         }
     } else {
 ?>
@@ -1280,7 +1203,9 @@ case "license":
       <input type="hidden" name="work_id"
          value="<?php echo $license_work['work_id']; ?>">
       <div class="form-group">
-        <label for="license">License</label>
+        <label for="license">License
+          <small><em>( <a href="html/cc.html">About the licenses</a> )</em>
+          </small></label>
         <select name="license" id="license" class="form-control">
            <?php echo license_options($license_work['license'],
                                       false); ?>
@@ -1289,8 +1214,6 @@ case "license":
       <input type="submit" class="btn btn-default" value="Change">
     </form>
     <?php
-        echo license_descs($license_work['license']);
-        echo license_descs_onchange('license-descs', 'license');
         print_work_license_changes($work_license_changes);
     } else {
 ?>
@@ -1320,7 +1243,9 @@ case "batch":
 ?>
     </tbody></table>
     <div class="form-group">
-        <label for="license">License</label>
+        <label for="license">License
+          <small><em>( <a href="html/cc.html">About the licenses</a> )</em>
+          </small></label>
         <select name="license" id="license" class="form-control">
           <?php echo license_options(user_default_license($dbh,
                                                           $_SESSION['user_id']),
@@ -1330,8 +1255,6 @@ case "batch":
       <input type="submit" class="btn btn-default" value="Change">
     </form>
     <?php
-        echo license_descs(user_default_license($dbh, $_SESSION['user_id']));
-        echo license_descs_onchange('license-descs', 'license');
     } else {
 ?>
     <h2>Not logged in.</h2>
@@ -1361,18 +1284,15 @@ case 'browse':
 ?>
     <form action="?action=browse" method="post">
       <div class="form-group">
-        <label for="license">License</label>
+        <label for="license">License
+          <small><em>( <a href="html/cc.html">About the licenses</a> )</em>
+          </small></label>
         <select name="license" id="license" class="form-control">
            <?php echo license_options($browse_initially_selected, true); ?>
         </select>
       </div>
       <input type="submit" class="btn btn-default" value="Browse">
     </form>
-    <?php
-    echo license_descs($browse_initially_selected);
-    echo license_descs_onchange ('license-descs', 'license');
-?>
-    <p>What is Creative Commons? <a href="html/cc.html">Learn more</a>.</p>
 <?php
     break;
 }
