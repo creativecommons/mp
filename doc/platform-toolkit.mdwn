@@ -96,12 +96,12 @@ For example, some sites only allow users to upload content under CC licenses all
 #### 1. Additional restrictions
 Many TOS include restrictions on how content on the platform may be used. Imposing additional terms that contradict the CC license confuses users and undermines the point of license standardization. CC strongly discourages this practice. 
 
-##### Learn more. (collapsible section)
-At the end of the day, we want to ensure that people who come across CC-licensed work can trust that they can use that work under the terms of the CC license. When extra restrictions are imposed on CC-licensed content -- whether by changing the license terms themselves or by imposing new contractual restrictions via terms of service -- Creative Commons requires that the CREATIVE COMMONS name and brand be removed to avoid confusing people about the source of the more restrictive terms imposed by the platform. Anything that imposes additional conditions or narrows the permissions granted by a standard CC license is prohibited. For example: prohibiting download of CC-licensed works, or adding extra attribution requirements. For more details, read the full [CC License Modification Policy here](https://wiki.creativecommons.org/Modifying_the_CC_licenses). 
+Your platform may have extra restrictions that are not intended for CC-licensed content. For example, a platform may include terms that limit use of the platform to noncommercial purposes. In these cases, we recommend adding language that clarifies that these and other restrictions do not apply to CC-licensed content.
 
 > **Example language**: "For the avoidance of doubt, nothing in this Agreement is designed to prevent you from reusing content available under a Creative Commons license according to the terms and conditions of the applicable license."
 
-Your platform may have extra restrictions that are not intended for CC-licensed content. For example, a platform may include terms that limit use of the platform to noncommercial purposes. In these cases, we recommend adding language that clarifies that these and other restrictions do not apply to CC-licensed content. See above example.
+##### Learn more. (collapsible section)
+At the end of the day, we want to ensure that people who come across CC-licensed work can trust that they can use that work under the terms of the CC license. When extra restrictions are imposed on CC-licensed content -- whether by changing the license terms themselves or by imposing new contractual restrictions via terms of service -- Creative Commons requires that the CREATIVE COMMONS name and brand be removed to avoid confusing people about the source of the more restrictive terms imposed by the platform. Anything that imposes additional conditions or narrows the permissions granted by a standard CC license is prohibited. For example: prohibiting download of CC-licensed works, or adding extra attribution requirements. For more details, read the full [CC License Modification Policy here](https://wiki.creativecommons.org/Modifying_the_CC_licenses). 
 
 #### 2. Third party CC-licensed content
 As [noted above](#other-considerations-for-tos), platforms often require their users to grant a separate, direct copyright license to the platform for all content they upload.This creates a conflict when a user uploads CC-licensed content owned by others (third parties) because the user cannot grant rights to content they don’t own; only the original CC licensor can grant these rights to the platform. Therefore, it is important that the direct license written into the TOS excludes CC-licensed content owned by someone other than the uploader. 
@@ -130,9 +130,8 @@ This sample language demonstrates one way to clarify that CC-licensed content ma
 
 #### 2. Real world TOS provisions
 
-This provision from the [Jamendo TOS](https://www.jamendo.com/legal/terms-of-use) is an example of one way to explain how CC licensing works for content creators on the platform. Jamendo is a music platform that allows its users to opt to CC-license their original works. 
+##### This provision from the [Jamendo TOS](https://www.jamendo.com/legal/terms-of-use) is an example of one way to explain how CC licensing works for content creators on the platform. Jamendo is a music platform that allows its users to opt to CC-license their original works. (collapsible section)
 
-##### Show/Hide (collapsible section)
 > 3.1.2 - Selection of the Creative Commons License or "CC" License
 
 > Artists shall select a CC License when they publish their Works and Materials on JAMENDO, for each Work or for an entire Album. Depending on the type of CC License chosen by the Artist, Users may benefit from more or less extensive rights on the Works and the Materials of the Artist. Certain CC Licenses enable Users to make commercial use of the Artist's Works without compensation for the latter. Should the Artist wish to participate in the Commercial Programs offered by the JAMENDO LICENSING service, which may or may not give rise to compensation for the Artist, it is advisable for the Artist to preferably opt for a non-commercial CC License (NC) from among the six (6) CC Licenses listed below. 
@@ -149,14 +148,12 @@ This provision from the [Jamendo TOS](https://www.jamendo.com/legal/terms-of-use
 
 > (6) CC-BY-NC-ND (Attribution - Non-commercial Use - No Derivative Works) : this license only authorizes users to download and share your Works provided that you are credited by citing your name, but they may not be modified in any way whatsoever nor used for commercial purposes. 
 
-This provision from the [Internet Archive TOS](https://archive.org/about/terms.php) is an example of one way to provide certainty that CC-licensed content on the platform is not subject to additional restrictions. Internet Archive is a digital library providing free access to millions of books, movies, and other content. 
+##### This provision from the [Internet Archive TOS](https://archive.org/about/terms.php) is an example of one way to provide certainty that CC-licensed content on the platform is not subject to additional restrictions. Internet Archive is a digital library providing free access to millions of books, movies, and other content. (collapsible section)
 
-##### Show/Hide (collapsible section)
 > If a Creative Commons or other license has been declared for particular material on the Archive, to the extent you trust the declaration and declarer (which is rarely the Internet Archive), you may use the content according to the terms and conditions of the applicable license.
 
-This provision from Section 7(c) of the [Wikimedia TOS](https://wikimediafoundation.org/wiki/Terms_of_Use) demonstrates one way of indicating if and when users may upload CC-licensed content owned by others. The Wikimedia Foundation is the nonprofit that owns and operates Wikipedia, the world’s largest online collaborative encyclopedia. 
+##### This provision from Section 7(c) of the [Wikimedia TOS](https://wikimediafoundation.org/wiki/Terms_of_Use) demonstrates one way of indicating if and when users may upload CC-licensed content owned by others. The Wikimedia Foundation is the nonprofit that owns and operates Wikipedia, the world’s largest online collaborative encyclopedia. (collapsible section)
 
-##### Show/Hide (collapsible section)
 > Importing text: You may import text that you have found elsewhere or that you have co-authored with others, but in such case you warrant that the text is available under terms that are compatible with the CC BY-SA 3.0 license (or, as explained above, another license when exceptionally required by the Project edition or feature)("CC BY-SA"). Content available only under GFDL is not permissible. 
 
 > You agree that, if you import text under a CC BY-SA license that requires attribution, you must credit the author(s) in a reasonable fashion. Where such credit is commonly given through page histories (such as Wikimedia-internal copying), it is sufficient to give attribution in the edit summary, which is recorded in the page history, when importing the text. The attribution requirements are sometimes too intrusive for particular circumstances (regardless of the license), and there may be instances where the Wikimedia community decides that imported text cannot be used for that reason.
@@ -429,12 +426,14 @@ Also check out these real world platforms with CC integrations. You can log in t
 **Bold** = minimum needed for a functioning CC integration
 
 *Check if the following are true for the Terms of Service:*
+
 - The TOS explain how CC licensing works for content creators on the platform
 - **The TOS make it clear that users of the platform can reuse CC-licensed content according to the terms and conditions of the applicable license**
 - **The TOS state in clear terms what types of existing CC-licensed content (created by third parties that are not the user) can be uploaded by users, if any**
 - **If the TOS require a direct license from users, it excludes existing CC-licensed content created by others** 
 
 *Check if the following are true for the license selection process:*
+
 - **Users can license individual works on the platform**
 - Users can license a batch of works on the platform
 - Users can set a default license for works they contribute to the platform
@@ -444,6 +443,7 @@ Also check out these real world platforms with CC integrations. You can log in t
 - **A short snippet of explanatory text and/or link to CC license accompanies each license selection**
 
 *Check if the following are true for the license display on content:*
+
 - **The CC license is clearly displayed on the content page, with the following:**
     - **License icon(s)**
     - **Link to license deed**
@@ -452,12 +452,14 @@ Also check out these real world platforms with CC integrations. You can log in t
 - **Users can download or otherwise obtain the file directly from the content page**
 
 *Check if the following are true for search and discovery:*
+
 - **Users can filter content on the platform by license, or by reuse categories that address their needs**
 - A portal, or a landing page, to CC-licensed content is provided on the platform
 - The CC search or portal pages are easily navigated to from the home page, or somewhere else obvious
 - **The license metadata behind the search and browse filters is correct, eg. each filter returns content under the corresponding licenses** 
 
 *Check if the following are true for attribution on the platform:*
+
 - Attribution is automatically generated or prompted at the point where a user downloads or otherwise obtains a CC licensed work
 - If the platform has a remix tool, attribution is automated whenever a user pulls a CC licensed work into her remix
 - Any automatically generated or prompted attribution includes the Title, Author, Source, and License
@@ -465,6 +467,7 @@ Also check out these real world platforms with CC integrations. You can log in t
 - The platform provides users with other attribution guidance, eg. an attribution guide specific to the platform
 
 *Check if the following are true for communication and education on the platform:*
+
 - The platform provides an info page explaining the basics of CC
 - The platform explains why it decided to enable CC license options and/or how CC aligns with the platform’s goals on the info page or in a blog post
 - The platform provides an FAQ on how CC licenses work
