@@ -7,7 +7,7 @@ tail = \
 <script src=\"script.js\"></script>\n\
 </body>\n</html>"
 
-platform-toolkit.html: platform-toolkit.mdwn style.css
+platform-toolkit.html: platform-toolkit.mdwn style.css script.js
 	echo $(head) > platform-toolkit.html
 	markdown platform-toolkit.mdwn >> platform-toolkit.html
 	echo $(collapsescript) >> platform-toolkit.html
