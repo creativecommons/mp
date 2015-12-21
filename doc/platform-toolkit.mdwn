@@ -3,7 +3,7 @@
 
 ## About this toolkit
 
-**What**: This toolkit covers the elements for a basic Creative Commons platform integration, including aligning legal terms to CC tools; installing the CC license chooser; displaying CC licensed content with the correct logos and links; and how to communicate CC to your users. See the [Table of Contents](#Table-of-Contents) to skip to the topic you need help on. 
+**What**: This toolkit covers the elements for a basic Creative Commons platform integration, including aligning legal terms to CC tools; installing the CC license chooser; displaying CC licensed content with the correct logos and links; and how to communicate CC to your users. See the [Table of Contents](#table-of-contents) to skip to the topic you need help on. 
 **What this is not**: Legal advice. There may be unique issues that apply to you that aren’t considered here. See [Beyond this Toolkit](#beyond-this-toolkit).
 
 **Who**: User-generated content platforms that want to address the increasing public demand for sharing under CC licenses and public domain tools. Think of it as an onboarding tool -- everything you need to know to get from zero to basic CC integration.
