@@ -287,7 +287,7 @@ The CC logo and license icons are universally recognized symbols of sharing and 
 
 Ideally, CC license icons should accompany every instance of a CC license displayed at the three components of integration: 1) the license selection process, 2) display of the licensed content, and 3) discovery of licensed content. At a minimum, license icons should be used in 2) display of the licensed content. 
 
-Our logos and icons are available at [https://creativecommons.org/about/downloads](https://creativecommons.org/about/downloads). We recommend using the [circular icons](https://creativecommons.org/about/downloads#Icons) when appropriate and have provided these initial standard sizes for use[link].
+Our logos and icons are available at [https://creativecommons.org/about/downloads](https://creativecommons.org/about/downloads). We recommend using the [circular icons](https://creativecommons.org/about/downloads#Icons) when appropriate and have provided [these initial standard sizes](https://licensebuttons.net/i/cc-gift-guide/) for use.
 
 Use of our logos, icons, and trademark are governed by our [policies](https://wiki.creativecommons.org/wiki/Updated_Policies_Page). Please do not use the main CC logo to link to anything other than our main website [http://creativecommons.org/](http://creativecommons.org), and please make sure to link each license icon or corresponding set of license icons to the specific license in question, eg. (cc in a circle) + (attribution man in a circle) should be linked to https://creativecommons.org/licenses/by/4.0/ for CC BY. 
 
