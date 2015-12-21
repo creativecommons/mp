@@ -3,17 +3,49 @@
 
 ## About this toolkit
 
-**What**: This toolkit covers the elements for a Creative Commons platform integration, including aligning legal terms to CC tools; installing the CC license chooser; displaying CC licensed content with the correct logos and links; and how to communicate CC to your users. See the Table of Contents to skip to the topic you need help on. 
+**What**: This toolkit covers the elements for a basic Creative Commons platform integration, including aligning legal terms to CC tools; installing the CC license chooser; displaying CC licensed content with the correct logos and links; and how to communicate CC to your users. See the [Table of Contents](#Table-of-Contents) to skip to the topic you need help on. 
 **What this is not**: Legal advice. There may be unique issues that apply to you that aren’t considered here. See [Beyond this Toolkit](#beyond-this-toolkit).
 
-**Who**: User-generated content platforms that want to address the increasing public demand for sharing under CC licenses and public domain tools. Think of it as an onboarding tool -- everything you need to know to get from zero to CC integration.
+**Who**: User-generated content platforms that want to address the increasing public demand for sharing under CC licenses and public domain tools. Think of it as an onboarding tool -- everything you need to know to get from zero to basic CC integration.
 **Who this is not designed for**: Organizations or individual licensors looking to apply a CC license to their own publications or other materials. Though helpful, most of this toolkit will not apply to you. Please refer to our [best practices for marking and attribution](https://wiki.creativecommons.org/wiki/Marking) instead.
 
-**Why**: Creative Commons works to create easy, clear, and enjoyable ways for users to contribute to the [commons](https://en.wikipedia.org/wiki/Commons) on web platforms they already know and use. [Many platforms](https://stateof.creativecommons.org) already allow easy sharing under CC tools, allowing their users to share and remix millions of freely licensed works. This toolkit will help you join the network of major platforms like Flickr, Vimeo, and Medium with engaged and creative communities that benefit from the awesome content under Creative Commons licenses.
+**Why**: Creative Commons works to create easy, clear, and enjoyable ways for users to contribute to the [commons](https://en.wikipedia.org/wiki/Commons) on web platforms they already know and use. [Many platforms](https://stateof.creativecommons.org) already allow easy sharing under CC tools, allowing their users to share and remix millions of freely licensed works. This toolkit will help you join the network of major platforms like Flickr, Wikipedia, YouTube, and Medium with engaged and creative communities that benefit from the rich universe of content under Creative Commons licenses.
 
 **License**: This web version of the toolkit is free for you to reuse and remix under the terms of the [CC Attribution 4.0 International license](https://creativecommons.org/licenses/by/4.0/). Please credit Creative Commons with a link back to this toolkit. If you modify this toolkit, don’t suggest that we endorse your revisions.
 
 **Learn more**: This toolkit is part of a larger initiative to transform platforms into vibrant, creative spaces for the commons. If you would like to get involved with larger aspects of our work, [visit this page](https://github.com/creativecommons/platform-initiative).
+
+## Table of Contents
+
+- [About this toolkit](#about-this-toolkit)
+- [The different types of content on your platform](#the-different-types-of-content-on-your-platform)
+- [CC and your Terms of Service](#cc-and-your-terms-of-service)
+    - [Checklist for an ideal TOS](#checklist-for-an-ideal-tos)
+    - [Other considerations for TOS](#other-considerations-for-tos)
+    - [Most common conflicts in terms of service](#most-common-conflicts-in-terms-of-service)
+    - [User guidelines and other supplemental materials](#user-guidelines-and-other-supplemental-materials)
+    - [Examples](#examples)
+- [CC in your User Interface](#cc-in-your-user-interface)
+    - [License chooser](#license-chooser)
+    - [License display on content](#license-display-on-content)
+    - [License metadata](#license-metadata)
+    - [Logos and icons](#logos-and-icons)
+    - [Additional design resources](#additional-design-resources)
+    - [Checklist. Check if the following are true.](#checklist-check-if-the-following-are-true)
+- [Upgrading to 4.0 and later versions of the CC suite](#upgrading-to-40-and-later-versions-of-the-cc-suite)
+- [Enabling CC search and discovery](#enabling-cc-search-and-discovery)
+    - [CC filters in search](#1-cc-filters-in-search)
+    - [CC content portal and browse features](#2-cc-content-portal-and-browse-features)
+    - [License metadata for search](#3-license-metadata-for-search)
+- [Attributing authors of CC content](#attributing-authors-of-cc-content)
+    - [Attribution at the point of download](#1-attribution-at-the-point-of-download)
+    - [Attribution in remix tools](#2-attribution-in-remix-tools)
+    - [Attribution for content that your users don’t own but contribute to your platform under CC licenses](#3-attribution-for-content-that-your-users-dont-own-but-contribute-to-your-platform-under-cc-licenses)
+    - [Additional attribution guidance for your users](#additional-attribution-guidance-for-your-users)
+- [Communication and Education](#communication-and-education)
+- [Model Platform](#model-platform)
+- [Final checklist](#final-checklist)
+- [Beyond this Toolkit](#beyond-this-toolkit)
 
 ## The different types of content on your platform
 
