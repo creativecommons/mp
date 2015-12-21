@@ -163,11 +163,11 @@ This provision from Section 7(c) of the [Wikimedia TOS](https://wikimediafoundat
 
 ## CC in your User Interface
 
-There are three components to a seamless CC licensing experience for users: 1) the license selection process, 2) display of the licensed content, and 3) discovery of licensed content. In this section, we’ll go over what is required for 1 and 2; 3 is covered in depth in section VI[link].  All three components require design graphics (our universally recognized CC logos and icons[link to 2G]) and machine-readable license metadata (a small snippet of html code with RDFa[link to 2F]).
+There are three components to a seamless CC licensing experience for users: 1) [the license selection process](#1-license-chooser), 2) [display of the licensed content](#2-license-display-on-content), and 3) discovery of licensed content. In this section, we’ll go over what is required for 1 and 2; 3 is covered in depth in [Enabling CC Search and Discovery](#enabling-cc-search-and-discovery). All three components require design graphics (our universally recognized [CC logos and icons](#logos-and-icons) and machine-readable [license metadata](#license-metadata) (a small snippet of html code with RDFa).
 
-The License and PD Tool Suite: Before digging into the first two components, you might familiarize yourself with our [full suite of CC licenses](https://creativecommons.org/licenses/) and [public domain tools](http://creativecommons.org/publicdomain/), along with [examples](http://creativecommons.org/examples) of use for each. Most UGC platforms will want to offer the full suite, or a [recommended subset](https://github.com/creativecommons/platform-initiative/wiki/6:-License-Suite-Adoption-Guidelines), for users. You’ll want to offer the latest version of these licenses and tools; currently the most up-to-date versions are [Version 4.0](link=http://creativecommons.org/version4) for the licenses, and 1.0 for both CC0 and the Public Domain Mark. If you have a previous version already installed and are simply looking to upgrade to the latest tool suite, jump to section V[link].
+The License and PD Tool Suite: Before digging into the first two components, you might familiarize yourself with our [full suite of CC licenses](https://creativecommons.org/licenses/) and [public domain tools](http://creativecommons.org/publicdomain/), along with [examples](http://creativecommons.org/examples) of use for each. Most UGC platforms will want to offer the full suite, or a [recommended subset](https://github.com/creativecommons/platform-initiative/wiki/6:-License-Suite-Adoption-Guidelines), for users. You’ll want to offer the latest version of these licenses and tools; currently the most up-to-date versions are [Version 4.0](link=http://creativecommons.org/version4) for the licenses, and 1.0 for both CC0 and the Public Domain Mark. If you have a previous version already installed and are simply looking to upgrade to the latest tool suite, jump to [Upgrading to 4.0 and later versions of the CC suite](#upgrading-to-40-and-later-versions-of-the-cc-suite).
 
-CC license selection should occur at the point of upload, or just prior to publication for works created directly on the platform. Users should be able to license individual works, batches of works, and all works they upload to a platform via a default license setting. This can be done by adding a CC license chooser, or incorporating the CC tool suite into an existing rights chooser. Note: If your platform requires all user generated content to be under one license, the license selection process for users described here may not apply. Please see CC and your Terms of Service, Section III.B.1[link] on specifying a default license for site content in your terms, and Marking Your Work with a CC license[link] for correctly displaying the default license for all content on your website.
+CC license selection should occur at the point of upload, or just prior to publication for works created directly on the platform. Users should be able to license individual works, batches of works, and all works they upload to a platform via a default license setting. This can be done by adding a CC license chooser, or incorporating the CC tool suite into an existing rights chooser. Note: If your platform requires all user-generated content to be under one license, the license selection process for users described here may not apply. Please see [CC and your Terms of Service](#cc-and-your-terms-of-service) on specifying a default license for site content in your terms, and [Marking Your Work with a CC license](https://wiki.creativecommons.org/wiki/Marking_your_work_with_a_CC_license) for correctly displaying the default license for all content on your website.
 
 ### License chooser
 #### Licensing individual works
@@ -192,7 +192,7 @@ Users should be able to toggle between license options and learn more about each
 
 After publishing, users should be able to edit their license selection at anytime, just as users can edit other information about their work. Ideally, a record of license changes is logged by the platform either internally and/or publicly.
 
-The metadata behind each license selection should correspond to the metadata on the page the resource is displayed. This metadata is a small snippet of html code that indicates the license to search engines and other kinds of software. It is invisible to the lay user, but visible in the source code of the chooser. (See Section F for more details)
+The metadata behind each license selection should correspond to the metadata on the page the resource is displayed. This metadata is a small snippet of html code that indicates the license to search engines and other kinds of software. It is invisible to the lay user, but visible in the source code of the chooser. (See [Metadata for chooser](#metadata-for-chooser) for more details.)
 
 #### Batch licensing for multiple works
 
@@ -214,34 +214,34 @@ When a user accesses content on your platform, it is important for them to know 
 
 License display on a resource consists of 3 components:
 
-- The corresponding specific [CC license icon(s)](link=https://creativecommons.org/about/downloads#Icons), eg. (cc in a circle) + (attribution man in a circle) for CC BY
-- Link to the corresponding license deed, eg. https://creativecommons.org/licenses/by/4.0/ for CC BY
-- Machine-readable metadata on the backend, a small snippet of html code that indicates the license to search engines and other kinds of software. This is invisible to the lay user, but visible in the source code. The metadata behind each license display should correspond to the metadata chosen via the license chooser process. (See Section F for more details)
+1. The corresponding specific [CC license icon(s)](link=https://creativecommons.org/about/downloads#Icons), eg. (cc in a circle) + (attribution man in a circle) for CC BY
+2. Link to the corresponding license deed, eg. https://creativecommons.org/licenses/by/4.0/ for CC BY
+3. Machine-readable metadata on the backend, a small snippet of html code that indicates the license to search engines and other kinds of software. This is invisible to the lay user, but visible in the source code. The metadata behind each license display should correspond to the metadata chosen via the license chooser process. (See[Metadata for display](#metadata-for-display) for more details)
 
-Ability to view, download, and distribute: 
+Additionally, users should have the ability to view, download, and distribute any CC-licensed or public domain work: 
 - All CC licensed content should be publicly accessible, which means be able to be read or viewed by a user, without a login.
 - If applicable, a “download” button, or other way to obtain the original file containing the content, should be displayed along with the license on the content page so that users may download and use the content as it was intended. All CC licenses allow redistribution at a minimum. 
 - Technical measures prohibiting any of these or related actions that CC licenses allow should not be added to CC-licensed content on your platform.
 
-###License metadata 
+### License metadata 
 
-At every integration step, license metadata plays a crucial role in communicating the CC licenses to search engines and other kinds of software. CC license metadata should be incorporated into the technical backend of the three components of the CC user experience: 1) the license selection process, 2) display of the licensed content, and 3) discovery of licensed content. In this section, we’ll go over the metadata that is required for 1 and 2; 3 is covered in depth in section VI[link].
+At every integration step, license metadata plays a crucial role in communicating the CC licenses to search engines and other kinds of software. CC license metadata should be incorporated into the technical backend of the three components of the CC user experience: 1) the license selection process, 2) display of the licensed content, and 3) discovery of licensed content. In this section, we’ll go over the metadata that is required for 1 and 2; 3 is covered in [License metadata for search](#3-license-metadata-for-search).
 
-CC license metadata consists of a small snippet of html code with RDFa that expresses CC license and attribution information on the web. RDFa is a way of expressing RDF triples inside XHTML pages using span tags. You can learn more about RDFa and how it works here [link=https://wiki.creativecommons.org/wiki/RDFa]. But you don’t need to know all the details to implement it into your platform. We’ve broken down what you need by each component below. 
+CC license metadata consists of a small snippet of html code with RDFa that expresses CC license and attribution information on the web. RDFa is a way of expressing RDF triples inside XHTML pages using span tags. You can learn more about RDFa and how it works [here](https://wiki.creativecommons.org/wiki/RDFa). But you don’t need to know all the details to implement it into your platform. We’ve broken down what you need by each component below. 
 
-####Metadata for chooser
+#### Metadata for chooser
 
-If the chooser is a graphical user interface for work stored on the platform then it doesn't need to generate metadata itself. The platform can just store the chosen license in the database. This can be done with two pieces of information: the terms (for example All Rights Reserved, CC0, CC-BY-SA, represented as a unique id for each one) and the version (e.g. 1.0, 2.5, 4.0). Or if the TOS allows the platform to automatically update licensing versions[link to section C.3] it can be done with just the terms id number.
+If the chooser is a graphical user interface for work stored on the platform then it doesn't need to generate metadata itself. The platform can just store the chosen license in the database. This can be done with two pieces of information: the terms (for example All Rights Reserved, CC0, CC-BY-SA, represented as a unique id for each one) and the version (e.g. 1.0, 2.5, 4.0). Or if the TOS allows the platform to [automatically update licensing versions](#other-considerations-for-tos) it can be done with just the terms id number.
 
 Generating metadata is then a matter of expanding a textual template using the stored licensing and other information.
 
 Licenses can be chosen from a simple list, optionally organized into sections for Public Domain, Creative Commons Licenses, and All Rights Reserved.
 
-Or they can be specified by choosing Default Copyright, Public Domain, or Creative Commons License. To specify which Creative Commons license, the user then chooses between "Do Not Allow Commercial Use" and "Allow Commercial Use" and also between between "Do Not Allow Derivatives", "Allow Derivatives", "Allow Derivatives As Long As The User Shares Alike". The 2012 redesign of Creative Commons’ license Chooser uses this method - https://web.archive.org/web/20120726043047/http://creativecommons.org/choose/ .
+Or they can be specified by choosing Default Copyright, Public Domain, or Creative Commons License. To specify which Creative Commons license, the user then chooses between "Do Not Allow Commercial Use" and "Allow Commercial Use" and also between between "Do Not Allow Derivatives", "Allow Derivatives", "Allow Derivatives As Long As The User Shares Alike". The [2012 redesign of Creative Commons' license chooser](https://web.archive.org/web/20120726043047/http://creativecommons.org/choose/) uses this method.
 
 In either case, the license information can be stored in the same way.
 
-####Metadata for display
+#### Metadata for display
 
 At a minimum, the main component you want machine-readable is the license and license icons. 
 
@@ -277,7 +277,7 @@ Explanation: The bolded items correspond to the following fields:
 - Author = Creative Commons
 - URL of work = https://vimeo.com/143427866
 
-###Logos and icons
+### Logos and icons
 The CC logo and license icons are universally recognized symbols of sharing and have been recently acquired[link=http://creativecommons.org/weblog/entry/45008] by the Modern Museum of Art (MoMA) in New York. Transcending language and culture, CC graphics efficiently communicate to users what they can do with a work, increasing recognition and contribution of content into the commons.
 
 Ideally, CC license icons should accompany every instance of a CC license displayed at the three components of integration: 1) the license selection process, 2) display of the licensed content, and 3) discovery of licensed content. At a minimum, license icons should be used in 2) display of the licensed content. 
