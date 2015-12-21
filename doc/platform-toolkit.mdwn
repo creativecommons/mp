@@ -426,24 +426,24 @@ Also check out these real world platforms with CC integrations. You can log in t
 
 ## Final checklist
 
-**Bold** = minimum needed for a functioning CC integration [Later: Distinguish minimum needed to become a platform program member]
+**Bold** = minimum needed for a functioning CC integration
 
-Check if the following are true for the Terms of Service:
-- The TOS explain how CC licensing works for content creators on the platform.
-- **The TOS make it clear that users of the platform can reuse CC-licensed content according to the terms and conditions of the applicable license.**
-- **The TOS state in clear terms what types of existing CC-licensed content (created by third parties that are not the user) can be uploaded by users, if any.**
-- **If the TOS require a direct license from users, it excludes existing CC-licensed content created by others.** 
+*Check if the following are true for the Terms of Service:*
+- The TOS explain how CC licensing works for content creators on the platform
+- **The TOS make it clear that users of the platform can reuse CC-licensed content according to the terms and conditions of the applicable license**
+- **The TOS state in clear terms what types of existing CC-licensed content (created by third parties that are not the user) can be uploaded by users, if any**
+- **If the TOS require a direct license from users, it excludes existing CC-licensed content created by others** 
 
-Check if the following are true for the license selection process:
-- **Users can license individual works on my platform**
-- Users can license a batch of works on my platform
-- Users can set a default license for works they contribute to my platform
+*Check if the following are true for the license selection process:*
+- **Users can license individual works on the platform**
+- Users can license a batch of works on the platform
+- Users can set a default license for works they contribute to the platform
 - **Users can edit their license choices after the fact**
 - **License metadata is integrated into the source code of the license selection process**
 - The license icons accompany each license selection
 - **A short snippet of explanatory text and/or link to CC license accompanies each license selection**
 
-Check if the following are true for the license display on content: 
+*Check if the following are true for the license display on content:*
 - **The CC license is clearly displayed on the content page, with the following:**
     - **License icon(s)**
     - **Link to license deed**
@@ -451,34 +451,34 @@ Check if the following are true for the license display on content:
 - **Users can publicly access or view the licensed content without a login**
 - **Users can download or otherwise obtain the file directly from the content page**
 
-Check if the following are true for search and discovery:
-- **Users can filter content on my platform by license, or by reuse categories that address their needs.**
-- I provide a portal, or a landing page, to CC-licensed content on my platform. 
-- This page is easily navigated to from my home page, or somewhere else obvious.
-- **The license metadata behind my search and browse filters is correct, eg. each filter returns content under the corresponding licenses.** 
+*Check if the following are true for search and discovery:*
+- **Users can filter content on the platform by license, or by reuse categories that address their needs**
+- A portal, or a landing page, to CC-licensed content is provided on the platform
+- The CC search or portal pages are easily navigated to from the home page, or somewhere else obvious
+- **The license metadata behind the search and browse filters is correct, eg. each filter returns content under the corresponding licenses** 
 
-Check if the following are true for attribution on the platform:
-- Attribution is automatically generated or prompted at the point where a user downloads or otherwise obtains a CC licensed work.
-- If the platform has a remix tool, attribution is automated whenever a user pulls a CC licensed work into her remix.
-- Any automatically generated or prompted attribution includes the Title, Author, Source, and License.
-- If the platform allows users to share existing CC licensed content by other creators, I require attribution for that content at the point of upload via a text field or other.
-- I provide users with other attribution guidance, eg. an attribution guide specific to the platform.
+*Check if the following are true for attribution on the platform:*
+- Attribution is automatically generated or prompted at the point where a user downloads or otherwise obtains a CC licensed work
+- If the platform has a remix tool, attribution is automated whenever a user pulls a CC licensed work into her remix
+- Any automatically generated or prompted attribution includes the Title, Author, Source, and License
+- If the platform allows users to share existing CC licensed content by other creators, the platform requires attribution for that content at the point of upload via a text field or other
+- The platform provides users with other attribution guidance, eg. an attribution guide specific to the platform
 
-Check if the following are true for communication and education on the platform:
-- I provide an info page explaining the basics of CC.
-- I explain why the platform decided to enable CC license options and/or how CC aligns with the platform’s goals on the info page or in a blog post.
-- I provide an FAQ on how CC licenses work. 
-- I provide community guidelines around sharing under CC licenses.
-- I provide other materials, eg. announcement of CC integration; blog post describing the CC UX design process; editorial about CC
+*Check if the following are true for communication and education on the platform:*
+- The platform provides an info page explaining the basics of CC
+- The platform explains why it decided to enable CC license options and/or how CC aligns with the platform’s goals on the info page or in a blog post
+- The platform provides an FAQ on how CC licenses work
+- The platform provides community guidelines around sharing under CC licenses
+- The platform provides other materials, eg. announcement of CC integration; blog post describing the CC UX design process; editorial about CC
 
 ## Beyond this Toolkit
 
-The global commons as a platform for cooperation: For Creative Commons, the size of the commons is not as important as how (and if) the works it contains are used. Getting from zero to basic integration is just the first step in joining a vast global network of creators, companies, and institutions who are working to build context, gratitude, and other mechanisms for collaboration into the commons.  
+For Creative Commons, the global commons is a platform for cooperation. The size of the commons is not as important as how (and if) the works it contains are used. Getting from zero to basic integration is just the first step in joining a vast global network of creators, companies, and institutions who are working to build context, gratitude, and other mechanisms for collaboration into the commons.  
 
-We work with platforms who share our values to design tools and services that light up this universe of content and creators. Part of this is working to increase cross-platform mobility of content; another part is tracking growth and use of the content itself and reporting on major trends in our annual State of the Commons report[link]. In addition to growth of content and users, what is your platform seeking to do and how can CC help you do it? Learn more about our work and upcoming Platform Membership Program here[link] 
+We work with platforms who share our values to design tools and services that light up this universe of content and creators. Part of this is working to increase cross-platform mobility of content; another part is tracking growth and use of the content itself and reporting on major trends in our annual [State of the Commons report](https://stateof.creativecommons.org). In addition to growth of content and users, what is your platform seeking to do and how can CC help you do it? Learn more about our work and upcoming Platform Membership Program [here](https://github.com/creativecommons/platform-initiative). 
 
-This toolkit is an evolving resource for platforms. See something you’d like to improve or add? File an issue on Github[link].
+This toolkit is an evolving resource for platforms. See something you’d like to improve or add? File an issue on [Github](https://github.com/creativecommons/mp/issues).
 
-Have questions or need help implementing particular pieces of the toolkit? Contact us[link=http://creativecommons.org/contact].
+Have questions or need help implementing particular pieces of the toolkit? [Contact us](http://creativecommons.org/contact).
 
-This toolkit by Creative Commons is licensed under a Creative Commons Attribution 4.0 License. 
+This toolkit by Creative Commons is licensed under a [Creative Commons Attribution 4.0 License](https://creativecommons.org/licenses/by/4.0/). 
