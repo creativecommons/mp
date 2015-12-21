@@ -1,0 +1,12 @@
+h5 {
+    font-weight: bold;
+}
+
+h5:hover {
+    color: blue;
+    text-decoration: underline;
+}
+
+h5:before {
+    content: "\25b6\00a0";
+}
