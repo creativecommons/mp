@@ -249,7 +249,7 @@ At a minimum, the main component you want machine-readable is the license and li
 
     <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a>
 
-Explanation: rel="license" sets the predicate or verb, the URL in the href value sets the object, in this case the CC BY 4.0 license. img src allows you to associate the CC license icon of your choice with the specific license URL.
+*Explanation:* rel="license" sets the predicate or verb, the URL in the href value sets the object, in this case the CC BY 4.0 license. img src allows you to associate the CC license icon of your choice with the specific license URL.
 
 Beyond that, you can include additional attribution information, such as Title, Author and Work URL, in the following span tags:
 
@@ -257,62 +257,64 @@ Beyond that, you can include additional attribution information, such as Title, 
 
     <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">TITLE</span>
 
-Explanation: dc represents "Dublin Core" which is one of the oldest vocabularies or schemas on the semantic web. It allows one to express typical things like a work's title, author, or source. 
+*Explanation:* dc represents "Dublin Core" which is one of the oldest vocabularies or schemas on the semantic web. It allows one to express typical things like a work's title, author, or source. 
 
 **Code for Author:**
 
     <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">AUTHOR</span> 
 
-Explanation: In this case, CC is using its own XML namespace ([http://creativecommons.org/ns#](http://creativecommons.org/ns#)), abbreviated using cc. The property is CC's AttributionName attribute and the value is the content inside the anchor tag (AUTHOR). (For definitions of the different properties in CC’s XML namespace, see [http://creativecommons.org/ns](http://creativecommons.org/ns).)
+*Explanation:* In this case, CC is using its own XML namespace ([http://creativecommons.org/ns#](http://creativecommons.org/ns#)), abbreviated using cc. The property is CC's AttributionName attribute and the value is the content inside the anchor tag (AUTHOR). (For definitions of the different properties in CC’s XML namespace, see [http://creativecommons.org/ns](http://creativecommons.org/ns).)
 
 **Code for URL of work (web address where work sits):**
 
     <a xmlns:cc="http://creativecommons.org/ns#" href="URL of work" property="cc:attributionName" rel="cc:attributionURL">AUTHOR</a> 
 
-Explanation: This is to link the AUTHOR to a URL where the work sits. The property is still CC's AttributionName attribute and a relationship of cc:AttributionURL is defined for the URL of the work. 
+*Explanation:* This is to link the AUTHOR to a URL where the work sits. The property is still CC's AttributionName attribute and a relationship of cc:AttributionURL is defined for the URL of the work. 
 
 All together now: [insert screenshot] This [CC licensed video on Vimeo](https://vimeo.com/143427866) should include the following metadata in the source code of the page.
 
     <a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/3.0/88x31.png" /></a><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Lawrence Lessig at the CC Global Summit 2015</span><a xmlns:cc="http://creativecommons.org/ns#" href="https://vimeo.com/143427866" property="cc:attributionName" rel="cc:attributionURL">Creative Commons</a>
 
-Explanation: The bolded items correspond to the following fields:
+*Explanation:* The bolded items correspond to the following fields:
 - License = http://creativecommons.org/licenses/by/3.0/
-- License icons = https://i.creativecommons.org/l/by/3.0/88x31.png
+- License icons = https://i.creativecommons.org/l/by/3.0/88x31.png (you can replace this with the circular icons if you wish, see [Logos and icons](#logos-and-icons))
 - Title = Lawrence Lessig at the CC Global Summit 2015
 - Author = Creative Commons
 - URL of work = https://vimeo.com/143427866
 
 ### Logos and icons
-The CC logo and license icons are universally recognized symbols of sharing and have been recently acquired[link=http://creativecommons.org/weblog/entry/45008] by the Modern Museum of Art (MoMA) in New York. Transcending language and culture, CC graphics efficiently communicate to users what they can do with a work, increasing recognition and contribution of content into the commons.
+The CC logo and license icons are universally recognized symbols of sharing and have been recently [acquired](http://creativecommons.org/weblog/entry/45008) by the Modern Museum of Art (MoMA) in New York. Transcending language and culture, CC graphics efficiently communicate to users what they can do with a work, increasing recognition and contribution of content into the commons.
 
 Ideally, CC license icons should accompany every instance of a CC license displayed at the three components of integration: 1) the license selection process, 2) display of the licensed content, and 3) discovery of licensed content. At a minimum, license icons should be used in 2) display of the licensed content. 
 
-Our logos and icons are available at https://creativecommons.org/about/downloads. We recommend using the circular icons[link] when appropriate and have provided these initial standard sizes for use.
+Our logos and icons are available at [https://creativecommons.org/about/downloads](https://creativecommons.org/about/downloads). We recommend using the [circular icons](https://creativecommons.org/about/downloads#Icons) when appropriate and have provided these initial standard sizes for use[link].
 
-Use of our logos, icons, and trademark are governed by our policies[link=https://wiki.creativecommons.org/wiki/Updated_Policies_Page]. Please do not use the main CC logo to link to anything other than our main website (creativecommons.org), and please make sure to link each license icon or corresponding set of license icons to the specific license in question, eg. (cc in a circle) + (attribution man in a circle) should be linked to https://creativecommons.org/licenses/by/4.0/ for CC BY. 
+Use of our logos, icons, and trademark are governed by our [policies](https://wiki.creativecommons.org/wiki/Updated_Policies_Page). Please do not use the main CC logo to link to anything other than our main website [http://creativecommons.org/](http://creativecommons.org), and please make sure to link each license icon or corresponding set of license icons to the specific license in question, eg. (cc in a circle) + (attribution man in a circle) should be linked to https://creativecommons.org/licenses/by/4.0/ for CC BY. 
 
 ###Additional design resources: 
 
-You may find helpful [Medium’s design process](https://medium.com/designing-medium/everyday-design-84838adc4e93) of its CC user experience.
+You may find helpful [Medium’s design process](https://medium.com/designing-medium/everyday-design-84838adc4e93) for its CC user experience.
 
-Learn more about the origin of the CC logos and icons in this feature entitled: [A Masterwork in Simplicity: The Story of the CC Logo](https://medium.com/@creativecommons/a-masterwork-in-simplicity-the-story-of-the-cc-logo-7e2e231a26e7)
+Learn more about the origin of the CC logos and icons in this feature, [A Masterwork in Simplicity: The Story of the CC Logo](https://medium.com/@creativecommons/a-masterwork-in-simplicity-the-story-of-the-cc-logo-7e2e231a26e7).
 
-###Checklist. Check if the following are true.
+### Checklist for CC User Interface
 
-License chooser 
-- Users can license individual works on my platform
-- Users can license a batch of works on my platform
-- Users can set a default license for works they contribute to my platform
+*Check if the following are true.*
+
+**License chooser**
+- Users can license individual works on the platform
+- Users can license a batch of works on the platform
+- Users can set a default license for works they contribute to the platform
 - Users can edit their license choices after the fact
 - License metadata is integrated into the source code of the license selection process 
 - The license logos and icons accompany each license selection
 - A short snippet of explanatory text and/or link to the CC license accompanies each license selection
 
-License display on content
+**License display on content**
 - The CC license is clearly displayed on the content page, with the following:
-- License icon(s)
-- Link to license deed
-- License metadata integrated into the page’s source code
+    - License icon(s)
+    - Link to license deed
+    - License metadata integrated into the page’s source code
 - Users can publicly access or view the licensed content without a login
 - Users can download or otherwise obtain the file directly from the content page
 
