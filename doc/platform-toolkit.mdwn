@@ -246,6 +246,7 @@ In either case, the license information can be stored in the same way.
 At a minimum, the main component you want machine-readable is the license and license icons. 
 
 **Code:**
+
     <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a>
 
 Explanation: rel="license" sets the predicate or verb, the URL in the href value sets the object, in this case the CC BY 4.0 license. img src allows you to associate the CC license icon of your choice with the specific license URL.
