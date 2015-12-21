@@ -245,29 +245,30 @@ In either case, the license information can be stored in the same way.
 
 At a minimum, the main component you want machine-readable is the license and license icons. 
 
-Code: 
-> <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a>
+**Code:**
+    <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a>
 
 Explanation: rel="license" sets the predicate or verb, the URL in the href value sets the object, in this case the CC BY 4.0 license. img src allows you to associate the CC license icon of your choice with the specific license URL.
 
 Beyond that, you can include additional attribution information, such as Title, Author and Work URL, in the following span tags:
 
-Code for Title: 
+**Code for Title:**
 > <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">TITLE</span>
 
 Explanation: dc represents "Dublin Core" which is one of the oldest vocabularies or schemas on the semantic web. It allows one to express typical things like a work's title, author, or source. 
 
-Code for Author: 
+**Code for Author:**
 > <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">AUTHOR</span> 
 
-Explanation: In this case, CC is using its own XML namespace (http://creativecommons.org/ns#), abbreviated using cc. The property is CC's AttributionName attribute and the value is the content inside the anchor tag (AUTHOR). (For definitions of the different properties in CC’s XML namespace, see http://creativecommons.org/ns.)
+Explanation: In this case, CC is using its own XML namespace ([http://creativecommons.org/ns#](http://creativecommons.org/ns#)), abbreviated using cc. The property is CC's AttributionName attribute and the value is the content inside the anchor tag (AUTHOR). (For definitions of the different properties in CC’s XML namespace, see [http://creativecommons.org/ns](http://creativecommons.org/ns).)
 
-Code for URL of work (web address where work sits):
+**Code for URL of work (web address where work sits):**
 > <a xmlns:cc="http://creativecommons.org/ns#" href="URL of work" property="cc:attributionName" rel="cc:attributionURL">AUTHOR</a> 
 
 Explanation: This is to link the AUTHOR to a URL where the work sits. The property is still CC's AttributionName attribute and a relationship of cc:AttributionURL is defined for the URL of the work. 
 
-All together now: [insert screenshot] This CC licensed video (https://vimeo.com/143427866) should include the following metadata in the source code of the page.
+All together now: [insert screenshot] This [CC licensed video on Vimeo](https://vimeo.com/143427866) should include the following metadata in the source code of the page.
+
 > <a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/3.0/88x31.png" /></a><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Lawrence Lessig at the CC Global Summit 2015</span><a xmlns:cc="http://creativecommons.org/ns#" href="https://vimeo.com/143427866" property="cc:attributionName" rel="cc:attributionURL">Creative Commons</a>
 
 Explanation: The bolded items correspond to the following fields:
