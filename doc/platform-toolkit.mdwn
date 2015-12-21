@@ -112,7 +112,7 @@ As [noted above](#other-considerations-for-tos), platforms often require their u
 Platforms often have additional guidelines or rules that are incorporated by reference into the TOS. Obviously, it’s important that those rules accurately describe how the licenses work and that they not create any conflicts with the terms in your TOS. 
 
 ### Examples
-Every good website terms of use is customized to how the particular platform runs its service, which means TOS cannot be completely standardized. **Please** keep that in mind when looking through the model and real-world examples below, and do not use any of this language for your own purposes without considering how it would apply in your unique context. 
+Every good website terms of use is customized to how the particular platform runs its service, which means TOS cannot be completely standardized. **Please** keep that in mind when looking through the model and real world examples below, and do not use any of this language for your own purposes without considering how it would apply in your unique context. 
 
 #### 1. Model platform TOS provisions 
 
@@ -320,24 +320,28 @@ Learn more about the origin of the CC logos and icons in this feature, [A Master
 
 ## Upgrading to 4.0 and later versions of the CC suite
 
-If your platform is currently using an old version of the CC license suite, you should consider moving to the most up-to-date version (4.0). This is simple to do for all content going forward. All you have to do is change the existing links to the 4.0 license suite and make sure the correct license versions are displayed throughout your site. 
+If your platform is currently using an old version of the CC license suite, you should consider moving to the most up-to-date version ([4.0](http://creativecommons.org/version4)). This is simple to do for all content going forward. All you have to do is change the existing links to the 4.0 license suite (eg. creativecommons.org/licenses/by/**4.0**) and make sure the correct license versions are displayed throughout your site. 
 
 If you would also like to change the license for the existing CC-licensed content on your platform, it’s more complicated. Since users typically retain the copyright to content they upload to a platform, this requires getting permission from users. For example, platforms could prompt users to relicense their previously CC-licensed work the next time they log into the platform. 
 
-If you would like to be able to move the CC-licensed content on your platform to a later version without hassle in the future, you may want to consider getting express permission from your users to move to the most updated license of the particular CC license applied to a work when those future versions are released. This can be done in the terms of service[link to section C.3] or at the point of upload where the user applies the CC license to their work. 
+If you would like to be able to move the CC-licensed content on your platform to a later version without hassle in the future, you may want to consider getting express permission from your users to move to the most updated license of the particular CC license applied to a work when those future versions are released. This can be done in the [terms of service](#other-considerations-for-tos) or at the point of upload where the user applies the CC license to their work. 
 
 ## Enabling CC search and discovery
 
-Once you have integrated CC into the first two components of your user interface correctly (license selection and content display), you can integrate the same license metadata into your search so that users can filter content on your platform by license, or by reuse categories that address their needs. In addition to adding license filters to your platform’s search, you can also provide a portal to CC-licensed content, a landing page for those users seeking commons content on your platform. We provide examples and details for both in this section.
+Once you have integrated CC into the first two components of your user interface correctly ([license selection](#license-chooser) and [content display](#license-display-on-content)), you can integrate the same license metadata into your search so that users can filter content on your platform by license, or by reuse categories that address their needs. In addition to adding license filters to your platform’s search, you can also provide a portal to CC-licensed content, a landing page for those users seeking commons content on your platform. We provide examples and details for both in this section.
 
-### 1. CC filters in search: 
-You can filter by licenses in two ways - by license or by a few reuse categories that are most applicable to what your users are seeking.
+### 1. CC filters in search
+You can filter by licenses in two ways -- by license or by a few reuse categories that are most applicable to what your users are seeking.
+
+**Example 1**
 
 > example 1
 
+**Example 2**
+
 > example 2: http://search.creativecommons.org/ screenshot
 
-Example 1 demonstrates filtering by license, which is pretty straightforward. When you filter by license, make sure to use the same order of licenses you used in the license selection process[link=section]. All content licensed under a specific CC license should appear in the results when the corresponding license is checked. For example, when CC BY is checked, all content licensed under CC BY would show in the results. 
+Example 1 demonstrates filtering by license, which is pretty straightforward. When you filter by license, make sure to use the same order of licenses you used in the [license selection process](#license-chooser). All content licensed under a specific CC license should appear in the results when the corresponding license is checked. For example, when CC BY is checked, all content licensed under CC BY would show in the results. 
 
 Example 2 demonstrates filtering by a few reuse categories that correspond to content under more than one license. 
 - In this case, checking only “use for commercial purposes” returns all content marked under CC BY, CC BY-SA, CC BY-ND, CC0, and PDM. 
@@ -346,11 +350,11 @@ Example 2 demonstrates filtering by a few reuse categories that correspond to co
 
 If you choose to use categories different from the ones above, make sure that they accurately portray the usage rights given by the CC licenses and that the right subset of CC licensed content is returned with each filter. 
 
-### 2. CC content portal and browse features: 
+### 2. CC content portal and browse features 
 
 > example, eg. https://wiki.creativecommons.org/wiki/Web_Integration/InterfaceExample
 
-Platforms like Flickr and Vimeo have landing pages that serve as portals to CC-licensed content to allow users to browse the commons in one place. These portals accomplish several goals, including providing direct and easy access to CC content; explaining the diversity of CC licenses and content options; surfacing the significance of sharing culture; and building a community around the commons. It is important that this page is accessible from your home page, or easily navigated to from somewhere equally obvious in the user interface. If your platform is interested in providing a landing page for the commons, see Section VIII for some additional language and resources you might include.
+Platforms like Flickr and Vimeo have landing pages that serve as portals to CC-licensed content to allow users to browse the commons in one place. These portals accomplish several goals, including providing direct and easy access to CC content; explaining the diversity of CC licenses and content options; surfacing the significance of sharing culture; and building a community around the commons. It is important that this page is accessible from your home page, or easily navigated to from somewhere equally obvious in the user interface. If your platform is interested in providing a landing page for the commons, see [Communication and Education](#communication-and-education) for some additional language and resources you might include.
 
 ### 3. License metadata for search 
 
@@ -369,25 +373,28 @@ With so much user-generated content on your platform, it is important that your 
 > example (MIT OCW)
 
 When a user downloads content from your platform, she is intending to reuse it in some way. Providing a suggested attribution both highlights the  importance of giving credit while giving the user text which she can easily copy and paste. If you have integrated the CC license metadata, suggested attribution text can be generated automatically from the source code on the page. 
-example - “copy attribution” button in model platform (screenshots): At the code level this means filling out a template based on the metadata examples above. It is simply a case of creating a license chooser according to best practices for attribution text.
+
+> example - “copy attribution” button in model platform (screenshots) 
+
+At the code level this means filling out a template based on the metadata examples above. It is simply a case of creating a license chooser according to best practices for attribution text.
 
 ### 2. Attribution in remix tools
 
 > example - ?
 
-If you allow your users to build on each others works within the platform itself via a remix tool or similar, then we suggest automating attribution when a user pulls a work into her remix. Any automated attribution should include at a minimum the author and license of the original work (with link to the specific license). Best practice is to retain TASL, standing for Title, Author, Source, and License, in any attribution. For more information see, our Best practices for attribution[link=https://wiki.creativecommons.org/wiki/Best_practices_for_attribution].
+If you allow your users to build on each others works within the platform itself via a remix tool or similar, then we suggest automating attribution when a user pulls a work into her remix. Any automated attribution should include at a minimum the author and license of the original work (with link to the specific license). Best practice is to retain TASL, standing for Title, Author, Source, and License, in any attribution. For more information see, our [Best practices for attribution](https://wiki.creativecommons.org/wiki/Best_practices_for_attribution).
 
 ### 3. Attribution for content that your users don’t own but contribute to your platform under CC licenses 
 
 > Example: is this owned by you? checkbox screenshot
 
-If you allow your users to share third party CC licensed content on your platform, be sure to require attribution for that content at the point of upload, similar to users licensing their own work at the point of upload. The distinction, however, should be made that the users are sharing content that is not their own through a field for them to indicate the original author of the work. Again, please refer to TASL and our Best practices for attribution[link=https://wiki.creativecommons.org/wiki/Best_practices_for_attribution] for more information.
+If you allow your users to share third party CC licensed content on your platform, be sure to require attribution for that content at the point of upload, similar to users licensing their own work at the point of upload. The distinction, however, should be made that the users are sharing content that is not their own through a field for them to indicate the original author of the work. Again, please refer to TASL and our [Best practices for attribution](https://wiki.creativecommons.org/wiki/Best_practices_for_attribution) for more information.
 
 ###Additional attribution guidance for your users
 
 > Example: attribution guide on someone else’s platform
 
-Consider providing your users with attribution guidance, especially if your platform hosts domain-specific content that has different attribution norms, eg. academic research. CC’s general Best practices for attribution[link=https://wiki.creativecommons.org/wiki/Best_practices_for_attribution] may be linked to or adapted for your purposes.
+Consider providing your users with attribution guidance, especially if your platform hosts domain-specific content that has different attribution norms, eg. academic research. CC’s general [Best practices for attribution](https://wiki.creativecommons.org/wiki/Best_practices_for_attribution) may be linked to or adapted for your purposes.
 
 ## Communication and Education
 
@@ -395,16 +402,15 @@ A well-designed CC integration and user experience is usually all users need to 
 
 We recommend at least one or all of the following communications materials to explain how the CC licenses work, the larger movement within which it sits, and how your platform’s values align with the Creative Commons vision.
 
-1. An info page that explains the basics of CC, including why your platform decided to add CC for your users and how it aligns with your platform’s values. Don’t forget a link to creativecommons.org for users who want to learn more.
-example: https://support.google.com/youtube/answer/2797468?hl=en 
-2. FAQ on how CC licenses work on your platform, eg. Vimeo. You can adapt CC’s FAQ[link] for your purposes.
-example: https://vimeo.com/help/faq/legal-stuff/creative-commons 
+1. An info page that explains the basics of CC, including why your platform decided to add CC for your users and how it aligns with your platform’s values. Don’t forget a link to [http://creativecommons.org](http://creativecommons.org) for users who want to learn more.
+Example: [YouTube's page on Creative Commons](https://support.google.com/youtube/answer/2797468?hl=en) 
+2. FAQ on how CC licenses work on your platform. You can adapt [CC’s FAQ](http://creativecommons.org/faq/) for your purposes.
+Example: [Vimeo's CC FAQ](https://vimeo.com/help/faq/legal-stuff/creative-commons)
 3. Community guidelines around attribution and other sharing practices
-example: https://www.flickr.com/services/developer/attributions/ 
-example: general community guidelines: https://www.flickr.com/help/guidelines/ 
-4. CC portal for content discovery, eg. Flickr. See Section VI.C for more info.
-One-time communications that sit in a permanent url such as a blog post announcing the integration, the design process, or related editorials about the addition of CC
-example: https://medium.com/the-story/explicit-post-licensing-3aa1df783f8d, https://medium.com/designing-medium/everyday-design-84838adc4e93 
+Example: Flickr's [attribution](https://www.flickr.com/services/developer/attributions/) and [general community guidelines](https://www.flickr.com/help/guidelines/)
+4. CC portal for content discovery. Example: [Flickr's CC portal](http://flickr.com/creativecommons/); [Vimeo's CC portal](http://vimeo.com/creativecommons). See [CC content portal and browse features](#2-cc-content-portal-and-browse-features) for more info.
+5. One-time communications that sit in a permanent url such as a blog post announcing the integration, the design process, or related editorials about the addition of CC
+Example: Medium's posts announcing [explicit post licensing](https://medium.com/the-story/explicit-post-licensing-3aa1df783f8d) and its [UX design process](https://medium.com/designing-medium/everyday-design-84838adc4e93) 
 
 ## Model Platform
 
@@ -412,11 +418,11 @@ Model platform screenshots here
 
 Link to developer download
 
-List of some real world platforms with good UX
-- Vimeo
-- Flickr
-- Medium
-- Wikimedia Commons
+Also check out these real world platforms with CC integrations. You can log in to see how the license selection process works on each.
+- [Vimeo](http://vimeo.com/creativecommons)
+- [Flickr](http://flickr.com/creativecommons/)
+- [Medium](http://medium.com)
+- [Wikimedia Commons](https://commons.wikimedia.org/wiki/Main_Page)
 
 ## Final checklist
 
