@@ -408,9 +408,22 @@ Example: Medium's posts announcing [explicit post licensing](https://medium.com/
 
 ## Model Platform
 
-Model platform screenshots here
+You can download and test the model platform [here](https://github.com/creativecommons/mp). You can also browse through the screenshots below without deploying.
 
-Link to developer download
+![Model home](https://github.com/creativecommons/mp/blob/master/doc/images/Model%20home.jpg)
+![Model login](https://github.com/creativecommons/mp/blob/master/doc/images/Model%20login.jpg)
+![Model license upload](https://github.com/creativecommons/mp/blob/master/doc/images/Model%20upload.jpg)
+![Model license selection](https://github.com/creativecommons/mp/blob/master/doc/images/Model%20license%20selection.png)
+![Model default license](https://github.com/creativecommons/mp/blob/master/doc/images/Model%20default%20license.jpg)
+![Model license display](https://github.com/creativecommons/mp/blob/master/doc/images/Model%20license%20display.jpg)
+![Model browse portal](https://github.com/creativecommons/mp/blob/master/doc/images/Model%20browse.jpg)
+![Model search results](https://github.com/creativecommons/mp/blob/master/doc/images/Model%20search%20results.jpg)
+![Model search filters](https://github.com/creativecommons/mp/blob/master/doc/images/Model%20search%20filters.png)
+![Model TOS](https://github.com/creativecommons/mp/blob/master/doc/images/Model%20TOS.jpg)
+![Model about cc](https://github.com/creativecommons/mp/blob/master/doc/images/Model%20about%20cc.jpg)
+![Model FAQ](https://github.com/creativecommons/mp/blob/master/doc/images/Model%20FAQ.jpg)
+![Model attribution guide](https://github.com/creativecommons/mp/blob/master/doc/images/Model%20attribution%20guide.jpg)
+![Model community guidelines](https://github.com/creativecommons/mp/blob/master/doc/images/Model%20community%20guidelines.jpg)
 
 Also check out these real world platforms with CC integrations. You can log in to see how the license selection process works on each.
 - [Vimeo](http://vimeo.com/creativecommons)
