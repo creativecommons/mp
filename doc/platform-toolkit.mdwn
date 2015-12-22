@@ -1,4 +1,6 @@
 
+**This public draft is open for comment through 22 January 2016.** Please file suggested changes as Github issues.  
+
 # Creative Commons Integration, from A to Z
 
 ## About this toolkit
