@@ -281,10 +281,9 @@ All together now: [insert screenshot] This [CC licensed video on Vimeo](https://
 - Author = Creative Commons
 - URL of work = https://vimeo.com/143427866
 
-*Associating the metadata with a specific media file:*
-We also recommend associating the CC license metadata on a web page with the specific media file by wrapping the metadata in div tags. This is especially useful to specify when your platform hosts more than one work on a web page.
+**Code associating metadata to a specific media file:**
 
-**Code:**
+We also recommend associating the CC license metadata on a web page with the specific media file by wrapping the metadata in div tags. This is especially useful to specify when your platform hosts more than one work on a web page.
 
     <div about="<LINK TO MEDIAFILE>"><a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/3.0/88x31.png" /></a><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Lawrence Lessig at the CC Global Summit 2015</span><a xmlns:cc="http://creativecommons.org/ns#" href="https://vimeo.com/143427866" property="cc:attributionName" rel="cc:attributionURL">Creative Commons</a></div>
 
