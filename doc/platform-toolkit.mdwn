@@ -224,7 +224,7 @@ Additionally, users should have the ability to view, download, and distribute an
 
 ### License metadata 
 
-At every integration step, license metadata plays a crucial role in communicating the CC licenses to search engines and other kinds of software. CC license metadata should be incorporated into the technical backend of the three components of the CC user experience: 1) the license selection process, 2) display of the licensed content, and 3) discovery of licensed content. In this section, we’ll go over the metadata that is required for 1 and 2; 3 is covered in [License metadata for search](#3-license-metadata-for-search).
+At every integration step, license metadata plays a crucial role in communicating the CC licenses to search engines and other kinds of software. For example, adding CC license metadata may direct users to your platform via [Google's advanced search](https://www.google.com/advanced_search) which enables search filters by usage rights. CC license metadata should be incorporated into the technical backend of the three components of the CC user experience: 1) the license selection process, 2) display of the licensed content, and 3) discovery of licensed content. In this section, we’ll go over the metadata that is required for 1 and 2; 3 is covered in [License metadata for search](#3-license-metadata-for-search).
 
 CC license metadata consists of a small snippet of html code with RDFa that expresses CC license and attribution information on the web. RDFa is a way of expressing RDF triples inside XHTML pages using span tags. You can learn more about RDFa and how it works [here](https://wiki.creativecommons.org/wiki/RDFa). But you don’t need to know all the details to implement it into your platform. We’ve broken down what you need by each component below. 
 
@@ -407,7 +407,7 @@ A well-designed CC integration and user experience is usually all users need to 
 We recommend at least one or all of the following communications materials to explain how the CC licenses work, the larger movement within which it sits, and how your platform’s values align with the Creative Commons vision.
 
 1. An info page that explains the basics of CC, including why your platform decided to add CC for your users and how it aligns with your platform’s values. Don’t forget a link to [http://creativecommons.org](http://creativecommons.org) for users who want to learn more.
-Example: [YouTube's page on Creative Commons](https://support.google.com/youtube/answer/2797468?hl=en) 
+Example: [YouTube's page on Creative Commons](https://support..com/youtube/answer/2797468?hl=en) 
 2. FAQ on how CC licenses work on your platform. You can adapt [CC’s FAQ](http://creativecommons.org/faq/) for your purposes.
 Example: [Vimeo's CC FAQ](https://vimeo.com/help/faq/legal-stuff/creative-commons)
 3. Community guidelines around attribution and other sharing practices
