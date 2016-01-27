@@ -49,7 +49,7 @@
 - [Final checklist](#final-checklist)
 - [Beyond this Toolkit](#beyond-this-toolkit)
 
-## The different types of content on your platform
+## The different types of content on your platform [&uarr;](#top)
 
 The primary focus of this toolkit is to help you enable CC licenses for user-generated content (UGC) on your platform. However, you probably have other types of content on your platform as well. We have categorized the main types of content most platforms deal with:
 
