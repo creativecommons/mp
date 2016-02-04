@@ -93,6 +93,8 @@ For example, some sites only allow users to upload content under CC licenses all
 2. **Representations & warranties**: Platforms often ask their users to formally promise that the content they upload to the platform is not infringing of others’ copyright or other rights. CC licenses do not include reps and warranties of this type, and CC-licensed content comes “as-is” or without guarantees. However, platforms may still ask their users to represent that they have the necessary rights to all content they upload, including CC-licensed content. 
 3. **Later versions of the licenses**: In 2013, Creative Commons published the latest version of the license suite -- version 4.0. We have no plans to version the licenses again for many years, but it is realistic to assume that eventually the licenses will be updated to reflect legal and policy changes. Only the rights holder can apply a new version of the licenses to a work, so platforms may want to consider getting express permission from their users to move to the most updated license of the particular CC license applied to a work when those future versions are released. This can be done in the terms of service or at the point of upload where the user applies the CC license to their work. 
 
+> **Example language**: "You hereby agree that Your Content: (a) is hereby licensed under the Creative Commons Attribution 4.0 License and may be used under the terms of that license or any later version of a Creative Commons Attribution License."
+
 ### Most common conflicts in terms of service
 
 #### 1. Additional restrictions
