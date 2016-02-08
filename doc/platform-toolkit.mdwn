@@ -5,7 +5,7 @@
 
 ## About this toolkit
 
-**What**: This toolkit covers the elements for a basic Creative Commons platform integration, including aligning legal terms to CC tools; installing the CC license chooser; displaying CC licensed content with the correct logos and links; and how to communicate CC to your users. See the [Table of Contents](#table-of-contents) to skip to the topic you need help on. 
+**What**: This toolkit covers the elements for a basic Creative Commons platform integration, including aligning legal terms to CC tools; installing the CC license chooser; displaying CC licensed content with the correct logos and links; and how to communicate CC to your users. See the [Table of Contents](#TOC) above to skip to the topic you need help on. 
 **What this is not**: Legal advice. There may be unique issues that apply to you that aren’t considered here. See [Beyond this Toolkit](#beyond-this-toolkit).
 
 **Who**: User-generated content platforms that want to address the increasing public demand for sharing under CC licenses and public domain tools. Think of it as an onboarding tool -- everything you need to know to get from zero to basic CC integration.
@@ -15,39 +15,7 @@
 
 **License**: This web version of the toolkit is free for you to reuse and remix under the terms of the [CC Attribution 4.0 International license](s://creativecommons.org/licenses/by/4.0/). Please credit Creative Commons with a link back to this toolkit. If you modify this toolkit, don’t suggest that we endorse your revisions.
 
-**Learn more**: This toolkit is part of a larger initiative to transform platforms into vibrant, creative spaces for the commons. If you would like to get involved with larger aspects of our work, [visit this page](s://github.com/creativecommons/platform-initiative).
-
-## Table of Contents
-
-- [About this toolkit](#about-this-toolkit)
-- [The different types of content on your platform](#the-different-types-of-content-on-your-platform)
-- [CC and your Terms of Service](#cc-and-your-terms-of-service)
-    - [Checklist for an ideal TOS](#checklist-for-an-ideal-tos)
-    - [Other considerations for TOS](#other-considerations-for-tos)
-    - [Most common conflicts in terms of service](#most-common-conflicts-in-terms-of-service)
-    - [User guidelines and other supplemental materials](#user-guidelines-and-other-supplemental-materials)
-    - [Examples](#examples)
-- [CC in your User Interface](#cc-in-your-user-interface)
-    - [License chooser](#license-chooser)
-    - [License display on content](#license-display-on-content)
-    - [License metadata](#license-metadata)
-    - [Logos and icons](#logos-and-icons)
-    - [Additional design resources](#additional-design-resources)
-    - [Checklist. Check if the following are true.](#checklist-check-if-the-following-are-true)
-- [Upgrading to 4.0 and later versions of the CC suite](#upgrading-to-40-and-later-versions-of-the-cc-suite)
-- [Enabling CC search and discovery](#enabling-cc-search-and-discovery)
-    - [CC filters in search](#1-cc-filters-in-search)
-    - [CC content portal and browse features](#2-cc-content-portal-and-browse-features)
-    - [License metadata for search](#3-license-metadata-for-search)
-- [Attributing authors of CC content](#attributing-authors-of-cc-content)
-    - [Attribution at the point of download](#1-attribution-at-the-point-of-download)
-    - [Attribution in remix tools](#2-attribution-in-remix-tools)
-    - [Attribution for content that your users don’t own but contribute to your platform under CC licenses](#3-attribution-for-content-that-your-users-dont-own-but-contribute-to-your-platform-under-cc-licenses)
-    - [Additional attribution guidance for your users](#additional-attribution-guidance-for-your-users)
-- [Communication and Education](#communication-and-education)
-- [Model Platform](#model-platform)
-- [Final checklist](#final-checklist)
-- [Beyond this Toolkit](#beyond-this-toolkit)
+**Learn more**: This toolkit is part of a larger initiative to transform platforms into vibrant, creative spaces for the commons. If you would like to get involved with these aspects of our work, [visit this page](s://github.com/creativecommons/platform-initiative).
 
 ## The different types of content on your platform [&uarr;](#top)
 
@@ -59,13 +27,13 @@ The primary focus of this toolkit is to help you enable CC licenses for user-gen
 
 All CC-licensed content functions the same for your users once it is published on your site -- they can use the content freely under the terms of the relevant Creative Commons license. But for you as the platform provider, there are a few things to consider that are specific to each category of content.
 
-##### 1. Content owned by your users:  (collapsible section)
+##### 1. Content owned by your users:
 If you enable your users to apply CC licenses to their content on your platform, your primary goal should be ensuring they understand the basics of how the licenses work, especially because the licenses are irrevocable. You can decide which of the [six license types](s://creativecommons.org/licenses/) and [two public domain tools](s://creativecommons.org/publicdomain) you want to enable users to apply and then make sure to mark the content to identify which license applies to which content. In nearly all cases, this content remains owned by the user, and the platform gets the rights to host it via the CC license that is applied or via a separate license in the terms of service. (More on that [below](#cc-and-your-terms-of-service).)
 
-##### 2. Content owned by the platform:  (collapsible section)
+##### 2. Content owned by the platform:
 As the copyright holder for this type of content, the world is your oyster! If you choose to apply a CC license to any of it, just be sure to mark which license applies (type and version) and mark any content that is not covered by the license, such as company logos or other trademarks. 
 
-##### 3. Third party content contributed to the platform:  (collapsible section)
+##### 3. Third party content contributed to the platform:
 If you allow your users to upload content created by others, it is important to be clear about what permissions they need to have from the author before doing so. Many platforms permit users to upload content they do not own so long as it is available under a Creative Commons license (or one of some particular subset of CC licenses). The decision to allow users to upload third party content, and if so, which particular Creative Commons licenses are permitted, comes down to how the content on the platform is and could be used by both the platform itself and other users. In some cases the platform will specify the particular types of CC-licensed content that are permitted (1) and in others the platform puts the onus on the uploader to make the determination (2). 
 
 > **Example**: A platform hosting open educational resources (OER) wants its educators to share and build on relevant and high quality resources. This platform may find it desirable to enable its users to share and remix existing third party OER under CC licenses. This platform may choose to specify that only third party content under a specific CC license, eg. CC BY, may be shared (1), or it may allow third party content under various licenses as long as the user maintains she has the rights to reuse the content (2).
@@ -78,18 +46,18 @@ In this section, we cover a few basic elements for an ideal TOS, explain some ad
 
 Website terms of service are not strictly necessary, but most platforms have them. For those that do, we recommend including the following elements if the platform enables CC licensing for user-generated content. 
 
-##### 1. In the most simple and accessible terms possible, the TOS should explain how CC licensing works for content creators on the platform.  (collapsible section)
-For example, is the default that all user-generated content is published under a particular CC license, or do users simply have the option to select a CC license for their work? See [Model platform TOS provisions](#1-model-platform-tos-provisions) for an example. 
+##### 1. In the most simple and accessible terms possible, the TOS should explain how CC licensing works for content creators on the platform. 
+For example, is the default that all user-generated content is published under a particular CC license, or do users simply have the option to select a CC license for their work? See [Model platform TOS provisions](#model-platform-tos-provisions) for an example. 
 
-##### 2. The TOS should make it clear that users of the platform can reuse CC-licensed content according to the terms and conditions of the applicable license.  (collapsible section)
-Many users will not be familiar with CC licensing, so it is best to spell this out explicitly. You can also link to information that explains how CC licenses work in more detail. If the TOS include other provisions that restrict the way content is used on the site, then providing certainty that CC-licensed content may be used according to the license terms is particularly important. See [Additional restrictions](#1-additional-restrictions) for more information. See [Model platform TOS provisions](#1-model-platform-tos-provisions) for an example. 
+##### 2. The TOS should make it clear that users of the platform can reuse CC-licensed content according to the terms and conditions of the applicable license.  
+Many users will not be familiar with CC licensing, so it is best to spell this out explicitly. You can also link to information that explains how CC licenses work in more detail. If the TOS include other provisions that restrict the way content is used on the site, then providing certainty that CC-licensed content may be used according to the license terms is particularly important. See [Additional restrictions](#additional-restrictions) for more information. See [Model platform TOS provisions](#model-platform-tos-provisions) for an example. 
 
-##### 3. The TOS should state in clear terms what types of existing CC-licensed content (created by third parties and not the user) can be uploaded by users and how that content should be marked. (collapsible section) 
-For example, some sites only allow users to upload content under CC licenses allowing commercial use. Others allow any CC-licensed content. In all cases, the TOS should also state how such content should be marked with license and attribution information. See [Third party content contributed to the platform](#3-third-party-content-contributed-to-the-platform) above for more information how to determine what types of third party content to allow and [Third party CC-licensed content](#2-third-party-cc-licensed-content) for information on how to avoid a common conflict related to third party content. See [Model platform TOS provisions](#1-model-platform-tos-provisions) for an example. 
+##### 3. The TOS should state in clear terms what types of existing CC-licensed content (created by third parties and not the user) can be uploaded by users and how that content should be marked. 
+For example, some sites only allow users to upload content under CC licenses allowing commercial use. Others allow any CC-licensed content. In all cases, the TOS should also state how such content should be marked with license and attribution information. See [Third party content contributed to the platform](#third-party-content-contributed-to-the-platform) above for more information how to determine what types of third party content to allow and [Third party CC-licensed content](#third-party-cc-licensed-content) for information on how to avoid a common conflict related to third party content. See [Model platform TOS provisions](#model-platform-tos-provisions) for an example. 
 
 ### Other considerations for TOS
 
-1. **License from contributors**: Where users are uploading content that is already CC-licensed (whether their own content or others), the platform can get all of the copyright permission it needs to use the work from the applicable CC license. However, platforms often include a direct copyright license grant from the uploader to the platform in their terms of service. In cases where people are uploading CC-licensed content owned by others, the direct license to the platform is in conflict with the CC license. See the [Third Party CC-Licensed Content](#2-third-party-cc-licensed-content) below for more information about this conflict and how to address it. 
+1. **License from contributors**: Where users are uploading content that is already CC-licensed (whether their own content or others), the platform can get all of the copyright permission it needs to use the work from the applicable CC license. However, platforms often include a direct copyright license grant from the uploader to the platform in their terms of service. In cases where people are uploading CC-licensed content owned by others, the direct license to the platform is in conflict with the CC license. See the [Third Party CC-Licensed Content](#third-party-cc-licensed-content) below for more information about this conflict and how to address it. 
 2. **Representations & warranties**: Platforms often ask their users to formally promise that the content they upload to the platform is not infringing of others’ copyright or other rights. CC licenses do not include reps and warranties of this type, and CC-licensed content comes “as-is” or without guarantees. However, platforms may still ask their users to represent that they have the necessary rights to all content they upload, including CC-licensed content. 
 3. **Later versions of the licenses**: In 2013, Creative Commons published the latest version of the license suite -- version 4.0. We have no plans to version the licenses again for many years, but it is realistic to assume that eventually the licenses will be updated to reflect legal and policy changes. Only the rights holder can apply a new version of the licenses to a work, so platforms may want to consider getting express permission from their users to move to the most updated license of the particular CC license applied to a work when those future versions are released. This can be done in the terms of service or at the point of upload where the user applies the CC license to their work. 
 
