@@ -379,14 +379,14 @@ A well-designed CC integration and user experience is usually all users need to 
 We recommend at least one or all of the following communications materials to explain how the CC licenses work, the larger movement within which it sits, and how your platform’s values align with the Creative Commons vision.
 
 1. An info page that explains the basics of CC, including why your platform decided to add CC for your users and how it aligns with your platform’s values. Don’t forget a link to [https://creativecommons.org](https://creativecommons.org) for users who want to learn more.
-Example: [YouTube's page on Creative Commons](https://support..com/youtube/answer/2797468?hl=en) 
+Example: [YouTube's page on Creative Commons](https://support..com/youtube/answer/2797468?hl=en).
 2. FAQ on how CC licenses work on your platform. You can adapt [CC’s FAQ](https://creativecommons.org/faq/) for your purposes.
-Example: [Vimeo's CC FAQ](https://vimeo.com/help/faq/legal-stuff/creative-commons)
+Example: [Vimeo's CC FAQ](https://vimeo.com/help/faq/legal-stuff/creative-commons).
 3. Community guidelines around attribution and other sharing practices
-Example: Flickr's [attribution](https://www.flickr.com/services/developer/attributions/) and [general community guidelines](https://www.flickr.com/help/guidelines/)
-4. CC portal for content discovery. Example: [Flickr's CC portal](https://flickr.com/creativecommons/); [Vimeo's CC portal](https://vimeo.com/creativecommons). See [CC content portal and browse features](#2-cc-content-portal-and-browse-features) for more info.
+Example: Flickr's [attribution](https://www.flickr.com/services/developer/attributions/) and [general community guidelines](https://www.flickr.com/help/guidelines/).
+4. CC portal for content discovery. Example: [Flickr's CC portal](https://flickr.com/creativecommons/); [Vimeo's CC portal](https://vimeo.com/creativecommons). See [CC content portal and browse features](#cc-content-portal-and-browse-features) for more info.
 5. One-time communications that sit in a permanent url such as a blog post announcing the integration, the design process, or related editorials about the addition of CC
-Example: Medium's posts announcing [explicit post licensing](https://medium.com/the-story/explicit-post-licensing-3aa1df783f8d) and its [UX design process](https://medium.com/designing-medium/everyday-design-84838adc4e93) 
+Example: Medium's posts announcing [explicit post licensing](https://medium.com/the-story/explicit-post-licensing-3aa1df783f8d) and its [UX design process](https://medium.com/designing-medium/everyday-design-84838adc4e93). 
 
 ## Model Platform [&uarr;](#top)
 
@@ -408,6 +408,7 @@ You can download and test the model platform [here](https://github.com/creativec
 ![Model community guidelines](https://github.com/creativecommons/mp/blob/master/doc/images/Model%20community%20guidelines.jpg)
 
 Also check out these real world platforms with CC integrations. You can log in to see how the license selection process works on each.
+
 - [Vimeo](https://vimeo.com/creativecommons)
 - [Flickr](https://flickr.com/creativecommons/)
 - [Medium](https://medium.com)
