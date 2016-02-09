@@ -12,7 +12,7 @@
 
 **License**: This web version of the toolkit is free for you to reuse and remix under the terms of the [CC Attribution 4.0 International license](https://creativecommons.org/licenses/by/4.0/). Please credit Creative Commons with a link back to this toolkit. If you modify this toolkit, don’t suggest that we endorse your revisions.
 
-**Learn more**: This toolkit is part of a larger initiative to transform platforms into vibrant, creative spaces for the commons. If you would like to get involved with these aspects of our work, [visit this page](https://github.com/creativecommons/platform-initiative).
+**Learn more**: This toolkit is part of a larger initiative to transform platforms into vibrant, creative spaces for the commons. If you would like to get involved with these aspects of our work, [visit this page](https://creativecommons.org/platform/).
 
 ## The different types of content on your platform [&uarr;](#top)
 
@@ -241,11 +241,12 @@ All together now: This [CC licensed video on Vimeo](https://vimeo.com/143427866)
     <a rel="license" href="https://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/3.0/88x31.png" /></a><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Lawrence Lessig at the CC Global Summit 2015</span><a xmlns:cc="https://creativecommons.org/ns#" href="https://vimeo.com/143427866" property="cc:attributionName" rel="cc:attributionURL">Creative Commons</a>
 
 *Explanation:* The bolded items correspond to the following fields:
-* License = https://creativecommons.org/licenses/by/3.0/
-* License icons = https://i.creativecommons.org/l/by/3.0/88x31.png (you can replace this with the circular icons if you wish, see [Logos and icons](#logos-and-icons))
-* Title = Lawrence Lessig at the CC Global Summit 2015
-* Author = Creative Commons
-* URL of work = https://vimeo.com/143427866
+
+- License = https://creativecommons.org/licenses/by/3.0/
+- License icons = https://i.creativecommons.org/l/by/3.0/88x31.png (you can replace this with the circular icons if you wish, see [Logos and icons](#logos-and-icons))
+- Title = Lawrence Lessig at the CC Global Summit 2015
+- Author = Creative Commons
+- URL of work = https://vimeo.com/143427866
 
 **Code associating metadata to a specific media file:**
 
