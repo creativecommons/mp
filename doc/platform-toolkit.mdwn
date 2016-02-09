@@ -187,13 +187,13 @@ License display on a resource consists of 3 components:
 3. Machine-readable metadata on the backend, a small snippet of html code that indicates the license to search engines and other kinds of software. This is invisible to the lay user, but visible in the source code. The metadata behind each license display should correspond to the metadata chosen via the license chooser process. (See [Metadata for display](#metadata-for-display) for more details)
 
 Additionally, users should have the ability to view, download, and distribute any CC-licensed or public domain work: 
-    - All CC licensed content should be publicly accessible, which means be able to be read or viewed by a user, without a login.
-    - If applicable, a “download” button, or other way to obtain the original file containing the content, should be displayed along with the license on the content page so that users may download and use the content as it was intended. All CC licenses allow redistribution at a minimum. 
-    - Technical measures prohibiting any of these or related actions that CC licenses allow should not be added to CC-licensed content on your platform.
+* All CC licensed content should be publicly accessible, which means be able to be read or viewed by a user, without a login.
+* If applicable, a “download” button, or other way to obtain the original file containing the content, should be displayed along with the license on the content page so that users may download and use the content as it was intended. All CC licenses allow redistribution at a minimum. 
+* Technical measures prohibiting any of these or related actions that CC licenses allow should not be added to CC-licensed content on your platform.
 
 ### License metadata 
 
-At every integration step, license metadata plays a crucial role in communicating the CC licenses to search engines and other kinds of software. For example, adding CC license metadata may direct users to your platform via [Google's advanced search](https://www.google.com/advanced_search) which enables search filters by usage rights. CC license metadata should be incorporated into the technical backend of the three components of the CC user experience: 1) the license selection process, 2) display of the licensed content, and 3) discovery of licensed content. In this section, we’ll go over the metadata that is required for 1 and 2; 3 is covered in [License metadata for search](#3-license-metadata-for-search).
+At every integration step, license metadata plays a crucial role in communicating the CC licenses to search engines and other kinds of software. For example, adding CC license metadata may direct users to your platform via [Google's advanced search](https://www.google.com/advanced_search) which enables search filters by usage rights. CC license metadata should be incorporated into the technical backend of the three components of the CC user experience: 1) the license selection process, 2) display of the licensed content, and 3) discovery of licensed content. In this section, we’ll go over the metadata that is required for 1 and 2; 3 is covered in [License metadata for search](#license-metadata-for-search).
 
 CC license metadata consists of a small snippet of html code with RDFa that expresses CC license and attribution information on the web. RDFa is a way of expressing RDF triples inside XHTML pages using span tags. You can learn more about RDFa and how it works [here](https://wiki.creativecommons.org/wiki/RDFa). But you don’t need to know all the details to implement it into your platform. We’ve broken down what you need by each component below. 
 
@@ -219,7 +219,7 @@ At a minimum, the main component you want machine-readable is the license and li
 
 *Explanation:* rel="license" sets the predicate or verb, the URL in the href value sets the object, in this case the CC BY 4.0 license. img src allows you to associate the CC license icon of your choice with the specific license URL.
 
-Beyond that, you can include additional attribution information, such as Title, Author and Work URL, in the following span tags:
+Beyond that, you can include additional attribution information, such as Title, Author and Work URL, in the following span tags.
 
 **Code for Title:**
 
@@ -239,16 +239,16 @@ Beyond that, you can include additional attribution information, such as Title, 
 
 *Explanation:* This is to link the AUTHOR to a URL where the work sits. The property is still CC's AttributionName attribute and a relationship of cc:AttributionURL is defined for the URL of the work. 
 
-All together now: [insert screenshot] This [CC licensed video on Vimeo](https://vimeo.com/143427866) should include the following metadata in the source code of the page.
+All together now: This [CC licensed video on Vimeo](https://vimeo.com/143427866) should include the following metadata in the source code of the page.
 
     <a rel="license" href="https://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/3.0/88x31.png" /></a><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Lawrence Lessig at the CC Global Summit 2015</span><a xmlns:cc="https://creativecommons.org/ns#" href="https://vimeo.com/143427866" property="cc:attributionName" rel="cc:attributionURL">Creative Commons</a>
 
 *Explanation:* The bolded items correspond to the following fields:
-- License = https://creativecommons.org/licenses/by/3.0/
-- License icons = https://i.creativecommons.org/l/by/3.0/88x31.png (you can replace this with the circular icons if you wish, see [Logos and icons](#logos-and-icons))
-- Title = Lawrence Lessig at the CC Global Summit 2015
-- Author = Creative Commons
-- URL of work = https://vimeo.com/143427866
+* License = https://creativecommons.org/licenses/by/3.0/
+* License icons = https://i.creativecommons.org/l/by/3.0/88x31.png (you can replace this with the circular icons if you wish, see [Logos and icons](#logos-and-icons))
+* Title = Lawrence Lessig at the CC Global Summit 2015
+* Author = Creative Commons
+* URL of work = https://vimeo.com/143427866
 
 **Code associating metadata to a specific media file:**
 
@@ -259,13 +259,13 @@ We also recommend associating the CC license metadata on a web page with the spe
 *Explanation:* about defines the subject of metadata within the div. Here we have about="", which defines the subject to be the URL of the media file.
 
 ### Logos and icons
-The CC logo and license icons are universally recognized symbols of sharing and have been recently [acquired](https://creativecommons.org/weblog/entry/45008) by the Modern Museum of Art (MoMA) in New York. Transcending language and culture, CC graphics efficiently communicate to users what they can do with a work, increasing recognition and contribution of content into the commons.
+The CC logo and license icons are universally recognized symbols of sharing and have been recently [acquired](https://blog.creativecommons.org/2015/03/04/creative-commons-logo-acquired-by-moma-and-featured-in-new-exhibit/) by the Modern Museum of Art (MoMA) in New York. Transcending language and culture, CC graphics efficiently communicate to users what they can do with a work, increasing recognition and contribution of content into the commons.
 
 Ideally, CC license icons should accompany every instance of a CC license displayed at the three components of integration: 1) the license selection process, 2) display of the licensed content, and 3) discovery of licensed content. At a minimum, license icons should be used in 2) display of the licensed content. 
 
 Our logos and icons are available at [https://creativecommons.org/about/downloads](https://creativecommons.org/about/downloads). We recommend using the [circular icons](https://creativecommons.org/about/downloads#Icons) when appropriate and have provided [these initial standard sizes](https://licensebuttons.net/i/cc-gift-guide/) for use.
 
-Use of our logos, icons, and trademark are governed by our [policies](https://wiki.creativecommons.org/wiki/Updated_Policies_Page). Please do not use the main CC logo to link to anything other than our main website [https://creativecommons.org/](https://creativecommons.org), and please make sure to link each license icon or corresponding set of license icons to the specific license in question, eg. (cc in a circle) + (attribution man in a circle) should be linked to https://creativecommons.org/licenses/by/4.0/ for CC BY. 
+Use of our logos, icons, and trademark are governed by our [policies](https://wiki.creativecommons.org/wiki/Updated_Policies_Page). Please do not use the main CC logo to link to anything other than our main website ([https://creativecommons.org/](https://creativecommons.org)), and please make sure to link each license icon or corresponding set of license icons to the specific license in question, eg. (cc in a circle) + (attribution man in a circle) should be linked to [https://creativecommons.org/licenses/by/4.0/](https://creativecommons.org/licenses/by/4.0/) for CC BY. 
 
 ###Additional design resources: 
 
@@ -278,21 +278,23 @@ Learn more about the origin of the CC logos and icons in this feature, [A Master
 *Check if the following are true.*
 
 **License chooser**
-- Users can license individual works on the platform
-- Users can license a batch of works on the platform
-- Users can set a default license for works they contribute to the platform
-- Users can edit their license choices after the fact
-- License metadata is integrated into the source code of the license selection process 
-- The license logos and icons accompany each license selection
-- A short snippet of explanatory text and/or link to the CC license accompanies each license selection
+
+* Users can license individual works on the platform
+* Users can license a batch of works on the platform
+* Users can set a default license for works they contribute to the platform
+* Users can edit their license choices after the fact
+* License metadata is integrated into the source code of the license selection process 
+* The license logos and icons accompany each license selection
+* A short snippet of explanatory text and/or link to the CC license accompanies each license selection
 
 **License display on content**
-- The CC license is clearly displayed on the content page, with the following:
+
+* The CC license is clearly displayed on the content page, with the following:
     - License icon(s)
     - Link to license deed
     - License metadata integrated into the page’s source code
-- Users can publicly access or view the licensed content without a login
-- Users can download or otherwise obtain the file directly from the content page
+* Users can publicly access or view the licensed content without a login
+* Users can download or otherwise obtain the file directly from the content page
 
 ## Upgrading to 4.0 and later versions of the CC suite [&uarr;](#top)
 
@@ -321,6 +323,7 @@ You can filter by licenses in two ways -- by license or by a few reuse categorie
 Example 1 demonstrates filtering by license, which is pretty straightforward. When you filter by license, make sure to use the same order of licenses you used in the [license selection process](#license-chooser). All content licensed under a specific CC license should appear in the results when the corresponding license is checked. For example, when CC BY is checked, all content licensed under CC BY would show in the results. 
 
 Example 2 demonstrates filtering by a few reuse categories that correspond to content under more than one license. 
+
 - In this case, checking only “use for commercial purposes” returns all content marked under CC BY, CC BY-SA, CC BY-ND, CC0, and PDM. 
 - Checking only “modify, adapt, or build upon” returns all content marked under CC BY, CC BY-SA, CC BY-NC, CC BY-NC-SA, CC0, and PDM.
 - Checking both “use for commercial purposes” and “modify, adapt, or build upon” returns all content marked under CC BY, CC BY-SA, CC0, and PDM. 
