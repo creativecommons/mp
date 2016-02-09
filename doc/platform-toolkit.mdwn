@@ -1,6 +1,4 @@
 
-**This public draft is open for comment through 22 January 2016.** Please file suggested changes as Github issues.  
-
 # Creative Commons Integration, from A to Z
 
 ## About this toolkit
@@ -9,13 +7,13 @@
 **What this is not**: Legal advice. There may be unique issues that apply to you that aren’t considered here. See [Beyond this Toolkit](#beyond-this-toolkit).
 
 **Who**: User-generated content platforms that want to address the increasing public demand for sharing under CC licenses and public domain tools. Think of it as an onboarding tool -- everything you need to know to get from zero to basic CC integration.
-**Who this is not designed for**: Organizations or individual licensors looking to apply a CC license to their own publications or other materials. Though helpful, most of this toolkit will not apply to you. Please refer to our [best practices for marking and attribution](s://wiki.creativecommons.org/wiki/Marking) instead.
+**Who this is not designed for**: Organizations or individual licensors looking to apply a CC license to their own publications or other materials. Though helpful, most of this toolkit will not apply to you. Please refer to our [best practices for marking and attribution](https://wiki.creativecommons.org/wiki/Marking) instead.
 
-**Why**: Creative Commons works to create easy, clear, and enjoyable ways for users to contribute to the [commons](s://en.wikipedia.org/wiki/Commons) on web platforms they already know and use. [Many platforms](s://stateof.creativecommons.org) already allow easy sharing under CC tools, allowing their users to share and remix millions of freely licensed works. This toolkit will help you join the network of major platforms like Flickr, Wikipedia, YouTube, and Medium with engaged and creative communities that benefit from the rich universe of content under Creative Commons licenses.
+**Why**: Creative Commons works to create easy, clear, and enjoyable ways for users to contribute to the [commons](https://en.wikipedia.org/wiki/Commons) on web platforms they already know and use. [Many platforms](https://stateof.creativecommons.org) already allow easy sharing under CC tools, allowing their users to share and remix millions of freely licensed works. This toolkit will help you join the network of major platforms like Flickr, Wikipedia, YouTube, and Medium with engaged and creative communities that benefit from the rich universe of content under Creative Commons licenses.
 
-**License**: This web version of the toolkit is free for you to reuse and remix under the terms of the [CC Attribution 4.0 International license](s://creativecommons.org/licenses/by/4.0/). Please credit Creative Commons with a link back to this toolkit. If you modify this toolkit, don’t suggest that we endorse your revisions.
+**License**: This web version of the toolkit is free for you to reuse and remix under the terms of the [CC Attribution 4.0 International license](https://creativecommons.org/licenses/by/4.0/). Please credit Creative Commons with a link back to this toolkit. If you modify this toolkit, don’t suggest that we endorse your revisions.
 
-**Learn more**: This toolkit is part of a larger initiative to transform platforms into vibrant, creative spaces for the commons. If you would like to get involved with these aspects of our work, [visit this page](s://github.com/creativecommons/platform-initiative).
+**Learn more**: This toolkit is part of a larger initiative to transform platforms into vibrant, creative spaces for the commons. If you would like to get involved with these aspects of our work, [visit this page](https://github.com/creativecommons/platform-initiative).
 
 ## The different types of content on your platform [&uarr;](#top)
 
@@ -28,7 +26,7 @@ The primary focus of this toolkit is to help you enable CC licenses for user-gen
 All CC-licensed content functions the same for your users once it is published on your site -- they can use the content freely under the terms of the relevant Creative Commons license. But for you as the platform provider, there are a few things to consider that are specific to each category of content.
 
 ##### 1. Content owned by your users:
-If you enable your users to apply CC licenses to their content on your platform, your primary goal should be ensuring they understand the basics of how the licenses work, especially because the licenses are irrevocable. You can decide which of the [six license types](s://creativecommons.org/licenses/) and [two public domain tools](s://creativecommons.org/publicdomain) you want to enable users to apply and then make sure to mark the content to identify which license applies to which content. In nearly all cases, this content remains owned by the user, and the platform gets the rights to host it via the CC license that is applied or via a separate license in the terms of service. (More on that [below](#cc-and-your-terms-of-service).)
+If you enable your users to apply CC licenses to their content on your platform, your primary goal should be ensuring they understand the basics of how the licenses work, especially because the licenses are irrevocable. You can decide which of the [six license types](https://creativecommons.org/licenses/) and [two public domain tools](https://creativecommons.org/publicdomain) you want to enable users to apply and then make sure to mark the content to identify which license applies to which content. In nearly all cases, this content remains owned by the user, and the platform gets the rights to host it via the CC license that is applied or via a separate license in the terms of service. (More on that [below](#cc-and-your-terms-of-service).)
 
 ##### 2. Content owned by the platform:
 As the copyright holder for this type of content, the world is your oyster! If you choose to apply a CC license to any of it, just be sure to mark which license applies (type and version) and mark any content that is not covered by the license, such as company logos or other trademarks. 
@@ -72,7 +70,7 @@ Your platform may have extra restrictions that are not intended for CC-licensed 
 
 > **Example language**: "For the avoidance of doubt, nothing in this Agreement is designed to prevent you from reusing content available under a Creative Commons license according to the terms and conditions of the applicable license."
 
-At the end of the day, we want to ensure that people who come across CC-licensed work can trust that they can use that work under the terms of the CC license. When extra restrictions are imposed on CC-licensed content -- whether by changing the license terms themselves or by imposing new contractual restrictions via terms of service -- Creative Commons requires that the CREATIVE COMMONS name and brand be removed to avoid confusing people about the source of the more restrictive terms imposed by the platform. Anything that imposes additional conditions or narrows the permissions granted by a standard CC license is prohibited. For example: prohibiting download of CC-licensed works, or adding extra attribution requirements. For more details, read the full [CC License Modification Policy here](s://wiki.creativecommons.org/Modifying_the_CC_licenses). 
+At the end of the day, we want to ensure that people who come across CC-licensed work can trust that they can use that work under the terms of the CC license. When extra restrictions are imposed on CC-licensed content -- whether by changing the license terms themselves or by imposing new contractual restrictions via terms of service -- Creative Commons requires that the CREATIVE COMMONS name and brand be removed to avoid confusing people about the source of the more restrictive terms imposed by the platform. Anything that imposes additional conditions or narrows the permissions granted by a standard CC license is prohibited. For example: prohibiting download of CC-licensed works, or adding extra attribution requirements. For more details, read the full [CC License Modification Policy here](https://wiki.creativecommons.org/Modifying_the_CC_licenses). 
 
 #### 2. Third party CC-licensed content
 As [noted above](#other-considerations-for-tos), platforms often require their users to grant a separate, direct copyright license to the platform for all content they upload.This creates a conflict when a user uploads CC-licensed content owned by others (third parties) because the user cannot grant rights to content they don’t own; only the original CC licensor can grant these rights to the platform. Therefore, it is important that the direct license written into the TOS excludes CC-licensed content owned by someone other than the uploader. 
@@ -89,7 +87,7 @@ Every good website terms of use is customized to how the particular platform run
 
 This sample language demonstrates one possibility for a platform that allows its users to apply any of the CC licenses to their own content at the point of upload. 
 
-> When you contribute content you own, you have the option to select one of six Creative Commons licenses to your content. Those licenses enable other users of the platform to reuse your content under certain specified conditions. You can read more about the differences between those licenses here[add link to page about CC on your platform or s://creativecommons.org/licenses/]. 
+> When you contribute content you own, you have the option to select one of six Creative Commons licenses to your content. Those licenses enable other users of the platform to reuse your content under certain specified conditions. You can read more about the differences between those licenses here [add link to page about CC on your platform or https://creativecommons.org/licenses/]. 
 
 This sample language demonstrates an example of a platform that allows its users to upload third party CC-licensed content. 
 
@@ -101,7 +99,7 @@ This sample language demonstrates one way to clarify that CC-licensed content ma
 
 #### 2. Real world TOS provisions
 
-This provision from the [Jamendo TOS](s://www.jamendo.com/legal/terms-of-use) is an example of one way to explain how CC licensing works for content creators on the platform. Jamendo is a music platform that allows its users to opt to CC-license their original works.
+This provision from the [Jamendo TOS](https://www.jamendo.com/legal/terms-of-use) is an example of one way to explain how CC licensing works for content creators on the platform. Jamendo is a music platform that allows its users to opt to CC-license their original works.
 
 > 3.1.2 - Selection of the Creative Commons License or "CC" License
 
@@ -119,11 +117,11 @@ This provision from the [Jamendo TOS](s://www.jamendo.com/legal/terms-of-use) is
 
 > (6) CC-BY-NC-ND (Attribution - Non-commercial Use - No Derivative Works) : this license only authorizes users to download and share your Works provided that you are credited by citing your name, but they may not be modified in any way whatsoever nor used for commercial purposes. 
 
-This provision from the [Internet Archive TOS](s://archive.org/about/terms.php) is an example of one way to provide certainty that CC-licensed content on the platform is not subject to additional restrictions. Internet Archive is a digital library providing free access to millions of books, movies, and other content.
+This provision from the [Internet Archive TOS](https://archive.org/about/terms.php) is an example of one way to provide certainty that CC-licensed content on the platform is not subject to additional restrictions. Internet Archive is a digital library providing free access to millions of books, movies, and other content.
 
 > If a Creative Commons or other license has been declared for particular material on the Archive, to the extent you trust the declaration and declarer (which is rarely the Internet Archive), you may use the content according to the terms and conditions of the applicable license.
 
-This provision from Section 7(c) of the [Wikimedia TOS](s://wikimediafoundation.org/wiki/Terms_of_Use) demonstrates one way of indicating if and when users may upload CC-licensed content owned by others. The Wikimedia Foundation is the nonprofit that owns and operates Wikipedia, the world’s largest online collaborative encyclopedia.
+This provision from Section 7(c) of the [Wikimedia TOS](https://wikimediafoundation.org/wiki/Terms_of_Use) demonstrates one way of indicating if and when users may upload CC-licensed content owned by others. The Wikimedia Foundation is the nonprofit that owns and operates Wikipedia, the world’s largest online collaborative encyclopedia.
 
 > Importing text: You may import text that you have found elsewhere or that you have co-authored with others, but in such case you warrant that the text is available under terms that are compatible with the CC BY-SA 3.0 license (or, as explained above, another license when exceptionally required by the Project edition or feature)("CC BY-SA"). Content available only under GFDL is not permissible. 
 
@@ -133,7 +131,7 @@ This provision from Section 7(c) of the [Wikimedia TOS](s://wikimediafoundation.
 
 There are three components to a seamless CC licensing experience for users: 1) [the license selection process](#license-chooser), 2) [display of the licensed content](#license-display-on-content), and 3) discovery of licensed content. In this section, we’ll go over what is required for 1 and 2; 3 is covered in depth in [Enabling CC Search and Discovery](#enabling-cc-search-and-discovery). All three components require design graphics (our universally recognized [CC logos and icons](#logos-and-icons) and machine-readable [license metadata](#license-metadata) (a small snippet of html code with RDFa).
 
-The License and PD Tool Suite: Before digging into the first two components, you might familiarize yourself with our [full suite of CC licenses](s://creativecommons.org/licenses/) and [public domain tools](https://creativecommons.org/publicdomain/), along with [examples](https://creativecommons.org/examples) of use for each. Most UGC platforms will want to offer the full suite, or a [recommended subset](https://github.com/creativecommons/platform-initiative/wiki/6:-License-Suite-Adoption-Guidelines), for users. You’ll want to offer the latest version of these licenses and tools; currently the most up-to-date versions are [Version 4.0](https://creativecommons.org/version4) for the licenses, and 1.0 for both CC0 and the Public Domain Mark. If you have a previous version already installed and are simply looking to upgrade to the latest tool suite, jump to [Upgrading to 4.0 and later versions of the CC suite](#upgrading-to-4.0-and-later-versions-of-the-cc-suite).
+The License and PD Tool Suite: Before digging into the first two components, you might familiarize yourself with our [full suite of CC licenses](https://creativecommons.org/licenses/) and [public domain tools](https://creativecommons.org/publicdomain/), along with [examples](https://creativecommons.org/examples) of use for each. Most UGC platforms will want to offer the full suite, or a [recommended subset](https://github.com/creativecommons/platform-initiative/wiki/6:-License-Suite-Adoption-Guidelines), for users. You’ll want to offer the latest version of these licenses and tools; currently the most up-to-date versions are [Version 4.0](https://creativecommons.org/version4) for the licenses, and 1.0 for both CC0 and the Public Domain Mark. If you have a previous version already installed and are simply looking to upgrade to the latest tool suite, jump to [Upgrading to 4.0 and later versions of the CC suite](#upgrading-to-4.0-and-later-versions-of-the-cc-suite).
 
 CC license selection should occur at the point of upload, or just prior to publication for works created directly on the platform. Users should be able to license individual works, batches of works, and all works they upload to a platform via a default license setting. This can be done by adding a CC license chooser, or incorporating the CC tool suite into an existing rights chooser. Note: If your platform requires all user-generated content to be under one license, the license selection process for users described here may not apply. In that case, please see [CC and your Terms of Service](#cc-and-your-terms-of-service) on specifying a default license for site content in your terms, and [Marking Your Work with a CC license](https://wiki.creativecommons.org/wiki/Marking_your_work_with_a_CC_license) for correctly displaying the default license for all content on your website.
 
