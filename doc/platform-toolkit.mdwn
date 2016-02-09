@@ -137,7 +137,7 @@ CC license selection should occur at the point of upload, or just prior to publi
 ### License chooser
 #### Licensing individual works
 
-![Model license selection](https://github.com/creativecommons/mp/blob/master/doc/images/Model%20license%20selection.png)
+![Model license selection](https://raw.githubusercontent.com/creativecommons/mp/master/doc/images/Model%20license%20selection.png)
 
 When a user uploads or publishes her work to a platform, they are doing so with the intent of sharing that work more broadly. This is an appropriate place to give users clear choices about how they would like their work to be used under CC or other terms. 
 
@@ -161,7 +161,7 @@ The metadata behind each license selection should correspond to the metadata on 
 
 #### Batch licensing for multiple works
 
-![Flickr batch licensing](https://github.com/creativecommons/mp/blob/master/doc/images/Other%20platform%20images/Flickr%20batch%20licensing.png)
+![Flickr batch licensing](https://raw.githubusercontent.com/creativecommons/mp/master/doc/images/Other%20platform%20images/Flickr%20batch%20licensing.png)
 
 Similarly, the same license selection options should be given to users when they can upload and/or select more than one work to edit at a time. This is called batch licensing. 
 
@@ -175,7 +175,7 @@ Users can also be given the option to set a default license for all content they
 
 When a user accesses content on your platform, it is important for them to know what rights govern the content. CC licenses make this easy; as universally recognized symbols of sharing, the CC license icons invite users to discover content on your platform at a minimum, and once there, users can click further to learn more about what they can do with the work according to the specific license indicated. 
 
-![Model license display](https://github.com/creativecommons/mp/blob/master/doc/images/Model%20license%20display.jpg)
+![Model license display](https://raw.githubusercontent.com/creativecommons/mp/master/doc/images/Model%20license%20display.jpg)
 
 License display on a resource consists of 3 components:
 
@@ -310,12 +310,12 @@ You can filter by licenses in two ways -- by license or by a few reuse categorie
 
 **Example 1**
 
-![Model search results](https://github.com/creativecommons/mp/blob/master/doc/images/Model%20search%20results.jpg)
-![Model search filters](https://github.com/creativecommons/mp/blob/master/doc/images/Model%20search%20filters.png)
+![Model search results](https://raw.githubusercontent.com/creativecommons/mp/master/doc/images/Model%20search%20results.jpg)
+![Model search filters](https://raw.githubusercontent.com/creativecommons/mp/master/doc/images/Model%20search%20filters.png)
 
 **Example 2**
 
-![CC search filters by category](https://github.com/creativecommons/mp/blob/master/doc/images/Other%20platform%20images/CC%20search%20filters%20by%20category.png)
+![CC search filters by category](https://raw.githubusercontent.com/creativecommons/mp/master/doc/images/Other%20platform%20images/CC%20search%20filters%20by%20category.png)
 
 Example 1 demonstrates filtering by license, which is pretty straightforward. When you filter by license, make sure to use the same order of licenses you used in the [license selection process](#license-chooser). All content licensed under a specific CC license should appear in the results when the corresponding license is checked. For example, when CC BY is checked, all content licensed under CC BY would show in the results. 
 
@@ -329,7 +329,7 @@ If you choose to use categories different from the ones above, make sure that th
 
 ### 2. CC content portal and browse features 
 
-![Flickr browse portal](https://github.com/creativecommons/mp/blob/master/doc/images/Other%20platform%20images/Flickr%20browse%20portal.png)
+![Flickr browse portal](https://raw.githubusercontent.com/creativecommons/mp/master/doc/images/Other%20platform%20images/Flickr%20browse%20portal.png)
 
 Platforms like Flickr and Vimeo have landing pages that serve as portals to CC-licensed content to allow users to browse the commons in one place. These portals accomplish several goals, including providing direct and easy access to CC content; explaining the diversity of CC licenses and content options; surfacing the significance of sharing culture; and building a community around the commons. It is important that this page is accessible from your home page, or easily navigated to from somewhere equally obvious in the user interface. If your platform is interested in providing a landing page for the commons, see [Communication and Education](#communication-and-education) for some additional language and resources you might include.
 
@@ -345,13 +345,13 @@ With so much user-generated content on your platform, it is important that your 
 
 ### 1. Attribution at the point of download
 
-![Vimeo music store attribution prompt](https://github.com/creativecommons/mp/blob/master/doc/images/Other%20platform%20images/Vimeo%20music%20store%20attribution%20prompt.png)
+![Vimeo music store attribution prompt](https://raw.githubusercontent.com/creativecommons/mp/master/doc/images/Other%20platform%20images/Vimeo%20music%20store%20attribution%20prompt.png)
 
-![MIT OCW attribution prompt](https://github.com/creativecommons/mp/blob/master/doc/images/Other%20platform%20images/MIT%20attribution%20prompt.png)
+![MIT OCW attribution prompt](https://raw.githubusercontent.com/creativecommons/mp/master/doc/images/Other%20platform%20images/MIT%20attribution%20prompt.png)
 
 When a user downloads content from your platform, she is intending to reuse it in some way. Providing a suggested attribution both highlights the  importance of giving credit while giving the user text which she can easily copy and paste. If you have integrated the CC license metadata, suggested attribution text can be generated automatically from the source code on the page. 
 
-![Model copy attribution](https://github.com/creativecommons/mp/blob/master/doc/images/Model%20license%20display.jpg)
+![Model copy attribution](https://raw.githubusercontent.com/creativecommons/mp/master/doc/images/Model%20license%20display.jpg)
 
 At the code level this means filling out a template based on the metadata examples above. It is simply a case of creating a license chooser according to best practices for attribution text.
 
@@ -361,7 +361,7 @@ If you allow your users to build on each others works within the platform itself
 
 ### 3. Attribution for content that your users don’t own but contribute to your platform under CC licenses 
 
-![N4L Pond attribution third party work distinction](https://github.com/creativecommons/mp/blob/master/doc/images/Other%20platform%20images/N4L%20pond%20third%20party%20work%20distinction.png)
+![N4L Pond attribution third party work distinction](https://raw.githubusercontent.com/creativecommons/mp/master/doc/images/Other%20platform%20images/N4L%20pond%20third%20party%20work%20distinction.png)
 
 If you allow your users to share third party CC licensed content on your platform, be sure to require attribution for that content at the point of upload, similar to users licensing their own work at the point of upload. The distinction, however, should be made that the users are sharing content that is not their own through a field for them to indicate the original author of the work. Again, please refer to TASL and our [Best practices for attribution](https://wiki.creativecommons.org/wiki/Best_practices_for_attribution) for more information.
 
@@ -389,20 +389,20 @@ Example: Medium's posts announcing [explicit post licensing](https://medium.com/
 
 You can download and test the model platform [here](https://github.com/creativecommons/mp). You can also browse through the screenshots below without deploying.
 
-![Model home](https://github.com/creativecommons/mp/blob/master/doc/images/Model%20home.jpg)
-![Model login](https://github.com/creativecommons/mp/blob/master/doc/images/Model%20login.jpg)
-![Model license upload](https://github.com/creativecommons/mp/blob/master/doc/images/Model%20upload.jpg)
-![Model license selection](https://github.com/creativecommons/mp/blob/master/doc/images/Model%20license%20selection.png)
-![Model default license](https://github.com/creativecommons/mp/blob/master/doc/images/Model%20default%20license.jpg)
-![Model license display](https://github.com/creativecommons/mp/blob/master/doc/images/Model%20license%20display.jpg)
-![Model browse portal](https://github.com/creativecommons/mp/blob/master/doc/images/Model%20browse.jpg)
-![Model search results](https://github.com/creativecommons/mp/blob/master/doc/images/Model%20search%20results.jpg)
-![Model search filters](https://github.com/creativecommons/mp/blob/master/doc/images/Model%20search%20filters.png)
-![Model TOS](https://github.com/creativecommons/mp/blob/master/doc/images/Model%20TOS.jpg)
-![Model about cc](https://github.com/creativecommons/mp/blob/master/doc/images/Model%20about%20cc.jpg)
-![Model FAQ](https://github.com/creativecommons/mp/blob/master/doc/images/Model%20FAQ.jpg)
-![Model attribution guide](https://github.com/creativecommons/mp/blob/master/doc/images/Model%20attribution%20guide.jpg)
-![Model community guidelines](https://github.com/creativecommons/mp/blob/master/doc/images/Model%20community%20guidelines.jpg)
+![Model home](https://raw.githubusercontent.com/creativecommons/mp/master/doc/images/Model%20home.jpg)
+![Model login](https://raw.githubusercontent.com/creativecommons/mp/master/doc/images/Model%20login.jpg)
+![Model license upload](https://raw.githubusercontent.com/creativecommons/mp/master/doc/images/Model%20upload.jpg)
+![Model license selection](https://raw.githubusercontent.com/creativecommons/mp/master/doc/images/Model%20license%20selection.png)
+![Model default license](https://raw.githubusercontent.com/creativecommons/mp/master/doc/images/Model%20default%20license.jpg)
+![Model license display](https://raw.githubusercontent.com/creativecommons/mp/master/doc/images/Model%20license%20display.jpg)
+![Model browse portal](https://raw.githubusercontent.com/creativecommons/mp/master/doc/images/Model%20browse.jpg)
+![Model search results](https://raw.githubusercontent.com/creativecommons/mp/master/doc/images/Model%20search%20results.jpg)
+![Model search filters](https://raw.githubusercontent.com/creativecommons/mp/master/doc/images/Model%20search%20filters.png)
+![Model TOS](https://raw.githubusercontent.com/creativecommons/mp/master/doc/images/Model%20TOS.jpg)
+![Model about cc](https://raw.githubusercontent.com/creativecommons/mp/master/doc/images/Model%20about%20cc.jpg)
+![Model FAQ](https://raw.githubusercontent.com/creativecommons/mp/master/doc/images/Model%20FAQ.jpg)
+![Model attribution guide](https://raw.githubusercontent.com/creativecommons/mp/master/doc/images/Model%20attribution%20guide.jpg)
+![Model community guidelines](https://raw.githubusercontent.com/creativecommons/mp/master/doc/images/Model%20community%20guidelines.jpg)
 
 Also check out these real world platforms with CC integrations. You can log in to see how the license selection process works on each.
 
@@ -468,7 +468,7 @@ Also check out these real world platforms with CC integrations. You can log in t
 
 For Creative Commons, the global commons is a platform for cooperation. The size of the commons is not as important as how (and if) the works it contains are used. Getting from zero to basic integration is just the first step in joining a vast global network of creators, companies, and institutions who are working to build context, gratitude, and other mechanisms for collaboration into the commons.  
 
-We work with platforms who share our values to design tools and services that light up this universe of content and creators. Part of this is working to increase cross-platform mobility of content; another part is tracking growth and use of the content itself and reporting on major trends in our annual [State of the Commons report](https://stateof.creativecommons.org). In addition to growth of content and users, what is your platform seeking to do and how can CC help you do it? Learn more about our work and upcoming Platform Membership Program [here](https://github.com/creativecommons/platform-initiative). 
+We work with platforms who share our values to design tools and services that light up this universe of content and creators. Part of this is working to increase cross-platform mobility of content; another part is tracking growth and use of the content itself and reporting on major trends in our annual [State of the Commons report](https://stateof.creativecommons.org). In addition to growth of content and users, what is your platform seeking to do and how can CC help you do it? Learn more about our work and upcoming Platform Membership Program [here](https://creativecommons.org/platform/). 
 
 This toolkit is an evolving resource for platforms. See something you’d like to improve or add? File an issue on [Github](https://github.com/creativecommons/mp/issues).
 
