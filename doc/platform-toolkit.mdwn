@@ -398,9 +398,9 @@ You can download and test the model platform [here](https://github.com/creativec
 ![Model browse portal](https://raw.githubusercontent.com/creativecommons/mp/master/doc/images/model-browse.jpg)
 ![Model search results](https://raw.githubusercontent.com/creativecommons/mp/master/doc/images/model-search-results.jpg)
 ![Model search filters](https://raw.githubusercontent.com/creativecommons/mp/master/doc/images/model-search-filters.png)
-![Model TOS](https://raw.githubusercontent.com/creativecommons/mp/master/doc/images/model-TOS.jpg)
+![Model TOS](https://raw.githubusercontent.com/creativecommons/mp/master/doc/images/model-tos.jpg)
 ![Model about cc](https://raw.githubusercontent.com/creativecommons/mp/master/doc/images/model-about-cc.jpg)
-![Model FAQ](https://raw.githubusercontent.com/creativecommons/mp/master/doc/images/model-FAQ.jpg)
+![Model FAQ](https://raw.githubusercontent.com/creativecommons/mp/master/doc/images/model-faq.jpg)
 ![Model attribution guide](https://raw.githubusercontent.com/creativecommons/mp/master/doc/images/model-attribution-guide.jpg)
 ![Model community guidelines](https://raw.githubusercontent.com/creativecommons/mp/master/doc/images/model-community-guidelines.jpg)
 
