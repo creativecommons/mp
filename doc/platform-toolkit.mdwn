@@ -12,7 +12,7 @@
 
 **License**: This web version of the toolkit is free for you to reuse and remix under the terms of the [CC Attribution 4.0 International license](https://creativecommons.org/licenses/by/4.0/). Please credit Creative Commons with a link back to this toolkit. If you modify this toolkit, don’t suggest that we endorse your revisions.
 
-**Learn more**: This toolkit is part of a larger initiative to transform platforms into vibrant, creative spaces for the commons. If you would like to get involved with these aspects of our work, [visit this page](https://github.com/creativecommons/platform-initiative).
+**Learn more**: This toolkit is part of a larger initiative to transform platforms into vibrant, creative spaces for the commons. If you would like to get involved with these aspects of our work, [visit this page](https://creativecommons.org/platform/).
 
 ## The different types of content on your platform [&uarr;](#top)
 
