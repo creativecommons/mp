@@ -312,6 +312,7 @@ You can filter by licenses in two ways -- by license or by a few reuse categorie
 **Example 1**
 
 ![Model search results](https://raw.githubusercontent.com/creativecommons/mp/master/doc/images/model-search-results.jpg)
+
 ![Model search filters](https://raw.githubusercontent.com/creativecommons/mp/master/doc/images/model-search-filters.png)
 
 **Example 2**
@@ -391,18 +392,31 @@ Example: Medium's posts announcing [explicit post licensing](https://medium.com/
 You can download and test the model platform [here](https://github.com/creativecommons/mp). You can also browse through the screenshots below without deploying.
 
 ![Model home](https://raw.githubusercontent.com/creativecommons/mp/master/doc/images/model-home.jpg)
+
 ![Model login](https://raw.githubusercontent.com/creativecommons/mp/master/doc/images/model-login.jpg)
+
 ![Model license upload](https://raw.githubusercontent.com/creativecommons/mp/master/doc/images/model-upload.jpg)
+
 ![Model license selection](https://raw.githubusercontent.com/creativecommons/mp/master/doc/images/model-license-selection.png)
+
 ![Model default license](https://raw.githubusercontent.com/creativecommons/mp/master/doc/images/model-default-license.jpg)
+
 ![Model license display](https://raw.githubusercontent.com/creativecommons/mp/master/doc/images/model-license-display.jpg)
+
 ![Model browse portal](https://raw.githubusercontent.com/creativecommons/mp/master/doc/images/model-browse.jpg)
+
 ![Model search results](https://raw.githubusercontent.com/creativecommons/mp/master/doc/images/model-search-results.jpg)
+
 ![Model search filters](https://raw.githubusercontent.com/creativecommons/mp/master/doc/images/model-search-filters.png)
+
 ![Model TOS](https://raw.githubusercontent.com/creativecommons/mp/master/doc/images/model-tos.jpg)
+
 ![Model about cc](https://raw.githubusercontent.com/creativecommons/mp/master/doc/images/model-about-cc.jpg)
+
 ![Model FAQ](https://raw.githubusercontent.com/creativecommons/mp/master/doc/images/model-faq.jpg)
+
 ![Model attribution guide](https://raw.githubusercontent.com/creativecommons/mp/master/doc/images/model-attribution-guide.jpg)
+
 ![Model community guidelines](https://raw.githubusercontent.com/creativecommons/mp/master/doc/images/model-community-guidelines.jpg)
 
 Also check out these real world platforms with CC integrations. You can log in to see how the license selection process works on each.
