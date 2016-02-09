@@ -160,7 +160,7 @@ Users should be able to toggle between license options and learn more about each
 
 After publishing, users should be able to edit their license selection at anytime, just as users can edit other information about their work. Ideally, a record of license changes is logged by the platform either internally and/or publicly.
 
-The metadata behind each license selection should correspond to the metadata on the page the resource is displayed. This metadata is a small snippet of html code that indicates the license to search engines and other kinds of software. It is invisible to the lay user, but visible in the source code of the chooser. (See [Metadata for chooser](#metadata-for-chooser) for more details.)
+The metadata behind each license selection should correspond to the metadata on the page where the resource is ultimately displayed. This metadata is a small snippet of html code that indicates the license to search engines and other kinds of software. It is invisible to the lay user, but visible in the source code of the chooser. (See [Metadata for chooser](#metadata-for-chooser) for more details.)
 
 #### Batch licensing for multiple works
 
@@ -182,14 +182,14 @@ When a user accesses content on your platform, it is important for them to know 
 
 License display on a resource consists of 3 components:
 
-1. The corresponding specific [CC license icon(s)](link=https://creativecommons.org/about/downloads#Icons), eg. (cc in a circle) + (attribution man in a circle) for CC BY
-2. Link to the corresponding license deed, eg. https://creativecommons.org/licenses/by/4.0/ for CC BY
-3. Machine-readable metadata on the backend, a small snippet of html code that indicates the license to search engines and other kinds of software. This is invisible to the lay user, but visible in the source code. The metadata behind each license display should correspond to the metadata chosen via the license chooser process. (See[Metadata for display](#metadata-for-display) for more details)
+1. The corresponding specific [CC license icon(s)](https://creativecommons.org/about/downloads#Icons), eg. (cc in a circle) + (attribution man in a circle) for CC BY
+2. Link to the corresponding license deed, eg. [https://creativecommons.org/licenses/by/4.0/](https://creativecommons.org/licenses/by/4.0/) for CC BY
+3. Machine-readable metadata on the backend, a small snippet of html code that indicates the license to search engines and other kinds of software. This is invisible to the lay user, but visible in the source code. The metadata behind each license display should correspond to the metadata chosen via the license chooser process. (See [Metadata for display](#metadata-for-display) for more details)
 
 Additionally, users should have the ability to view, download, and distribute any CC-licensed or public domain work: 
-- All CC licensed content should be publicly accessible, which means be able to be read or viewed by a user, without a login.
-- If applicable, a “download” button, or other way to obtain the original file containing the content, should be displayed along with the license on the content page so that users may download and use the content as it was intended. All CC licenses allow redistribution at a minimum. 
-- Technical measures prohibiting any of these or related actions that CC licenses allow should not be added to CC-licensed content on your platform.
+    - All CC licensed content should be publicly accessible, which means be able to be read or viewed by a user, without a login.
+    - If applicable, a “download” button, or other way to obtain the original file containing the content, should be displayed along with the license on the content page so that users may download and use the content as it was intended. All CC licenses allow redistribution at a minimum. 
+    - Technical measures prohibiting any of these or related actions that CC licenses allow should not be added to CC-licensed content on your platform.
 
 ### License metadata 
 
