@@ -14,7 +14,7 @@
 
 **Learn more**: This toolkit is part of a larger initiative to transform platforms into vibrant, creative spaces for the commons. If you would like to get involved with these aspects of our work, [visit this page](https://creativecommons.org/platform/).
 
-## The different types of content on your platform [top](#top)
+## The different types of content on your platform [&uarr;](#top)
 
 The primary focus of this toolkit is to help you enable CC licenses for user-generated content (UGC) on your platform. However, you probably have other types of content on your platform as well. We have categorized the main types of content most platforms deal with:
 
@@ -35,7 +35,7 @@ If you allow your users to upload content created by others, it is important to 
 
 > **Example**: A platform hosting open educational resources (OER) wants its educators to share and build on relevant and high quality resources. This platform may find it desirable to enable its users to share and remix existing third party OER under CC licenses. This platform may choose to specify that only third party content under a specific CC license, eg. CC BY, may be shared (1), or it may allow third party content under various licenses as long as the user maintains she has the rights to reuse the content (2).
 
-## CC and your Terms of Service [top](#top)
+## CC and your Terms of Service [&uarr;](#top)
 
 In this section, we cover a few basic elements for an ideal TOS, explain some additional legal considerations for adding CC licenses to your site, and identify the most common problems in terms of service and how to fix them. 
 
@@ -126,7 +126,7 @@ This provision from Section 7(c) of the [Wikimedia TOS](https://wikimediafoundat
 
 > You agree that, if you import text under a CC BY-SA license that requires attribution, you must credit the author(s) in a reasonable fashion. Where such credit is commonly given through page histories (such as Wikimedia-internal copying), it is sufficient to give attribution in the edit summary, which is recorded in the page history, when importing the text. The attribution requirements are sometimes too intrusive for particular circumstances (regardless of the license), and there may be instances where the Wikimedia community decides that imported text cannot be used for that reason.
 
-## CC in your User Interface [top](#top)
+## CC in your User Interface [&uarr;](#top)
 
 There are three components to a seamless CC licensing experience for users: 1) [the license selection process](#license-chooser), 2) [display of the licensed content](#license-display-on-content), and 3) discovery of licensed content. In this section, we’ll go over what is required for 1 and 2; 3 is covered in depth in [Enabling CC Search and Discovery](#enabling-cc-search-and-discovery). All three components require design graphics (our universally recognized [CC logos and icons](#logos-and-icons) and machine-readable [license metadata](#license-metadata) (a small snippet of html code with RDFa).
 
@@ -294,7 +294,7 @@ Learn more about the origin of the CC logos and icons in this feature, [A Master
 * Users can publicly access or view the licensed content without a login
 * Users can download or otherwise obtain the file directly from the content page
 
-## Upgrading to 4.0 and later versions of the CC suite [top](#top)
+## Upgrading to 4.0 and later versions of the CC suite [&uarr;](#top)
 
 If your platform is currently using an old version of the CC license suite, you should consider moving to the most up-to-date version ([4.0](https://creativecommons.org/version4)). This is simple to do for all content going forward. All you have to do is change the existing links to the 4.0 license suite (eg. creativecommons.org/licenses/by/**4.0**) and make sure the correct license versions are displayed throughout your site. 
 
@@ -302,7 +302,7 @@ If you would also like to change the license for the existing CC-licensed conten
 
 If you would like to be able to move the CC-licensed content on your platform to a later version without hassle in the future, you may want to consider getting express permission from your users to move to the most updated license of the particular CC license applied to a work when those future versions are released. This can be done in the [terms of service](#other-considerations-for-tos) or at the point of upload where the user applies the CC license to their work. 
 
-## Enabling CC search and discovery [top](#top)
+## Enabling CC search and discovery [&uarr;](#top)
 
 Once you have integrated CC into the first two components of your user interface correctly ([license selection](#license-chooser) and [content display](#license-display-on-content)), you can integrate the same license metadata into your search so that users can filter content on your platform by license, or by reuse categories that address their needs. In addition to adding license filters to your platform’s search, you can also provide a portal to CC-licensed content, a landing page for those users seeking commons content on your platform. We provide examples and details for both in this section.
 
@@ -341,7 +341,7 @@ At the user interface level, the user can specify either “All” or “Any Ter
 
 At the back-end level, either source can be used to determine a list of license identifiers to be used to constrain the search. At the software level this is simply an SQL “where” clause or equivalent. 
 
-## Attributing authors of CC content [top](#top)
+## Attributing authors of CC content [&uarr;](#top)
 
 With so much user-generated content on your platform, it is important that your users respect and give credit to each other. All six CC licenses require attribution, which includes naming both the author and the specific CC license the work is under. We also recommend giving attribution for public domain works as a best practice, even if it’s not legally required. Attribution can be automatically generated or prompted on your platform at the point where a user downloads a CC licensed work. Attribution should also be prompted in any remix tool, or if you allow users to upload third party content under CC licenses.
 
@@ -371,7 +371,7 @@ If you allow your users to share third party CC licensed content on your platfor
 
 Consider providing your users with attribution guidance, especially if your platform hosts domain-specific content that has different attribution norms, eg. academic research. CC’s general [Best practices for attribution](https://wiki.creativecommons.org/wiki/Best_practices_for_attribution) may be linked to or adapted for your purposes.
 
-## Communication and Education [top](#top)
+## Communication and Education [&uarr;](#top)
 
 A well-designed CC integration and user experience is usually all users need to start contributing their creativity to your platform under liberal sharing terms. However, users are also contributing to a larger pool of content, a global commons of photos, videos, books, music, and scientific research that is changing the world thanks to the collaborative nature and speed with which it can be updated and advanced. Communicating this context to your users, and the role Creative Commons plays in this global movement, will incentivize the growth and quality of content while coalescing your users into an engaged and active community around it.
 
@@ -387,7 +387,7 @@ Example: Flickr's [attribution](https://www.flickr.com/services/developer/attrib
 5. One-time communications that sit in a permanent url such as a blog post announcing the integration, the design process, or related editorials about the addition of CC
 Example: Medium's posts announcing [explicit post licensing](https://medium.com/the-story/explicit-post-licensing-3aa1df783f8d) and its [UX design process](https://medium.com/designing-medium/everyday-design-84838adc4e93). 
 
-## Model Platform [top](#top)
+## Model Platform [&uarr;](#top)
 
 You can download and test the model platform [here](https://github.com/creativecommons/mp). You can also browse through the screenshots below without deploying.
 
@@ -426,7 +426,7 @@ Also check out these real world platforms with CC integrations. You can log in t
 - [Medium](https://medium.com)
 - [Wikimedia Commons](https://commons.wikimedia.org/wiki/Main_Page)
 
-## Final checklist [top](#top)
+## Final checklist [&uarr;](#top)
 
 **Bold** = minimum needed for a functioning CC integration
 
@@ -479,7 +479,7 @@ Also check out these real world platforms with CC integrations. You can log in t
 - The platform provides community guidelines around sharing under CC licenses
 - The platform provides other materials, eg. announcement of CC integration; blog post describing the CC UX design process; editorial about CC
 
-## Beyond this Toolkit [top](#top)
+## Beyond this Toolkit [&uarr;](#top)
 
 For Creative Commons, the global commons is a platform for cooperation. The size of the commons is not as important as how (and if) the works it contains are used. Getting from zero to basic integration is just the first step in joining a vast global network of creators, companies, and institutions who are working to build context, gratitude, and other mechanisms for collaboration into the commons.  
 
