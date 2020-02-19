@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" href="src/css/style.css">
+  <title>CC Platform Toolkit</title>
+</head>
+<body class="pt-background">
+  <div class="mock-header">
+  </div>
+  <section>
+    <h1 class="padding-top-extra-larger">CC Platform Toolkit</h1>
+    <h2 class="padding-top-normal">Integrating CC to your Platform</h2>
+    <h3 class="b-header has-color-tomato padding-top-larger padding-bottom-small">Who is this page for?</h3>
+    <div class="columns padding-left-smaller">
+      <div class="column is-one-third is-paddingless has-background-white">
+        <div class="pt-line-detail-tomato padding-bottom-small">
+          <div class="pt-box-detail-sm has-background-tomato">
+          </div>
+          <p class="text-normal pt-section1-text"><span class="has-text-weight-bold">It’s for platforms where users upload content.</span> Aimed at teams who could be part of implemention: legal, development, etc.</p>
+        </div>
+      </div>
+      <div class="column is-one-third is-paddingless margin-left-normal has-background-white">
+        <div class="pt-line-detail-tomato padding-bottom-small">
+          <div class="pt-box-detail-sm has-background-tomato">
+          </div>
+          <p class="text-normal pt-section1-text">Examples of platforms who have integrated CC licenses:</p>
+          <p class="text-normal pt-section1-text"><span class="has-text-weight-bold">Flickr, Medium, Youtube, etc.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <h3 class="b-header has-color-tomato padding-top-larger padding-bottom-small">What is this page for?</h3>
+    <div class="columns padding-left-smaller">
+      <div class="column is-one-third is-paddingless has-background-white">
+        <div class="pt-line-detail-tomato padding-bottom-small">
+          <div class="pt-box-detail-sm has-background-tomato">
+          </div>
+          <p class="text-normal pt-section1-text">It’s a guide to implementing CC licenses to uploaded materials. These are best practices, not requirements.</p>
+        </div>
+      </div>
+      <div class="column is-one-third is-paddingless margin-left-normal has-background-white">
+        <div class="pt-line-detail-tomato padding-bottom-small">
+          <div class="pt-box-detail-sm has-background-tomato">
+          </div>
+          <p class="text-normal pt-section1-text">If you’re looking for information on how to add licenses to individual materials, <a href="">click here</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <h2 class="padding-top-larger padding-bottom-smal">Table of Contents</h2>
+    <p class="column text-normal is-paddingless margin-bottom-normal is-half ">Here you can see the topics covered in this toolkit and can help you find what  you’re looking for. The topics are organized by area of interest; you can filter by the colored tabs or by clicking directly on a topic below.</p>
+    <div class="column is-paddingless is-10">
+      <button class="button is-white pt-button-navigation">All Topics</button>
+      <button class="button margin-left-small pt-button-gold pt-button-navigation">General Info</button>
+      <button class="button is-info margin-left-small pt-button-navigation">Legal</button>
+      <button class="button margin-left-small pt-button-blue pt-button-navigation">Development</button>
+      <button class="button is-primary margin-left-small pt-button-navigation">UX & Communication</button>
+      <div class="column has-background-white">
+            <div class="columns padding-bottom-normal">
+              <div class="column is-offset-1 is-10">
+                <div class="columns">
+                  <div class="column is-one-fifth">
+                    <button class="text-small has-text-weight-bold pt-text-navigation padding-bottom-normal padding-top-normal">About</button>
+                    <div class="is-flex padding-top-smaller pt-menu-items 1 2 pt-align-center">
+                      <div class="has-background-gold pt-bar"></div>
+                      <div class="has-background-forest pt-bar"></div>
+                      <div class="has-background-white pt-bar"></div>
+                      <p class="text-small padding-left-small">Types of Content</p>
+                    </div>
+                    <div class="is-flex padding-top-smaller pt-menu-items 2 pt-align-center">
+                      <div class="has-background-forest pt-bar"></div>
+                      <div class="has-background-white pt-bar"></div>
+                      <div class="has-background-white pt-bar"></div>
+                      <p class="text-small padding-left-small">CC & your Terms of Service</p>
+                    </div>
+                    <div class="is-flex padding-top-smaller pt-menu-items 1 2 3 pt-align-center">
+                      <div class="has-background-gold pt-bar"></div>
+                      <div class="has-background-forest pt-bar"></div>
+                      <div class="has-background-blue pt-bar"></div>
+                      <p class="text-small padding-left-small">Updating to Later Versions</p>
+                    </div>
+                  </div>
+                  <div class="column is-one-fifth">
+                    <button class="text-small has-text-weight-bold pt-text-navigation padding-bottom-normal padding-top-normal">Adding Licenses</button>
+                    <div class="is-flex padding-top-smaller pt-menu-items 1 3 4 pt-align-center">
+                      <div class="has-background-gold pt-bar"></div>
+                      <div class="has-background-blue pt-bar"></div>
+                      <div class="has-background-tomato pt-bar"></div>
+                      <p class="text-small padding-left-small">License Chooser</p>
+                    </div>
+                    <div class="is-flex padding-top-smaller pt-menu-items 1 3 4 pt-align-center">
+                      <div class="has-background-gold pt-bar"></div>
+                      <div class="has-background-blue pt-bar"></div>
+                      <div class="has-background-tomato pt-bar"></div>
+                      <p class="text-small padding-left-small">License Display</p>
+                    </div>
+                    <div class="is-flex padding-top-smaller pt-menu-items 3 pt-align-center">
+                      <div class="has-background-blue pt-bar"></div>
+                      <div class="has-background-white pt-bar"></div>
+                      <div class="has-background-white pt-bar"></div>
+                      <p class="text-small padding-left-small">License Metadata (Display)</p>
+                    </div>
+                  </div>
+                  <div class="column is-one-fifth">
+                    <button class="text-small has-text-weight-bold pt-text-navigation padding-bottom-normal padding-top-normal">Adding Search Filters</button>
+                    <div class="is-flex padding-top-smaller pt-menu-items 3 4 pt-align-center">
+                      <div class="has-background-blue pt-bar"></div>
+                      <div class="has-background-tomato pt-bar"></div>
+                      <div class="has-background-white pt-bar"></div>
+                      <p class="text-small padding-left-small">License Metadata (Search)</p>
+                    </div>
+                    <div class="is-flex padding-top-smaller pt-menu-items 1 3 4 pt-align-center">
+                      <div class="has-background-gold pt-bar"></div>
+                      <div class="has-background-blue pt-bar"></div>
+                      <div class="has-background-tomato pt-bar"></div>
+                      <p class="text-small padding-left-small">Attributing Authors</p>
+                    </div>
+                  </div>
+                  <div class="column is-one-fifth">
+                    <button class="text-small has-text-weight-bold pt-text-navigation padding-bottom-normal padding-top-normal">Resources</button>
+                    <div class="is-flex padding-top-smaller pt-menu-items 1 4 pt-align-center">
+                      <div class="has-background-gold pt-bar"></div>
+                      <div class="has-background-tomato pt-bar"></div>
+                      <div class="has-background-white pt-bar"></div>
+                      <p class="text-small padding-left-small">Design & Communication</p>
+                    </div>
+                    <div class="is-flex padding-top-smaller pt-menu-items 3 4 pt-align-center">
+                      <div class="has-background-blue pt-bar"></div>
+                      <div class="has-background-tomato pt-bar"></div>
+                      <div class="has-background-white pt-bar"></div>
+                      <p class="text-small padding-left-small">Model Platform</p>
+                    </div>
+                    <div class="is-flex padding-top-smaller pt-menu-items 1 pt-align-center">
+                      <div class="has-background-gold pt-bar"></div>
+                      <div class="has-background-white pt-bar"></div>
+                      <div class="has-background-white pt-bar"></div>
+                      <p class="text-small padding-left-small">Final Checklist</p>
+                    </div>
+                  </div>
+                  <div class="column is-one-fifth">
+                    <button class="text-small has-text-weight-bold pt-text-navigation padding-bottom-normal padding-top-normal">Beyond this Toolkit</button>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="about">
+    <div class="column is-paddingless margin-top-large is-12 pt-section-gold pt-align-top">
+      <div class="pt-box-detail-lg has-background-gold"></div> 
+      <h3 class="padding-left-small padding-bottom-large">About</h3>
+    </div>
+    <div class="columns">
+      <div class="column is-offset-2 is-one-third has-background-white margin-bottom-small pt-card">
+        <div class="pt-card-large">
+          <h4>What</h4>
+          <h3 class="b-header pt-header-card pt-text-card">Onboarding material for license implementation</h3>
+          <p class="text-normal">This toolkit brings all the elements for a basic Creative Commons platform integration. </p>
+        </div>
+      </div>
+      <div class="column is-one-third margin-left-small has-background-white margin-bottom-small pt-card ">
+        <div class="pt-card-large">
+          <h4>Who</h4>
+          <h3 class="b-header pt-header-card">It’s focused on platforms who want to offer CC licenses to user uploaded content</h3>
+          <p class="text-normal">If you’re looking to apply a CC license to your own materials click here.</p>
+        </div>
+      </div>
+    </div>
+    <div class="columns">
+      <div class="column is-offset-2 is-one-third has-background-white margin-bottom-large pt-card">
+        <div class="pt-card-large">
+          <h4>How</h4>
+          <h3 class="b-header pt-header-card pt-text-card">Showing the power of collaboration </h3>
+          <p class="text-normal">Give your user context, explain how the CC licenses work, and how your platform’s values align with the CC vision. Click here for resources you can use.</p>
+        </div>
+      </div>
+      <div class="column is-one-third margin-left-small has-background-white margin-bottom-large pt-card ">
+        <div class="pt-card-large">
+          <h4>Who</h4>
+          <h3 class="b-header pt-header-card">Because engaged creative communities will thrive</h3>
+          <p class="text-normal">And it’s easier for users to contribute on platforms they already use, such as YouTube, and Medium.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="types-of-content">
+    <div class="column is-paddingless margin-top-large is-12 pt-section-gold pt-align-top">
+      <div class="pt-box-detail-lg has-background-gold"></div> 
+      <h3 class="padding-left-small padding-bottom-large">Types of Content</h3>
+    </div>
+    <div class="columns pt-columns-align">
+      <div class="column is-one-third has-background-white pt-card-padding-large">
+        <h4 class="b-header padding-bottom-normal">Identify the types of content on the platform</h4>
+        <p class="text-normal">All CC-licensed content functions the same for your users once it is published on your site – they can use the content freely under the terms of the relevant Creative Commons license. </p>
+        <p class="text-normal padding-top-normal">But for you as the platform provider, there are a few things to consider that are specific to each category of content.</p>
+      </div>
+      <div class="column is-offset-1 is-6">
+        <h4 class="b-header padding-bottom-smaller">Content owned by users</h4>
+        <p class="text-normal"><span class="has-text-weight-bold">Ensure your user understands the basics of how the licenses work - especially since they’re irrevocable. </span> Decide which of the six license types and two public domain tools you want to enable users to apply. Signal which license applies to which content.</p>
+        <p class="text-normal">In nearly all cases, this content remains owned by the user, and the platform gets the rights to host it via the CC license that is applied or via a separate license in the terms of service. (Click here for more about Terms of Service)</p>
+        <h4 class="b-header padding-top-small padding-bottom-smaller">Content owned by the platform</h4>
+        <p class="text-normal ">You’re the copyright holder for this type of content. If you choose to apply a CC license to any of it, just be sure to mark which license applies (type and version) and signal any content that is not covered by the license, such as company logos or other trademarks.</p>
+        <h4 class="b-header padding-top-small padding-bottom-smaller">Third-party content contributed to your platform</h4>
+        <p class="text-normal"><span class="has-text-weight-bold">Be clear about what permissions the user needs from the author.</span> The decision to allow users to upload third party content, and which Creative Commons licenses are permitted, comes down to how the content could be used by both the platform itself and other users. In some cases the platform will specify the particular types of CC-licensed content that are permitted, and in other the onus is on the uploader to make the determination (see example below).</p>
+      </div>
+    </div>
+    <h4 class="padding-bottom-small">Example</h4>
+    <div class="columns padding-top-small">
+      <div class="column is-one-quarter has-background-white pt-card-small pt-columns-align-center">
+        <img alt="Icon representing a website interface" src="src/img/icon-example-01.png" class="padding-bottom-normal"/>
+        <p class="text-normal">A platform hosting open educational resources wants users to share and build upon the content.</p>
+      </div>
+      <div class="column is-one-quarter has-background-white margin-left-normal pt-card-small pt-columns-align-center">
+        <img alt="Icon representing CC Licenses" src="src/img/icon-example-02.png" class="padding-bottom-normal"/>
+        <p class="text-normal">It’s enabled so users share and remix existing third party material under CC licenses.</p>
+      </div>
+      <div class="column is-4 margin-left-normal">
+        <div class="has-background-white pt-card-small pt-row-align-center">
+          <img alt="Icon representing clipboard with one check mark" src="src/img/icon-example-03.png" class="padding-bottom-normal"/>
+          <p class="text-normal padding-left-small">This platform may choose to specify that only third party content under a specific CC license, eg. CC BY, may be shared.</p>
+        </div>
+        <div class="has-background-white pt-card-small pt-row-align-center margin-top-normal">
+          <img alt="Icon representing clipboard with three check marks" src="src/img/icon-example-04.png" class="padding-bottom-normal"/>
+          <p class="text-normal padding-left-small">Or it may allow third party content under various licenses as long as the user maintains the rights to reuse the content.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="terms-of-service">
+    <div class="column is-paddingless margin-top-large is-12 pt-section-forest pt-align-top">
+      <div class="pt-box-detail-lg has-background-forest"></div> 
+      <h3 class="padding-left-small padding-bottom-large">Terms of Service</h3>
+    </div>
+    <h2>CC and your terms of service</h2>
+    <p class="column text-normal margin-top-small is-paddingless is-5">Website terms of service are not strictly necessary, but most platforms have them. For those that do, we recommend including the following elements if the platform enables CC licensing for user-generated content.</p>
+    <h5 class="b-header padding-top-normal">Terms of Service should:</h5>
+    <div class="column is-10 has-background-white is-paddingless margin-top-normal pt-line-detail-forest">
+      <div class="pt-box-detail-sm has-background-forest"></div>
+      <div class="pt-row-align-center">
+        <div class="column is-4 margin-bottom-small">
+          <h6 class="b-header">Explain how CC licensing works for content creators on the platform.</h6>
+        </div>
+        <div class="column is-offset-1 is-5 margin-bottom-small">
+          <p class="text-normal">For example, is all user-generated content  published under a particular CC license by default, or do users simply have the option to select a CC license for their work? </p>
+        </div>
+      </div>
+    </div>
+    <div class="column is-10 has-background-white is-paddingless margin-top-normal pt-line-detail-forest ">
+      <div class="pt-box-detail-sm has-background-forest"></div>
+      <div class="pt-row-align-center">
+        <div class="column is-4 margin-bottom-small">
+          <h6 class="b-header">Make it clear that users of the platform can reuse CC-licensed content according to the terms and conditions of that license.</h6>
+        </div>
+        <div class="column is-offset-1 is-5 margin-bottom-small">
+          <p class="text-normal">Link to information that explains how CC licenses work. If the T.O.S. include other provisions that restrict the way content is used on the site, then it’s important to point out that CC-licensed content may be used according to the license terms. </p>
+        </div>
+      </div>
+    </div>
+    <div class="column is-10 has-background-white is-paddingless margin-top-normal pt-line-detail-forest ">
+      <div class="pt-box-detail-sm has-background-forest"></div>
+      <div class="pt-row-align-center">
+        <div class="column is-4 margin-bottom-small">
+          <h6 class="b-header">State what types of CC-licensed content created by third parties can be uploaded and how that content should be marked.</h6>
+        </div>
+        <div class="column is-offset-1 is-5 margin-bottom-small">
+          <p class="text-normal">Some sites only allow users to upload content under CC licenses allowing commercial use while others allow any CC-licensed content. In all cases, the T.O.S. should also state how such content should be marked with license and attribution information.</p>
+        </div>
+      </div>
+    </div>
+    <h4 class="padding-top-normal padding-bottom-smaller">Other considerations for terms of service</h4>
+    <div class="column is-9 has-background-white accordion pt-line-detail-forest pt-row-space-between pt-chevron">
+      <p class="text-big padding-left-small"> License from Contributors</p>
+      <img alt="Icon of arrow pointing right"src="src/img/icon-chevron-right.png" class=" chevron-down"/>
+    </div>
+    <div class="panel column is-9 has-background-white">
+     <p class="text-normal padding-top-small padding-bottom-small">When users are uploading content that is already CC-licensed (whether their own content or others), the platform can get all of the copyright permission it needs to use the work from the applicable CC license. However, platforms often include a direct copyright license grant from the uploader to the platform in their terms of service. In cases where people are uploading CC-licensed content owned by others, the direct license to the platform is in conflict with the CC license. See the Third Party CC-Licensed Content for more information about this conflict and how to address it.</p>
+    </div>
+    <div class="column is-9 has-background-white accordion pt-line-detail-forest pt-row-space-between pt-chevron">
+      <p class="text-big padding-left-small">Representations & Warranties</p>
+      <img alt="Icon of arrow pointing right"src="src/img/icon-chevron-right.png" class="chevron-down"/>
+    </div>
+    <div class="panel column is-9 has-background-white">
+      <p class="text-normal padding-top-small padding-bottom-small">Platforms often ask their users to formally promise that the content they upload to the platform is not infringing of others’ copyright or other rights. CC licenses do not include reps and warranties of this type, and CC-licensed content comes “as-is” or without guarantees. However, platforms may still ask their users to represent that they have the necessary rights to all content they upload, including CC-licensed content.</p>
+    </div>
+    <div class="column is-9 has-background-white accordion pt-line-detail-forest pt-row-space-between pt-chevron">
+      <p class="text-big padding-left-small">Later versions of the License</p>
+      <img alt="Icon of arrow pointing right"src="src/img/icon-chevron-right.png" class="chevron-down"/>
+    </div>
+    <div class="panel column is-9 has-background-white">
+      <p class="text-normal padding-top-small padding-bottom-small">In 2013, Creative Commons published the latest version of the license suite – version 4.0. We have no plans to version the licenses again for many years, but it is realistic to assume that eventually the licenses will be updated to reflect legal and policy changes. Only the rights holder can apply a new version of the licenses to a work, so platforms may want to consider getting express permission from their users to move to the most updated license of the particular CC license applied to a work when those future versions are released. This can be done in the terms of service or at the point of upload where the user applies the CC license to their work.</p>
+    </div>
+    <h4 class="padding-top-normal padding-bottom-smaller">Most common conflicts in terms of service</h4>
+    <div class="column is-9 has-background-white accordion pt-line-detail-forest pt-row-space-between pt-chevron">
+      <p class="text-big padding-left-small"> Additional Restrictions</p>
+      <img alt="Icon of arrow pointing right"src="src/img/icon-chevron-right.png" class=" chevron-down"/>
+    </div>
+    <div class="panel column is-9 has-background-white">
+     <p class="text-normal padding-top-small padding-bottom-small">Many T.O.S.  include restrictions on how content on the platform may be used. Imposing additional terms that contradict the CC license confuses users and undermines the point of license standardization. CC strongly discourages this practice.Your platform may have extra restrictions that are not intended for CC-licensed content. For example, a platform may include terms that limit use of the platform to noncommercial purposes. In these cases, we recommend adding language that clarifies that these and other restrictions do not apply to CC-licensed content. For example:</p>
+     <img alt="symbol representing quotes" src="/platform-toolkit/src/img/icon-quotes.png">
+     <p class="text-bigger is-italic padding-top-small padding-bottom-small">For the avoidance of doubt, nothing in this Agreement is designed to prevent you from reusing content available under a Creative Commons license according to the terms and conditions of the applicable license.</p>
+     <p class="text-normal padding-top-small padding-bottom-small">At the end of the day, we want to ensure that people who come across CC-licensed work can trust that they can use that work under the terms of the CC license. When extra restrictions are imposed on CC-licensed content – whether by changing the license terms themselves or by imposing new contractual restrictions via terms of service – Creative Commons requires that the CREATIVE COMMONS name and brand be removed to avoid confusing people about the source of the more restrictive terms imposed by the platform. Anything that imposes additional conditions or narrows the permissions granted by a standard CC license is prohibited. For example: prohibiting download of CC-licensed works, or adding extra attribution requirements. For more details, read the full CC License Modification Policy here.</p>
+    </div>
+    <div class="column is-9 has-background-white accordion pt-line-detail-forest pt-row-space-between pt-chevron">
+      <p class="text-big padding-left-small">Third Party CC-Licensed Content</p>
+      <img alt="Icon of arrow pointing right"src="src/img/icon-chevron-right.png" class="chevron-down"/>
+    </div>
+    <div class="panel column is-9 has-background-white">
+      <p class="text-normal padding-top-small padding-bottom-small">As noted above, platforms often require their users to grant a separate, direct copyright license to the platform for all content they upload.This creates a conflict when a user uploads CC-licensed content owned by others (third parties) because the user cannot grant rights to content they don’t own; only the original CC licensor can grant these rights to the platform. Therefore, it is important that the direct license written into the TOS excludes CC-licensed content owned by someone other than the uploader.</p>
+      <img alt="symbol representing quotes" src="/platform-toolkit/src/img/icon-quotes.png">
+      <p class="text-bigger is-italic padding-top-small padding-bottom-small">Example language: “If you provide any content to [the platform], you grant [the platform] a nonexclusive, royalty-free right to use that content, unless the content is not owned by you, in which case you represent and warrant that such content is in the public domain or available under a Creative Commons license or other terms permitting upload to the [the platform].”</p>
+    </div>
+    
+  </section>
+<script src="src/js/toc-filter-script.js"></script>
+<script src="src/js/accordion-script.js"></script>
+</body>
+</html>

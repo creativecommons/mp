@@ -1,0 +1,195 @@
+@import '/node_modules/@creativecommons/vocabulary/css/vocabulary.css';
+
+/*Placeholder for header implementation */
+.mock-header {
+  width: 100%;
+  height:238px;
+  background-image: url("/platform-toolkit/src/img/mock-header.png");
+  background-repeat: no-repeat;
+  background-position: right top;
+}
+
+/*General Adjusments*/
+section {
+  padding: 0 6.5%;
+}
+
+/* Platform Toolkit Styles */
+.pt-background {
+  background-color: #F5F5F5; 
+}
+.pt-line-detail-tomato {
+  width: 100%;
+  border-top: 2px solid #ed592f;
+}
+.pt-line-detail-forest {
+  border-left: 2px solid #04A635;
+}
+.pt-box-detail-sm {
+  width: 20px;
+  height: 20px;
+}
+.pt-box-detail-lg {
+  width: 40px;
+  height: 40px;
+}
+.pt-section1-text {
+  width: 250px;
+  margin: auto;
+}
+.pt-section-gold {
+  border-top: 1px solid #efbe00;
+}
+.pt-section-forest {
+  border-top: 1px solid #04A635;
+}
+.pt-text-navigation {
+  text-decoration: underline;
+  text-transform: uppercase;
+  font-family: 'Roboto Condensed';
+  border: none;
+}
+.pt-button-blue{
+  background-color:#3c5c99;
+  border-color:transparent;
+  color:#fff
+}
+.pt-button-gold {
+  background-color: #efbe00 !important;
+  border: none;
+  color: #333;
+}
+.pt-button-navigation { 
+  border-radius: 4px 4px 0px 0px;
+  font-size: .8rem;
+  letter-spacing: 0.02em;
+  min-width: 125px;
+  padding: 0.2rem .5rem !important;
+}
+.pt-bar {
+  width: 5px;
+  height: 30px;
+  margin-left: 2px;
+}
+.pt-align-center {
+  align-items: center;
+}
+.pt-align-top {
+  align-items: flex-start;
+  display: flex !important;
+}
+.pt-card-large {
+  box-sizing: border-box;
+  padding: 2.5rem;
+  width: 396px;
+}
+.pt-card-padding-large {
+  padding: 4rem;
+}
+.pt-card-small {
+  box-sizing: border-box;
+  padding: 1.2rem 2rem;
+  max-height: 255px;
+}
+.pt-header-card {
+  font-size: 28px;
+  width: 315px;
+  padding: 48px 0;
+}
+.pt-text-card{
+  width: 250px;
+}
+
+.pt-columns-align {
+  align-items: center;
+}
+.pt-columns-align-center {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.pt-row-align-center {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.pt-row-space-between {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+#types-of-content>div>.is-4 {
+  padding-top: 0;
+}
+
+/* Classes used in JS */
+.pt-menu-items {
+  opacity: 1;
+  transition: visibility 0.5s, opacity 0.5s linear;
+  visibility: visible;
+}
+.hide {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+.accordion {
+  color: #444;
+  cursor: pointer;
+  padding: 12px;
+  width: 100%;
+  text-align: left;
+  transition: 0.4s;
+}
+.active, .accordion:hover {
+  background-color: #eee !important;
+}
+.chevron-down{
+  margin-right: 1rem;
+  transform: rotate(0deg);
+  transition: transform .5s linear;
+}
+.chevron-down.open{
+  margin-right: 1rem;
+  transform: rotate(90deg);
+  transition: transform .5s linear;
+}
+.panel {
+  border: 1px solid #eeeeee;
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+/*
+.0
+.1
+.2
+.3
+*/
+
+/* Altering Vocabulary styles */
+.b-header {
+  line-height: 2rem;
+}
+
+#terms-of-service>div>div>div>.b-header {
+  line-height: 1.2rem;
+}
+
+/*PT Media query adjustments */
+@media only screen and (max-width: 700px) {
+  .margin-left-small {
+    margin-left: 0;
+  }
+  .pt-button-navigation {
+    min-width: 60px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .margin-left-normal {
+    margin-left: 0;
+  }
+}
