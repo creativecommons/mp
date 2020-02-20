@@ -22,6 +22,9 @@ section {
   width: 100%;
   border-top: 2px solid #ed592f;
 }
+.pt-line-left-tomato {
+  border-left: 2px solid #ed592f;
+}
 .pt-line-detail-forest {
   border-left: 2px solid #04A635;
 }
@@ -44,10 +47,15 @@ section {
   border-top: 1px solid #04A635;
 }
 .pt-text-navigation {
+  background-color:#fff;
+  border: none;
+  cursor: pointer;
+  font-family: 'Roboto Condensed';
   text-decoration: underline;
   text-transform: uppercase;
-  font-family: 'Roboto Condensed';
-  border: none;
+}
+.pt-text-navigation:hover {
+  color: #d4d4d4;
 }
 .pt-button-blue{
   background-color:#3c5c99;
@@ -59,6 +67,9 @@ section {
   border: none;
   color: #333;
 }
+.pt-button-large {
+  width: 99%;
+}
 .pt-button-navigation { 
   border-radius: 4px 4px 0px 0px;
   font-size: .8rem;
@@ -67,9 +78,9 @@ section {
   padding: 0.2rem .5rem !important;
 }
 .pt-bar {
-  width: 5px;
   height: 30px;
   margin-left: 2px;
+  width: 5px;
 }
 .pt-align-center {
   align-items: center;
@@ -86,9 +97,11 @@ section {
 .pt-card-padding-large {
   padding: 4rem;
 }
-.pt-card-small {
+.pt-card, .pt-card-small {
   box-sizing: border-box;
   padding: 1.2rem 2rem;
+}
+.pt-card-small{
   max-height: 255px;
 }
 .pt-header-card {
@@ -160,7 +173,7 @@ section {
   padding: 0 18px;
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.2s ease-out;
+  transition: max-height 0.8s ease-out;
 }
 /*
 .0
@@ -173,9 +186,11 @@ section {
 .b-header {
   line-height: 2rem;
 }
-
 #terms-of-service>div>div>div>.b-header {
   line-height: 1.2rem;
+}
+.text-small {
+  padding-right: 0;
 }
 
 /*PT Media query adjustments */
