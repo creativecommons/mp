@@ -7,7 +7,7 @@
     item.addEventListener("click", function() {search(index)})
   })
   
-  let cleanButton = doc.querySelector('.is-white')
+  let cleanButton = doc.querySelector('.pt-button-white')
   cleanButton.addEventListener("click", function() {
     Array.from(doc.querySelectorAll('.pt-menu-items')).map( item => item.classList.remove('hide'));
   })

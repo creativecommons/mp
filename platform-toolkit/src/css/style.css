@@ -13,6 +13,11 @@
 section {
   padding: 0 6.5%;
 }
+pre {
+  background-color: #E5E5E5;
+  border: solid 1px #c4c4c4;
+  padding: 0 !important;
+}
 
 /* Platform Toolkit Styles */
 .pt-background {
@@ -21,6 +26,10 @@ section {
 .pt-line-detail-tomato {
   width: 100%;
   border-top: 2px solid #ed592f;
+}
+.pt-line-detail-blue {
+  width: 100%;
+  border-top: 4px solid #3C5C99;
 }
 .pt-line-left-tomato {
   border-left: 2px solid #ed592f;
@@ -46,6 +55,9 @@ section {
 .pt-section-forest {
   border-top: 1px solid #04A635;
 }
+.pt-section-blue {
+  border-top: 1px solid #3C5C99;
+}
 .pt-text-navigation {
   background-color:#fff;
   border: none;
@@ -58,13 +70,45 @@ section {
   color: #d4d4d4;
 }
 .pt-button-blue{
-  background-color:#3c5c99;
-  border-color:transparent;
-  color:#fff
+  border: solid 2px #3c5c99;
+  border-bottom: none;
+  background: #ffffff;
+  color: #333;
 }
-.pt-button-gold {
-  background-color: #efbe00 !important;
-  border: none;
+.pt-button-gold,
+.pt-button-gold:active,
+.pt-button-gold:focus,
+.pt-button-gold:focus-within  {
+  border: solid 2px #efbe00;
+  border-bottom: none;
+  background: #ffffff;
+  color: #333;
+}
+.pt-button-white,
+.pt-button-white:active,
+.pt-button-white:focus,
+.pt-button-white:focus-within  {
+  border: solid 2px #e4e4e4;
+  border-bottom: none;
+  background: #ffffff;
+  color: #333;
+}
+.pt-button-forest,
+.pt-button-forest:active,
+.pt-button-forest:focus,
+.pt-button-forest:focus-within  {
+  border: solid 2px #00b850;
+  border-bottom: none;
+  background: #ffffff;
+  color: #333;
+}
+.pt-button-tomato,
+.pt-button-tomato:active,
+.pt-button-tomato:focus,
+.pt-button-tomato:focus-within {
+  border: solid 2px #ff6933;
+  border-bottom: none;
+  background: #ffffff;
   color: #333;
 }
 .pt-button-large {
@@ -94,8 +138,14 @@ section {
   padding: 2.5rem;
   width: 396px;
 }
+.pt-card-wide {
+  padding: 3rem 4.5rem 1rem;;
+}
 .pt-card-padding-large {
   padding: 4rem;
+}
+.pt-card-padding-small {
+  padding: 2rem;
 }
 .pt-card, .pt-card-small {
   box-sizing: border-box;
@@ -121,6 +171,11 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+.pt-row-align {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
 }
 .pt-row-align-center {
   align-items: center;
