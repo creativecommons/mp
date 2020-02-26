@@ -75,6 +75,11 @@ pre {
   background: #ffffff;
   color: #333;
 }
+.pt-button-blue-lg{
+  border: solid 2px #3c5c99;
+  background: #3c5c99;
+  color: #fff;
+}
 .pt-button-gold,
 .pt-button-gold:active,
 .pt-button-gold:focus,
@@ -188,9 +193,13 @@ pre {
   flex-direction: row;
   justify-content: space-between;
 }
+#table-of-contents>div>div.column.has-background-white {
+  border: solid 2px #E5E5E5;
+}
 #types-of-content>div>.is-4 {
   padding-top: 0;
 }
+
 
 /* Classes used in JS */
 .pt-menu-items {

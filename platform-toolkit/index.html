@@ -51,7 +51,7 @@
       </div>
     </div>
   </section>
-  <section>
+  <section id="table-of-contents">
     <h2 class="padding-top-larger padding-bottom-smal">Table of Contents</h2>
     <p class="column text-normal is-paddingless margin-bottom-normal is-half ">Here you can see the topics covered in this toolkit and can help you find what  you’re looking for. The topics are organized by area of interest; you can filter by the colored tabs or by clicking directly on a topic below.</p>
     <div class="column is-paddingless is-10">
@@ -347,7 +347,7 @@
         <p class="text-normal is-italic padding-left-large">For the avoidance of doubt, nothing in this Agreement is designed to prevent you from reusing content available under a Creative Commons license according to the terms and conditions of the applicable license.</p>
       </div>
     </div>
-    <h5 class="b-header padding-top-normal">Real world Terms of Service provisions</h5>
+    <h5 class="b-header padding-top-normal">Real World Terms of Service Provisions</h5>
     <div class="columns padding-top-normal">
       <div class="column is-3 has-background-white pt-card">
         <p class="text-normal has-text-weight-bold has-text-centered padding-bottom-smaller">WikiMedia Commons</p>
@@ -544,7 +544,7 @@
       </div>
     </div>
   </section>
-  <section id="about">
+  <section id="license-metadata-display">
     <div class="column is-paddingless margin-top-large is-12 pt-section-blue pt-align-top">
       <div class="pt-box-detail-lg has-background-blue"></div> 
       <h3 class="padding-left-small padding-bottom-large">License Metadata (Display)</h3>
@@ -631,6 +631,89 @@
           &lt;/a&gt;
         &lt;/div&gt;
     </code></pre>
+  </section>
+  <section id="adding-search-filters" class="margin-bottom-normal">
+    <div class="column is-paddingless margin-top-larger is-12 pt-section-gold pt-align-top">
+      <div class="pt-box-detail-lg has-background-gold"></div> 
+      <h3 class="padding-left-small padding-bottom-large">Adding Search Filters</h3>
+    </div>
+    <div class="columns pt-columns-align">
+      <div class="column is-one-third has-background-white pt-card-padding-large">
+        <h4 class="b-header padding-bottom-normal">Concerns when allowing users to search for content.</h4>
+        <p class="text-normal">The same license metadata can be integrated into your search so that users can filter content on the platform by license, or by reuse categories that address their needs. You can also add a portal for users seeking commons content on your platform. To increase visibility, provide an API so your content can be found through other places.
+        </p>
+      </div>
+      <div class="column is-offset-1 is-6">
+        <h4 class="b-header padding-bottom-smaller">Add filters to your search</h4>
+        <div class="padding-bottom-smaller pt-row-align">
+          <img alt="Icon representing a checkbox" src="src/img/icon-checklist.png"/>
+          <p class="text-normal"><span class="has-text-weight-bold">Let the user search by licenses</p>
+        </div>
+        <div class="padding-bottom-smaller pt-row-align">
+          <img alt="Icon representing a checkbox" src="src/img/icon-checklist.png"/>
+          <p class="text-normal padding-left-smaller"><span class="has-text-weight-bold">Let the user search by usage </p>
+        </div>
+        <h4 class="b-header padding-top-small padding-bottom-smaller">Add a content portal to your site</h4>
+        <div class="padding-bottom-smaller pt-row-align">
+          <img alt="Icon representing a checkbox" src="src/img/icon-checklist.png"/>
+          <p class="text-normal"><span class="has-text-weight-bold">Let the user see commons content</p>
+        </div>
+        <h4 class="b-header padding-top-small padding-bottom-smaller">Provide an API for search engines</h4>
+        <div class="padding-bottom-smaller pt-row-align">
+          <img alt="Icon representing a checkbox" src="src/img/icon-checklist.png"/>
+          <p class="text-normal padding-left-smaller"><span class="has-text-weight-bold">Let the user find this content in more places</p>
+        </div>
+      </div>
+    </div>
+    <h4 class="padding-top-normal padding-bottom-small">Example</h4>
+    <div class="columns">
+      <div class="column is-3">
+        <div class="padding-bottom-small">
+          <h5 class="b-header">Search by License</h5>
+          <p class="text-normal">Allow filtering the material by a specific license.</p>
+        </div>
+        <div class="has-background-white pt-card">
+          <p class="text-normal  padding-bottom-small">All content under a specific CC license should appear in the results when that license is selected.</p>
+          <button class="button pt-button-blue-lg pt-button-large">Example</button>
+          <button class="button pt-button-blue-lg pt-button-large margin-top-small">Example</button>
+        </div>
+      </div>
+      <div class="column is-offset-1 is-3">
+        <div class="padding-bottom-small">
+          <h5 class="b-header">Search by usage</h5>
+          <p class="text-normal">Filter by what the user could do with that content.</p>
+        </div>
+        <div class="has-background-white pt-card">
+          <p class="text-normal  padding-bottom-small">When using categories, portray the usage rights given by the CC licenses and return the subset of CC licensed content.</p>
+          <button class="button pt-button-blue-lg pt-button-large">Example</button>
+          <button class="button pt-button-blue-lg pt-button-large margin-top-small">Example</button>
+        </div>
+      </div>
+      <div class="column is-offset-1 is-3">
+        <div class="padding-bottom-small">
+          <h5 class="b-header">Content Portal</h5>
+          <p class="text-normal">A session dedicate to displaying CC-licensed  content.</p>
+        </div>
+        <div class="has-background-white pt-card">
+          <p class="text-normal  padding-bottom-small">Portals provide <span class="has-text-weight-bold">direct and easy access to CC content</span>. This page shoud be accessible and easily found in the UI.</p>
+          <button class="button pt-button-blue-lg pt-button-large">Example</button>
+          <button class="button pt-button-blue-lg pt-button-large margin-top-small">Example</button>
+        </div>
+      </div>
+    </div>
+    <div class="column is-8 has-background-white is-paddingless margin-top-normal pt-line-left-tomato">
+      <div class="pt-box-detail-sm has-background-tomato"></div>
+      <div class="padding-left-large">
+        <h6 class="b-header text-big has-color-tomato column is-4">Additional attribution guidance for users</h6>
+        <p class="text-normal padding-left-smaller padding-right-larger padding-bottom-normal">Consider providing your users with attribution guidance, especially if your platform hosts domain-specific content that has different attribution norms, eg. academic research.</p>
+      </div>
+    </div>
+  </section>
+  <section id="resources">
+    <div class="column is-paddingless margin-top-large is-12 pt-section-gold pt-align-top">
+      <div class="pt-box-detail-lg has-background-gold"></div> 
+      <h3 class="padding-left-small padding-bottom-large">Resources</h3>
+    </div>
   </section>
 <script src="src/js/toc-filter-script.js"></script>
 <script src="src/js/accordion-script.js"></script>
