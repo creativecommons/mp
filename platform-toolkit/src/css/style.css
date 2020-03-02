@@ -1,10 +1,10 @@
-@import '/node_modules/@creativecommons/vocabulary/css/vocabulary.css';
+@import '/mp/node_modules/@creativecommons/vocabulary/css/vocabulary.css';
 
 /*Placeholder for header implementation */
 .mock-header {
   width: 100%;
   height:238px;
-  background-image: url("/platform-toolkit/src/img/mock-header.png");
+  background-image: url('/mp/platform-toolkit/src/img/mock-header.png');
   background-repeat: no-repeat;
   background-position: right top;
 }
@@ -33,6 +33,11 @@ pre {
 }
 .pt-line-left-tomato {
   border-left: 2px solid #ed592f;
+}
+.pt-line-left-gold {
+  background-color: #efbe00;
+  height: 45px;
+  width: 10px;
 }
 .pt-line-detail-forest {
   border-left: 2px solid #04A635;
@@ -111,10 +116,15 @@ pre {
 .pt-button-tomato:active,
 .pt-button-tomato:focus,
 .pt-button-tomato:focus-within {
-  border: solid 2px #ff6933;
+  border: solid 2px #ED592F;
   border-bottom: none;
   background: #ffffff;
   color: #333;
+}
+.pt-button-tomato-lg {
+  background: #ED592F;
+  color: #fff;
+  border: none;
 }
 .pt-button-large {
   width: 99%;
@@ -193,13 +203,21 @@ pre {
   flex-direction: row;
   justify-content: space-between;
 }
+.pt-row-align-lines {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
 #table-of-contents>div>div.column.has-background-white {
   border: solid 2px #E5E5E5;
 }
 #types-of-content>div>.is-4 {
   padding-top: 0;
 }
-
+#resources>div>div.is-4 {
+  padding: 2rem;
+}
 
 /* Classes used in JS */
 .pt-menu-items {
