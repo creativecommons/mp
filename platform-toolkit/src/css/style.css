@@ -18,7 +18,12 @@ pre {
   border: solid 1px #c4c4c4;
   padding: 0 !important;
 }
-
+a.scroll-link {
+  color: #333;
+}
+a.scroll-link:hover {
+  color: #c4c4c4;
+}
 /* Platform Toolkit Styles */
 .pt-background {
   background-color: #F5F5F5; 
@@ -35,9 +40,11 @@ pre {
   border-left: 2px solid #ed592f;
 }
 .pt-line-left-gold {
-  background-color: #efbe00;
+  background-image: url('/mp/platform-toolkit/src/img/rectangle.png');
+  background-repeat: no-repeat;
+  background-position: right top;
   height: 45px;
-  width: 10px;
+  width: 9px;
 }
 .pt-line-detail-forest {
   border-left: 2px solid #04A635;
@@ -126,6 +133,11 @@ pre {
   color: #fff;
   border: none;
 }
+.pt-button-gold-lg {
+  background: #efbe00;
+  color: #333;
+  border: none;
+}
 .pt-button-large {
   width: 99%;
 }
@@ -143,6 +155,12 @@ pre {
 }
 .pt-align-center {
   align-items: center;
+}
+.pt-align-left {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 .pt-align-top {
   align-items: flex-start;
@@ -218,7 +236,9 @@ pre {
 #resources>div>div.is-4 {
   padding: 2rem;
 }
-
+#resources>div>div>div>p.text-normal.has-text-weight-bold.padding-left-normal {
+  max-width: 240px;
+}
 /* Classes used in JS */
 .pt-menu-items {
   opacity: 1;
