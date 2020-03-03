@@ -3,15 +3,16 @@
   'use strict';
 
   let links = doc.getElementsByClassName('scroll-link');
-  for (var i = 0; i < links.length; i++) {
-      links[i].onclick = scroll;
-  }
+  let linksArray = Array.from(links);
+  linksArray.map(item => item.onclick = scroll);
+
   function scroll(e) {
     e.preventDefault();
     var id = this.getAttribute('href').replace('#', '');
     var target = document.getElementById(id).getBoundingClientRect().top;
     animateScroll(target);
   }
+  
   function animateScroll(targetHeight) {
     targetHeight = document.body.scrollHeight - window.innerHeight > targetHeight + scrollY ? 
         targetHeight : document.body.scrollHeight - window.innerHeight;
