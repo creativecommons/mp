@@ -249,6 +249,9 @@ a.scroll-link:hover {
   opacity: 0 !important;
   visibility: hidden !important;
 }
+.none {
+  display: none;
+}
 .accordion {
   color: #444;
   cursor: pointer;
@@ -277,6 +280,38 @@ a.scroll-link:hover {
   overflow: hidden;
   transition: max-height 0.8s ease-out;
 }
+
+/*modal*/
+
+  #popup {
+    top: 0; 
+    left: 0; 
+    position: fixed; 
+    width: 100%; 
+    height: 120%;
+    background-color: rgba(0,0,0,0.7); 
+    display: none;
+	}
+	.popupBoxWrapper{
+    width: 50%; 
+    margin: 50px auto; 
+    text-align: left;
+  }
+  @media only screen and (max-width: 550px) {
+    .popupBoxWrapper {
+      width: 90%;
+    }
+  }
+	.popupBoxContent{
+    background-color: #FFF; 
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+	}
+  .popup-align {
+    width: 95%;
+  }
 /*
 .0
 .1
