@@ -7,18 +7,18 @@
 
   function scroll(e) {
     e.preventDefault();
-    var id = this.getAttribute('href').replace('#', '');
-    var target = document.getElementById(id).getBoundingClientRect().top;
+    let id = this.getAttribute('href').replace('#', '');
+    let target = document.getElementById(id).getBoundingClientRect().top;
     animateScroll(target);
   }
   
   function animateScroll(targetHeight) {
     targetHeight = document.body.scrollHeight - window.innerHeight > targetHeight + scrollY ? 
         targetHeight : document.body.scrollHeight - window.innerHeight;
-    var initialPosition = window.scrollY;
-    var SCROLL_DURATION = 30;
-    var step_x = Math.PI / SCROLL_DURATION;
-    var step_count = 0;
+    let initialPosition = window.scrollY;
+    let SCROLL_DURATION = 30;
+    let step_x = Math.PI / SCROLL_DURATION;
+    let step_count = 0;
     requestAnimationFrame(step);
     function step() {
         if (step_count < SCROLL_DURATION) {
