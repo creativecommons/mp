@@ -5,12 +5,15 @@
   let allButtons = Array.from(buttons)
   allButtons.map( (item, index) => {
     item.addEventListener("click", function() {search(index)})
+    item.addEventListener("touchstart", function() {search(index)})
   })
   
   let cleanButton = doc.querySelector('.pt-button-white')
-  cleanButton.addEventListener("click", function() {
+  function cleanBtnFunction() {
     Array.from(doc.querySelectorAll('.pt-menu-items')).map( item => item.classList.remove('hide'));
-  })
+  }
+  cleanButton.addEventListener("click", cleanBtnFunction )
+  cleanButton.addEventListener("touchstart", cleanBtnFunction )
 
   function search(arrayIndex) {
     let bars = doc.querySelectorAll('.pt-menu-items')
