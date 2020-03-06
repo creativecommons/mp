@@ -178,7 +178,12 @@ a.scroll-link:hover {
   }
 }
 .pt-card-wide {
-  padding: 3rem 4.5rem 1rem;;
+  padding: 3rem 4.5rem 1rem;
+}
+@media only screen and (max-width: 768px) {
+  .pt-card-wide {
+    padding: 2rem 2rem 1rem;
+  }
 }
 .pt-card-padding-large {
   padding: 4rem;
@@ -197,6 +202,11 @@ a.scroll-link:hover {
 }
 .pt-card-small{
   max-height: 255px;
+}
+@media only screen and (max-width: 768px) {
+  .pt-card-small{
+    margin-bottom: 5%;
+  }
 }
 .pt-header-card {
   font-size: 28px;
@@ -233,7 +243,7 @@ a.scroll-link:hover {
   justify-content: center;
 }
 @media only screen and (max-width: 768px) {
-  .pt-row-align-center, .pt-column-mobile {
+  .pt-column-mobile {
     flex-direction: column;
   }
 }
@@ -316,7 +326,7 @@ a.scroll-link:hover {
 
 /*modal*/
 
-#popupBtns, #popupCollaboration {
+#popupBtns, #popupCollaboration, #popupModelPlatform {
   top: 0; 
   left: 0; 
   position: fixed; 
@@ -346,6 +356,10 @@ a.scroll-link:hover {
 }
 .popup-align {
   width: 95%;
+}
+.mp-url {
+  height: 400px;
+  overflow: auto;
 }
 /*
 .0

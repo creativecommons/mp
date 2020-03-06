@@ -3,10 +3,11 @@
 
   let popupBtns = doc.getElementById("popupBtns")
   let popupCollaboration = doc.getElementById("popupCollaboration")
+  let openCollaboration = doc.querySelector(".collaborationPopup")
+  let popupModelPlatform = doc.getElementById("popupModelPlatform")
+  let openModelPlatform = doc.querySelector(".modalPlatformPopup")
   let closeBoxes = doc.querySelectorAll(".closebox")
   let modals = doc.querySelectorAll(".modal")
-  let collaborationModal = doc.querySelector(".collaborationPopup")
-  let modelPlatformModal = doc.querySelector(".modalPlatformPopup")
   
   const collaborationPopup = 
     {
@@ -47,7 +48,23 @@
       url : 'src/img/01-third-party-work-distinction.png'
     }
   ];
-
+  
+  const modelPlatformImgs = [
+    { url : 'src/img/mp01.jpg'},
+    { url : 'src/img/mp02.jpg'},
+    { url : 'src/img/mp03.jpg'},
+    { url : 'src/img/mp04.png'},
+    { url : 'src/img/mp05.jpg'},
+    { url : 'src/img/mp06.jpg'},
+    { url : 'src/img/mp07.jpg'},
+    { url : 'src/img/mp08.jpg'},
+    { url : 'src/img/mp09.png'},
+    { url : 'src/img/mp10.jpg'},
+    { url : 'src/img/mp11.jpg'},
+    { url : 'src/img/mp12.jpg'},
+    { url : 'src/img/mp13.jpg'},
+    { url : 'src/img/mp14.jpg'}
+  ]
 
 
   for (let modal of modals) {
@@ -65,7 +82,7 @@
     });
   }
 
-  collaborationModal.addEventListener('click',function() {
+  openCollaboration.addEventListener('click',function() {
     popupCollaboration.querySelector(".message-header").innerHTML = collaborationPopup.header
     popupCollaboration.querySelector(".message-link1").innerHTML = collaborationPopup.link1
     popupCollaboration.querySelector(".message-link2").innerHTML = collaborationPopup.link2
@@ -75,12 +92,32 @@
     popupCollaboration.style.display == "block" ?
     popupCollaboration.style.display = "none" :
     popupCollaboration.style.display = "block"
-
   })
+
+  openModelPlatform.addEventListener('click',function() {
+    for (let img of modelPlatformImgs) {
+      let imgTag = doc.createElement('img');
+      imgTag.src = img.url
+      imgTag.classList.add("margin-top-large")
+      popupModelPlatform.querySelector(".mp-url").appendChild(imgTag)
+      console.log('executed')
+    }
+    popupModelPlatform.style.display == "block" ?
+    popupModelPlatform.style.display = "none" :
+    popupModelPlatform.style.display = "block"    
+  })
+  
+
   for (let close of closeBoxes) {
   close.addEventListener('click',function(){
+    let cleanMP = doc.querySelector(".mp-url")
     popupBtns.style.display = "none"
     popupCollaboration.style.display = "none"
+    popupModelPlatform.style.display = "none"
+    while (cleanMP.lastElementChild) {
+      cleanMP.removeChild(cleanMP.lastElementChild);
+    }
     })
   }
+  
 })(document);
