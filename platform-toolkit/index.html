@@ -10,7 +10,7 @@
 <body class="pt-background">
   <div class="mock-header">
   </div>
-  <section>
+  <section id="intro">
     <h1 class="padding-top-extra-larger">CC Platform Toolkit</h1>
     <h2 class="padding-top-normal">Integrating CC to your Platform</h2>
     <h3 class="b-header has-color-tomato padding-top-larger padding-bottom-small">Who is this page for?</h3>
@@ -178,7 +178,7 @@
         <div class="pt-card-large">
           <h4>How</h4>
           <h3 class="b-header pt-header-card pt-text-card">Showing the power of collaboration </h3>
-          <p class="text-normal">Give your user context, explain how the CC licenses work, and how your platform’s values align with the CC vision. <a class="box" data-box="1">Click here </a>for resources you can use.</p>
+          <p class="text-normal">Give your user context, explain how the CC licenses work, and how your platform’s values align with the CC vision. <a class="collaborationPopup">Click here</a> for resources you can use.</p>
         </div>
       </div>
       <div class="column is-one-third margin-left-small has-background-white margin-bottom-large pt-card ">
@@ -352,19 +352,19 @@
       <div class="column is-3 has-background-white pt-card">
         <p class="text-normal has-text-weight-bold has-text-centered padding-bottom-smaller">WikiMedia Commons</p>
         <p class="text-normal  padding-bottom-small">Example of T.O.S. indicating if and when users may upload CC-licensed content <span class="has-text-weight-bold">owned by others.</span></p>
-        <button data-box="2" class="box button is-info pt-button-large">Screenshot</button>
+        <button data-box="1" class="modal button is-info pt-button-large">Screenshot</button>
         <a target="_blank" rel=”noopener noreferrer” href="https://foundation.wikimedia.org/wiki/Terms_of_Use/en"><button class="button is-info pt-button-large margin-top-small">Term of Service</button></a>
       </div>
       <div class="column is-3 has-background-white is-offset-1 pt-card">
         <p class="text-normal has-text-weight-bold has-text-centered padding-bottom-smaller">Internet Archive</p>
         <p class="text-normal  padding-bottom-small">Example of how CC-licensed content on the platform is <span class="has-text-weight-bold">not subject to additional restrictions.</span></p>
-        <button data-box="3" class="box button is-info pt-button-large">Screenshot</button>
+        <button data-box="2" class="modal button is-info pt-button-large">Screenshot</button>
         <a target="_blank" rel=”noopener noreferrer” href="https://archive.org/about/terms.php"><button class="button is-info pt-button-large margin-top-small">Term of Service</button></a>
       </div>
       <div class="column is-3 has-background-white is-offset-1 pt-card">
         <p class="text-normal has-text-weight-bold has-text-centered padding-bottom-smaller">Jamedo</p>
         <p class="text-normal  padding-bottom-small">Example explaning how CC licensing works for content creators on the platform:</p>
-        <button data-box="4" class="box button is-info pt-button-large">Screenshot</button>
+        <button data-box="3" class="modal button is-info pt-button-large">Screenshot</button>
         <a target="_blank" rel=”noopener noreferrer” href="https://www.jamendo.com/legal/terms-of-use"><button class="button is-info pt-button-large margin-top-small">Term of Service</button></a>
       </div>
     </div>
@@ -674,7 +674,7 @@
         </div>
         <div class="has-background-white pt-card">
           <p class="text-normal  padding-bottom-small">All content under a specific CC license should appear in the results when that license is selected.</p>
-          <button data-box="5" class="box button pt-button-blue-lg pt-button-large">Example</button>
+          <button data-box="4" class="modal button pt-button-blue-lg pt-button-large">Example</button>
         </div>
       </div>
       <div class="column is-offset-1 is-3">
@@ -684,7 +684,7 @@
         </div>
         <div class="has-background-white pt-card">
           <p class="text-normal  padding-bottom-small">When using categories, portray the usage rights given by the CC licenses and return the subset of CC licensed content.</p>
-          <button data-box="6" class="box button pt-button-blue-lg pt-button-large">Example</button>
+          <button data-box="5" class="modal button pt-button-blue-lg pt-button-large">Example</button>
         </div>
       </div>
       <div class="column is-offset-1 is-3">
@@ -694,7 +694,7 @@
         </div>
         <div class="has-background-white pt-card">
           <p class="text-normal  padding-bottom-small">Portals provide <span class="has-text-weight-bold">direct and easy access to CC content</span>. This page shoud be accessible and easily found in the UI.</p>
-          <button data-box="7" class="box button pt-button-blue-lg pt-button-large">Example</button>
+          <button data-box="6" class="modal button pt-button-blue-lg pt-button-large">Example</button>
         </div>
       </div>
     </div>
@@ -734,8 +734,8 @@
         </div>
         <div class="has-background-white pt-card">
           <p class="text-normal  padding-bottom-small">Suggested attribution text can be generated from the source code on the page if you’ve integrated CC metadata. At the code level this means filling out a template based on the metadata examples below. This is solved by creating a license chooser with best practices for attribution text.</p>
-          <button data-box="8" class="box button pt-button-blue-lg pt-button-large">Example</button>
-          <button data-box="9" class="box button pt-button-blue-lg pt-button-large margin-top-small">Example</button>
+          <button data-box="7" class="modal button pt-button-blue-lg pt-button-large">Example</button>
+          <button data-box="8" class="modal button pt-button-blue-lg pt-button-large margin-top-small">Example</button>
         </div>
       </div>
       <div class="column is-offset-1 is-3">
@@ -753,7 +753,7 @@
         </div>
         <div class="has-background-white pt-card">
           <p class="text-normal  padding-bottom-small">If you allow your users to share third party CC licensed content on your platform, be sure to require attribution for that content at the point of upload. Make sure you give your users a way to indicate the original author of the work.</p>
-          <button data-box="10" class="box button pt-button-blue-lg pt-button-large">Example</button>
+          <button data-box="9" class="modal button pt-button-blue-lg pt-button-large">Example</button>
         </div>
       </div>
     </div>
@@ -799,12 +799,12 @@
         </div>
         <div class="has-background-white pt-card">
           <p class="text-normal padding-bottom-small">“A Masterwork in Simplicity: The Story of the CC Logo” (feature with the origin of the CC logos and icons).</p>
-          <a target="_blank" rel=”noopener noreferrer” href="https://medium.com/designing-medium/everyday-design-84838adc4e93"><button class="button pt-button-tomato-lg pt-button-large margin-top-small">Open Video</button></a>
+          <a target="_blank" rel=”noopener noreferrer” href="https://medium.com/@creativecommons/a-masterwork-in-simplicity-the-story-of-the-cc-logo-7e2e231a26e7"><button class="button pt-button-tomato-lg pt-button-large margin-top-small">Open Video</button></a>
         </div>
       </div>
     </div>
     <h5 class="b-header">Platforms that have  CC integration:</h5>
-    <div class="column is-9 is-flex has-background-white is-paddingless margin-top-normal">
+    <div class="column is-9 is-flex has-background-white is-paddingless margin-top-normal pt-column-mobile">
       <div class="column is-4">
         <a target="_blank" rel=”noopener noreferrer” href="https://www.flickr.com/"><button class="button pt-button-tomato-lg pt-button-large margin-top-small">Flickr </button></a>
         <a target="_blank" rel=”noopener noreferrer” href="https://www.youtube.com/"><button class="button pt-button-tomato-lg pt-button-large margin-top-small">Youtube </button></a>
@@ -833,7 +833,7 @@
       </div>
       <div class="column is-offset-1 is-3 margin-top-small">
         <a target="_blank" rel=”noopener noreferrer” href="https://github.com/creativecommons/mp"><button class="button pt-button-blue-lg pt-button-large">Github Repository</button></a>
-          <button class="button pt-button-blue-lg pt-button-large margin-top-small">SEE screenshots</button>
+          <button class="modalPlatformPopup button pt-button-blue-lg pt-button-large margin-top-small">SEE screenshots</button>
       </div>
     </div>
   </section>
@@ -1051,18 +1051,33 @@
   </section>
 
 
-  <div id="popup">
+  <div id="popupBtns">
     <div class="popupBoxWrapper">
       <div class="popupBoxContent">
-        <img id="closebox" src="/mp/platform-toolkit/src/img/icon-close.svg">
+        <img class="closebox" src="/mp/platform-toolkit/src/img/icon-close.svg">
         <div class="popup-align">
-          <div class="message-header"></div>
           <p class="message padding-top-normal padding-bottom-small padding-right-large">
           </p>
         </div>
         
         <img class="message-url"/>
-        <p class="message-links text-normal padding-left-normal padding-right-normal"></p>
+      </div>
+    </div>
+  </div>
+
+  <div id="popupCollaboration">
+    <div class="popupBoxWrapper">
+      <div class="popupBoxContent">
+        <img class="closebox" src="/mp/platform-toolkit/src/img/icon-close.svg">
+        <div class="popup-align">
+          <div class="message-header"></div>
+        </div>
+        <div class="message-links text-normal padding-left-normal padding-right-large ">
+          <p class="message-link1 margin-top-small"></p>
+          <p class="message-link2 margin-top-normal"></p>
+          <p class="message-link3 margin-top-normal"></p>
+          <p class="message-link4 margin-top-normal"></p>
+        </div>
       </div>
     </div>
   </div>

@@ -1,15 +1,24 @@
 (function(doc) {
   'use strict';
 
-  let popup = doc.getElementById("popup");
-  let close = doc.getElementById("closebox");
-  let boxes = doc.querySelectorAll(".box");
+  let popupBtns = doc.getElementById("popupBtns")
+  let popupCollaboration = doc.getElementById("popupCollaboration")
+  let closeBoxes = doc.querySelectorAll(".closebox")
+  let modals = doc.querySelectorAll(".modal")
+  let collaborationModal = doc.querySelector(".collaborationPopup")
+  let modelPlatformModal = doc.querySelector(".modalPlatformPopup")
   
-  const messages = [
-    { header :'<h3>How to help your community get on board</h3>',
-      text : 'Here are some ways your platform can communicate and explain how the CC licenses work and their importance.',
-      links : '<strong>Be transparent</strong><p>Explain the basics of CC,  why your platform decided to add CC, and how it aligns with your platform’s values.Link https://creativecommons.org for users who want to learn more. Example: <a href="https://support.google.com/youtube/answer/2797468?hl=en">YouTube’s page on CC.</a></p>'
-    },
+  const collaborationPopup = 
+    {
+    header :'<h3>How to help your community get on board</h3>',
+    text : 'Here are some ways your platform can communicate and explain how the CC licenses work and their importance.',
+    link1 : '<strong>Be transparent</strong><p>Explain the basics of CC, why your platform decided to add CC, and how it aligns with your platform’s values. <span class="text-small">Link https://creativecommons.org for users who want to learn more. Example: <a target="_blank" rel=”noopener noreferrer” href="https://support.google.com/youtube/answer/2797468?hl=en">YouTube’s page on CC.</span></a></p>',
+    link2 : '<strong>Provide information</strong><p>Build a FAQ on how CC licenses work on your platform. You can adapt CC’s FAQ for your purposes. <span class="text-small">Example: <a target="_blank" rel=”noopener noreferrer” href="https://vimeo.com/help/faq/legal-stuff/creative-commons">Vimeo’s page on CC.</a></span></p>',
+    link3 : '<strong>Have clear guidelines</strong><p>Implement community guidelines around attribution and other sharing practices. <span class="text-small">Example: <a target="_blank" rel=”noopener noreferrer” href="https://www.flickr.com/services/developer/attributions/">Flickr’s attribution</a> and <a target="_blank" rel=”noopener noreferrer” href="https://www.flickr.com/help/guidelines/">general community guidelines.</a></span></p>',
+    link4 : '<strong>Show the content</strong><p>Have a dedicated area for CC works to be found. Build a CC portal for content discovery. <span class="text-small">Example: <a target="_blank" rel=”noopener noreferrer” href="https://flickr.com/creativecommons/">Flickr’s CC portal; </a> and <a target="_blank" rel=”noopener noreferrer” href="https://vimeo.com/creativecommons">Vimeo’s CC portal.</a></span></p>'
+    }
+
+  const btnMessages = [
     { text : 'WikiMedia Commons Terms of Service',
       url : 'src/img/tos-wikimedia.png'
     },
@@ -39,33 +48,39 @@
     }
   ];
 
-  for (let box of boxes) {
-    box.addEventListener("click", function(e) {
-      const boxNum = parseInt(e.target.dataset.box);
-      const message = messages[boxNum - 1];
-      popup.querySelector(".message").innerHTML = message.text;
-      
-      message.header ? 
-      popup.querySelector(".message-header").innerHTML = message.header :
-      popup.querySelector(".message-header").classList.add = "none"
 
-      message.links ? 
-      popup.querySelector(".message-links").innerHTML = message.links :
-      popup.querySelector(".message-links").classList.add = "none"
 
-      message.url ? 
-      popup.querySelector(".message-url").src = message.url :
-      popup.querySelector(".message-url").classList.add = "none"
+  for (let modal of modals) {
+    modal.addEventListener("click", function(e) {
+      const boxNum = parseInt(e.target.dataset.box)
+      const message = btnMessages[boxNum - 1]
+
+      popupBtns.querySelector(".message-url").src = message.url 
+      popupBtns.querySelector(".message").innerHTML = message.text
   
-      popup.style.display == "block" ?
-      popup.style.display = "none" :
-      popup.style.display = "block"
+      popupBtns.style.display == "block" ?
+      popupBtns.style.display = "none" :
+      popupBtns.style.display = "block"
 
     });
   }
-  
-  close.addEventListener('click',function(){
-    popup.style.display = "none"
-  })
 
+  collaborationModal.addEventListener('click',function() {
+    popupCollaboration.querySelector(".message-header").innerHTML = collaborationPopup.header
+    popupCollaboration.querySelector(".message-link1").innerHTML = collaborationPopup.link1
+    popupCollaboration.querySelector(".message-link2").innerHTML = collaborationPopup.link2
+    popupCollaboration.querySelector(".message-link3").innerHTML = collaborationPopup.link3
+    popupCollaboration.querySelector(".message-link4").innerHTML = collaborationPopup.link4
+
+    popupCollaboration.style.display == "block" ?
+    popupCollaboration.style.display = "none" :
+    popupCollaboration.style.display = "block"
+
+  })
+  for (let close of closeBoxes) {
+  close.addEventListener('click',function(){
+    popupBtns.style.display = "none"
+    popupCollaboration.style.display = "none"
+    })
+  }
 })(document);

@@ -24,6 +24,7 @@ a.scroll-link {
 a.scroll-link:hover {
   color: #c4c4c4;
 }
+
 /* Platform Toolkit Styles */
 .pt-background {
   background-color: #F5F5F5; 
@@ -169,13 +170,23 @@ a.scroll-link:hover {
 .pt-card-large {
   box-sizing: border-box;
   padding: 2.5rem;
-  width: 396px;
+}
+@media only screen and (max-width: 1024px) {
+  .pt-card-large{
+    padding: 0;
+    width: 100%;
+  }
 }
 .pt-card-wide {
   padding: 3rem 4.5rem 1rem;;
 }
 .pt-card-padding-large {
   padding: 4rem;
+}
+@media only screen and (max-width: 768px) {
+  .pt-card-padding-large{
+    padding: 2rem;
+  }
 }
 .pt-card-padding-small {
   padding: 2rem;
@@ -191,6 +202,11 @@ a.scroll-link:hover {
   font-size: 28px;
   width: 315px;
   padding: 48px 0;
+}
+@media only screen and (max-width: 1024px) {
+  .pt-header-card{
+    width: 100%;
+  }
 }
 .pt-text-card{
   width: 250px;
@@ -216,6 +232,11 @@ a.scroll-link:hover {
   flex-direction: row;
   justify-content: center;
 }
+@media only screen and (max-width: 768px) {
+  .pt-row-align-center, .pt-column-mobile {
+    flex-direction: column;
+  }
+}
 .pt-row-space-between {
   display: flex;
   flex-direction: row;
@@ -226,6 +247,11 @@ a.scroll-link:hover {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+}
+@media only screen and (max-width: 768px) {
+  #intro>div>div{
+    margin: 0 !important;
+  }
 }
 #table-of-contents>div>div.column.has-background-white {
   border: solid 2px #E5E5E5;
@@ -239,6 +265,13 @@ a.scroll-link:hover {
 #resources>div>div>div>p.text-normal.has-text-weight-bold.padding-left-normal {
   max-width: 240px;
 }
+#final-checklist>div>div>div>p.text-normal {
+  max-width: 250px;
+}
+#closebox {
+  width: 30px !important;
+}
+
 /* Classes used in JS */
 .pt-menu-items {
   opacity: 1;
@@ -283,35 +316,37 @@ a.scroll-link:hover {
 
 /*modal*/
 
-  #popup {
-    top: 0; 
-    left: 0; 
-    position: fixed; 
-    width: 100%; 
-    height: 120%;
-    background-color: rgba(0,0,0,0.7); 
-    display: none;
-	}
-	.popupBoxWrapper{
-    width: 50%; 
-    margin: 50px auto; 
-    text-align: left;
+#popupBtns, #popupCollaboration {
+  top: 0; 
+  left: 0; 
+  position: fixed; 
+  width: 100%; 
+  height: 120%;
+  background-color: rgba(0,0,0,0.7); 
+  display: none;
+}
+.popupBoxWrapper{
+  width: 50%; 
+  margin: 50px auto; 
+  text-align: left;
+}
+@media only screen and (max-width: 550px) {
+  .popupBoxWrapper {
+  width: 90%;
   }
-  @media only screen and (max-width: 550px) {
-    .popupBoxWrapper {
-      width: 90%;
-    }
-  }
-	.popupBoxContent{
-    background-color: #FFF; 
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-	}
-  .popup-align {
-    width: 95%;
-  }
+}
+.popupBoxContent{
+  background-color: #FFF; 
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  max-height: 80%;
+  overflow: auto;
+}
+.popup-align {
+  width: 95%;
+}
 /*
 .0
 .1
@@ -329,6 +364,11 @@ a.scroll-link:hover {
 .text-small {
   padding-right: 0;
 }
+@media only screen and (max-width: 768px) {
+  .column.margin-bottom-large{
+    margin-bottom: 1rem;
+  }
+}
 
 /*PT Media query adjustments */
 @media only screen and (max-width: 700px) {
@@ -339,7 +379,6 @@ a.scroll-link:hover {
     min-width: 60px;
   }
 }
-
 @media only screen and (max-width: 400px) {
   .margin-left-normal {
     margin-left: 0;

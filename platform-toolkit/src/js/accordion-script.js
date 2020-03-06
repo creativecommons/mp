@@ -15,15 +15,9 @@
   let chevronDesktop = doc.querySelectorAll('.chevron-down');
   let containerArray = Array.from(containerDesktop)
   let chevronArray = Array.from(chevronDesktop)
-  let open = true;
 
   let addRotation = function( icon ) {
-
-    open ?
-    icon.className = 'chevron-down open' : 
-    icon.className = 'chevron-down';
-    
-    open = !open;
+    icon.classList.toggle('open')
   }
   containerArray.map((item, index) => item.addEventListener('click', function(){ addRotation( chevronArray[index] )}));
 
