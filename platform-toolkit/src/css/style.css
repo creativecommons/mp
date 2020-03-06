@@ -1,6 +1,19 @@
+/* Index 
+0. Importing Vocabulary
+1. Placeholder for header implementation
+2. General Adjusments
+3. Platform Toolkit Styles
+4. Modal
+5. Classes used in JS
+6. Altering Vocabulary styles
+7. PT Media query adjustments
+*/
+
+/* Importing Vocabulary */
 @import '/mp/node_modules/@creativecommons/vocabulary/css/vocabulary.css';
 
-/*Placeholder for header implementation */
+
+/* Placeholder for header implementation */
 .mock-header {
   width: 100%;
   height:238px;
@@ -9,7 +22,7 @@
   background-position: right top;
 }
 
-/*General Adjusments*/
+/* General Adjusments*/
 section {
   padding: 0 6.5%;
 }
@@ -282,6 +295,44 @@ a.scroll-link:hover {
   width: 30px !important;
 }
 
+/* Modal*/
+
+#popupBtns, #popupCollaboration, #popupModelPlatform {
+  top: 0; 
+  left: 0; 
+  position: fixed; 
+  width: 100%; 
+  height: 120%;
+  background-color: rgba(0,0,0,0.7); 
+  display: none;
+}
+.popupBoxWrapper{
+  width: 50%; 
+  margin: 50px auto; 
+  text-align: left;
+}
+@media only screen and (max-width: 550px) {
+  .popupBoxWrapper {
+  width: 90%;
+  }
+}
+.popupBoxContent{
+  background-color: #FFF; 
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  max-height: 80%;
+  overflow: auto;
+}
+.popup-align {
+  width: 95%;
+}
+.mp-url {
+  height: 400px;
+  overflow: auto;
+}
+
 /* Classes used in JS */
 .pt-menu-items {
   opacity: 1;
@@ -324,50 +375,6 @@ a.scroll-link:hover {
   transition: max-height 0.8s ease-out;
 }
 
-/*modal*/
-
-#popupBtns, #popupCollaboration, #popupModelPlatform {
-  top: 0; 
-  left: 0; 
-  position: fixed; 
-  width: 100%; 
-  height: 120%;
-  background-color: rgba(0,0,0,0.7); 
-  display: none;
-}
-.popupBoxWrapper{
-  width: 50%; 
-  margin: 50px auto; 
-  text-align: left;
-}
-@media only screen and (max-width: 550px) {
-  .popupBoxWrapper {
-  width: 90%;
-  }
-}
-.popupBoxContent{
-  background-color: #FFF; 
-  padding: 15px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  max-height: 80%;
-  overflow: auto;
-}
-.popup-align {
-  width: 95%;
-}
-.mp-url {
-  height: 400px;
-  overflow: auto;
-}
-/*
-.0
-.1
-.2
-.3
-*/
-
 /* Altering Vocabulary styles */
 .b-header {
   line-height: 2rem;
@@ -384,7 +391,7 @@ a.scroll-link:hover {
   }
 }
 
-/*PT Media query adjustments */
+/* PT Media query adjustments */
 @media only screen and (max-width: 700px) {
   .margin-left-small {
     margin-left: 0;
