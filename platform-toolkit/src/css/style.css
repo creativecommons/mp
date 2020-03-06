@@ -186,7 +186,7 @@ a.scroll-link:hover {
 }
 @media only screen and (max-width: 1024px) {
   .pt-card-large{
-    padding: 0;
+    padding: 5%;
     width: 100%;
   }
 }
