@@ -1,5 +1,4 @@
 /* Index 
-0. Importing Vocabulary
 1. Placeholder for header implementation
 2. General Adjusments
 3. Platform Toolkit Styles
@@ -9,15 +8,11 @@
 7. PT Media query adjustments
 */
 
-/* Importing Vocabulary */
-@import '/mp/node_modules/@creativecommons/vocabulary/css/vocabulary.css';
-
-
 /* Placeholder for header implementation */
 .mock-header {
   width: 100%;
   height:238px;
-  background-image: url('/mp/platform-toolkit/src/img/mock-header.png');
+  background-image: url('../img/mock-header.png');
   background-repeat: no-repeat;
   background-position: right top;
 }
@@ -54,7 +49,7 @@ a.scroll-link:hover {
   border-left: 2px solid #ed592f;
 }
 .pt-line-left-gold {
-  background-image: url('/mp/platform-toolkit/src/img/rectangle.png');
+  background-image: url('../img/rectangle.png');
   background-repeat: no-repeat;
   background-position: right top;
   height: 45px;
