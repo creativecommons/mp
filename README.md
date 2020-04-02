@@ -14,4 +14,12 @@ The header is just a placeholder image inside an empty div with the class "mock-
 
 ### License
 
+## Code / Scripts
+
 Licensed under the Expat/[MIT](http://www.opensource.org/licenses/MIT) license.
+
+
+## Content
+
+To the extent possible under law, Creative Commons has waived all copyright and related or neighboring rights to this work ([CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/)).
+
