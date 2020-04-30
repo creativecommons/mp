@@ -27,5 +27,5 @@ Model Platform.
 
 ## Creative Commons Hosted Documentation
 
-The `doc/platform-toolkit.html` file is manually copied to
-`/var/www/html/platform/toolkit/index.html` on the `faq` server.
+The `hosted-version/index.html` file made availabe on the server by symlinking
+`hosted-version/` to `/var/www/html/platform/toolkit/` on the `faq` server.
