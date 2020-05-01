@@ -20,6 +20,8 @@
 /* General Adjusments*/
 section {
   padding: 0 6.5%;
+  max-width: 1400px;
+  margin: auto;
 }
 pre {
   background-color: #E5E5E5;
