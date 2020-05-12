@@ -1,0 +1,404 @@
+/* Index 
+1. Placeholder for header implementation
+2. General Adjusments
+3. Platform Toolkit Styles
+4. Modal
+5. Classes used in JS
+6. Altering Vocabulary styles
+7. PT Media query adjustments
+*/
+
+/* Placeholder for header implementation */
+.mock-header {
+  width: 100%;
+  height:238px;
+  background-image: url('../img/mock-header.png');
+  background-repeat: no-repeat;
+  background-position: right top;
+}
+
+/* General Adjusments*/
+section {
+  padding: 0 6.5%;
+  max-width: 1400px;
+  margin: auto;
+}
+pre {
+  background-color: #E5E5E5;
+  border: solid 1px #c4c4c4;
+  padding: 0 !important;
+}
+a.scroll-link {
+  color: #333;
+}
+a.scroll-link:hover {
+  color: #c4c4c4;
+}
+
+/* Platform Toolkit Styles */
+.pt-background {
+  background-color: #F5F5F5; 
+}
+.pt-line-detail-tomato {
+  width: 100%;
+  border-top: 2px solid #ed592f;
+}
+.pt-line-detail-blue {
+  width: 100%;
+  border-top: 4px solid #3C5C99;
+}
+.pt-line-left-tomato {
+  border-left: 2px solid #ed592f;
+}
+.pt-line-left-gold {
+  background-image: url('../img/rectangle.png');
+  background-repeat: no-repeat;
+  background-position: right top;
+  height: 45px;
+  width: 9px;
+}
+.pt-line-detail-forest {
+  border-left: 2px solid #04A635;
+}
+.pt-box-detail-sm {
+  width: 20px;
+  height: 20px;
+}
+.pt-box-detail-lg {
+  width: 40px;
+  height: 40px;
+}
+.pt-section1-text {
+  width: 250px;
+  margin: auto;
+}
+.pt-section-gold {
+  border-top: 1px solid #efbe00;
+}
+.pt-section-forest {
+  border-top: 1px solid #04A635;
+}
+.pt-section-blue {
+  border-top: 1px solid #3C5C99;
+}
+.pt-text-navigation {
+  background-color:#fff;
+  border: none;
+  cursor: pointer;
+  font-family: 'Roboto Condensed';
+  text-decoration: underline;
+  text-transform: uppercase;
+}
+.pt-text-navigation:hover {
+  color: #d4d4d4;
+}
+.pt-button-blue{
+  border: solid 2px #3c5c99;
+  border-bottom: none;
+  background: #ffffff;
+  color: #333;
+}
+.pt-button-blue-lg{
+  border: solid 2px #3c5c99;
+  background: #3c5c99;
+  color: #fff;
+}
+.pt-button-gold,
+.pt-button-gold:active,
+.pt-button-gold:focus,
+.pt-button-gold:focus-within  {
+  border: solid 2px #efbe00;
+  border-bottom: none;
+  background: #ffffff;
+  color: #333;
+}
+.pt-button-white,
+.pt-button-white:active,
+.pt-button-white:focus,
+.pt-button-white:focus-within  {
+  border: solid 2px #e4e4e4;
+  border-bottom: none;
+  background: #ffffff;
+  color: #333;
+}
+.pt-button-forest,
+.pt-button-forest:active,
+.pt-button-forest:focus,
+.pt-button-forest:focus-within  {
+  border: solid 2px #00b850;
+  border-bottom: none;
+  background: #ffffff;
+  color: #333;
+}
+.pt-button-tomato,
+.pt-button-tomato:active,
+.pt-button-tomato:focus,
+.pt-button-tomato:focus-within {
+  border: solid 2px #ED592F;
+  border-bottom: none;
+  background: #ffffff;
+  color: #333;
+}
+.pt-button-tomato-lg {
+  background: #ED592F;
+  color: #fff;
+  border: none;
+}
+.pt-button-gold-lg {
+  background: #efbe00;
+  color: #333;
+  border: none;
+}
+.pt-button-large {
+  width: 99%;
+}
+.pt-button-navigation { 
+  border-radius: 4px 4px 0px 0px;
+  font-size: .8rem;
+  letter-spacing: 0.02em;
+  min-width: 125px;
+  padding: 0.2rem .5rem !important;
+}
+.pt-bar {
+  height: 30px;
+  margin-left: 2px;
+  width: 5px;
+}
+.pt-align-center {
+  align-items: center;
+}
+.pt-align-left {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.pt-align-top {
+  align-items: flex-start;
+  display: flex !important;
+}
+.pt-card-large {
+  box-sizing: border-box;
+  padding: 2.5rem;
+}
+@media only screen and (max-width: 1024px) {
+  .pt-card-large{
+    padding: 5%;
+    width: 100%;
+  }
+}
+.pt-card-wide {
+  padding: 3rem 4.5rem 1rem;
+}
+@media only screen and (max-width: 768px) {
+  .pt-card-wide {
+    padding: 2rem 2rem 1rem;
+  }
+}
+.pt-card-padding-large {
+  padding: 4rem;
+}
+@media only screen and (max-width: 768px) {
+  .pt-card-padding-large{
+    padding: 2rem;
+  }
+}
+.pt-card-padding-small {
+  padding: 2rem;
+}
+.pt-card, .pt-card-small {
+  box-sizing: border-box;
+  padding: 1.2rem 2rem;
+}
+.pt-card-small{
+  max-height: 255px;
+}
+@media only screen and (max-width: 768px) {
+  .pt-card-small{
+    margin-bottom: 5%;
+  }
+}
+.pt-header-card {
+  font-size: 28px;
+  width: 315px;
+  padding: 48px 0;
+}
+@media only screen and (max-width: 1024px) {
+  .pt-header-card{
+    width: 100%;
+  }
+}
+.pt-text-card{
+  width: 250px;
+}
+
+.pt-columns-align {
+  align-items: center;
+}
+.pt-columns-align-center {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.pt-row-align {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+.pt-row-align-center {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+@media only screen and (max-width: 768px) {
+  .pt-column-mobile {
+    flex-direction: column;
+  }
+}
+.pt-row-space-between {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.pt-row-align-lines {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+@media only screen and (max-width: 768px) {
+  #intro>div>div{
+    margin: 0 !important;
+  }
+}
+#table-of-contents>div>div.column.has-background-white {
+  border: solid 2px #E5E5E5;
+}
+#types-of-content>div>.is-4 {
+  padding-top: 0;
+}
+#resources>div>div.is-4 {
+  padding: 2rem;
+}
+#resources>div>div>div>p.text-normal.has-text-weight-bold.padding-left-normal {
+  max-width: 240px;
+}
+#final-checklist>div>div>div>p.text-normal {
+  max-width: 250px;
+}
+#closebox {
+  width: 30px !important;
+}
+
+/* Modal*/
+
+#popupBtns, #popupCollaboration, #popupModelPlatform {
+  top: 0; 
+  left: 0; 
+  position: fixed; 
+  width: 100%; 
+  height: 120%;
+  background-color: rgba(0,0,0,0.7); 
+  display: none;
+}
+.popupBoxWrapper{
+  width: 50%; 
+  margin: 50px auto; 
+  text-align: left;
+}
+@media only screen and (max-width: 550px) {
+  .popupBoxWrapper {
+  width: 90%;
+  }
+}
+.popupBoxContent{
+  background-color: #FFF; 
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  max-height: 80%;
+  overflow: auto;
+}
+.popup-align {
+  width: 95%;
+}
+.mp-url {
+  height: 400px;
+  overflow: auto;
+}
+
+/* Classes used in JS */
+.pt-menu-items {
+  opacity: 1;
+  transition: visibility 0.5s, opacity 0.5s linear;
+  visibility: visible;
+}
+.hide {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+.none {
+  display: none;
+}
+.accordion {
+  color: #444;
+  cursor: pointer;
+  padding: 12px;
+  width: 100%;
+  text-align: left;
+  transition: 0.4s;
+}
+.active, .accordion:hover {
+  background-color: #eee !important;
+}
+.chevron-down{
+  margin-right: 1rem;
+  transform: rotate(0deg);
+  transition: transform .5s linear;
+}
+.chevron-down.open{
+  margin-right: 1rem;
+  transform: rotate(90deg);
+  transition: transform .5s linear;
+}
+.panel {
+  border: 1px solid #eeeeee;
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.8s ease-out;
+}
+
+/* Altering Vocabulary styles */
+.b-header {
+  line-height: 2rem;
+}
+#terms-of-service>div>div>div>.b-header {
+  line-height: 1.2rem;
+}
+.text-small {
+  padding-right: 0;
+}
+@media only screen and (max-width: 768px) {
+  .column.margin-bottom-large{
+    margin-bottom: 1rem;
+  }
+}
+
+/* PT Media query adjustments */
+@media only screen and (max-width: 700px) {
+  .margin-left-small {
+    margin-left: 0;
+  }
+  .pt-button-navigation {
+    min-width: 60px;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .margin-left-normal {
+    margin-left: 0;
+  }
+}
