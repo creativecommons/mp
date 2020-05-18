@@ -10,7 +10,7 @@
 [revamp]: https://opensource.creativecommons.org/blog/entries/cc-platform-toolkit-revamp/ "CC Platform Toolkit Revamp — Creative Commons on GitHub"
 
 
-### Getting started
+## Getting started
 
 The toolkit is placed in the `docs/` folder along with a frozen copy of the
 [Vocabulary][vocabulary] stylesheets. The site is predominately self-contained.
@@ -37,17 +37,17 @@ placed in the `deprecated/` folder. This folder will eventually be deleted
 (though it will remain in the git history).
 
 
-### License
+## License
 
 
-## Code / Scripts
+### Code / Scripts
 
 - [`LICENSE`](LICENSE) (Expat/[MIT][mit] License)
 
 [mit]: http://www.opensource.org/licenses/MIT "The MIT License | Open Source Initiative"
 
 
-## Content
+### Content
 
 ![CC0 1.0 Universal license button][cc0-png]
 
