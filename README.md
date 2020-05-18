@@ -13,15 +13,28 @@
 ### Getting started
 
 The toolkit is placed in the `docs/` folder along with a frozen copy of the
-[Vocabulary][vocabulary] stylesheets. By opening the
-[`docs/index.html`](docs/index.html) file, you should be able to visualize the
-platform toolkit page. The same index and associated files are served, as is,
-in the production and staging environments.
-
-Everything pertaining to the previous toolkit and model platform material is
-placed in the `deprecated/` folder.
+[Vocabulary][vocabulary] stylesheets. The site is predominately
+sellf-contained.  You should be able to see nearly accurate rendering by
+cloning this repository and opening `docs/index.html` in your browser.
 
 [vocabulary]: https://github.com/creativecommons/vocabulary
+
+
+## Hosting and Deployment
+
+The `docs/` folder is served by the production server. Simply `git pull` to
+update to the most recent version. The Creative Commons production and staging
+environments are managed using SaltStack (see the [`nginx.misc`][misc-steate]
+state for specifics).
+
+[misc-state]: https://github.com/creativecommons/sre-salt-prime/blob/master/states/nginx/misc.sls
+
+
+## Historical Files
+
+Everything pertaining to the previous toolkit and model platform material is
+placed in the `deprecated/` folder. This folder will eventually be deleted
+(though it will remain in the git history).
 
 
 ### License
