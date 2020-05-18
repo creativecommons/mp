@@ -24,10 +24,10 @@ and opening `docs/index.html` in your browser.
 
 The `docs/` folder is served by the production server. Simply `git pull` to
 update to the most recent version. The Creative Commons production and staging
-environments are managed using SaltStack (see the [`nginx.misc`][misc-steate]
+environments are managed using SaltStack (see the [`nginx.misc`][nginx-misc]
 state for specifics).
 
-[misc-state]: https://github.com/creativecommons/sre-salt-prime/blob/master/states/nginx/misc.sls
+[nginx-misc]: https://github.com/creativecommons/sre-salt-prime/blob/master/states/nginx/misc.sls
 
 
 ## Historical Files
