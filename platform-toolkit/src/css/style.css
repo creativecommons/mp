@@ -1,25 +1,75 @@
 /* Index 
-1. Placeholder for header implementation
+1. Header + Footer Adjustments
 2. General Adjusments
 3. Platform Toolkit Styles
 4. Modal
 5. Classes used in JS
 6. Altering Vocabulary styles
-7. PT Media query adjustments
+7. PT Media query Adjustments
 */
 
-/* Placeholder for header implementation */
-.mock-header {
-  width: 100%;
-  height:238px;
-  background-image: url('../img/mock-header.png');
-  background-repeat: no-repeat;
-  background-position: right top;
+/* Header + Footer Adjustments*/
+
+h3.donate-text {
+  font-size: 28px;
+  letter-spacing: 0px;
+}
+.donation-bar-inner .button.donate {
+  font-size: 28px!important;
+  text-transform: none;
+  height: 56px;
+}
+.mobile-navigation {
+  font-size: 24px;
+}
+@media (max-width: 44.374em) {
+  h3.donate-text {
+    font-size: 15px;
+    letter-spacing: 0px;
+    font-weight: 600;
+  }
+  .donation-bar-inner .button.donate {
+    font-size: 19px!important;
+    text-transform: none;
+    height: 38px;
+  }
+}
+@media (min-width: 75em) {
+  .main-navigation {
+    font-size: 28px;
+  }
+}
+@media (min-width: 56.875em) {
+  .secondary-menu {
+    font-size: 15px;
+  }
+}
+@media (min-width: 56.875em) {
+  .site-header .social-navigation { 
+    font-size: 20px
+  }
+}
+.site-footer {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: source sans pro,sans-serif;
+  font-size: 15px;
+}
+.menu-footer-links-container li {
+  font-size: 14px;
+}
+.cc-footer aside {
+  font-size: 12px;
+  line-height: 15px;
+}
+.cc-footer-contact>h6>a {
+  font-family: source sans pro,sans-serif;
+  text-transform: none;
 }
 
-/* General Adjusments*/
+/* General Adjustments*/
 section {
-  padding: 0 6.5%;
+  padding: 0 10%;
   max-width: 1400px;
   margin: auto;
 }
@@ -177,6 +227,10 @@ a.scroll-link:hover {
   align-items: flex-start;
   display: flex !important;
 }
+.pt-card {
+  max-height: 415px;
+  box-sizing: border-box;
+}
 .pt-card-large {
   box-sizing: border-box;
   padding: 2.5rem;
@@ -206,9 +260,9 @@ a.scroll-link:hover {
 .pt-card-padding-small {
   padding: 2rem;
 }
-.pt-card, .pt-card-small {
+.pt-card-small {
   box-sizing: border-box;
-  padding: 1.2rem 2rem;
+  padding: .5rem 2rem;
 }
 .pt-card-small{
   max-height: 255px;
