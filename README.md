@@ -1,12 +1,12 @@
 # mp
 
-> The [Platform Toolkit](creativecommons.org/platform/toolkit/) is a material
-> to guide content sharing platforms when adding the option of CC licensing.
-> These aren't hard-set requirements, but suggestions on how to make the
-> implementation smooth for users and platform alike. The process towards
-> building it was described in a series of [blog posts][revamp] on the CC Open
->  Source blog.
+> The [Platform Toolkit][mp-prod] is a material to guide content sharing
+> platforms when adding the option of CC licensing.  These aren't hard-set
+> requirements, but suggestions on how to make the implementation smooth for
+> users and platform alike. The process towards building it was described in a
+> series of [blog posts][revamp] on the CC Open Source blog.
 
+[mp-prod]: https://creativecommons.org/platform/toolkit/
 [revamp]: https://github.com/creativecommons/mp/pull/62
 
 
