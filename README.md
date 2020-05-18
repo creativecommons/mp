@@ -44,7 +44,7 @@ placed in the `deprecated/` folder. This folder will eventually be deleted
 
 ### Code / Scripts
 
-- [`LICENSE`](LICENSE) (Expat/[MIT][mit] License)
+[`LICENSE`](LICENSE) (Expat/[MIT][mit] License)
 
 [mit]: http://www.opensource.org/licenses/MIT "The MIT License | Open Source Initiative"
 
