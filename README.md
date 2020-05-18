@@ -7,7 +7,7 @@
 > series of [blog posts][revamp] on the CC Open Source blog.
 
 [mp-prod]: https://creativecommons.org/platform/toolkit/
-[revamp]: https://github.com/creativecommons/mp/pull/62
+[revamp]: https://opensource.creativecommons.org/blog/entries/cc-platform-toolkit-revamp/ "CC Platform Toolkit Revamp — Creative Commons on GitHub"
 
 
 ### Getting started
