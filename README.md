@@ -13,9 +13,9 @@
 ### Getting started
 
 The toolkit is placed in the `docs/` folder along with a frozen copy of the
-[Vocabulary][vocabulary] stylesheets. The site is predominately
-sellf-contained.  You should be able to see nearly accurate rendering by
-cloning this repository and opening `docs/index.html` in your browser.
+[Vocabulary][vocabulary] stylesheets. The site is predominately self-contained.
+You should be able to see nearly accurate rendering by cloning this repository
+and opening `docs/index.html` in your browser.
 
 [vocabulary]: https://github.com/creativecommons/vocabulary
 
