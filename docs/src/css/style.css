@@ -138,9 +138,15 @@ a.scroll-link:hover {
   font-family: 'Roboto Condensed';
   text-decoration: underline;
   text-transform: uppercase;
+  color: #000 !important;
+  padding-left: 0 !important;
 }
 .pt-text-navigation:hover {
-  color: #d4d4d4;
+  color: #d4d4d4 !important;
+  background-color: #fff !important;
+}
+.pt-text-navigation:focus {
+  background-color: #fff !important;
 }
 .pt-button-blue{
   border: solid 2px #3c5c99;
