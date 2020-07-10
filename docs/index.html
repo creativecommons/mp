@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
+  <link rel='stylesheet' id='cc-fontello-css' href="/wp-content/themes/cc/fonts/fontello/css/cc-fontello.css" type='text/css' media='all' />
+  <link rel='stylesheet' id='parent-style-css' href="/wp-content/themes/twentysixteen/style.css" type='text/css' media='all' />
+  <link rel='stylesheet' id='cc-style-css' href="/wp-content/themes/cc/css/app.css" type='text/css' media='all' />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="./src/css/vocabulary/css/vocabulary.css">
+  <link rel="stylesheet" type="text/css" href="./src/css/style.css">
+  <title>CC Platform Toolkit</title>
+</head>
+<body class="pt-background">
+  <div class="header">
+  <div class="site-header-wrapper" >
+    <header id="masthead" class="site-header sticky-nav-main sticky attached" role="banner">
+      <div class="site-header-main">
+        <div class="site-branding">
+          <a class="cc-site-logo-link" href="/" rel="home">
+            <img class="cc-site-logo" src="/wp-content/themes/cc/images/cc.logo.white.svg" height="72" width="303">
+          </a>
+        </div>
+        <button id="menu-toggle" class="menu-toggle"><i class="cc-icon-menu"></i> <span>Menu</span></button>
+        <div id="site-header-menu" class="site-header-menu">
+          <nav id="mobile-navigation" class="mobile-navigation" role="navigation" aria-label="Mobile Menu">
+            <div class="menu-mobile-menu-container"><ul id="menu-mobile-menu" class="mobile-menu">
+              <li id="menu-item-48798" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48798"><a href="/share-your-work/">Share your work</a></li>
+              <li id="menu-item-48799" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48799"><a href="/use-remix/">Use &amp; remix</a></li>
+              <li id="menu-item-48800" class="menu-item menu-item-type-post_type menu-item-object-page page_item page-item-7466 menu-item-48800"><a href="/about/">What we do</a></li>
+              <li id="menu-item-48801" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48801"><a href="/blog/">Blog</a></li>
+              <li id="menu-item-48802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48802"><a href="/about/global-affiliate-network/">Global Affiliate Network</a></li>
+              <li id="menu-item-48803" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48803"><a href="/use-remix/search-the-commons/">Search the Commons</a></li>
+            </ul></div>
+          </nav>
+          <nav id="site-navigation" class="main-navigation" role="navigation" aria-label="Primary Menu">
+            <div class="menu-primary-menu-container"><ul id="menu-primary-menu" class="primary-menu">
+              <li id="menu-item-48791" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48791"><a href="/share-your-work/">Share your work</a></li>
+              <li id="menu-item-48792" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48792"><a href="/use-remix/">Use &amp; remix</a></li>
+              <li id="menu-item-48570" class="menu-item menu-item-type-post_type menu-item-object-page page_item page-item-7466 menu-item-48570"><a href="/about/">What we do</a></li>
+              <li id="menu-item-48793" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48793"><a href="/blog/">Blog</a></li>
+            </ul></div>
+          </nav>
+          <nav id="secondary-navigation" class="secondary-navigation" role="navigation" aria-label="Secondary Menu">
+            <div class="menu-secondary-menu-container"><ul id="menu-secondary-menu" class="secondary-menu"><li id="menu-item-48804" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48804"><a href="/about/global-affiliate-network/">Global Affiliate Network</a></li>
+              <li id="menu-item-48805" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48805"><a href="/use-remix/search-the-commons/">Search the Commons</a></li>
+              <li id="menu-item-48806" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48806"><a href="/about/contact/">Contact</a></li>
+            </ul></div>
+          </nav>
+          <nav id="social-navigation" class="social-navigation" role="navigation" aria-label="Social Links Menu">
+            <div class="menu-social-links-container"><ul id="menu-social-links" class="social-links-menu">
+              <li id="menu-item-48807" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-48807"><a href="https://www.facebook.com/creativecommons"><span class="screen-reader-text">Facebook</span></a></li>
+              <li id="menu-item-48808" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-48808"><a href="https://twitter.com/creativecommons"><span class="screen-reader-text">Twitter</span></a></li>
+              <li id="menu-item-48809" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-48809"><a href="mailto:info@creativecommons.org"><span class="screen-reader-text">Mail</span></a></li>
+            </ul></div>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <header class="site-header spacer" role="banner">
+      <div class="site-header-main">
+        <div class="site-branding">
+          <a class="cc-site-logo-link" href="/" rel="home">
+            <img class="cc-site-logo" src="/wp-content/themes/cc/images/cc.logo.white.svg" height="72" width="303">
+          </a>
+        </div>
+        <button id="menu-toggle" class="menu-toggle"><i class="cc-icon-menu"></i> <span>Menu</span></button>
+        <div id="site-header-menu" class="site-header-menu">
+          <nav id="mobile-navigation" class="mobile-navigation" role="navigation" aria-label="Mobile Menu">
+            <div class="menu-mobile-menu-container"><ul id="menu-mobile-menu" class="mobile-menu">
+              <li id="menu-item-48798" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48798"><a href="/share-your-work/">Share your work</a></li>
+              <li id="menu-item-48799" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48799"><a href="/use-remix/">Use &amp; remix</a></li>
+              <li id="menu-item-48800" class="menu-item menu-item-type-post_type menu-item-object-page page_item page-item-7466 menu-item-48800"><a href="/about/">What we do</a></li>
+              <li id="menu-item-48801" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48801"><a href="/blog/">Blog</a></li>
+              <li id="menu-item-48802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48802"><a href="/about/global-affiliate-network/">Global Affiliate Network</a></li>
+              <li id="menu-item-48803" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48803"><a href="/use-remix/search-the-commons/">Search the Commons</a></li>
+            </ul></div>
+          </nav>
+          <nav id="site-navigation" class="main-navigation" role="navigation" aria-label="Primary Menu">
+            <div class="menu-primary-menu-container"><ul id="menu-primary-menu" class="primary-menu">
+              <li id="menu-item-48791" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48791"><a href="/share-your-work/">Share your work</a></li>
+              <li id="menu-item-48792" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48792"><a href="/use-remix/">Use &amp; remix</a></li>
+              <li id="menu-item-48570" class="menu-item menu-item-type-post_type menu-item-object-page page_item page-item-7466 menu-item-48570"><a href="/about/">What we do</a></li>
+              <li id="menu-item-48793" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48793"><a href="/blog/">Blog</a></li>
+            </ul></div>
+          </nav>
+          <nav id="secondary-navigation" class="secondary-navigation" role="navigation" aria-label="Secondary Menu">
+            <div class="menu-secondary-menu-container"><ul id="menu-secondary-menu" class="secondary-menu"><li id="menu-item-48804" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48804"><a href="/about/global-affiliate-network/">Global Affiliate Network</a></li>
+              <li id="menu-item-48805" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48805"><a href="/use-remix/search-the-commons/">Search the Commons</a></li>
+              <li id="menu-item-48806" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48806"><a href="/about/contact/">Contact</a></li>
+            </ul></div>
+          </nav>
+          <nav id="social-navigation" class="social-navigation" role="navigation" aria-label="Social Links Menu">
+            <div class="menu-social-links-container"><ul id="menu-social-links" class="social-links-menu">
+              <li id="menu-item-48807" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-48807"><a href="https://www.facebook.com/creativecommons"><span class="screen-reader-text">Facebook</span></a></li>
+              <li id="menu-item-48808" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-48808"><a href="https://twitter.com/creativecommons"><span class="screen-reader-text">Twitter</span></a></li>
+              <li id="menu-item-48809" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-48809"><a href="mailto:info@creativecommons.org"><span class="screen-reader-text">Mail</span></a></li>
+            </ul></div>
+          </nav>
+        </div>
+      </div>
+    </header>
+  </div>
+  
+  <aside id="header-below" class="widget-area">
+    <div id="text-15" class="widget-1 widget-first widget-last widget-odd widget widget_text">
+      <div class="textwidget">
+        <div id="donation-bar-wrapper" class="donation-bar-wrapper">
+          <div id="donation-bar-inner" class="donation-bar-inner">
+            <h3 class="b-header donate-text">Help us build a vibrant, collaborative global commons</h3>
+            <div class="donate-action"><a href="/donate?utm_campaign=2018fund&utm_source=license_header2018" class="button donate arrow">Donate<span class="hide-on-mobile"> Now</span></a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  </div>
+  <section id="intro">
+    <h1 class="padding-top-extra-larger">CC Platform Toolkit</h1>
+    <h2 class="padding-top-normal">Integrating CC to your Platform</h2>
+    <h3 class="b-header has-color-tomato padding-top-larger padding-bottom-small">Who is this page for?</h3>
+    <div class="columns padding-left-smaller">
+      <div class="column is-one-third is-paddingless has-background-white">
+        <div class="pt-line-detail-tomato padding-bottom-small">
+          <div class="pt-box-detail-sm has-background-tomato">
+          </div>
+          <p class="text-normal pt-section1-text"><span class="has-text-weight-bold">It’s for platforms where users upload content.</span> Aimed at teams who could be part of implemention: legal, development, etc.</p>
+        </div>
+      </div>
+      <div class="column is-one-third is-paddingless margin-left-normal has-background-white">
+        <div class="pt-line-detail-tomato padding-bottom-small">
+          <div class="pt-box-detail-sm has-background-tomato">
+          </div>
+          <p class="text-normal pt-section1-text">Examples of platforms who have integrated CC licenses:</p>
+          <p class="text-normal pt-section1-text"><span class="has-text-weight-bold">Flickr, Medium, Youtube, etc.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <h3 class="b-header has-color-tomato padding-top-larger padding-bottom-small">What is this page for?</h3>
+    <div class="columns padding-left-smaller">
+      <div class="column is-one-third is-paddingless has-background-white">
+        <div class="pt-line-detail-tomato padding-bottom-small">
+          <div class="pt-box-detail-sm has-background-tomato">
+          </div>
+          <p class="text-normal pt-section1-text">It’s a guide to implementing CC licenses to uploaded materials. These are best practices, not requirements.</p>
+        </div>
+      </div>
+      <div class="column is-one-third is-paddingless margin-left-normal has-background-white">
+        <div class="pt-line-detail-tomato padding-bottom-small">
+          <div class="pt-box-detail-sm has-background-tomato">
+          </div>
+          <p class="text-normal pt-section1-text">If you’re looking for information on how to add licenses to individual materials, <a target="_blank" rel=”noopener noreferrer” href="https://wiki.creativecommons.org/wiki/Marking">click here</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="table-of-contents">
+    <h2 class="padding-top-larger padding-bottom-smal">Table of Contents</h2>
+    <p class="column text-normal is-paddingless margin-bottom-normal is-half ">Here you can see the topics covered in this toolkit and can help you find what  you’re looking for. The topics are organized by area of interest; you can filter by the colored tabs or by clicking directly on a topic below.</p>
+    <div class="column is-paddingless is-10">
+      <button class="button pt-button-white pt-button-navigation">All Topics</button>
+      <button class="button margin-left-small pt-button-gold pt-button-navigation">General Info</button>
+      <button class="button margin-left-small pt-button-forest pt-button-navigation">Legal</button>
+      <button class="button margin-left-small pt-button-blue pt-button-navigation">Development</button>
+      <button class="button margin-left-small pt-button-tomato pt-button-navigation">UX & Communication</button>
+      <div class="column has-background-white">
+            <div class="columns padding-bottom-normal">
+              <div class="column is-offset-1 is-10">
+                <div class="columns">
+                  <div class="column is-one-fifth">
+                    <a href="#about" class="scroll-link"><button class="text-small has-text-weight-bold pt-text-navigation padding-bottom-normal padding-top-normal">About</button></a>
+                    <div class="is-flex padding-top-smaller pt-menu-items 1 2 pt-align-center">
+                      <div class="has-background-gold pt-bar"></div>
+                      <div class="has-background-forest pt-bar"></div>
+                      <div class="has-background-white pt-bar"></div>
+                      <a href="#types-of-content" class="scroll-link"><p class="text-small padding-left-small">Types of Content</p></a>
+                    </div>
+                    <div class="is-flex padding-top-smaller pt-menu-items 2 pt-align-center">
+                      <div class="has-background-forest pt-bar"></div>
+                      <div class="has-background-white pt-bar"></div>
+                      <div class="has-background-white pt-bar"></div>
+                      <a href="#terms-of-service" class="scroll-link"><p class="text-small padding-left-small">CC & your Terms of Service</p></a>
+                    </div>
+                    <div class="is-flex padding-top-smaller pt-menu-items 1 2 3 pt-align-center">
+                      <div class="has-background-gold pt-bar"></div>
+                      <div class="has-background-forest pt-bar"></div>
+                      <div class="has-background-blue pt-bar"></div>
+                      <a href="#updating-to-later-versions" class="scroll-link"><p class="text-small padding-left-small">Updating to Later Versions</p></a>
+                    </div>
+                  </div>
+                  <div class="column is-one-fifth">
+                    <a href="#adding-licenses" class="scroll-link"><button class="text-small has-text-weight-bold pt-text-navigation padding-bottom-normal padding-top-normal">Adding Licenses</button></a>
+                    <div class="is-flex padding-top-smaller pt-menu-items 1 3 4 pt-align-center">
+                      <div class="has-background-gold pt-bar"></div>
+                      <div class="has-background-blue pt-bar"></div>
+                      <div class="has-background-tomato pt-bar"></div>
+                      <a href="#license-chooser" class="scroll-link"><p class="text-small padding-left-small">License Chooser</p></a>
+                    </div>
+                    <div class="is-flex padding-top-smaller pt-menu-items 1 3 4 pt-align-center">
+                      <div class="has-background-gold pt-bar"></div>
+                      <div class="has-background-blue pt-bar"></div>
+                      <div class="has-background-tomato pt-bar"></div>
+                      <a href="#license-display" class="scroll-link"><p class="text-small padding-left-small">License Display</p></a>
+                    </div>
+                    <div class="is-flex padding-top-smaller pt-menu-items 3 pt-align-center">
+                      <div class="has-background-blue pt-bar"></div>
+                      <div class="has-background-white pt-bar"></div>
+                      <div class="has-background-white pt-bar"></div>
+                      <a href="#license-metadata-display" class="scroll-link"><p class="text-small padding-left-small">License Metadata (Display)</p></a>
+                    </div>
+                  </div>
+                  <div class="column is-one-fifth">
+                    <a href="#adding-search-filters" class="scroll-link"><button class="text-small has-text-weight-bold pt-text-navigation padding-bottom-normal padding-top-normal">Adding Search Filters</button></a>
+                    <div class="is-flex padding-top-smaller pt-menu-items 3 4 pt-align-center">
+                      <div class="has-background-blue pt-bar"></div>
+                      <div class="has-background-tomato pt-bar"></div>
+                      <div class="has-background-white pt-bar"></div>
+                      <a href="#license-metadata-search" class="scroll-link"><p class="text-small padding-left-small">License Metadata (Search)</p></a>
+                    </div>
+                    <div class="is-flex padding-top-smaller pt-menu-items 1 3 4 pt-align-center">
+                      <div class="has-background-gold pt-bar"></div>
+                      <div class="has-background-blue pt-bar"></div>
+                      <div class="has-background-tomato pt-bar"></div>
+                      <a href="#attributing-authors" class="scroll-link"><p class="text-small padding-left-small">Attributing Authors</p></a>
+                    </div>
+                  </div>
+                  <div class="column is-one-fifth">
+                    <a href="#resources" class="scroll-link"><button class="text-small has-text-weight-bold pt-text-navigation padding-bottom-normal padding-top-normal">Resources</button></a>
+                    <div class="is-flex padding-top-smaller pt-menu-items 1 4 pt-align-center">
+                      <div class="has-background-gold pt-bar"></div>
+                      <div class="has-background-tomato pt-bar"></div>
+                      <div class="has-background-white pt-bar"></div>
+                      <a href="#design-communication" class="scroll-link"><p class="text-small padding-left-small">Design & Communication</p></a>
+                    </div>
+                    <div class="is-flex padding-top-smaller pt-menu-items 3 4 pt-align-center">
+                      <div class="has-background-blue pt-bar"></div>
+                      <div class="has-background-tomato pt-bar"></div>
+                      <div class="has-background-white pt-bar"></div>
+                      <a href="#model-platform" class="scroll-link"><p class="text-small padding-left-small">Model Platform</p></a>
+                    </div>
+                    <div class="is-flex padding-top-smaller pt-menu-items 1 pt-align-center">
+                      <div class="has-background-gold pt-bar"></div>
+                      <div class="has-background-white pt-bar"></div>
+                      <div class="has-background-white pt-bar"></div>
+                      <a href="#final-checklist" class="scroll-link"><p class="text-small padding-left-small">Final Checklist</p></a>
+                    </div>
+                  </div>
+                  <div class="column is-one-fifth">
+                    <a href="#beyond-this-toolkit" class="scroll-link"><button class="text-small has-text-weight-bold pt-text-navigation padding-bottom-normal padding-top-normal">Beyond this Toolkit</button></a>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="about">
+    <div class="column is-paddingless margin-top-large is-12 pt-section-gold pt-align-top">
+      <div class="pt-box-detail-lg has-background-gold"></div> 
+      <h3 class="padding-left-small padding-bottom-large">About</h3>
+    </div>
+    <div class="columns">
+      <div class="column is-offset-2 is-one-third has-background-white margin-bottom-small pt-card">
+        <div class="pt-card-large">
+          <h4>What</h4>
+          <h3 class="b-header pt-header-card pt-text-card">Onboarding material for license implementation</h3>
+          <p class="text-normal">This toolkit brings all the elements for a basic Creative Commons platform integration. </p>
+        </div>
+      </div>
+      <div class="column is-one-third margin-left-small has-background-white pt-card ">
+        <div class="pt-card-large">
+          <h4>Who</h4>
+          <h3 class="b-header pt-header-card">For platforms who want to offer CC licenses to user uploaded content</h3>
+          <p class="text-normal">If you’re looking to apply a CC license to your own materials <a target="_blank" rel=”noopener noreferrer” href="https://wiki.creativecommons.org/wiki/Marking">click here</a>.</p>
+        </div>
+      </div>
+    </div>
+    <div class="columns padding-top-small">
+      <div class="column is-offset-2 is-one-third has-background-white margin-bottom-large pt-card">
+        <div class="pt-card-large">
+          <h4>How</h4>
+          <h3 class="b-header pt-header-card pt-text-card">Showing the power of collaboration </h3>
+          <p class="text-normal">Give your user context, explain how the CC licenses work, and how your platform’s values align with the CC vision. <a class="collaborationPopup">Click here</a> for resources you can use.</p>
+        </div>
+      </div>
+      <div class="column is-one-third margin-left-small has-background-white margin-bottom-large pt-card ">
+        <div class="pt-card-large">
+          <h4>Why</h4>
+          <h3 class="b-header pt-header-card">Because engaged creative communities will thrive</h3>
+          <p class="text-normal">And it’s easier for users to contribute on platforms they already use, such as YouTube, and Medium.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="types-of-content">
+    <div class="column is-paddingless margin-top-large is-12 pt-section-gold pt-align-top">
+      <div class="pt-box-detail-lg has-background-gold"></div> 
+      <h3 class="padding-left-small padding-bottom-large">Types of Content</h3>
+    </div>
+    <div class="columns pt-columns-align">
+      <div class="column is-one-third has-background-white pt-card-padding-large">
+        <h4 class="b-header padding-bottom-normal">Identify the types of content on the platform</h4>
+        <p class="text-normal">All CC-licensed content functions the same for your users once it is published on your site – they can use the content freely under the terms of the relevant Creative Commons license. </p>
+        <p class="text-normal padding-top-normal">But for you as the platform provider, there are a few things to consider that are specific to each category of content.</p>
+      </div>
+      <div class="column is-offset-1 is-6">
+        <h4 class="b-header padding-bottom-smaller">Content owned by users</h4>
+        <p class="text-normal"><span class="has-text-weight-bold">Ensure your user understands the basics of how the licenses work - especially since they’re irrevocable. </span> Decide which of the six license types and two public domain tools you want to enable users to apply. Signal which license applies to which content.</p>
+        <p class="text-normal">In nearly all cases, this content remains owned by the user, and the platform gets the rights to host it via the CC license that is applied or via a separate license in the terms of service. (Click here for more about Terms of Service)</p>
+        <h4 class="b-header padding-top-small padding-bottom-smaller">Content owned by the platform</h4>
+        <p class="text-normal ">You’re the copyright holder for this type of content. If you choose to apply a CC license to any of it, just be sure to mark which license applies (type and version) and signal any content that is not covered by the license, such as company logos or other trademarks.</p>
+        <h4 class="b-header padding-top-small padding-bottom-smaller">Third-party content contributed to your platform</h4>
+        <p class="text-normal"><span class="has-text-weight-bold">Be clear about what permissions the user needs from the author.</span> The decision to allow users to upload third party content, and which Creative Commons licenses are permitted, comes down to how the content could be used by both the platform itself and other users. In some cases the platform will specify the particular types of CC-licensed content that are permitted, and in other the onus is on the uploader to make the determination (see example below).</p>
+      </div>
+    </div>
+    <h4 class="padding-bottom-small">Example</h4>
+    <div class="columns padding-top-small">
+      <div class="column is-one-quarter has-background-white pt-card-small pt-columns-align-center">
+        <img alt="Icon representing a website interface" src="./src/img/icon-example-01.png" class="padding-bottom-normal"/>
+        <p class="text-normal">A platform hosting open educational resources wants users to share and build upon the content.</p>
+      </div>
+      <div class="column is-one-quarter has-background-white margin-left-normal pt-card-small pt-columns-align-center">
+        <img alt="Icon representing CC Licenses" src="./src/img/icon-example-02.png" class="padding-bottom-normal"/>
+        <p class="text-normal">It’s enabled so users share and remix existing third party material under CC licenses.</p>
+      </div>
+      <div class="column is-4 margin-left-normal">
+        <div class="has-background-white pt-card-small pt-row-align-center pt-column-mobile">
+          <img alt="Icon representing clipboard with one check mark" src="./src/img/icon-example-03.png" class="padding-bottom-normal"/>
+          <p class="text-normal padding-left-small">This platform may choose to specify that only third party content under a specific CC license, eg. CC BY, may be shared.</p>
+        </div>
+        <div class="has-background-white margin-top-normal pt-card-small pt-row-align-center pt-column-mobile">
+          <img alt="Icon representing clipboard with three check marks" src="./src/img/icon-example-04.png" class="padding-bottom-normal"/>
+          <p class="text-normal padding-left-small">Or it may allow third party content under various licenses as long as the user maintains the rights to reuse the content.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="terms-of-service">
+    <div class="column is-paddingless margin-top-large is-12 pt-section-forest pt-align-top">
+      <div class="pt-box-detail-lg has-background-forest"></div> 
+      <h3 class="padding-left-small padding-bottom-large">Terms of Service</h3>
+    </div>
+    <h2>CC and your terms of service</h2>
+    <p class="column text-normal margin-top-small is-paddingless is-5">Website terms of service are not strictly necessary, but most platforms have them. For those that do, we recommend including the following elements if the platform enables CC licensing for user-generated content.</p>
+    <h5 class="b-header padding-top-normal">Terms of Service should:</h5>
+    <div class="column is-10 has-background-white is-paddingless margin-top-normal pt-line-detail-forest">
+      <div class="pt-box-detail-sm has-background-forest"></div>
+      <div class="pt-row-align-center pt-column-mobile">
+        <div class="column is-4 margin-bottom-small">
+          <h6 class="b-header">Explain how CC licensing works for content creators on the platform.</h6>
+        </div>
+        <div class="column is-offset-1 is-5 margin-bottom-small">
+          <p class="text-normal">For example, is all user-generated content  published under a particular CC license by default, or do users simply have the option to select a CC license for their work? </p>
+        </div>
+      </div>
+    </div>
+    <div class="column is-10 has-background-white is-paddingless margin-top-normal pt-line-detail-forest ">
+      <div class="pt-box-detail-sm has-background-forest"></div>
+      <div class="pt-row-align-center pt-column-mobile">
+        <div class="column is-4 margin-bottom-small">
+          <h6 class="b-header">Make it clear that users of the platform can reuse CC-licensed content according to the terms and conditions of that license.</h6>
+        </div>
+        <div class="column is-offset-1 is-5 margin-bottom-small">
+          <p class="text-normal">Link to information that explains how CC licenses work. If the T.O.S. include other provisions that restrict the way content is used on the site, then it’s important to point out that CC-licensed content may be used according to the license terms. </p>
+        </div>
+      </div>
+    </div>
+    <div class="column is-10 has-background-white is-paddingless margin-top-normal pt-line-detail-forest ">
+      <div class="pt-box-detail-sm has-background-forest"></div>
+      <div class="pt-row-align-center pt-column-mobile">
+        <div class="column is-4 margin-bottom-small">
+          <h6 class="b-header">State what types of CC-licensed content created by third parties can be uploaded and how that content should be marked.</h6>
+        </div>
+        <div class="column is-offset-1 is-5 margin-bottom-small">
+          <p class="text-normal">Some sites only allow users to upload content under CC licenses allowing commercial use while others allow any CC-licensed content. In all cases, the T.O.S. should also state how such content should be marked with license and attribution information.</p>
+        </div>
+      </div>
+    </div>
+    <h4 class="padding-top-normal padding-bottom-smaller">Other considerations for terms of service</h4>
+    <div class="column is-9 has-background-white accordion pt-line-detail-forest pt-row-space-between pt-chevron">
+      <p class="text-big padding-left-small"> License from Contributors</p>
+      <img alt="Icon of arrow pointing right"src="./src/img/icon-chevron-right.png" class=" chevron-down"/>
+    </div>
+    <div class="panel column is-9 has-background-white">
+     <p class="text-normal padding-top-small padding-bottom-small">When users are uploading content that is already CC-licensed (whether their own content or others), the platform can get all of the copyright permission it needs to use the work from the applicable CC license. However, platforms often include a direct copyright license grant from the uploader to the platform in their terms of service. In cases where people are uploading CC-licensed content owned by others, the direct license to the platform is in conflict with the CC license. See the Third Party CC-Licensed Content for more information about this conflict and how to address it.</p>
+    </div>
+    <div class="column is-9 has-background-white accordion pt-line-detail-forest pt-row-space-between pt-chevron">
+      <p class="text-big padding-left-small">Representations & Warranties</p>
+      <img alt="Icon of arrow pointing right"src="./src/img/icon-chevron-right.png" class="chevron-down"/>
+    </div>
+    <div class="panel column is-9 has-background-white">
+      <p class="text-normal padding-top-small padding-bottom-small">Platforms often ask their users to formally promise that the content they upload to the platform is not infringing of others’ copyright or other rights. CC licenses do not include reps and warranties of this type, and CC-licensed content comes “as-is” or without guarantees. However, platforms may still ask their users to represent that they have the necessary rights to all content they upload, including CC-licensed content.</p>
+    </div>
+    <div class="column is-9 has-background-white accordion pt-line-detail-forest pt-row-space-between pt-chevron">
+      <p class="text-big padding-left-small">Later versions of the License</p>
+      <img alt="Icon of arrow pointing right"src="./src/img/icon-chevron-right.png" class="chevron-down"/>
+    </div>
+    <div class="panel column is-9 has-background-white">
+      <p class="text-normal padding-top-small padding-bottom-small">In 2013, Creative Commons published the latest version of the license suite – version 4.0. We have no plans to version the licenses again for many years, but it is realistic to assume that eventually the licenses will be updated to reflect legal and policy changes. Only the rights holder can apply a new version of the licenses to a work, so platforms may want to consider getting express permission from their users to move to the most updated license of the particular CC license applied to a work when those future versions are released. This can be done in the terms of service or at the point of upload where the user applies the CC license to their work.</p>
+    </div>
+    <h4 class="padding-top-normal padding-bottom-smaller">Most common conflicts in terms of service</h4>
+    <div class="column is-9 has-background-white accordion pt-line-detail-forest pt-row-space-between pt-chevron">
+      <p class="text-big padding-left-small"> Additional Restrictions</p>
+      <img alt="Icon of arrow pointing right" src="./src/img/icon-chevron-right.png" class=" chevron-down"/>
+    </div>
+    <div class="panel column is-9 has-background-white">
+     <p class="text-normal padding-top-small padding-bottom-small">Many T.O.S.  include restrictions on how content on the platform may be used. Imposing additional terms that contradict the CC license confuses users and undermines the point of license standardization. CC strongly discourages this practice.Your platform may have extra restrictions that are not intended for CC-licensed content. For example, a platform may include terms that limit use of the platform to noncommercial purposes. In these cases, we recommend adding language that clarifies that these and other restrictions do not apply to CC-licensed content. For example:</p>
+     <img alt="symbol representing quotes" src="./src/img/icon-quotes.png">
+     <p class="text-bigger is-italic padding-top-small padding-bottom-small">For the avoidance of doubt, nothing in this Agreement is designed to prevent you from reusing content available under a Creative Commons license according to the terms and conditions of the applicable license.</p>
+     <p class="text-normal padding-top-small padding-bottom-small">At the end of the day, we want to ensure that people who come across CC-licensed work can trust that they can use that work under the terms of the CC license. When extra restrictions are imposed on CC-licensed content – whether by changing the license terms themselves or by imposing new contractual restrictions via terms of service – Creative Commons requires that the CREATIVE COMMONS name and brand be removed to avoid confusing people about the source of the more restrictive terms imposed by the platform. Anything that imposes additional conditions or narrows the permissions granted by a standard CC license is prohibited. For example: prohibiting download of CC-licensed works, or adding extra attribution requirements. For more details, read the full CC License Modification Policy here.</p>
+    </div>
+    <div class="column is-9 has-background-white accordion pt-line-detail-forest pt-row-space-between pt-chevron">
+      <p class="text-big padding-left-small">Third Party CC-Licensed Content</p>
+      <img alt="Icon of arrow pointing right" src="./src/img/icon-chevron-right.png" class=" chevron-down"/>
+    </div>
+    <div class="panel column is-9 has-background-white">
+      <p class="text-normal padding-top-small padding-bottom-small">As noted above, platforms often require their users to grant a separate, direct copyright license to the platform for all content they upload.This creates a conflict when a user uploads CC-licensed content owned by others (third parties) because the user cannot grant rights to content they don’t own; only the original CC licensor can grant these rights to the platform. Therefore, it is important that the direct license written into the TOS excludes CC-licensed content owned by someone other than the uploader.</p>
+      <img alt="symbol representing quotes" src="./src/img/icon-quotes.png">
+      <p class="text-bigger is-italic padding-top-small padding-bottom-small">Example language: “If you provide any content to [the platform], you grant [the platform] a nonexclusive, royalty-free right to use that content, unless the content is not owned by you, in which case you represent and warrant that such content is in the public domain or available under a Creative Commons license or other terms permitting upload to the [the platform].”</p>
+    </div>
+    <h4 class="padding-top-normal padding-bottom-small">Example</h4>
+    <p class="column text-normal margin-top-small is-paddingless is-5">Terms of use are customized to how the particular platform runs its service, which means T.O.S. cannot be completely standardized. </p>
+    <p class="column text-normal margin-top-small is-paddingless is-5"><span class="has-text-weight-bold">Please</span> keep that in mind when looking through the model and real world examples below, and do not use any of this language for your own purposes without considering how it would apply in your unique context.</p>
+    <h5 class="b-header padding-top-normal">Model Platform Terms of Service</h5>
+    <div class="columns padding-top-normal pt-align-center">
+      <div class="column is-3 has-background-white pt-line-detail-forest">
+        <p class="text-normal padding-left-small padding-right-small">Example: allow users to apply any of the CC licenses at point of upload.</p>
+      </div>
+      <div class="column is-offset-1 is-6">
+        <img alt="symbol representing quotes" src='./src/img/icon-quotes.png'>
+        <p class="text-normal is-italic padding-left-large">When you contribute content you own, you have the option to select one of six Creative Commons licenses to your content. Those licenses enable other users of the platform to reuse your content under certain specified conditions. You can read more about the differences between those licenses <a target="_blank" href="/licenses/">here</a>.</p>
+      </div>
+    </div>
+    <div class="columns padding-top-normal pt-align-center">
+      <div class="column is-3 has-background-white pt-line-detail-forest">
+        <p class="text-normal padding-left-small padding-right-small">Example: allow users to upload third party CC-licensed content.</p>
+      </div>
+      <div class="column is-offset-1 is-6">
+        <img alt="symbol representing quotes" src='./src/img/icon-quotes.png'>
+        <p class="text-normal is-italic padding-left-large">When you contribute content to our platform, you retain any copyright you have in the content, but you grant us permission to use it to provide our service, including reproducing and displaying your content to the public on our site. If the content you contribute is not owned by you, you represent and warrant that it is either in the public domain or available under a Creative Commons license, or that you are authorized to use it by the rights holder or by law.</p>
+      </div>
+    </div>
+    <div class="columns padding-top-normal pt-align-center">
+      <div class="column is-3 has-background-white pt-line-detail-forest">
+        <p class="text-normal padding-left-small padding-right-small">Example: CC-licensed content may be used according to the terms of the relevant license.</p>
+      </div>
+      <div class="column is-offset-1 is-6">
+        <img alt="symbol representing quotes" src='./src/img/icon-quotes.png'>
+        <p class="text-normal is-italic padding-left-large">For the avoidance of doubt, nothing in this Agreement is designed to prevent you from reusing content available under a Creative Commons license according to the terms and conditions of the applicable license.</p>
+      </div>
+    </div>
+    <h5 class="b-header padding-top-normal">Real World Terms of Service Provisions</h5>
+    <div class="columns padding-top-normal">
+      <div class="column is-3 has-background-white pt-card">
+        <p class="text-normal has-text-weight-bold has-text-centered padding-bottom-smaller">WikiMedia Commons</p>
+        <p class="text-normal  padding-bottom-small">Example of T.O.S. indicating if and when users may upload CC-licensed content <span class="has-text-weight-bold">owned by others.</span></p>
+        <button data-box="1" class="modal button is-info pt-button-large">Screenshot</button>
+        <a target="_blank" rel=”noopener noreferrer” href="https://foundation.wikimedia.org/wiki/Terms_of_Use/en"><button class="button is-info pt-button-large margin-top-small">Term of Service</button></a>
+      </div>
+      <div class="column is-3 has-background-white is-offset-1 pt-card">
+        <p class="text-normal has-text-weight-bold has-text-centered padding-bottom-smaller">Internet Archive</p>
+        <p class="text-normal  padding-bottom-small">Example of how CC-licensed content on the platform is <span class="has-text-weight-bold">not subject to additional restrictions.</span></p>
+        <button data-box="2" class="modal button is-info pt-button-large">Screenshot</button>
+        <a target="_blank" rel=”noopener noreferrer” href="https://archive.org/about/terms.php"><button class="button is-info pt-button-large margin-top-small">Term of Service</button></a>
+      </div>
+      <div class="column is-3 has-background-white is-offset-1 pt-card">
+        <p class="text-normal has-text-weight-bold has-text-centered padding-bottom-smaller">Jamedo</p>
+        <p class="text-normal  padding-bottom-small">Example explaning how CC licensing works for content creators on the platform:</p>
+        <button data-box="3" class="modal button is-info pt-button-large">Screenshot</button>
+        <a target="_blank" rel=”noopener noreferrer” href="https://www.jamendo.com/legal/terms-of-use"><button class="button is-info pt-button-large margin-top-small">Term of Service</button></a>
+      </div>
+    </div>
+  </section>
+  <section id="updating-to-later-versions">
+    <div class="column is-paddingless margin-top-larger is-12 pt-section-gold pt-align-top">
+      <div class="pt-box-detail-lg has-background-gold"></div> 
+      <h3 class="padding-left-small padding-bottom-large">Updating to later versions</h3>
+    </div>
+    <div class="column is-10 has-background-white is-paddingless pt-line-left-tomato">
+      <div class="pt-box-detail-sm has-background-tomato"></div>
+      <div class="pt-row-align-center pt-column-mobile">
+        <div class="column is-4 margin-bottom-small">
+          <h6 class="b-header text-big has-color-blue">To update if you’re still using an older version:</h6>
+        </div>
+        <div class="column is-offset-1 is-5 margin-bottom-small">
+          <p class="text-normal">Change the existing links to the 4.0 license suite (eg. creativecommons.org/licenses/by/4.0) and make sure the correct license versions are displayed throughout your site. This is valid for all content going forward. </p>
+        </div>
+      </div>
+    </div>
+    <div class="column is-10 has-background-white is-paddingless margin-top-normal pt-line-left-tomato ">
+      <div class="pt-box-detail-sm has-background-tomato"></div>
+      <div class="pt-row-align-center pt-column-mobile">
+        <div class="column is-4 margin-bottom-small">
+          <h6 class="b-header text-big has-color-blue">To update existing licensed content:</h6>
+        </div>
+        <div class="column is-offset-1 is-5 margin-bottom-small">
+          <p class="text-normal">You’ll need permission from users. For example, platforms could prompt users to relicense their previously CC-licensed work the next time they log into the platform. </p>
+        </div>
+      </div>
+    </div>
+    <div class="column is-10 has-background-white is-paddingless margin-top-normal pt-line-left-tomato ">
+      <div class="pt-box-detail-sm has-background-tomato"></div>
+      <div class="pt-row-align-center pt-column-mobile">
+        <div class="column is-4 margin-bottom-small">
+          <h6 class="b-header text-big has-color-blue">To always keep licenses up to date:</h6>
+        </div>
+        <div class="column is-offset-1 is-5 margin-bottom-small">
+          <p class="text-normal">Get previous permission from your users to move their content into the most updated version of CC-licenses.You can do this in the terms of service or during the upload process.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="adding-licenses">
+    <div class="column is-paddingless margin-top-larger is-12 pt-section-gold pt-align-top">
+      <div class="pt-box-detail-lg has-background-gold"></div> 
+      <h3 class="padding-left-small padding-bottom-large">Adding CC Licenses</h3>
+    </div>
+    <div class="columns pt-columns-align">
+      <div class="column is-one-third has-background-white pt-card-padding-small">
+        <h4 class="b-header padding-bottom-normal">Concerns when implementing a license picker</h4>
+        <p class="text-normal">Make sure you familiarize yourself with our full suite of CC licenses and public domain tools. Most UGC platforms will want to offer the full suite, or a recommended subset, for users. You’ll want to offer the latest version of these licenses and tools; currently the most up-to-date versions are Version 4.0 for the licenses, and 1.0 for both CC0 and the Public Domain Mark.  </p>
+      </div>
+      <div class="column is-offset-1 is-6">
+        <h4 class="b-header padding-bottom-smaller">During the upload process</h4>
+        <div class="padding-bottom-smaller pt-row-align">
+          <img alt="Icon representing a checkbox" src="./src/img/icon-checklist.png"/>
+          <p class="text-normal"><span class="has-text-weight-bold">Let the user license individual work</p>
+        </div>
+        <div class="padding-bottom-smaller pt-row-align">
+          <img alt="Icon representing a checkbox" src="./src/img/icon-checklist.png"/>
+          <p class="text-normal padding-left-smaller"><span class="has-text-weight-bold">Let the user batch license multiple works </p>
+        </div>
+        <div class="padding-bottom-smaller pt-row-align">
+          <img alt="Icon representing a checkbox" src="./src/img/icon-checklist.png"/>
+          <p class="text-normal padding-left-smaller"><span class="has-text-weight-bold">Let the user choose a default license</p>
+        </div>
+        <h4 class="b-header padding-top-small padding-bottom-smaller">After uploading content</h4>
+        <div class="padding-bottom-smaller pt-row-align">
+          <img alt="Icon representing a checkbox" src="./src/img/icon-checklist.png"/>
+          <p class="text-normal"><span class="has-text-weight-bold">Allow easy access to editing licenses</p>
+        </div>
+        <div class="padding-bottom-smaller pt-row-align">
+          <img alt="Icon representing a checkbox" src="./src/img/icon-checklist.png"/>
+          <p class="text-normal padding-left-smaller"><span class="has-text-weight-bold">Give information about the licenses</p>
+        </div>
+        <div class="padding-bottom-smaller pt-row-align">
+          <img alt="Icon representing a checkbox" src="./src/img/icon-checklist.png"/>
+          <p class="text-normal padding-left-smaller"><span class="has-text-weight-bold">Help the user understand the licenses</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="license-chooser">
+    <div class="column is-paddingless margin-top-larger is-12 pt-section-gold pt-align-top">
+      <div class="pt-box-detail-lg has-background-gold"></div> 
+      <h3 class="padding-left-small padding-bottom-large">License Chooser</h3>
+    </div>
+    <h5 class="b-header padding-top-normal">Your license chooser should:</h5>
+    <div class="column is-10 has-background-white is-paddingless margin-top-normal pt-line-left-tomato">
+      <div class="pt-box-detail-sm has-background-tomato"></div>
+      <div class="pt-row-align-center pt-column-mobile">
+        <div class="column is-4 margin-bottom-small">
+          <h6 class="b-header text-big has-color-blue">Present choices so your user can make an educated decision</h6>
+        </div>
+        <div class="column is-offset-1 is-5 margin-bottom-small">
+          <p class="text-normal">Depending on the goals of your platform, you would either set the default selection for sharing at “all rights reserved copyright” or one of the CC licenses, presenting the remainig licenses as viable options.</p>
+        </div>
+      </div>
+    </div>
+    <div class="column is-10 has-background-white is-paddingless margin-top-normal pt-line-left-tomato">
+      <div class="pt-box-detail-sm has-background-tomato"></div>
+      <div class="pt-row-align-center pt-column-mobile">
+        <div class="column is-4 margin-bottom-small">
+          <h6 class="b-header text-big has-color-blue">Allow publishing work in a way that can be shared more broadly</h6>
+        </div>
+        <div class="column is-offset-1 is-5 margin-bottom-small">
+          <p class="text-normal">The license chooser is an appropriate place to give users clear choices about how they would like their work to be used under CC or other terms.</p>
+        </div>
+      </div>
+    </div>
+    <div class="column is-10 has-background-white is-paddingless margin-top-normal pt-line-left-tomato">
+      <div class="pt-box-detail-sm has-background-tomato"></div>
+      <div class="pt-row-align-center pt-column-mobile">
+        <div class="column is-4 margin-bottom-small">
+          <h6 class="b-header text-big has-color-blue">Make sure the platform’s user flow supports the user</h6>
+        </div>
+        <div class="column is-offset-1 is-5 margin-bottom-small">
+          <p class="text-normal">Let users pick and learn more about  licenses. Display license icons and provide information. After publishing, editing should be easy. The metadata behind each license selection should correspond to the metadata on the page where it’s displayed.</p>
+        </div>
+      </div>
+    </div>
+    <div class="column is-10 has-background-white is-paddingless margin-top-normal pt-line-left-tomato">
+      <div class="pt-box-detail-sm has-background-tomato"></div>
+      <div class="pt-row-align-center pt-column-mobile">
+        <div class="column is-4 margin-bottom-small">
+          <h6 class="b-header text-big has-color-blue">Follow these basic guidelines but adapt when needed</h6>
+        </div>
+        <div class="column is-offset-1 is-5 margin-bottom-small">
+          <p class="text-normal">Every platform has  particular needs,  so these recommendations are not set in stone. The goal is to make the process of picking licenses  fit your userflow seamlessly. If you’d  like to see examples, click here  for implementations in other platforms.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="license-display">
+    <div class="column is-paddingless margin-top-larger is-12 pt-section-gold pt-align-top">
+      <div class="pt-box-detail-lg has-background-gold"></div> 
+      <h3 class="padding-left-small padding-bottom-large">License Display</h3>
+    </div>
+    <div class="columns pt-columns-align">
+      <div class="column is-one-third has-background-white pt-card-padding-small">
+        <h4 class="b-header padding-bottom-normal">Users should easily identify licenses and what they mean</h4>
+        <p class="text-normal">Let your users know what rights govern the content. CC licenses make this easy; as universally recognized symbols of sharing, the CC license icons invite users to discover content on your platform at a minimum, and once there, users can click further to learn more about what they can do with the work according to the specific license indicated. </p>
+      </div>
+      <div class="column is-offset-1 is-6">
+        <h4 class="b-header padding-bottom-smaller">Visual Cues</h4>
+        <p class="text-normal"><span class="has-text-weight-bold">Ensure your user can easily identify a licensed content. </span>Our logos and icons are available <a target="_blank" rel=”noopener noreferrer” href="/about/downloads">here</a>.  We recommend using the circular icons when appropriate and have provided these initial standard sizes for use. The CC logo and license icons are universally recognized symbols of sharing and have been acquired by the Modern Museum of Art (MoMA) in New York. Use of our logos, icons, and trademark are governed by our policies. Please do not use the main CC logo to link to anything other than our main website.</p>
+        <h4 class="b-header padding-top-small padding-bottom-smaller">Access to information</h4>
+        <p class="text-normal">Make sure your user can find information about the licenses. Link each license icon or corresponding set of license icons to the specific license in question, eg. (cc in a circle) + (attribution man in a circle) should be linked to https://creativecommons.org/licenses/by/4.0/ for CC BY.</p>
+        <h4 class="b-header padding-top-small padding-bottom-smaller">Metadata indication</h4>
+        <p class="text-normal">Include machine-readable metadata on the backend (a small snippet of html code that indicates the license to search engines and other kinds of software). This is invisible to the lay user, but visible in the source code. The metadata behind each license display should correspond to the metadata chosen via the license chooser process. </p>
+      </div>
+    </div>
+    <h4 class="padding-bottom-small">Additionally:</h4>
+    <div class="columns padding-top-normal padding-bottom-normal">
+      <div class="column is-one-third margin-right-small has-background-white pt-card-wide pt-line-detail-blue ">
+        <div class="padding-bottom-normal pt-row-align-center">
+          <img alt="Icon representing padlock" src="./src/img/icon-padlock.png">
+          <p class="text-normal has-text-weight-bold has-text-primary padding-left-normal padding-bottom-smaller">Allow access to CC-licensed or public domain work</p>
+        </div>
+        <p class="text-normal" >All CC licensed content should be publicly accessible, which means be able to be read or viewed by a user, without a login.</p>
+      </div>
+      <div class="column is-one-third margin-right-small has-background-white pt-card-wide pt-line-detail-blue ">
+        <div class="padding-bottom-normal pt-row-align-center">
+          <img alt="Icon representing a download arrow" src="./src/img/icon-download.png">
+          <p class="text-normal has-text-weight-bold has-text-primary padding-left-normal padding-bottom-smaller">Allow download and distribution of content</p>
+        </div>
+        <p class="text-normal">A “download” button, or other way to obtain the original file should be displayed along with the license so that users may use the content.</p>
+      </div>
+      <div class="column is-one-third margin-right-small has-background-white pt-card-wide pt-line-detail-blue ">
+        <div class="padding-bottom-normal pt-row-align-center">
+          <img alt="Icon with many arrows representing distribution" src="./src/img/icon-export.png">
+          <p class="text-normal has-text-weight-bold has-text-primary padding-left-normal padding-bottom-smaller">Allow redistribution according to each license</p>
+        </div>
+        <p class="text-normal">All CC licenses allow redistribution at a minimum. Technical measures prohibiting actions that CC licenses allow should not be added to CC-licensed content on your platform.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="license-metadata-display">
+    <div class="column is-paddingless margin-top-large is-12 pt-section-blue pt-align-top">
+      <div class="pt-box-detail-lg has-background-blue"></div> 
+      <h3 class="padding-left-small padding-bottom-large">License Metadata (Display)</h3>
+    </div>
+    <div class="columns pt-columns-align">
+      <div class="column is-one-third has-background-white pt-card-padding-large">
+        <h4 class="b-header padding-bottom-normal">License Metadata gives a broader reach to content</h4>
+        <p class="text-normal">CC license metadata should be incorporated into the technical backend of the three components of the CC user experience: the license selection process, display of the licensed content, and discovery of licensed content. Here we’ll go over the metadata that is required for uploading and display. Under Search Implementation you can find the remaining information.</p>
+      </div>
+      <div class="column is-offset-1 is-6">
+        <h4 class="b-header padding-bottom-smaller">What is this license metadata</h4>
+        <p class="text-normal"><span class="has-text-weight-bold">CC license metadata consists of a small snippet of html code with RDFa that expresses CC license and attribution information on the web. </span>RDFa is a way of expressing RDF triples inside XHTML pages using span tags. You can learn more about RDFa and how it works here. The following is an overview of all the information you need to implement it into your platform.</p>
+        <h4 class="b-header padding-top-small padding-bottom-smaller">Metadata for chooser</h4>
+        <p class="text-normal">If the chooser is a graphical user interface for work stored on the platform then it doesn’t need to generate metadata itself. The platform can just store the chosen license in the database. This can be done with two pieces of information: the terms (for example All Rights Reserved, CC0, CC-BY-SA, represented as a unique id for each one) and the version (e.g. 1.0, 2.5, 4.0). Or if the TOS allows the platform to automatically update licensing versions it can be done with just the terms id number.</p>
+        <h4 class="b-header padding-top-small padding-bottom-smaller">Metadata for display</h4>
+        <p class="text-normal">At a minimum, the main component you want machine-readable is the license and license icons. Next, you can find code snippets and their explanation: </p>
+      </div>
+    </div>
+    <h5 class="b-header padding-top-normal">Code Snippets for Metadata display:</h5>
+    <h4 class="b-header padding-top-normal">The basics</h4>
+    <pre class="column is-8 margin-top-smaller"><code> 
+        &lt;a <span class="has-text-weight-bold">rel="license" href</span>="https://creativecommons.org/licenses/by/4.0/"&gt;
+          &lt;<span class="has-text-weight-bold">img src</span>="https://i.creativecommons.org/l/by/4.0/80x15.png" /&gt;
+        &lt;/a&gt;
+    </code></pre>
+    <p class="text-normal padding-top-smaller"><span class="has-text-weight-bold">rel=“license”:</span> sets the relationship between the current document and the linked document.</p>
+    <p class="text-normal"><span class="has-text-weight-bold">href:</span> sets the URL for the explanation of CC BY 4.0 license. </p>
+    <p class="text-normal"><span class="has-text-weight-bold">img src:</span> sets  the CC license icon of your choice.</p>
+    <h4 class="b-header padding-top-normal">The optionals</h4>
+    <p class="column is-paddingless is-one-third text-normal">
+      You can include additional attribution information, such as Title, Author and Work URL, in the following span tags.
+    </p>
+    <pre class="column is-8 margin-top-smaller"><code> 
+        &lt;span xmlns:dct="http://purl.org/dc/terms/"<span class="has-text-weight-bold">property="dct:title"</span>&gt;TITLE&lt;/span>
+      </code></pre>
+    <pre class="column is-8 margin-top-smaller"><code> 
+        &lt;span xmlns:cc="https://creativecommons.org/ns#"
+        <span class="has-text-weight-bold">property="cc:attributionName"</span>&gt;AUTHOR&lt;/span>
+    </code></pre>
+    <pre class="column is-8 margin-top-smaller"><code> 
+        &lt;a xmlns:cc="https://creativecommons.org/ns#" href="URL of work" property="cc:attributionName" 
+        <span class="has-text-weight-bold">rel="cc:attributionURL</span>&gt;AUTHOR&lt;/span>
+      </code></pre>
+    <h4 class="b-header padding-top-normal">All together now</h4>
+    <p class="column is-paddingless is-one-third text-normal">
+      This CC licensed <a href="https://vimeo.com/143427866" rel=”noopener noreferrer” target="_blank">video on Vimeo</a> should include the following metadata in the source code of the page.
+    </p>
+    <pre class="column is-8 margin-top-smaller"><code> 
+        &lt;a <span class="has-text-weight-bold">rel="license" href</span>="https://creativecommons.org/licenses/by/3.0/">&gt;
+          &lt;img alt="Creative Commons License" style="border-width:0" 
+          <span class="has-text-weight-bold">src</span>="https://i.creativecommons.org/l/by/3.0/88x31.png" /&gt;
+        &lt;/a&gt;
+        &lt;span <span class="has-text-weight-bold">xmlns:dct</span>="http://purl.org/dc/terms/"<span class="has-text-weight-bold">property="dct:title"</span>&gt;
+          Lawrence Lessig at the CC Global Summit 2015
+        &lt;/span>
+        &lt;a <span class="has-text-weight-bold">xmlns:cc</span>="https://creativecommons.org/ns#" <span class="has-text-weight-bold">href</span>="https://vimeo.com/143427866" 
+        <span class="has-text-weight-bold">property="cc:attributionName" rel="cc:attributionURL"</span>&gt;
+          Creative Commons
+        &lt;/a>
+    </code></pre>
+    <p class="text-normal padding-top-smaller"><span class="has-text-weight-bold">License:</span>  https://creativecommons.org/licenses/by/3.0/</p>
+    <p class="text-normal"><span class="has-text-weight-bold">License icons: </span>  https://i.creativecommons.org/l/by/3.0/88x31.png </p>
+    <p class="text-normal"><span class="has-text-weight-bold">Title: </span> Lawrence Lessig at the CC Global Summit 2015</p>
+    <p class="text-normal"><span class="has-text-weight-bold">Author: </span>  Creative Commons</p>
+    <p class="text-normal"><span class="has-text-weight-bold">URL of work: </span> https://vimeo.com/143427866</p>
+    <h4 class="b-header padding-top-normal padding-bottom-smaller">Associating metadata to a specific media file</h4>
+    <p class="column is-paddingless is-half text-normal">
+      We also recommend associating the CC license metadata on a web page with the specific media file by wrapping the metadata in div tags. This is especially useful to specify when your platform hosts more than one work on a web page.
+    </p>
+    <pre class="column is-8 margin-top-smaller"><code> 
+        &lt;div <span class="has-text-weight-bold">about</span>="&lt;LINK TO MEDIAFILE&gt;"&gt;
+          &lt;a rel="license" href="https://creativecommons.org/licenses/by/3.0/" &gt;
+            &lt;img alt="Creative Commons License" style="border-width:0" 
+              src="https://i.creativecommons.org/l/by/3.0/88x31.png" /&gt;
+          &lt;/a&gt;
+          &lt;span xmlns:dct="http://purl.org/dc/terms/" property="dct:title"</span>&gt;
+            Lawrence Lessig at the CC Global Summit 2015
+          &lt;/span&gt;
+          &lt;a xmlns:cc="https://creativecommons.org/ns#" 
+          href="https://vimeo.com/143427866"
+          property="cc:attributionName
+          rel="cc:attributionURL"&gt;
+            Creative Commons
+          &lt;/a&gt;
+        &lt;/div&gt;
+    </code></pre>
+  </section>
+  <section id="adding-search-filters" class="margin-bottom-normal">
+    <div class="column is-paddingless margin-top-larger is-12 pt-section-gold pt-align-top">
+      <div class="pt-box-detail-lg has-background-gold"></div> 
+      <h3 class="padding-left-small padding-bottom-large">Adding Search Filters</h3>
+    </div>
+    <div class="columns pt-columns-align">
+      <div class="column is-one-third has-background-white pt-card-padding-large">
+        <h4 class="b-header padding-bottom-normal">Concerns when allowing users to search for content.</h4>
+        <p class="text-normal">The same license metadata can be integrated into your search so that users can filter content on the platform by license, or by reuse categories that address their needs. You can also add a portal for users seeking commons content on your platform. To increase visibility, provide an API so your content can be found through other places.
+        </p>
+      </div>
+      <div class="column is-offset-1 is-6">
+        <h4 class="b-header padding-bottom-smaller">Add filters to your search</h4>
+        <div class="padding-bottom-smaller pt-row-align">
+          <img alt="Icon representing a checkbox" src="./src/img/icon-checklist.png"/>
+          <p class="text-normal"><span class="has-text-weight-bold">Let the user search by licenses</p>
+        </div>
+        <div class="padding-bottom-smaller pt-row-align">
+          <img alt="Icon representing a checkbox" src="./src/img/icon-checklist.png"/>
+          <p class="text-normal padding-left-smaller"><span class="has-text-weight-bold">Let the user search by usage </p>
+        </div>
+        <h4 class="b-header padding-top-small padding-bottom-smaller">Add a content portal to your site</h4>
+        <div class="padding-bottom-smaller pt-row-align">
+          <img alt="Icon representing a checkbox" src="./src/img/icon-checklist.png"/>
+          <p class="text-normal"><span class="has-text-weight-bold">Let the user see commons content</p>
+        </div>
+        <h4 class="b-header padding-top-small padding-bottom-smaller">Provide an API for search engines</h4>
+        <div class="padding-bottom-smaller pt-row-align">
+          <img alt="Icon representing a checkbox" src="./src/img/icon-checklist.png"/>
+          <p class="text-normal padding-left-smaller"><span class="has-text-weight-bold">Let the user find this content in more places</p>
+        </div>
+      </div>
+    </div>
+    <h4 class="padding-top-normal padding-bottom-small">Example</h4>
+    <div class="columns">
+      <div class="column is-3">
+        <div class="padding-bottom-small">
+          <h5 class="b-header">Search by License</h5>
+          <p class="text-normal">Allow filtering the material by a specific license.</p>
+        </div>
+        <div class="has-background-white pt-card-padding-small">
+          <p class="text-normal  padding-bottom-small">All content under a specific CC license should appear in the results when that license is selected.</p>
+          <button data-box="4" class="modal button pt-button-blue-lg pt-button-large">Example</button>
+        </div>
+      </div>
+      <div class="column is-offset-1 is-3">
+        <div class="padding-bottom-small">
+          <h5 class="b-header">Search by usage</h5>
+          <p class="text-normal">Filter by what the user could do with that content.</p>
+        </div>
+        <div class="has-background-white pt-card-padding-small">
+          <p class="text-normal  padding-bottom-small">When using categories, portray the usage rights given by the CC licenses and return the subset of CC licensed content.</p>
+          <button data-box="5" class="modal button pt-button-blue-lg pt-button-large">Example</button>
+        </div>
+      </div>
+      <div class="column is-offset-1 is-3">
+        <div class="padding-bottom-small">
+          <h5 class="b-header">Content Portal</h5>
+          <p class="text-normal">A session dedicate to displaying CC-licensed  content.</p>
+        </div>
+        <div class="has-background-white pt-card-padding-small">
+          <p class="text-normal  padding-bottom-small">Portals provide <span class="has-text-weight-bold">direct and easy access to CC content</span>. This page shoud be accessible and easily found in the UI.</p>
+          <button data-box="6" class="modal button pt-button-blue-lg pt-button-large">Example</button>
+        </div>
+      </div>
+    </div>
+    <div class="column is-8 has-background-white is-paddingless margin-top-normal pt-line-left-tomato" id="license-metadata-search">
+      <div class="pt-box-detail-sm has-background-tomato"></div>
+      <div class="padding-left-large">
+        <h6 class="b-header text-big has-color-tomato column is-4">Applying license metadata for search</h6>
+        <p class="text-normal padding-left-smaller padding-right-larger padding-bottom-normal">Add filters to the interface using <span class="has-text-weight-bold">lists or radio buttons to allow selecting licenses or categories</span> that correspond to content under more than one license. </p>
+        <p class="text-normal padding-left-smaller padding-right-larger padding-bottom-normal">At the back-end level, <span class="has-text-weight-bold">either source can be used to determine a list of license identifiers to be used to constrain the search</span>. At the software level this is simply an SQL “where” clause or equivalent.</p>
+      </div>
+    </div>
+  </section>
+  <section id="attributing-authors">
+    <div class="column is-paddingless margin-top-large is-12 pt-section-gold pt-align-top">
+      <div class="pt-box-detail-lg has-background-gold"></div> 
+      <h3 class="padding-left-small padding-bottom-smaller">Attributing authors</h3>
+    </div>
+    <div class="columns pt-columns-align">
+      <div class="column is-one-third has-background-white margin-top-normal pt-card-padding-large">
+        <h4 class="b-header padding-bottom-normal">Make sure your users respect and give credit to each other</h4>
+        <p class="text-normal">All six CC licenses require attribution, which includes naming both the author and the specific CC license the work is under. We also recommend giving attribution for public domain works as a best practice, even if it’s not legally required.</p>
+      </div>
+      <div class="column is-offset-1 is-6 margin-top-small">
+        <h4 class="b-header padding-bottom-smaller">Attribution at the point of download</h4>
+        <p class="text-normal">Attribution can be automatically generated or prompted on your platform at the point where a user downloads a CC licensed work.</p>
+        <h4 class="b-header padding-top-small padding-bottom-smaller">Attribution in Remix Tools</h4>
+        <p class="text-normal">If you allow your users to build on each others works within the platform itself via a remix tool or similar, then we suggest automating attribution when a user pulls a work into her remix.</p>
+        <h4 class="b-header padding-top-small padding-bottom-smaller">Attribution for content that users don’t own but contribute uploading under CC licenses</h4>
+        <p class="text-normal">Be sure to require attribution for third-party content at the point of upload (allowing them to indicate the original author of the work). </p>
+      </div>
+    </div>
+    <h4 class="padding-top-normal padding-bottom-small">Examples</h4>
+    <div class="columns">
+      <div class="column is-3">
+        <div class="padding-bottom-small">
+          <h5 class="b-header">At the point of download</h5>
+        </div>
+        <div class="has-background-white pt-card-padding-small">
+          <p class="text-normal  padding-bottom-small">Suggested attribution text can be generated from the source code on the page if you’ve integrated CC metadata. At the code level this means filling out a template based on the metadata examples below. This is solved by creating a license chooser with best practices for attribution text.</p>
+          <button data-box="7" class="modal button pt-button-blue-lg pt-button-large">Example</button>
+          <button data-box="8" class="modal button pt-button-blue-lg pt-button-large margin-top-small">Example</button>
+        </div>
+      </div>
+      <div class="column is-offset-1 is-3">
+        <div class="padding-bottom-small">
+          <h5 class="b-header">In remix tools</h5>
+        </div>
+        <div class="has-background-white pt-card-padding-small">
+          <p class="text-normal  padding-bottom-small">Any automated attribution should include at a minimum the author and license of the original work (with link to the specific license). Best practice is to retain TASL, standing for Title, Author, Source, and License, in any attribution. </p>
+          <a href="https://wiki.creativecommons.org/wiki/Best_practices_for_attribution" rel=”noopener noreferrer” target="_blank"><button class="button pt-button-blue-lg pt-button-large">Best practice</button></a>
+        </div>
+      </div>
+      <div class="column is-offset-1 is-3">
+        <div class="padding-bottom-small">
+          <h5 class="b-header">Third Party content uploaded</h5>
+        </div>
+        <div class="has-background-white pt-card-padding-small">
+          <p class="text-normal  padding-bottom-small">If you allow your users to share third party CC licensed content on your platform, be sure to require attribution for that content at the point of upload. Make sure you give your users a way to indicate the original author of the work.</p>
+          <button data-box="9" class="modal button pt-button-blue-lg pt-button-large">Example</button>
+        </div>
+      </div>
+    </div>
+    <div class="column is-8 has-background-white is-paddingless margin-top-normal pt-line-left-tomato">
+      <div class="pt-box-detail-sm has-background-tomato"></div>
+      <div class="padding-left-large">
+        <h6 class="b-header text-big has-color-tomato column is-4">Additional attribution guidance for users</h6>
+        <p class="text-normal padding-left-smaller padding-right-larger padding-bottom-normal">Consider providing your users with attribution guidance, especially if your platform hosts domain-specific content that has different attribution norms, eg. academic research.</p>
+      </div>
+    </div>
+  </section>
+  <section id="resources">
+    <div class="column is-paddingless margin-top-large is-12 pt-section-gold pt-align-top">
+      <div class="pt-box-detail-lg has-background-gold"></div> 
+      <h3 class="padding-left-small padding-bottom-smaller">Resources</h3>
+    </div>
+    <p class="text-normal column is-6 margin-top-small margin-bottom-small is-paddingless">This session groups design files (such as logos),  information that could be useful during implementation as well as featured cases with examples that could offer insight. In case you need something more structured, you can check out the model platform. The final checklist gives a thorough rundown on the possibilities for implementation, as well as highlighting the main requirements.</p>
+    <div class="columns" id="design-communication">
+      <div class="column is-3">
+        <div class="padding-bottom-small">
+          <h5 class="b-header">UX Examples</h5>
+        </div>
+        <div class="has-background-white pt-card-padding-small">
+          <p class="text-normal padding-bottom-small">Medium’s design process for its CC user experience:</p>
+          <a target="_blank" rel=”noopener noreferrer” href="https://medium.com/designing-medium/everyday-design-84838adc4e93"><button class="button margin-bottom-normal pt-button-tomato-lg pt-button-large">See Article</button></a>
+          <p class="text-normal">Examples of good implementations:</p>
+          <a target="_blank" rel=”noopener noreferrer” href="https://docs.google.com/presentation/d/1idtFfT3wOrnAlejT3FANcW1wz9FA1Vgars-DKmZtpEI/edit?usp=sharing"><button class="button pt-button-tomato-lg pt-button-large margin-top-small">Open File</button></a>
+        </div>
+      </div>
+      <div class="column is-offset-1 is-3">
+        <div class="padding-bottom-small">
+          <h5 class="b-header">Logo and Icon Files</h5>
+        </div>
+        <div class="has-background-white pt-card-padding-small">
+          <p class="text-normal  padding-bottom-small">Download CC logos and Icons. 
+            We recommend using the <a target="_blank" rel=”noopener noreferrer” href="/about/downloads#Icons">circular icons</a> when appropriate. <a target="_blank" rel=”noopener noreferrer” href="https://licensebuttons.net/i/">Here are initial standard sizes for use.</a></p>
+            <a target="_blank" rel=”noopener noreferrer” href="/about/downloads"><button class="button pt-button-tomato-lg pt-button-large">Browse Files</button></a>
+        </div>
+      </div>
+      <div class="column is-offset-1 is-3">
+        <div class="padding-bottom-small">
+          <h5 class="b-header">About the CC Logo</h5>
+        </div>
+        <div class="has-background-white pt-card-padding-small">
+          <p class="text-normal padding-bottom-small">“A Masterwork in Simplicity: The Story of the CC Logo” (feature with the origin of the CC logos and icons).</p>
+          <a target="_blank" rel=”noopener noreferrer” href="https://medium.com/@creativecommons/a-masterwork-in-simplicity-the-story-of-the-cc-logo-7e2e231a26e7"><button class="button pt-button-tomato-lg pt-button-large margin-top-small">Open Video</button></a>
+        </div>
+      </div>
+    </div>
+    <h5 class="b-header">Platforms that have  CC integration:</h5>
+    <div class="column is-9 is-flex has-background-white is-paddingless margin-top-normal pt-column-mobile">
+      <div class="column is-4">
+        <a target="_blank" rel=”noopener noreferrer” href="https://www.flickr.com/"><button class="button pt-button-tomato-lg pt-button-large margin-top-small">Flickr </button></a>
+        <a target="_blank" rel=”noopener noreferrer” href="https://www.youtube.com/"><button class="button pt-button-tomato-lg pt-button-large margin-top-small">Youtube </button></a>
+      </div>
+      <div class="column is-4">
+        <a target="_blank" rel=”noopener noreferrer” href="https://medium.com/"><button class="button pt-button-tomato-lg pt-button-large margin-top-small">Medium </button></a>
+        <a target="_blank" rel=”noopener noreferrer” href="https://vimeo.com/">
+        <button class="button pt-button-tomato-lg pt-button-large margin-top-small">Vimeo </button></a>
+      </div>
+      <div class="column is-4">
+        <a target="_blank" rel=”noopener noreferrer” href="https://commons.wikimedia.org/wiki/Main_Page"><button class="button pt-button-tomato-lg pt-button-large margin-top-small">WikiMedia Commons </button></a>
+        <a target="_blank" rel=”noopener noreferrer” href="https://archive.org/"><button class="button pt-button-tomato-lg pt-button-large margin-top-small">Internet Archive </button></a>
+      </div>
+    </div>
+  </section>
+  <section id="model-platform">
+    <div class="column is-paddingless margin-top-large is-12 pt-section-blue pt-align-top">
+      <div class="pt-box-detail-lg has-background-blue"></div> 
+      <h3 class="padding-left-small padding-bottom-large">Model Platform</h3>
+    </div>
+    <div class="columns pt-columns-align">
+      <div class="column is-one-third has-background-white pt-card-padding-large">
+        <h4 class="b-header padding-bottom-normal">The model platform is a resource in case you’d rather start with a structured tool</h4>
+        <p class="text-normal">The repository on Github allows you to test, log in, see an example of selection process and download the model. 
+          While the screenshots let you navigate through the screens and see a suggestion of user flow.</p>
+      </div>
+      <div class="column is-offset-1 is-3 margin-top-small">
+        <a target="_blank" rel=”noopener noreferrer” href="https://github.com/creativecommons/mp"><button class="button pt-button-blue-lg pt-button-large">Github Repository</button></a>
+          <button class="modalPlatformPopup button pt-button-blue-lg pt-button-large margin-top-small">SEE screenshots</button>
+      </div>
+    </div>
+  </section>
+  <section id="final-checklist">
+    <div class="column is-paddingless margin-top-large is-12 pt-section-gold pt-align-top">
+      <div class="pt-box-detail-lg has-background-gold"></div> 
+      <h3 class="padding-left-small padding-bottom-large">Final Checklist</h3>
+    </div>
+    <h2>Cover the basics of implementation</h2>
+    <p class="column text-normal margin-top-small is-paddingless is-5">This toolkit breaks down a great amount of content, and this final checklist is a way of quickly going over what is needed - and crucial - for a successful implementation. <span class="has-text-weight-bold">We recommend working on the items signaled in yellow  first,</span> with the other features remaining as optional.</p>
+    <div class="columns padding-top-normal padding-bottom-normal">
+      <div class="column margin-right-normal has-background-white is-paddingless">
+        <div class="pt-row-align-center has-background-gold padding-bottom-small padding-top-small">
+          <img class="padding-left-small" alt="Icon representing a checkbox" src="./src/img/icon-checklist-bigger.png">
+          <p class="text-normal has-text-weight-bold padding-left-normal">Your Terms of Service should:</p>
+        </div>
+        <div class="pt-card-large pt-align-left">
+          <div class="pt-row-align-lines">
+            <p class="text-normal padding-left-normal padding-top-smaller padding-bottom-smaller ">Explain how CC licensing works for content creators.</p>
+          </div>
+          <div class="pt-row-align-lines">
+            <div class="pt-line-left-gold">
+            </div>
+            <p class="text-normal padding-left-small padding-top-smaller padding-bottom-smaller ">Make it clear that CC-licensed content can be reused according to the terms and conditions of its license.</p>
+          </div>
+          <div class="pt-row-align-lines">
+            <div class="pt-line-left-gold">
+            </div>
+            <p class="text-normal padding-left-small padding-top-smaller padding-bottom-smaller">State what types of CC-licensed content (created by third parties) can be uploaded by users, if any.</p>
+          </div>
+          <div class="pt-row-align-lines">
+            <div class="pt-line-left-gold">
+            </div>
+            <p class="text-normal padding-left-small padding-top-smaller padding-bottom-smaller">Note that if the TOS requires a direct license from users, it excludes existing CC-licensed content created by others.</p>
+          </div>
+        </div>
+      </div>
+      <div class="column margin-right-normal has-background-white is-paddingless">
+        <div class="pt-row-align-center has-background-gold padding-bottom-small padding-top-small">
+          <img class="padding-left-small" alt="Icon representing a checkbox" src="./src/img/icon-checklist-bigger.png">
+          <p class="text-normal has-text-weight-bold padding-left-normal">The license selection process should:</p>
+        </div>
+        <div class="pt-card-large pt-align-left">
+          <div class="pt-row-align-lines">
+            <p class="text-normal padding-left-normal padding-top-smaller padding-bottom-smaller ">Allow users to license individual works.</p>
+          </div>
+          <div class="pt-row-align-lines">
+            <p class="text-normal padding-left-normal padding-top-smaller padding-bottom-smaller ">Allow users to license a batch of works.</p>
+          </div>
+          <div class="pt-row-align-lines">
+            <p class="text-normal padding-left-normal padding-top-smaller padding-bottom-smaller ">Allow users to set a default license for works they contribute. </p>
+          </div>
+          <div class="pt-row-align-lines">
+            <div class="pt-line-left-gold">
+            </div>
+            <p class="text-normal padding-left-small padding-top-smaller padding-bottom-smaller ">Allow users to edit their license choices afterwards.
+            </p>
+          </div>
+          <div class="pt-row-align-lines">
+            <div class="pt-line-left-gold">
+            </div>
+            <p class="text-normal padding-left-small padding-top-smaller padding-bottom-smaller">Integrate metadata into the source code.</p>
+          </div>
+          <div class="pt-row-align-lines padding-right-small">
+            <p class="text-normal padding-left-normal padding-top-smaller padding-bottom-smaller">Include the license icons in each license selection.</p>
+          </div>
+          <div class="pt-row-align-lines">
+            <div class="pt-line-left-gold">
+            </div>
+            <p class="text-normal padding-left-small padding-top-smaller padding-bottom-smaller">Include a short snippet of explanatory text and/or link to CC license in each license selection.</p>
+          </div>
+        </div>
+      </div>
+      <div class="column margin-right-normal has-background-white is-paddingless">
+        <div class="pt-row-align-center has-background-gold padding-bottom-small padding-top-small">
+          <img class="padding-left-small" alt="Icon representing a checkbox" src="./src/img/icon-checklist-bigger.png">
+          <p class="text-normal has-text-weight-bold padding-left-normal">The license display on content should:</p>
+        </div>
+        <div class="pt-card-large pt-align-left">
+          <div class="pt-row-align-lines">
+            <div class="pt-line-left-gold">
+            </div>
+            <p class="text-normal padding-left-small padding-top-smaller padding-bottom-smaller ">Display license icon(s), link to license deed and license metadata integrated into the page’s source code.
+            </p>
+          </div>
+          <div class="pt-row-align-lines">
+            <div class="pt-line-left-gold">
+            </div>
+            <p class="text-normal padding-left-small padding-top-smaller padding-bottom-smaller">Allow users to publicly access or view the licensed content without a login.</p>
+          </div>
+          <div class="pt-row-align-lines">
+            <div class="pt-line-left-gold">
+            </div>
+            <p class="text-normal padding-left-small padding-top-smaller padding-bottom-smaller">Allow users to download or otherwise obtain the file directly from the content page.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="columns padding-top-normal padding-bottom-normal">
+      <div class="column margin-right-normal has-background-white is-paddingless">
+        <div class="pt-row-align-center has-background-gold padding-bottom-small padding-top-small">
+          <img class="padding-left-small" alt="Icon representing a checkbox" src="./src/img/icon-checklist-bigger.png">
+          <p class="text-normal has-text-weight-bold padding-left-normal">The license search and discovery should:</p>
+        </div>
+        <div class="pt-card-large pt-align-left">
+          <div class="pt-row-align-lines">
+            <div class="pt-line-left-gold">
+            </div>
+            <p class="text-normal padding-left-small padding-top-smaller padding-bottom-smaller ">Allow users to filter content on the platform by license, or by reuse categories that address their needs.
+            </p>
+          </div>
+          <div class="pt-row-align-lines">
+            <p class="text-normal padding-left-normal padding-top-smaller padding-bottom-smaller ">Provide a portal, or a landing page, to CC-licensed content  on the platform.</p>
+          </div>
+          <div class="pt-row-align-lines">
+            <div class="pt-line-left-gold">
+            </div>
+            <p class="text-normal padding-left-small padding-top-smaller padding-bottom-smaller">Link to the CC search or portal pages from the home page, or somewhere else obvious.</p>
+          </div>
+          <div class="pt-row-align-lines">
+            <div class="pt-line-left-gold">
+            </div>
+            <p class="text-normal padding-left-small padding-top-smaller padding-bottom-smaller">Guarantee the license metadata behind the search and browse filters is correct, eg. filter returns correct licensed content.</p>
+          </div>
+        </div>
+      </div>
+      <div class="column margin-right-normal has-background-white is-paddingless">
+        <div class="pt-row-align-center has-background-gold padding-bottom-small padding-top-small">
+          <img class="padding-left-small" alt="Icon representing a checkbox" src="./src/img/icon-checklist-bigger.png">
+          <p class="text-normal has-text-weight-bold padding-left-normal">Make sure the following are true for attribution:</p>
+        </div>
+        <div class="pt-card-large pt-align-left">
+          <div class="pt-row-align-lines">
+            <p class="text-normal padding-left-normal padding-top-smaller padding-bottom-smaller ">Attribution is automatically generated or prompted at the point where a user download/obtains a CC licensed work.</p>
+          </div>
+          <div class="pt-row-align-lines">
+            <p class="text-normal padding-left-normal padding-top-smaller padding-bottom-smaller ">If the platform has a remix tool, attribution is automated whenever a user pulls a CC licensed work into her remix.</p>
+          </div>
+          <div class="pt-row-align-lines">
+            <p class="text-normal padding-left-normal padding-top-smaller padding-bottom-smaller ">Any automatically generated or prompted attribution includes the Title, Author, Source, and License.</p>
+          </div>
+          <div class="pt-row-align-lines">
+            <p class="text-normal padding-left-normal padding-top-smaller padding-bottom-smaller ">If users share  CC licensed content by other creators,  attribution for that content during upload is required.</p>
+          </div>
+          <div class="pt-row-align-lines">
+            <p class="text-normal padding-left-normal padding-top-smaller padding-bottom-smaller ">The platform provides users with other attribution guidance, eg. an attribution guide specific to the platform</p>
+          </div>
+        </div>
+      </div>
+      <div class="column margin-right-normal has-background-white is-paddingless">
+        <div class="pt-row-align-center has-background-gold padding-bottom-small padding-top-small">
+          <img class="padding-left-small" alt="Icon representing a checkbox" src="./src/img/icon-checklist-bigger.png">
+          <p class="text-normal has-text-weight-bold padding-left-normal">Please communicate the following in your platform:</p>
+        </div>
+        <div class="pt-card-large pt-align-left">
+          <div class="pt-row-align-lines">
+            <p class="text-normal padding-left-normal padding-top-smaller padding-bottom-smaller ">Explain the basics of CC.</p>
+          </div>
+          <div class="pt-row-align-lines">
+            <p class="text-normal padding-left-normal padding-top-smaller padding-bottom-smaller ">Explain why the platform decided to enable CC license options and/or how CC aligns with the platform’s goals.</p>
+          </div>
+          <div class="pt-row-align-lines">
+            <p class="text-normal padding-left-normal padding-top-smaller padding-bottom-smaller ">Provide an FAQ on how CC licenses work.</p>
+          </div>
+          <div class="pt-row-align-lines">
+            <p class="text-normal padding-left-normal padding-top-smaller padding-bottom-smaller ">Your community guidelines around sharing under CC licenses.</p>
+          </div>
+          <div class="pt-row-align-lines">
+            <p class="text-normal padding-left-normal padding-top-smaller padding-bottom-smaller "> Provide other materials, eg. announcement of CC integration; blog post describing the CC UX design process; editorial about CC.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="beyond-this-toolkit">
+    <div class="column is-paddingless margin-top-large is-12 pt-section-gold pt-align-top">
+      <div class="pt-box-detail-lg has-background-gold"></div> 
+      <h3 class="padding-left-small padding-bottom-large">Beyond this toolkit</h3>
+    </div>
+    <h2>What comes after implementation</h2>
+    <p class="column text-normal margin-top-small margin-bottom-large is-paddingless is-5">Getting from zero to basic integration is just the first step in joining a vast global network of creators, companies, and institutions who are working to build context, gratitude, and other mechanisms for collaboration into the commons. We work with platforms who share our values to design tools and services that light up this universe of content and creators. </p>
+    <div class="columns">
+      <div class="column is-offset-2 is-one-third has-background-white margin-bottom-small pt-card-padding-small">
+        <div class="margin-bottom-normal">
+          <h3 class="b-header pt-header-card pt-text-card">Learn about how everything adds up</h3>
+          <p class="text-normal">Check our State of the Commons report to see data about the growth of the commons and use of content, as well as major trends. </p>
+          <a target="_blank" rel=”noopener noreferrer” href="https://stateof.creativecommons.org/"><button class="button pt-button-gold-lg pt-button-large margin-top-small">State of the commons </button></a>
+        </div>
+      </div>
+      <div class="column is-one-third margin-left-small has-background-white margin-bottom-small pt-card-padding-small">
+        <div class="margin-bottom-normal">
+          <h3 class="b-header pt-header-card">What does your platform need?</h3>
+          <p class="text-normal">In addition to the growing your users and content, what are your platform’s goals when implementing CC licenses? Explore more possibilities.</p>
+          <a target="_blank" rel=”noopener noreferrer” href="/platform/"><button class="button pt-button-gold-lg pt-button-large margin-top-small">Platform membership program </button></a>
+        </div>
+      </div>
+    </div>
+    <div class="columns padding-top-small">
+      <div class="column is-offset-2 is-one-third has-background-white margin-bottom-small pt-card-padding-small">
+        <div class="margin-bottom-normal">
+          <h3 class="b-header pt-header-card pt-text-card">Help this toolkit be a one-stop shop</h3>
+          <p class="text-normal">This toolkit is an evolving resource for platforms. See something you’d like to improve or add? File an issue on Github. </p>
+          <a target="_blank" rel=”noopener noreferrer” href="https://github.com/creativecommons/mp/issues"><button class="button pt-button-gold-lg pt-button-large margin-top-small">Github repository</button></a>
+        </div>
+      </div>
+      <div class="column is-one-third margin-left-small has-background-white margin-bottom-small pt-card-padding-small">
+        <div class="margin-bottom-normal">
+          <h3 class="b-header pt-header-card">Let us know if anything comes up</h3>
+          <p class="text-normal">Do you have  questions or need help implementing particular pieces of the toolkit? Contact us.</p>
+          <a target="_blank" rel=”noopener noreferrer” href="/contact"><button class="button pt-button-gold-lg pt-button-large margin-top-small">Contact Us</button></a>
+        </div>
+      </div>
+    </div>
+    <h6 class="b-header text-normal margin-top-large padding-bottom-small">This toolkit by Creative Commons is licensed under a <a href="Creative Commons Attribution 4.0 License">Creative Commons Attribution 4.0 License.</a></h6>
+  </section>
+
+  <div class="site-footer-wrapper">
+    <footer id="colophon" class="site-footer sticky-nav-main" role="contentinfo">
+      <div class="cc-footer">
+        <div class="column cc-footer-main">
+          <div class="cc-footer-logo">
+            <a href="/" class="custom-logo-link" rel="home" itemprop="url"><img src="/wp-content/uploads/2016/06/cc.logo_.white_.png" class="custom-logo" alt="cc.logo.white" itemprop="logo" srcset="/wp-content/uploads/2016/06/cc.logo_.white_.png 980w, /wp-content/uploads/2016/06/cc.logo_.white_-300x73.png 300w, /wp-content/uploads/2016/06/cc.logo_.white_-768x188.png 768w, /wp-content/uploads/2016/06/cc.logo_.white_-140x34.png 140w, /wp-content/uploads/2016/06/cc.logo_.white_-50x12.png 50w, /wp-content/uploads/2016/06/cc.logo_.white_-270x66.png 270w, /wp-content/uploads/2016/06/cc.logo_.white_-245x60.png 245w" sizes="(max-width: 709px) 85vw, (max-width: 909px) 67vw, (max-width: 1362px) 62vw, 840px" height="240" width="980"></a>
+          </div>
+          <div class="cc-footer-links">
+            <div class="menu-footer-links-container">
+              <ul id="menu-footer-links" class="menu">
+                <li id="menu-item-48794" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48794"><a href="/about/contact/">Contact</a></li>
+                <li id="menu-item-48795" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48795"><a href="/privacy/">Privacy</a></li>
+                <li id="menu-item-48796" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48796"><a href="/policies/">Policies</a></li>
+                <li id="menu-item-48797" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48797"><a href="/terms/">Terms</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="column cc-footer-contact">
+          <h6><a href="/about/contact">We'd love to hear from you!</a></h6>
+          <address>
+            Creative Commons<br>
+            PO Box 1866, Mountain View, CA 94042
+          </address>
+          <ul>
+            <li><a href="mailto:info@creativecommons.org" class="mail">info@creativecommons.org</a></li>
+            <li><a href="/faq">Frequently Asked Questions</a></li>
+          </ul>
+        </div>
+        <div class="column cc-footer-license">
+          <div class="license-icons">
+            <a rel="license" href="/licenses/by/4.0/" title="Creative Commons Attribution 4.0 International license">
+              <i class="cc-icon-cc"></i>
+              <i class="cc-icon-cc-by"></i>
+            </a>
+          </div>
+          <aside>
+            <div xmlns:cc="https://creativecommons.org/ns#" about="https://creativecommons.org">
+              <p>Except where otherwise <a class="subfoot" href="/policies#license">noted</a>, content on this site is licensed under a <a class="subfoot" href="/licenses/by/4.0/" rel="license">Creative Commons Attribution 4.0 International license</a>. <a class="subfoot" href="/website-icons" target="blank">Icons</a> by The Noun Project.</p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </footer>
+    </div>
+<!--Modals-->
+  <div id="popupBtns">
+    <div class="popupBoxWrapper">
+      <div class="popupBoxContent">
+        <img class="closebox" src="./src/img/icon-close.svg">
+        <div class="popup-align">
+          <p class="message padding-top-normal padding-bottom-small padding-right-large">
+          </p>
+        </div>
+        <img class="message-url"/>
+      </div>
+    </div>
+  </div>
+
+  <div id="popupCollaboration">
+    <div class="popupBoxWrapper">
+      <div class="popupBoxContent">
+        <img class="closebox" src="./src/img/icon-close.svg">
+        <div class="popup-align">
+          <div class="message-header"></div>
+        </div>
+        <div class="message-links text-normal padding-left-normal padding-right-large ">
+          <p class="message-link1 margin-top-small"></p>
+          <p class="message-link2 margin-top-normal"></p>
+          <p class="message-link3 margin-top-normal"></p>
+          <p class="message-link4 margin-top-normal"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="popupModelPlatform">
+    <div class="popupBoxWrapper">
+      <div class="popupBoxContent">
+        <img class="closebox" src="./src/img/icon-close.svg">
+        <div class="mp-url">
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type='text/javascript'>
+    /* <![CDATA[ */
+    var screenReaderText = {"expand":"expand child menu","collapse":"collapse child menu"};
+    /* ]]> */
+  </script>
+  <script type='text/javascript' src='/wp-content/themes/twentysixteen/js/functions.js'></script>
+<script src="./src/js/toc-filter-script.js"></script>
+<script src="./src/js/accordion-script.js"></script>
+<script src="./src/js/scroll-script.js"></script>
+<script src="./src/js/modal-script.js"></script>
+</body>
+</html>
