@@ -241,6 +241,12 @@ a.scroll-link:hover {
   box-sizing: border-box;
   padding: 2.5rem;
 }
+
+#pt-button-large {
+   padding:10px;
+   display:block;
+  }
+  
 @media only screen and (max-width: 1024px) {
   .pt-card-large{
     padding: 5%;
@@ -446,6 +452,11 @@ a.scroll-link:hover {
   .column.margin-bottom-large{
     margin-bottom: 1rem;
   }
+}
+
+.column.is-offset-2, .column.is-offset-2-tablet {
+  margin-left: 0% !important;
+
 }
 
 /* PT Media query adjustments */
