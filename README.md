@@ -54,7 +54,7 @@ placed in the `deprecated/` folder. This folder will eventually be deleted
 ![CC0 1.0 Universal license button][cc0-png]
 
 To the extent possible under law, Creative Commons has waived all copyright and
-related or neighboring rights to this work ([CC0 1.0 Universal][cc0].
+related or neighboring rights to this work ([CC0 1.0 Universal][cc0]).
 
 [cc0-png]: https://licensebuttons.net/l/zero/1.0/88x31.png "CC0 1.0 Universal license button"
 [cc0]: https://creativecommons.org/publicdomain/zero/1.0/ "Creative Commons — CC0 1.0 Universal"
