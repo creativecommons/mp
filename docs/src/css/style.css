@@ -242,10 +242,10 @@ a.scroll-link:hover {
   padding: 2.5rem;
 }
 
-#pt-button-large {
+.overflow{
    padding:10px;
    display:block;
-  }
+   }
   
 @media only screen and (max-width: 1024px) {
   .pt-card-large{
@@ -256,6 +256,14 @@ a.scroll-link:hover {
 .pt-card-wide {
   padding: 3rem 4.5rem 1rem;
 }
+@media screen and (min-width: 769px){
+  .column.is-10, .column.is-10-tablet{ 
+  
+     width:100%;
+    }
+  }
+  
+  
 @media only screen and (max-width: 768px) {
   .pt-card-wide {
     padding: 2rem 2rem 1rem;
@@ -455,7 +463,7 @@ a.scroll-link:hover {
 }
 
 .column.is-offset-2, .column.is-offset-2-tablet {
-  margin-left: 0% !important;
+  margin-left: 0% ;
 
 }
 
