@@ -119,11 +119,12 @@ a.scroll-link:hover {
   height: 40px;
 }
 .pt-section1-text {
-  width: 250px;
+  width: 100%;
   margin: auto;
 }
 .pt-section-gold {
   border-top: 1px solid #efbe00;
+  
 }
 .pt-section-forest {
   border-top: 1px solid #04A635;
@@ -167,6 +168,8 @@ a.scroll-link:hover {
   border-bottom: none;
   background: #ffffff;
   color: #333;
+  
+  
 }
 .pt-button-white,
 .pt-button-white:active,
@@ -234,7 +237,7 @@ a.scroll-link:hover {
   display: flex !important;
 }
 .pt-card {
-  max-height: 415px;
+  max-height: 100%;
   box-sizing: border-box;
 }
 .pt-card-large {
@@ -271,7 +274,7 @@ a.scroll-link:hover {
   padding: .5rem 2rem;
 }
 .pt-card-small{
-  max-height: 255px;
+  max-height: 100%;
 }
 @media only screen and (max-width: 768px) {
   .pt-card-small{
@@ -280,7 +283,7 @@ a.scroll-link:hover {
 }
 .pt-header-card {
   font-size: 28px;
-  width: 315px;
+  width: 100%;
   padding: 48px 0;
 }
 @media only screen and (max-width: 1024px) {
@@ -289,7 +292,8 @@ a.scroll-link:hover {
   }
 }
 .pt-text-card{
-  width: 250px;
+  width: 100%;
+
 }
 
 .pt-columns-align {
@@ -332,6 +336,7 @@ a.scroll-link:hover {
   #intro>div>div{
     margin: 0 !important;
   }
+  
 }
 #table-of-contents>div>div.column.has-background-white {
   border: solid 2px #E5E5E5;
@@ -462,3 +467,4 @@ a.scroll-link:hover {
     margin-left: 0;
   }
 }
+
