@@ -124,7 +124,6 @@ a.scroll-link:hover {
 }
 .pt-section-gold {
   border-top: 1px solid #efbe00;
-  
 }
 .pt-section-forest {
   border-top: 1px solid #04A635;
@@ -168,8 +167,6 @@ a.scroll-link:hover {
   border-bottom: none;
   background: #ffffff;
   color: #333;
-  
-  
 }
 .pt-button-white,
 .pt-button-white:active,
@@ -293,9 +290,7 @@ a.scroll-link:hover {
 }
 .pt-text-card{
   width: 100%;
-
 }
-
 .pt-columns-align {
   align-items: center;
 }
@@ -336,7 +331,6 @@ a.scroll-link:hover {
   #intro>div>div{
     margin: 0 !important;
   }
-  
 }
 #table-of-contents>div>div.column.has-background-white {
   border: solid 2px #E5E5E5;
