@@ -119,7 +119,7 @@ a.scroll-link:hover {
   height: 40px;
 }
 .pt-section1-text {
-  width: 250px;
+  width: 90%;
   margin: auto;
 }
 .pt-section-gold {
@@ -234,7 +234,7 @@ a.scroll-link:hover {
   display: flex !important;
 }
 .pt-card {
-  max-height: 415px;
+  max-height: 100%;
   box-sizing: border-box;
 }
 .pt-card-large {
@@ -271,7 +271,7 @@ a.scroll-link:hover {
   padding: .5rem 2rem;
 }
 .pt-card-small{
-  max-height: 255px;
+  max-height: 100%;
 }
 @media only screen and (max-width: 768px) {
   .pt-card-small{
@@ -280,7 +280,7 @@ a.scroll-link:hover {
 }
 .pt-header-card {
   font-size: 28px;
-  width: 315px;
+  width: 100%;
   padding: 48px 0;
 }
 @media only screen and (max-width: 1024px) {
@@ -289,7 +289,7 @@ a.scroll-link:hover {
   }
 }
 .pt-text-card{
-  width: 250px;
+  width: 100%;
 }
 
 .pt-columns-align {
