@@ -241,6 +241,12 @@ a.scroll-link:hover {
   box-sizing: border-box;
   padding: 2.5rem;
 }
+
+.overflow{
+   padding:10px;
+   display:block;
+   }
+  
 @media only screen and (max-width: 1024px) {
   .pt-card-large{
     padding: 5%;
@@ -250,6 +256,14 @@ a.scroll-link:hover {
 .pt-card-wide {
   padding: 3rem 4.5rem 1rem;
 }
+@media screen and (min-width: 769px){
+  .column.is-10, .column.is-10-tablet{ 
+  
+     width:100%;
+    }
+  }
+  
+  
 @media only screen and (max-width: 768px) {
   .pt-card-wide {
     padding: 2rem 2rem 1rem;
@@ -446,6 +460,11 @@ a.scroll-link:hover {
   .column.margin-bottom-large{
     margin-bottom: 1rem;
   }
+}
+
+.column.is-offset-2, .column.is-offset-2-tablet {
+  margin-left: 0% ;
+
 }
 
 /* PT Media query adjustments */
