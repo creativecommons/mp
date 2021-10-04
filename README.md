@@ -29,7 +29,7 @@ production and staging environments are managed using SaltStack (see the
 repository clone is at the most recent version for the configured branch when
 the state is applied.
 
-[nginx-misc]: https://github.com/creativecommons/sre-salt-prime/blob/master/states/nginx/misc.sls
+[nginx-misc]: https://github.com/creativecommons/sre-salt-prime/blob/main/states/nginx/misc.sls
 
 
 ## Historical Files
