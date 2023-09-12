@@ -32,13 +32,6 @@ the state is applied.
 [nginx-misc]: https://github.com/creativecommons/sre-salt-prime/blob/main/states/nginx/misc.sls
 
 
-## Historical Files
-
-Everything pertaining to the previous toolkit and model platform material is
-placed in the `deprecated/` folder. This folder will eventually be deleted
-(though it will remain in the git history).
-
-
 ## License
 
 
