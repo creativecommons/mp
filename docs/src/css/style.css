@@ -4,6 +4,13 @@
 @import '/wp-content/themes/vocabulary-theme/style.css' layer(vocabulary-theme);
 
  /* specific correction overrides */
+
+ body.platform-toolkit > header {
+    background: white;
+    padding-bottom: 2em;
+ }
+
+
 .platform-toolkit main img:not([width]) {
     width: initial;
 }
@@ -30,6 +37,10 @@
 
 .platform-toolkit pre {
     width: 100%;
+}
+
+body.platform-toolkit > footer {
+    margin-top: 4em;
 }
 
 @media only screen and (max-width: 768px) {
