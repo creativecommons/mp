@@ -213,7 +213,7 @@ fieldset[disabled] .file-name {
 /*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */
 html,
 body,
-p,
+main p,
 ol,
 ul,
 li,
