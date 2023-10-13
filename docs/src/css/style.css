@@ -3,7 +3,6 @@
 @import './mp-style.css' layer(mp-legacy);
 @import '/wp-content/themes/vocabulary-theme/style.css' layer(vocabulary-theme);
 
-
  /* specific correction overrides */
 .platform-toolkit main img:not([width]) {
     width: initial;
@@ -31,4 +30,11 @@
 
 .platform-toolkit pre {
     width: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+
+    .platform-toolkit .pt-line-detail-blue {
+        width: 100%;
+    }
 }
