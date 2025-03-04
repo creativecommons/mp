@@ -10,6 +10,17 @@
     padding-bottom: 2em;
  }
 
+ .platform-toolkit .home-narrative main {
+    grid-column: 1 / 12;
+ }
+
+.platform-toolkit main > * {
+    grid-column: 2 / span 9;
+}
+
+.platform-toolkit main section {
+    padding: 0;
+}
 
 .platform-toolkit main img:not([width]) {
     width: initial;
