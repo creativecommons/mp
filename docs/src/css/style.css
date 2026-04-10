@@ -38,8 +38,8 @@
     width: 75%;
 }
 
-.platform-toolkit button {
-    /* margin-bottom: 1em; */
+.platform-toolkit main button {
+    margin-bottom: 1em;
 }
 
 .platform-toolkit .pt-line-detail-blue {
