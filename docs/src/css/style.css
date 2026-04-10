@@ -39,7 +39,7 @@
 }
 
 .platform-toolkit button {
-    margin-bottom: 1em;
+    /* margin-bottom: 1em; */
 }
 
 .platform-toolkit .pt-line-detail-blue {
@@ -52,6 +52,10 @@
 
 body.platform-toolkit > footer {
     margin-top: 4em;
+}
+
+body.platform-toolkit > footer * {
+    box-sizing: unset; 
 }
 
 @media only screen and (max-width: 768px) {
