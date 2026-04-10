@@ -38,7 +38,7 @@
     width: 75%;
 }
 
-.platform-toolkit button {
+.platform-toolkit main button {
     margin-bottom: 1em;
 }
 
@@ -52,6 +52,10 @@
 
 body.platform-toolkit > footer {
     margin-top: 4em;
+}
+
+body.platform-toolkit > footer * {
+    box-sizing: unset;
 }
 
 @media only screen and (max-width: 768px) {
