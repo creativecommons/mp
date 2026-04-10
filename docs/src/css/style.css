@@ -55,7 +55,7 @@ body.platform-toolkit > footer {
 }
 
 body.platform-toolkit > footer * {
-    box-sizing: unset; 
+    box-sizing: unset;
 }
 
 @media only screen and (max-width: 768px) {
