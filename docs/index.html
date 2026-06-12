@@ -12,12 +12,18 @@
       /* temporary while in progress */
       @import '/wp-content/themes/vocabulary-theme/pidgin/css/pidgin.css' layer(vocabulary);
   </style>
-
-
+  <!-- Privacy-friendly analytics by Plausible -->
+  <script async src="/p/script.js"></script>
+  <script>
+    window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+    plausible.init({
+      endpoint: "/p/api/event"
+    })
+  </script>
 </head>
 <body class="pt-background platform-toolkit home-narrative">
     <a class="skip-to-content" href="#main-content-marker">Skip to content</a>
-    
+
     <header>
         <div class="masthead">
             <h1><a class="identity-logo" href="/">Creative Commons</a></h1>
@@ -27,7 +33,7 @@
                   <li>
                       <a href="/who-we-are">Who We Are</a>
                       <button class="expand icon-replace fa-angle-down">Expand</button>
-                      
+
                       <ul>
                           <li><a href="/strategic-plan">Strategic Plan</a></li>
                           <li><a href="/team">Team</a></li>
@@ -82,7 +88,7 @@
                   <li>
                       <a href="/support">Support Us</a>
                       <button class="expand icon-replace fa-angle-down">Expand</button>
-                      
+
                       <ul>
                           <li><a href="https://giving.gofundme.com/campaign/778218/donate">Make a Gift</a></li>
                           <li><a href="/support/oic">Open Infrastructure Circle</a></li>
@@ -94,13 +100,13 @@
             </nav>
           </div>
     </header>
-    
+
     <span id="main-content-marker"></span>
-    
+
     <main>
 
 
-  
+
   <section id="intro">
     <h1>CC Platform Toolkit</h1>
     <h2 class="padding-top-normal">Integrating CC to your Platform</h2>
@@ -245,7 +251,7 @@
   </section>
   <section id="about">
     <div class="column is-paddingless margin-top-large is-12 pt-section-gold pt-align-top">
-      <div class="pt-box-detail-lg has-background-gold"></div> 
+      <div class="pt-box-detail-lg has-background-gold"></div>
       <h3 class="padding-left-small padding-bottom-large">About</h3>
     </div>
     <div class="columns">
@@ -283,7 +289,7 @@
   </section>
   <section id="types-of-content">
     <div class="column is-paddingless margin-top-large is-12 pt-section-gold pt-align-top">
-      <div class="pt-box-detail-lg has-background-gold"></div> 
+      <div class="pt-box-detail-lg has-background-gold"></div>
       <h3 class="padding-left-small padding-bottom-large">Types of Content</h3>
     </div>
     <div class="columns pt-columns-align">
@@ -326,7 +332,7 @@
   </section>
   <section id="terms-of-service">
     <div class="column is-paddingless margin-top-large is-12 pt-section-forest pt-align-top">
-      <div class="pt-box-detail-lg has-background-forest"></div> 
+      <div class="pt-box-detail-lg has-background-forest"></div>
       <h3 class="padding-left-small padding-bottom-large">Terms of Service</h3>
     </div>
     <h2>CC and your terms of service</h2>
@@ -462,7 +468,7 @@
   </section>
   <section id="updating-to-later-versions">
     <div class="column is-paddingless margin-top-larger is-12 pt-section-gold pt-align-top">
-      <div class="pt-box-detail-lg has-background-gold"></div> 
+      <div class="pt-box-detail-lg has-background-gold"></div>
       <h3 class="padding-left-small padding-bottom-large">Updating to later versions</h3>
     </div>
     <div class="column is-10 has-background-white is-paddingless pt-line-left-tomato">
@@ -501,7 +507,7 @@
   </section>
   <section id="adding-licenses">
     <div class="column is-paddingless margin-top-larger is-12 pt-section-gold pt-align-top">
-      <div class="pt-box-detail-lg has-background-gold"></div> 
+      <div class="pt-box-detail-lg has-background-gold"></div>
       <h3 class="padding-left-small padding-bottom-large">Adding CC Licenses</h3>
     </div>
     <div class="columns pt-columns-align">
@@ -541,7 +547,7 @@
   </section>
   <section id="license-chooser">
     <div class="column is-paddingless margin-top-larger is-12 pt-section-gold pt-align-top">
-      <div class="pt-box-detail-lg has-background-gold"></div> 
+      <div class="pt-box-detail-lg has-background-gold"></div>
       <h3 class="padding-left-small padding-bottom-large">License Chooser</h3>
     </div>
     <h5 class="b-header padding-top-normal">Your license chooser should:</h5>
@@ -592,7 +598,7 @@
   </section>
   <section id="license-display">
     <div class="column is-paddingless margin-top-larger is-12 pt-section-gold pt-align-top">
-      <div class="pt-box-detail-lg has-background-gold"></div> 
+      <div class="pt-box-detail-lg has-background-gold"></div>
       <h3 class="padding-left-small padding-bottom-large">License Display</h3>
     </div>
     <div class="columns pt-columns-align">
@@ -637,7 +643,7 @@
   </section>
   <section id="license-metadata-display">
     <div class="column is-paddingless margin-top-large is-12 pt-section-blue pt-align-top">
-      <div class="pt-box-detail-lg has-background-blue"></div> 
+      <div class="pt-box-detail-lg has-background-blue"></div>
       <h3 class="padding-left-small padding-bottom-large">License Metadata (Display)</h3>
     </div>
     <div class="columns pt-columns-align">
@@ -656,7 +662,7 @@
     </div>
     <h5 class="b-header padding-top-normal">Code Snippets for Metadata display:</h5>
     <h4 class="b-header padding-top-normal">The basics</h4>
-    <pre class="column is-8 margin-top-smaller"><code> 
+    <pre class="column is-8 margin-top-smaller"><code>
         &lt;a <span class="has-text-weight-bold">rel="license" href</span>="https://creativecommons.org/licenses/by/4.0/"&gt;
           &lt;<span class="has-text-weight-bold">img src</span>="https://i.creativecommons.org/l/by/4.0/80x15.png" /&gt;
         &lt;/a&gt;
@@ -668,30 +674,30 @@
     <p class="column is-paddingless is-one-third text-normal">
       You can include additional attribution information, such as Title, Author and Work URL, in the following span tags.
     </p>
-    <pre class="column is-8 margin-top-smaller"><code> 
+    <pre class="column is-8 margin-top-smaller"><code>
         &lt;span xmlns:dct="http://purl.org/dc/terms/"<span class="has-text-weight-bold">property="dct:title"</span>&gt;TITLE&lt;/span>
       </code></pre>
-    <pre class="column is-8 margin-top-smaller"><code> 
+    <pre class="column is-8 margin-top-smaller"><code>
         &lt;span xmlns:cc="https://creativecommons.org/ns#"
         <span class="has-text-weight-bold">property="cc:attributionName"</span>&gt;AUTHOR&lt;/span>
     </code></pre>
-    <pre class="column is-8 margin-top-smaller"><code> 
-        &lt;a xmlns:cc="https://creativecommons.org/ns#" href="URL of work" property="cc:attributionName" 
+    <pre class="column is-8 margin-top-smaller"><code>
+        &lt;a xmlns:cc="https://creativecommons.org/ns#" href="URL of work" property="cc:attributionName"
         <span class="has-text-weight-bold">rel="cc:attributionURL</span>&gt;AUTHOR&lt;/span>
       </code></pre>
     <h4 class="b-header padding-top-normal">All together now</h4>
     <p class="column is-paddingless is-one-third text-normal">
       This CC licensed <a href="https://vimeo.com/143427866" rel=”noopener noreferrer” target="_blank">video on Vimeo</a> should include the following metadata in the source code of the page.
     </p>
-    <pre class="column is-8 margin-top-smaller"><code> 
+    <pre class="column is-8 margin-top-smaller"><code>
         &lt;a <span class="has-text-weight-bold">rel="license" href</span>="https://creativecommons.org/licenses/by/3.0/">&gt;
-          &lt;img alt="Creative Commons License" style="border-width:0" 
+          &lt;img alt="Creative Commons License" style="border-width:0"
           <span class="has-text-weight-bold">src</span>="https://i.creativecommons.org/l/by/3.0/88x31.png" /&gt;
         &lt;/a&gt;
         &lt;span <span class="has-text-weight-bold">xmlns:dct</span>="http://purl.org/dc/terms/"<span class="has-text-weight-bold">property="dct:title"</span>&gt;
           Lawrence Lessig at the CC Global Summit 2015
         &lt;/span>
-        &lt;a <span class="has-text-weight-bold">xmlns:cc</span>="https://creativecommons.org/ns#" <span class="has-text-weight-bold">href</span>="https://vimeo.com/143427866" 
+        &lt;a <span class="has-text-weight-bold">xmlns:cc</span>="https://creativecommons.org/ns#" <span class="has-text-weight-bold">href</span>="https://vimeo.com/143427866"
         <span class="has-text-weight-bold">property="cc:attributionName" rel="cc:attributionURL"</span>&gt;
           Creative Commons
         &lt;/a>
@@ -705,16 +711,16 @@
     <p class="column is-paddingless is-half text-normal">
       We also recommend associating the CC license metadata on a web page with the specific media file by wrapping the metadata in div tags. This is especially useful to specify when your platform hosts more than one work on a web page.
     </p>
-    <pre class="column is-8 margin-top-smaller"><code> 
+    <pre class="column is-8 margin-top-smaller"><code>
         &lt;div <span class="has-text-weight-bold">about</span>="&lt;LINK TO MEDIAFILE&gt;"&gt;
           &lt;a rel="license" href="https://creativecommons.org/licenses/by/3.0/" &gt;
-            &lt;img alt="Creative Commons License" style="border-width:0" 
+            &lt;img alt="Creative Commons License" style="border-width:0"
               src="https://i.creativecommons.org/l/by/3.0/88x31.png" /&gt;
           &lt;/a&gt;
           &lt;span xmlns:dct="http://purl.org/dc/terms/" property="dct:title"</span>&gt;
             Lawrence Lessig at the CC Global Summit 2015
           &lt;/span&gt;
-          &lt;a xmlns:cc="https://creativecommons.org/ns#" 
+          &lt;a xmlns:cc="https://creativecommons.org/ns#"
           href="https://vimeo.com/143427866"
           property="cc:attributionName
           rel="cc:attributionURL"&gt;
@@ -725,7 +731,7 @@
   </section>
   <section id="adding-search-filters" class="margin-bottom-normal">
     <div class="column is-paddingless margin-top-larger is-12 pt-section-gold pt-align-top">
-      <div class="pt-box-detail-lg has-background-gold"></div> 
+      <div class="pt-box-detail-lg has-background-gold"></div>
       <h3 class="padding-left-small padding-bottom-large">Adding Search Filters</h3>
     </div>
     <div class="columns pt-columns-align">
@@ -800,7 +806,7 @@
   </section>
   <section id="attributing-authors">
     <div class="column is-paddingless margin-top-large is-12 pt-section-gold pt-align-top">
-      <div class="pt-box-detail-lg has-background-gold"></div> 
+      <div class="pt-box-detail-lg has-background-gold"></div>
       <h3 class="padding-left-small padding-bottom-smaller">Attributing authors</h3>
     </div>
     <div class="columns pt-columns-align">
@@ -858,7 +864,7 @@
   </section>
   <section id="resources">
     <div class="column is-paddingless margin-top-large is-12 pt-section-gold pt-align-top">
-      <div class="pt-box-detail-lg has-background-gold"></div> 
+      <div class="pt-box-detail-lg has-background-gold"></div>
       <h3 class="padding-left-small padding-bottom-smaller">Resources</h3>
     </div>
     <p class="text-normal column is-6 margin-top-small margin-bottom-small is-paddingless">This session groups design files (such as logos),  information that could be useful during implementation as well as featured cases with examples that could offer insight. In case you need something more structured, you can check out the model platform. The final checklist gives a thorough rundown on the possibilities for implementation, as well as highlighting the main requirements.</p>
@@ -879,7 +885,7 @@
           <h5 class="b-header">Logo and Icon Files</h5>
         </div>
         <div class="has-background-white pt-card-padding-small">
-          <p class="text-normal  padding-bottom-small">Download CC logos and Icons. 
+          <p class="text-normal  padding-bottom-small">Download CC logos and Icons.
             We recommend using the <a target="_blank" rel=”noopener noreferrer” href="/about/downloads#Icons">circular icons</a> when appropriate. <a target="_blank" rel=”noopener noreferrer” href="https://licensebuttons.net/i/">Here are initial standard sizes for use.</a></p>
             <a target="_blank" rel=”noopener noreferrer” href="/about/downloads"><button class="button pt-button-tomato-lg pt-button-large">Browse Files</button></a>
         </div>
@@ -913,13 +919,13 @@
   </section>
   <section id="model-platform">
     <div class="column is-paddingless margin-top-large is-12 pt-section-blue pt-align-top">
-      <div class="pt-box-detail-lg has-background-blue"></div> 
+      <div class="pt-box-detail-lg has-background-blue"></div>
       <h3 class="padding-left-small padding-bottom-large">Model Platform</h3>
     </div>
     <div class="columns pt-columns-align">
       <div class="column is-one-third has-background-white pt-card-padding-large">
         <h4 class="b-header padding-bottom-normal">The model platform is a resource in case you’d rather start with a structured tool</h4>
-        <p class="text-normal">The repository on Github allows you to test, log in, see an example of selection process and download the model. 
+        <p class="text-normal">The repository on Github allows you to test, log in, see an example of selection process and download the model.
           While the screenshots let you navigate through the screens and see a suggestion of user flow.</p>
       </div>
       <div class="column is-offset-1 is-3 margin-top-small">
@@ -930,7 +936,7 @@
   </section>
   <section id="final-checklist">
     <div class="column is-paddingless margin-top-large is-12 pt-section-gold pt-align-top">
-      <div class="pt-box-detail-lg has-background-gold"></div> 
+      <div class="pt-box-detail-lg has-background-gold"></div>
       <h3 class="padding-left-small padding-bottom-large">Final Checklist</h3>
     </div>
     <h2>Cover the basics of implementation</h2>
@@ -1101,7 +1107,7 @@
   </section>
   <section id="beyond-this-toolkit">
     <div class="column is-paddingless margin-top-large is-12 pt-section-gold pt-align-top">
-      <div class="pt-box-detail-lg has-background-gold"></div> 
+      <div class="pt-box-detail-lg has-background-gold"></div>
       <h3 class="padding-left-small padding-bottom-large">Beyond this toolkit</h3>
     </div>
     <h2>What comes after implementation</h2>
@@ -1141,7 +1147,7 @@
   </section>
 
   </main>
-  
+
 <!--Modals-->
   <div id="popupBtns">
     <div class="popupBoxWrapper">
@@ -1203,7 +1209,7 @@
             <li><a href="/blog">Blog</a></li>
             <li><a href="/support">Support us</a></li>
             <li><a href="https://creative-commons-shop.fourthwall.com/">Store</a></li>
-            
+
             <li><a href="/contact">Contact</a></li>
             <li><a href="/privacy">Privacy</a></li>
             <li><a href="/policies">Policies</a></li>
